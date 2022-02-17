@@ -4,4 +4,4 @@ export const BASE_URL=environment.apiURL;
 
 
 
-export const LOGIN_URL= BASE_URL +'FGJHKJ';
+export const LOGIN_URL= BASE_URL +'api/login';

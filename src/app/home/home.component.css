@@ -1,0 +1,21 @@
+.submit {
+    cursor: pointer;
+    font-size: 3vw;
+    font-weight: 900;
+      border-radius: 5em;
+      color: #FFF;
+      width:30vw;
+      background:  #23b4b8 ;
+      padding-left:10vw;
+      padding-right: 5vw;
+      padding-bottom: 2vw;
+      padding-top: 2vw;
+      font-family: serif;
+      margin-left:25vw;
+      position:center;
+    margin-top:17vw;
+    margin-bottom:14vw;
+     
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+      
+  }

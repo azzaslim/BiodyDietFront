@@ -1,7 +1,4 @@
-body {
-    
-    font-family: serif;
-}
+
 
 .form1 {
     width: 80vw;
@@ -10,10 +7,10 @@ body {
     border-radius: 1.5em;
     border: 0.1vw solid #b0b3b3;
     margin-top:0vw;
-    margin-bottom:4vw;
+    margin-bottom:3vw;
     margin-right: 6vw;
     margin-left: 7vw;
-    padding-bottom: 3vw;
+    padding-bottom: 2vw;
  
  
 }
@@ -25,7 +22,7 @@ body {
     font-size: 2vw;
     background: #FFF;
     padding: 7px 1vw;
-    border: none;
+    
     border-radius:2vw;
     outline: none;
     box-sizing: border-box;
@@ -83,7 +80,7 @@ margin-bottom: 100vw;
 margin-left: 5vw;
 margin-right:0.8vw;
 margin-top: 2vw;
-margin-bottom: 1vw;
+margin-bottom: 0.5vw;
 font-family: serif;
 }
 .poids {
@@ -101,7 +98,7 @@ margin-bottom: 100vw;
 margin-left: 0.8vw;
 margin-right:0.8vw;
 height:3vw;
-margin-bottom: 3vw;
+margin-bottom: 2vw;
 font-family: serif;
 }
 
@@ -126,18 +123,13 @@ font-family: serif;
     margin-left:4vw;
     margin-right: 4vw;
     margin-bottom:1vw;
-    margin-top:30vw;
+    margin-top:20vh;
    
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
     
 }
 
 
-a {
-    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #00babb;
-    text-decoration: none
-}
 
 
 
@@ -160,15 +152,20 @@ a {
       box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   }
 
- .titre
- {
-     text-align: center;
-     color:#00babb;
-     font-weight:900;
-     font-family: ' sans-serif' ;
-     margin-top:2vw;
- }
-
+  .titre
+  {
+      text-align: center;
+      color:#00babb;
+      font-weight:900;
+      font-family: ' sans-serif' ;
+      margin-top:2vw;
+  }
+ 
+ a {
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #00babb;
+    text-decoration: none
+}
  .progressbar-wrapper {
     background: #fff;
     
@@ -202,7 +199,7 @@ a {
     font-size: 1vw;
       border-radius: 5em;
       color: #fff;
-      width:4vw;
+      width:8vw;
       font-weight: bold;
       background:  #00babb;
       padding-left: 2.5vw;

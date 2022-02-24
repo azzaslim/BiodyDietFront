@@ -3,9 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiURL:'http://127.0.0.1:8000/',
-  baseHref:document.getElementsByTagName('base')[0].href
+  production: false
 };
 
 /*

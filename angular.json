@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "822c7f40-2b8d-40d2-b37f-f97be664bda1"
+    "analytics": "0be0355d-5087-46b3-834b-ebc94b078629"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "p1": {
+    "p2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/p1",
+            "outputPath": "dist/p2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -30,9 +30,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/custom-theme.scss",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+             
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -71,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "p1:build:production"
+              "browserTarget": "p2:build:production"
             },
             "development": {
-              "browserTarget": "p1:build:development"
+              "browserTarget": "p2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "p1:build"
+            "browserTarget": "p2:build"
           }
         },
         "test": {
@@ -105,5 +113,5 @@
       }
     }
   },
-  "defaultProject": "p1"
+  "defaultProject": "p2"
 }

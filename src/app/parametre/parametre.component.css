@@ -11,17 +11,16 @@
     font-weight: 900;
       border-radius: 5em;
       color: #FFF;
-      width:31vw;
+      width:40vw;
       background:  #23b4b8 ;
-      padding-left:5vw;
-      padding-right: 5vw;
+     
       padding-bottom: 2vw;
       padding-top: 2vw;
       font-family: serif;
-      margin-left:8vw;
+     
       position:center;
-    margin-top:12vw;
-    margin-bottom:14vw;
+      margin-top: 25vh;
+      margin-bottom: 25vh;
     float:left;
     text-align: center;
      
@@ -34,20 +33,22 @@
     font-weight: 900;
       border-radius: 5em;
       color: #FFF;
-      width:32vw;
+      width:43vw;
       background:  #23b4b8 ;
-      padding-left:5vw;
-      padding-right: 5vw;
+     
       padding-bottom: 2vw;
       padding-top: 2vw;
       font-family: serif;
       margin-left:2vw;
       position:center;
-    margin-top:12vw;
-    margin-bottom:14vw;
+      margin-top: 25vh;
+      margin-bottom: 25vh;
     float:right;
     text-align: center;
      
       box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
       
+  }
+  a:hover{
+    background-color: #1e7475;
   }

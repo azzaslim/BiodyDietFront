@@ -7,24 +7,34 @@
     font-family: ' sans-serif' ;
     margin-top: 3vw;
 }
-#tableau{
-    margin-left: 20vw;
-    margin-right: 20vw;
+table{
+   
     margin-top:0.5vw;
-    width:60vw;
     table-layout: fixed;
+    margin: auto;
+   width: 50% !important; 
+   
   
+  
+}
+a{
+    text-decoration: none;
+    color:#707272;
 }
 table td{
     border: 0.1vw solid #9c9e9e;
-    height:2vw;
+    height:1vw;
     font-size: 1.5vw;
-    color:#b2bbbb;
+   
+   
     
 }
 table th{
     border: 0.1vw solid #9c9e9e;
     color:#FFF;
+    background-color:  #56afaf;
+    height: 2vw !important;
+    font-size: 1vw;
   
     
 }
@@ -35,7 +45,7 @@ input  {
     border: solid #56afaf;
   background-color: #FFF;
   margin-top:4vw;
-  margin-left:20vw;
+  margin-left:25vw;
   margin-bottom: 1vw;;
   border-radius: 25vw 0vw 0vw 25vw ;
   border-width:0.2vw;
@@ -49,7 +59,7 @@ input  {
       height:3vw;
       color:#FFF;
       font-weight: bold;
-      padding-top: 1vw;
+      padding-top: 0.8vw;
       width:10vw;
       padding-left: 2vw;
       font-size: 1vw;

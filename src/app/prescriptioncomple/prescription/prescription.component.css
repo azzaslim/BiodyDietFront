@@ -20,8 +20,8 @@
       font-family: serif;
       margin-left:12vw;
       margin-right: 12vw;
-      margin-bottom: 2vw;
-      margin-top:100vw;
+      margin-bottom: 12vw;
+      margin-top:10vw;
       box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
       
       
@@ -44,7 +44,6 @@
     font-size: 1vw;
     display: flex;
     margin-left:25vw;
-    
   margin-right:1vw;
   text-decoration: none;
  
@@ -67,7 +66,7 @@
     font-size: 1vw;
       border-radius: 5em;
       color: #fff;
-      width:4vw;
+      width:8vw;
       font-weight: bold;
       background:  #00babb;
       padding-left: 2.5vw;
@@ -87,4 +86,50 @@
     font-weight:  900px;;
     margin-right: 1vw; 
   
+}
+
+mat-checkbox 
+{
+  transform: scale(2,2);
+  color: #8f8684;
+  padding-left: 3vw;;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #23b4b8!important;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #23b4b8 !important;
+}
+
+.form1 
+{
+  margin-left: 10vw;
+  margin-right: 10vw;
+  font-size: 0.8vw;
+  
+}
+.bordure{
+  border: 0.1vw solid #d1cdcd ;
+
+}
+.entete
+{
+  border-radius: 2vw ;
+  border: 0.2vw solid #d1cdcd ;
+  font-size: 1.7vw;
+  padding-left: 1vw;
+  padding-top: 0.5vw;
+  height:4vw;
+  color: #FFF;
+  font-weight: bold;
+  font-family: serif;
+
+}
+mat-icon{
+  transform: scale(2);
+  float:right;
+   font-size: 2vw;
+   height: 1vw ;
+   width: 3vw;
 }

@@ -9,8 +9,7 @@ import { ProgressivebarComponent } from './ajoutprescription/progressivebar/prog
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavmenuComponent } from './shared/navmenu/navmenu.component';
 import { HomeComponent } from './home/home.component';
-import { ListeprofilComponent } from './shared/listeprofil/listeprofil.component';
-import { ParametreComponent } from './shared/parametre/parametre.component';
+
 import { QuestionnaireModule } from './questionnaire/questionnaire.module';
 import { AjoutComponent } from './ajoutprescription/ajout/ajout.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire/questionnaire.component';
@@ -20,7 +19,26 @@ import { RechercheformComponent } from './rechercheprofil/rechercheform/recherch
 import { RechercheprofilModule } from './rechercheprofil/rechercheprofil.module';
 import { ImpressionComponent } from './impression/impression/impression.component';
 import { ImpressionModule } from './impression/impression.module';
-
+import {MatInputModule} from '@angular/material/input';
+  import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { ListeprofilComponent } from './listeprofil/listeprofil.component';
+import { ParametreComponent } from './parametre/parametre.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { EditcompteComponent } from './paramètrecompte/editcompte/editcompte.component';
+import { EditInfoImpressionComponent } from './paramètrecompte/edit-info-impression/edit-info-impression.component';
+import { GestionComplementComponent } from './gestion/gestion-complement/gestion-complement.component';
+import { PreparationComponent } from './gestion/preparation/preparation.component';
+import { ComplementsComponent } from './gestion/complements/complements.component';
+import { ProduitsComponent } from './gestion/produits/produits.component';
+import { InfoComponent } from './personne/info/info.component';
+import { InfoService } from './personne/info.service';
+import { DernierePrescComponent } from './derniere-presc/derniere-presc.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +52,17 @@ import { ImpressionModule } from './impression/impression.module';
   QuestionnaireComponent,
   PrescriptionComponent,
   RechercheformComponent,
-  ImpressionComponent
+  ImpressionComponent,
+  EditcompteComponent,
+  EditInfoImpressionComponent,
+  GestionComplementComponent,
+  PreparationComponent,
+  ComplementsComponent,
+  ProduitsComponent,
+  InfoComponent,
+  DernierePrescComponent,
+  
+  
    
   ],
   imports: [
@@ -45,10 +73,20 @@ import { ImpressionModule } from './impression/impression.module';
     QuestionnaireModule,
     PrescriptioncompleModule,
     RechercheprofilModule,
-    ImpressionModule
+    ImpressionModule,
+    MatFormFieldModule,
+    MatInputModule,
+  MatButtonModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatCardModule,
+    MatTableModule,
+    MatSortModule
+    
     
   ],
-  providers: [],
+  providers: [InfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

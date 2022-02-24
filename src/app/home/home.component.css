@@ -1,21 +1,40 @@
-.submit {
+
+  
+    .submit {
+     
+  
     cursor: pointer;
     font-size: 3vw;
-    font-weight: 900;
-      border-radius: 5em;
-      color: #FFF;
-      width:30vw;
-      background:  #23b4b8 ;
-      padding-left:10vw;
-      padding-right: 5vw;
-      padding-bottom: 2vw;
-      padding-top: 2vw;
-      font-family: serif;
-      margin-left:25vw;
-      position:center;
-    margin-top:17vw;
-    margin-bottom:14vw;
-     
-      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    font-weight: 800;
+    border-radius: 5em;
+    color: #FFF; 
+    background:  #23b4b8 ;
+    padding-left:7vw;
+   
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+    width:43vw;
+    font-family: serif;
+    position: center;
+    margin-top: 30vh;
+    margin-bottom: 10vh;
+    margin-right: 25vw;
+    margin-left: 27vw;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
       
+   
   }
+ 
+  .submit:hover{
+    background-color: #1e7475;
+  }
+  
+  mat-icon{
+    transform: scale(4);
+  
+   font-weight: normal;
+    font-size: 2vw;
+    height: 2vw ;
+    width: 4vw;
+  }
+ 

@@ -3,7 +3,6 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {AfterViewInit,ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { InfoService } from '../personne/info.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 export interface Profil{
@@ -32,7 +31,7 @@ export class ListeprofilComponent implements  AfterViewInit {
   Profil: Profil[]=[];
  
 
-  constructor(private _liveAnnouncer: LiveAnnouncer,private InfoService : InfoService,private router: Router) {}
+  constructor(private _liveAnnouncer: LiveAnnouncer,private router: Router) {}
 
   @ViewChild(MatSort)
   sort!: MatSort;

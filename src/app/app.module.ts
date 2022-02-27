@@ -29,10 +29,9 @@ import { PreparationComponent } from './gestion/preparation/preparation.componen
 import { ComplementsComponent } from './gestion/complements/complements.component';
 import { ProduitsComponent } from './gestion/produits/produits.component';
 import { InfoComponent } from './personne/info/info.component';
-import { InfoService } from './personne/info.service';
 import { DernierePrescComponent } from './derniere-presc/derniere-presc.component';
 import { AuthService } from './auth.service';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AjoutformComponent } from './Stepper/ajoutform/ajoutform.component';
 import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
@@ -85,7 +84,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     
    
   ],
-  providers: [InfoService,
+  providers: [
   AuthService,
   {
     provide: STEPPER_GLOBAL_OPTIONS,

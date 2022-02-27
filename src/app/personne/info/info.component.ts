@@ -1,7 +1,6 @@
 
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { InfoService } from '../info.service';
 
 
 @Component({
@@ -15,7 +14,7 @@ export class InfoComponent implements OnInit {
   prenom!: String;
   id!:number;
   idd!:number;
-  constructor(private route: ActivatedRoute,private InfoService : InfoService) { }
+  constructor(private route: ActivatedRoute) { }
   ngOnInit(): void {
   this.id = this.route.snapshot.params['id'];
   

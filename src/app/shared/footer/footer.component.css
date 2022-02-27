@@ -2,8 +2,8 @@
      .page-footer{
         margin-left:3vw;
         margin-right:3vw;
-        margin-top: 3.8vw;
-    position: relative;
+        margin-top: auto;
+         position: fixed;
   
 
   font-size: 1vw;

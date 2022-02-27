@@ -13,11 +13,11 @@ import { PreparationComponent } from './gestion/preparation/preparation.componen
 import { ComplementsComponent } from './gestion/complements/complements.component';
 import { InfoComponent } from './personne/info/info.component';
 import { DernierePrescComponent } from './derniere-presc/derniere-presc.component';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from './login/login.component';
 import { AjoutformComponent } from './Stepper/ajoutform/ajoutform.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'listeprofil', component: ListeprofilComponent },
   { path: 'parametre', component: ParametreComponent },
   { path: 'recherche', component: RechercheformComponent },
@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'info/:id', component: InfoComponent},
   { path: 'info/:nom', component: InfoComponent},
   { path: 'dernierePresc', component: DernierePrescComponent},
-  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent},
   { path: 'ajout', component: AjoutformComponent},
 ];
 

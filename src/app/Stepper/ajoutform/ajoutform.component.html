@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+</head>
+
+<body>
+  <app-navmenu></app-navmenu>
+    <div class="quitter"> <a href="/" style="color:#FFF; text-decoration: none;"> Quitter</a></div>
+    <div class="stepperContainer  ">
+    <mat-horizontal-stepper  [linear]="true" #stepper (selectionChange)="onStepChange($event)">
+        <!-- STEPS -->
+        
+
+            <mat-step [stepControl]="firstFormGroup" label="Information personnelle" state="done" state="edit" >
+              <div class="titre" style="font-size: 2vw;">{{title[0]}}</div>
+
+                <form [formGroup]="firstFormGroup" class="form1">
+                   
+                  <ng-template matStepLabel >Information Personnelle</ng-template>
+
+<div class="  d-flex justify-content-center pt-1">
+                  <mat-form-field appearance="outline" class=" firstline " >
+                    <mat-label>Nom</mat-label>
+                    <input matInput  placeholder="Laura" formControlName="firstCtrl" >
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class=" firstline " >
+                    <mat-label>Prénom</mat-label>
+                    <input matInput placeholder="Martin" formControlName="secondCtrl" >
+                  </mat-form-field>
+                </div>
+                <div class=" d-flex justify-content-center pt-1">
+                  <mat-form-field appearance="outline" class=" secondline " >
+                    <mat-label>Date de Naissance</mat-label>
+                    <input matInput placeholder="30/11/1980" formControlName="thirdCtrl" >
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class=" secondline " >
+                    <mat-label>Poids</mat-label>
+                    <input matInput placeholder="80" type="number" min="14" max="250" formControlName="fourthCtrl" >
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class=" secondline " >
+                    <mat-label>Taille</mat-label>
+                    <input matInput placeholder="176" type="number" min="100" max="220" formControlName="fivthCtrl">
+                  </mat-form-field>
+                </div>
+
+                 <div class=" boutton d-flex justify-content-center  display-1 "style=" width:74vw; background-color: #70caca;
+                 margin-left:3vw; padding-bottom: 0.5vw; margin-top:0vw;">
+                    <button mat-button matStepperNext  >SUIVANT</button>
+                  </div>
+                </form>
+                <a class="boutton d-flex justify-content-center" href="recherche" style= "width:74vw; background-color: #70caca; padding-top: 0vw;
+                margin-left:3vw">Rechercher un profil BiodyManager</a>
+        </mat-step>
+
+
+        <mat-step label="Questionnaire"   state="done" state="edit"  >
+          <div class="titre" style="font-size: 2vw;">{{title[1]}}</div>
+
+            <mat-accordion  >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState0 = true ;  " 
+                                     (closed)="panelOpenState0 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState0 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState0 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                      Objectif Principal
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <mat-accordion  class="panel" >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState1 = true ;  " 
+                                     (closed)="panelOpenState1 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState1 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState1 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                      Questionnare de santé
+                                        </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <mat-accordion  class="panel" >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState2 = true ;  " 
+                                     (closed)="panelOpenState2 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState2 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState2 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                      Contre Indication
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <mat-accordion  class="panel" >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState3 = true ;  " 
+                                     (closed)="panelOpenState3 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState3 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState3 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                      Carence alimentaire
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <mat-accordion  class="panel" >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState4 = true ;  " 
+                                     (closed)="panelOpenState4 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState4 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState4 ? 'white !important' : '#a49c9b !important'" style=" ">
+                     Analyse BiodyManager
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <div class=" boutton d-flex justify-content-center  display-3 "style=" width:74vw; background-color: #70caca;
+                 margin-left:3vw; padding-bottom: 0.5vw; margin-top:3vw; font-size:2vw">
+                    <button mat-button matStepperNext  >SUIVANT</button>
+                  </div>
+        </mat-step>
+        
+
+        <mat-step label="Prescriptions Compléments"state="done" state="edit"  >
+          <div class="titre" style="font-size: 2vw;">{{title[2]}}</div>
+
+            <mat-accordion  class="panel" >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState2 = true ;  " 
+                                     (closed)="panelOpenState2 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState2 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState2 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                      Gamme Protéinée
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <mat-accordion  class="panel" >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState3 = true ;  " 
+                                     (closed)="panelOpenState3 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState3 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState3 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                      Complément alimentaire Nutrisvelt
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <mat-accordion  class="panel" >
+              
+                <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState4 = true ;  " 
+                                     (closed)="panelOpenState4 = false " >
+                  <mat-expansion-panel-header  
+                  [style.background-color]="panelOpenState4 ? '#d1cdcd !important' : ''"
+                 
+               style="border-bottom-left-radius: 0em ;
+                   border-bottom-right-radius: 0em ;
+                   size:5vw !important" >
+                    <mat-panel-title  [style.color]="panelOpenState4 ? 'white !important' : '#a49c9b !important'" style=" ">
+                     Compléments Alimentaires personnels
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                 
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                 <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                
+                </mat-expansion-panel>
+              
+              </mat-accordion>
+              <div class=" boutton d-flex justify-content-center  display-3 "style=" width:74vw; background-color: #70caca;
+                 margin-left:3vw; padding-bottom: 0.5vw; margin-top:3vw;margin-bottom: 8.5vw;font-size:2vw">
+                    <button mat-button matStepperNext  > ENREGISTRER</button>
+                  </div>
+        </mat-step>
+
+        
+        <mat-step label="impression" state="" >
+          <div class="titre" style="font-size: 2vw;">{{title[3]}}</div>
+
+         
+                <mat-accordion  class="panel" >
+                  
+                    <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState2 = true ;  " 
+                                         (closed)="panelOpenState2 = false " >
+                      <mat-expansion-panel-header  
+                      [style.background-color]="panelOpenState2 ? '#d1cdcd !important' : ''"
+                     
+                   style="border-bottom-left-radius: 0em ;
+                       border-bottom-right-radius: 0em ;
+                       size:5vw !important" >
+                        <mat-panel-title  [style.color]="panelOpenState2 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                          Page de Garde
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                     
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                    
+                    </mat-expansion-panel>
+                  
+                  </mat-accordion>
+                  <mat-accordion  class="panel" >
+                  
+                    <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState3 = true ;  " 
+                                         (closed)="panelOpenState3 = false " >
+                      <mat-expansion-panel-header  
+                      [style.background-color]="panelOpenState3 ? '#d1cdcd !important' : ''"
+                     
+                   style="border-bottom-left-radius: 0em ;
+                       border-bottom-right-radius: 0em ;
+                       size:5vw !important" >
+                        <mat-panel-title  [style.color]="panelOpenState3 ? 'white !important' : '#a49c9b !important'" style=" size:5vw !important">
+                          Prescriptions Compléments
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                     
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                    
+                    </mat-expansion-panel>
+                  
+                  </mat-accordion>
+                  <mat-accordion  class="panel" >
+                  
+                    <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState4 = true ;  " 
+                                         (closed)="panelOpenState4 = false " >
+                      <mat-expansion-panel-header  
+                      [style.background-color]="panelOpenState4 ? '#d1cdcd !important' : ''"
+                     
+                   style="border-bottom-left-radius: 0em ;
+                       border-bottom-right-radius: 0em ;
+                       size:5vw !important" >
+                        <mat-panel-title  [style.color]="panelOpenState4 ? 'white !important' : '#a49c9b !important'" style=" ">
+                        Fiche Conseils
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                     
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox><br>
+                     <mat-checkbox> I'm visible because I am open</mat-checkbox>
+                    
+                    </mat-expansion-panel>
+                  
+                  </mat-accordion>
+                  <div class=" boutton d-flex justify-content-center  display-3 "style=" width:74vw; background-color: #70caca;
+                     margin-left:3vw; padding-bottom: 0.5vw; margin-top:3vw;margin-bottom: 8.5vw;font-size:2vw">
+                        <button mat-button matStepperNext  >PRINT</button>
+                      </div>
+            </mat-step>
+          
+        <!-- STEPS -->
+      
+        <!-- Replace icon mat-step -->
+        <ng-template matStepperIcon="done" >
+          <mat-icon >keyboard_arrow_right</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="edit" >
+            <mat-icon >keyboard_arrow_right</mat-icon>
+          </ng-template>
+        <!-- Replace icon mat-step -->
+      </mat-horizontal-stepper>
+      </div>
+      <app-footer></app-footer>
+</body>
+
+</html>

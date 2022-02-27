@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImpressionComponent } from './impression.component';
+import { AjoutformComponent } from './ajoutform.component';
 
-describe('ImpressionComponent', () => {
-  let component: ImpressionComponent;
-  let fixture: ComponentFixture<ImpressionComponent>;
+describe('AjoutformComponent', () => {
+  let component: AjoutformComponent;
+  let fixture: ComponentFixture<AjoutformComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImpressionComponent ]
+      declarations: [ AjoutformComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImpressionComponent);
+    fixture = TestBed.createComponent(AjoutformComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

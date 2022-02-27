@@ -1,0 +1,106 @@
+body {
+   
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main {
+    background-color: #FFFFFF;
+    width: 30vw;
+    height: 25vw;
+    margin-left:30vw;
+    margin-top: 8vw;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    padding-left: 3vw;
+}
+
+.sign {
+    padding-top: 4vw;
+    color: #70caca;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 2vw;
+    text-align: center;
+   padding-right:3vw;
+}
+
+.un {
+width: 76%;
+color:rgb(119, 111, 111);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: #ececec;
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 2vw;
+margin-left: 46px;
+text-align: center;
+height:3vw;
+
+font-family: 'Ubuntu', sans-serif;
+}
+
+form.form1 {
+    padding-top: 1vw;
+}
+
+.pass {
+        width: 76%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: #ececec;
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 3vw;
+margin-left: 46px;
+text-align: center;
+height:3vw;
+font-family: 'Ubuntu', sans-serif;
+}
+
+
+.un:focus, .pass:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    
+}
+
+.submit {
+  cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #70caca, #07dfdf);
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 8vw;
+    font-size: 2vw;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  
+    height:3vw;
+}
+
+
+
+a {
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #70caca;
+    text-decoration: none
+}
+
+
+    
+

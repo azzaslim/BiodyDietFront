@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProgressivebarComponent } from './progressivebar.component';
+import { LoginComponent } from './login.component';
 
-describe('ProgressivebarComponent', () => {
-  let component: ProgressivebarComponent;
-  let fixture: ComponentFixture<ProgressivebarComponent>;
+describe('LoginComponent', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProgressivebarComponent ]
+      declarations: [ LoginComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProgressivebarComponent);
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

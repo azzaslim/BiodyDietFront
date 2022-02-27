@@ -1,24 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { AjoutprescriptionModule } from './ajoutprescription/ajoutprescription.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProgressivebarComponent } from './ajoutprescription/progressivebar/progressivebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavmenuComponent } from './shared/navmenu/navmenu.component';
 import { HomeComponent } from './home/home.component';
+import { FormControl, FormControlName, FormGroup, FormGroupName, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { QuestionnaireModule } from './questionnaire/questionnaire.module';
-import { AjoutComponent } from './ajoutprescription/ajout/ajout.component';
-import { QuestionnaireComponent } from './questionnaire/questionnaire/questionnaire.component';
-import { PrescriptionComponent } from './prescriptioncomple/prescription/prescription.component';
-import { PrescriptioncompleModule } from './prescriptioncomple/prescriptioncomple.module';
 import { RechercheformComponent } from './rechercheprofil/rechercheform/rechercheform.component';
 import { RechercheprofilModule } from './rechercheprofil/rechercheprofil.module';
-import { ImpressionComponent } from './impression/impression/impression.component';
-import { ImpressionModule } from './impression/impression.module';
 import {MatInputModule} from '@angular/material/input';
   import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,6 +31,13 @@ import { ProduitsComponent } from './gestion/produits/produits.component';
 import { InfoComponent } from './personne/info/info.component';
 import { InfoService } from './personne/info.service';
 import { DernierePrescComponent } from './derniere-presc/derniere-presc.component';
+import { AuthService } from './auth.service';
+import { LoginComponent } from '../login/login.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AjoutformComponent } from './Stepper/ajoutform/ajoutform.component';
+import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,12 +46,8 @@ import { DernierePrescComponent } from './derniere-presc/derniere-presc.componen
     HomeComponent,
     ListeprofilComponent,
     ParametreComponent,
-  ProgressivebarComponent,
-  AjoutComponent,
-  QuestionnaireComponent,
-  PrescriptionComponent,
+  
   RechercheformComponent,
-  ImpressionComponent,
   EditcompteComponent,
   EditInfoImpressionComponent,
   GestionComplementComponent,
@@ -61,6 +56,8 @@ import { DernierePrescComponent } from './derniere-presc/derniere-presc.componen
   ProduitsComponent,
   InfoComponent,
   DernierePrescComponent,
+  LoginComponent,
+   AjoutformComponent
   
   
    
@@ -69,11 +66,8 @@ import { DernierePrescComponent } from './derniere-presc/derniere-presc.componen
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
-    AjoutprescriptionModule,
-    QuestionnaireModule,
-    PrescriptioncompleModule,
+   
     RechercheprofilModule,
-    ImpressionModule,
     MatFormFieldModule,
     MatInputModule,
   MatButtonModule,
@@ -82,11 +76,21 @@ import { DernierePrescComponent } from './derniere-presc/derniere-presc.componen
     MatIconModule,
     MatCardModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatExpansionModule
     
-    
+   
   ],
-  providers: [InfoService],
+  providers: [InfoService,
+  AuthService,
+  {
+    provide: STEPPER_GLOBAL_OPTIONS,
+    useValue: { displayDefaultIndicatorType: false }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -110,6 +110,9 @@ width: 100px;
 }
 .C2
 {
+  padding-top: 0%;
+padding-bottom: 1vw;
+padding-left: 1vw;
 height: 25vw;
 }
 .form12
@@ -120,11 +123,17 @@ width: 100px;
   width: 18vw;
   display: inline-block;
   vertical-align: middle;
+ 
+  
 
 }
 .C3
 {
 height: 25vw;
+padding-top: 0%;
+padding-bottom: 1vw;
+padding-left: 1vw;
+
 }
 .form13
 {
@@ -171,16 +180,7 @@ height: 25vw;
   
   
 }
-.vertical-line{
-  border-left: 0.1VW solid #909090;
-  display: inline-block;
-  height: 20VW;
-  margin: 0 1VW;
-  vertical-align: middle;
- 
-  
 
-}
 #granddiv
 {
   
@@ -311,20 +311,7 @@ height: 25vw;
   
 
 }
-.d1
-{
-  display: inline-block;
-  vertical-align: top;
-  font-size: 0.5vw;
-  margin-top: 0.5vw;
-}
-.d2
-{
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 0%;
-  font-size: 0.5vw;
-}
+
 .prep11
 {
   color: #8f8684;
@@ -339,3 +326,70 @@ height: 25vw;
   font-style: italic;
   font-size: 0.5VW;
 }
+table {
+  width: 14vw; 
+  border-spacing: 0;
+  margin-right: 10vw;
+  position: fixed;
+  
+}
+
+tbody, thead tr { display: block;  }
+
+tbody {
+  height: 23vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 1VW;
+  color: #8f8684;
+}
+
+tbody td, thead th {
+  width: 13vw;
+  font-size: 1VW;
+  color: #8f8684;
+}
+
+thead th:last-child {
+  width: 15vw; 
+  font-size: 1VW;
+}
+
+ .table1 tbody td:hover 
+{
+  background-color: #23b4b8;
+}
+.table2 tbody
+{
+  height: 21vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 1VW;
+  color: #8f8684;
+  
+
+}
+.table2 thead tr th  {
+  background-color: #d1d1d1;
+  color: #978f8d;
+}
+
+@media(min-width: 200px) and (max-width: 600px){
+  .table1{
+    width: 11vw; 
+    
+    padding-top: 0.5vw;
+    padding-bottom: 1vw;
+    
+  }
+  .table2{
+    width: 11vw; 
+    
+    padding-top: 0.5vw;
+    padding-bottom: 1vw;
+    margin-right: 5VW;
+  }
+
+  
+}
+

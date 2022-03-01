@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-navmenu',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavmenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder,private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
   }
-
+  disconnect() {  
+    console.log('logout');  
+    this.authService.logout();  
+    this.router.navigate(['/'])
+  } 
 }

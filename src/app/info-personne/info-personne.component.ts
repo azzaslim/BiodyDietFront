@@ -1,15 +1,12 @@
-import { StepperSelectionEvent } from '@angular/cdk/stepper/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatHorizontalStepper } from '@angular/material/stepper/stepper';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+
 @Component({
-  selector: 'app-ajoutform',
-  templateUrl: './ajoutform.component.html',
-  styleUrls: ['./ajoutform.component.css']
+  selector: 'app-info-personne',
+  templateUrl: './info-personne.component.html',
+  styleUrls: ['./info-personne.component.css']
 })
-export class AjoutformComponent implements OnInit {
+export class InfoPersonneComponent implements OnInit {
   title=["nouvelle prescription","Questionnaire","Prescriptions compléments","impression"];
   panelOpenState0= false;
   panelOpenState = false;
@@ -19,12 +16,10 @@ export class AjoutformComponent implements OnInit {
   panelOpenState4 = false;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
-  
-  id!: string;  
-  constructor(private _formBuilder: FormBuilder,private router: Router, private authService: AuthService) {}
+
+  constructor(private _formBuilder: FormBuilder) {}
 //Validators.required
   ngOnInit() {
-
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: [''],
       secondCtrl: [''],
@@ -36,10 +31,9 @@ export class AjoutformComponent implements OnInit {
       secondCtrl: ['', Validators.required],
     });
     
-  
+    
   }
   public onStepChange(event: any): void {
     console.log(event.selectedIndex);
   }
- 
 }

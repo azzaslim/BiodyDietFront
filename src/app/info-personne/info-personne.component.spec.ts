@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DernierePrescComponent } from './derniere-presc.component';
+import { InfoPersonneComponent } from './info-personne.component';
 
-describe('DernierePrescComponent', () => {
-  let component: DernierePrescComponent;
-  let fixture: ComponentFixture<DernierePrescComponent>;
+describe('InfoPersonneComponent', () => {
+  let component: InfoPersonneComponent;
+  let fixture: ComponentFixture<InfoPersonneComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DernierePrescComponent ]
+      declarations: [ InfoPersonneComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DernierePrescComponent);
+    fixture = TestBed.createComponent(InfoPersonneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -7,23 +7,30 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  
+export class LoginComponent implements OnInit {
+  message!: string;  
+returnUrl!: string;  
   userData= new FormGroup({
     username : new FormControl(''),
     password : new FormControl('')
     });
-constructor(private authService:AuthService ,private router:Router) { 
+    
+constructor(private authService:AuthService ,private router:Router, private formBuilder : FormBuilder,  ) { 
 }
+  ngOnInit() {   
+
+  }
 signIn(){
   let data = JSON.stringify(this.userData.value);
   this.authService.login(data)
   .subscribe(
-    response=> {console.log(response), this.router.navigate(['/'])},
+    response=> {console.log(response), 
+      this.router.navigate(['/home']),
+      sessionStorage.setItem('jwt', JSON.stringify(response)),
+      sessionStorage.setItem('isLoggedIn', "true"),
+      console.log(sessionStorage.getItem('isLoggedIn'));
+      console.log(sessionStorage.getItem('jwt'));},
     err => console.log(err),
   )
-
-  
-
-}
+    }
 }

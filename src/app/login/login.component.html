@@ -7,17 +7,23 @@
 </head>
 
 <body>
-  <div class="main">
-    <p class="sign" text-align="center">Sign in</p>
-    <form class="form1" [formGroup]="userData"  (ngSubmit)="signIn()" >
-      <div class="form-group">
-      <input class="un " type="text"   class="form-control" placeholder="Username"  formControlName="username">
-    </div>
+  <div class="main ">
+    <p class="titre" text-align="center">Sign in</p>
+    
+    <form  [formGroup]="userData"  (ngSubmit)="signIn()" >
+     
+      <mat-form-field appearance="outline" class="un" >
+        <mat-label>username</mat-label>
+        <input matInput  type="text"   class="form-control"   formControlName="username">
+      </mat-form-field>
     <br><br>
-      <input class="pass" type="password"  class="form-control" placeholder="Password"  formControlName="password">
+    <mat-form-field appearance="outline" class="pass">
+      <mat-label>password</mat-label>
+      <input  matInput  type="password"  class="form-control"  formControlName="password">
+    </mat-form-field>
       <br><br>
       <button class="submit" type="submit"  (click)="signIn()" >Sign in</button>
-            
+         
       </form>       
     </div>
   

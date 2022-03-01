@@ -2,7 +2,6 @@
   .navbar li a
   {
    text-decoration: none;
-   
     color: #fff; 
     margin-left: 3vw
   }
@@ -45,4 +44,10 @@
     width: 1vw;
    
   }
-   
+  .navbar button{
+     background-color: transparent !important;
+     background-repeat:no-repeat !important;
+border: none;
+color: white;
+margin-left: 3vw;
+   }

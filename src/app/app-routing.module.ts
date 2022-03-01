@@ -12,12 +12,13 @@ import { ProduitsComponent } from './gestion/produits/produits.component';
 import { PreparationComponent } from './gestion/preparation/preparation.component';
 import { ComplementsComponent } from './gestion/complements/complements.component';
 import { InfoComponent } from './personne/info/info.component';
-import { DernierePrescComponent } from './derniere-presc/derniere-presc.component';
 import { LoginComponent } from './login/login.component';
 import { AjoutformComponent } from './Stepper/ajoutform/ajoutform.component';
+import { InfoPersonneComponent } from './info-personne/info-personne.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent , canActivate : [AuthGuardService]  },
   { path: 'listeprofil', component: ListeprofilComponent },
   { path: 'parametre', component: ParametreComponent },
   { path: 'recherche', component: RechercheformComponent },
@@ -28,11 +29,10 @@ const routes: Routes = [
   { path: 'preparations', component: PreparationComponent},
   { path: 'complements', component: ComplementsComponent},
   { path: 'info', component: InfoComponent},
-  { path: 'info/:id', component: InfoComponent},
+  { path: 'info/:id', component: InfoPersonneComponent},
   { path: 'info/:nom', component: InfoComponent},
-  { path: 'dernierePresc', component: DernierePrescComponent},
-  { path: '', component: LoginComponent},
-  { path: 'ajout', component: AjoutformComponent},
+  { path: '', component: LoginComponent },
+  { path: 'ajout', component: AjoutformComponent  , canActivate : [AuthGuardService]  },
 ];
 
 @NgModule({

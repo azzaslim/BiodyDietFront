@@ -21,5 +21,6 @@ export class AuthService {
   logout() {    
     sessionStorage.setItem('isLoggedIn','false');    
     sessionStorage.clear(); 
+    console.clear()
     }    
 }

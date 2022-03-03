@@ -13,26 +13,26 @@ import { PreparationComponent } from './gestion/preparation/preparation.componen
 import { ComplementsComponent } from './gestion/complements/complements.component';
 import { InfoComponent } from './personne/info/info.component';
 import { LoginComponent } from './login/login.component';
-import { AjoutformComponent } from './Stepper/ajoutform/ajoutform.component';
 import { InfoPersonneComponent } from './info-personne/info-personne.component';
 import { AuthGuardService } from './auth-guard.service';
+import { PrescriptionComponent } from './prescription/prescription.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent , canActivate : [AuthGuardService]  },
-  { path: 'listeprofil', component: ListeprofilComponent },
-  { path: 'parametre', component: ParametreComponent },
-  { path: 'recherche', component: RechercheformComponent },
-  { path: 'editCompte', component: EditcompteComponent },
-  { path: 'editImpression', component: EditInfoImpressionComponent },
-  { path: 'gestion', component: GestionComplementComponent },
-  { path: 'produits', component: ProduitsComponent },
-  { path: 'preparations', component: PreparationComponent},
-  { path: 'complements', component: ComplementsComponent},
-  { path: 'info', component: InfoComponent},
-  { path: 'info/:id', component: InfoPersonneComponent},
-  { path: 'info/:nom', component: InfoComponent},
-  { path: '', component: LoginComponent },
-  { path: 'ajout', component: AjoutformComponent  , canActivate : [AuthGuardService]  },
+  { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService]  },
+  { path: 'parametre', component: ParametreComponent , canActivate : [AuthGuardService]  },
+  { path: 'recherche', component: RechercheformComponent , canActivate : [AuthGuardService]  },
+  { path: 'editCompte', component: EditcompteComponent , canActivate : [AuthGuardService] },
+  { path: 'editImpression', component: EditInfoImpressionComponent , canActivate : [AuthGuardService] },
+  { path: 'gestion', component: GestionComplementComponent , canActivate : [AuthGuardService] },
+  { path: 'produits', component: ProduitsComponent , canActivate : [AuthGuardService] },
+  { path: 'preparations', component: PreparationComponent , canActivate : [AuthGuardService] },
+  { path: 'complements', component: ComplementsComponent , canActivate : [AuthGuardService] },
+  { path: 'info', component: InfoComponent , canActivate : [AuthGuardService] },
+  { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
+  { path: 'info/:nom', component: InfoComponent , canActivate : [AuthGuardService] },
+  { path: '', component: LoginComponent   },
+  { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
 ];
 
 @NgModule({

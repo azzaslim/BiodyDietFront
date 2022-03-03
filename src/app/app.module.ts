@@ -32,12 +32,12 @@ import { InfoComponent } from './personne/info/info.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AjoutformComponent } from './Stepper/ajoutform/ajoutform.component';
 import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { InfoPersonneComponent } from './info-personne/info-personne.component';
 import { AuthGuardService } from './auth-guard.service';
+import { PrescriptionComponent } from './prescription/prescription.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +55,7 @@ import { AuthGuardService } from './auth-guard.service';
   ProduitsComponent,
   InfoComponent,
   LoginComponent,
-   AjoutformComponent,
+   PrescriptionComponent,
    InfoPersonneComponent
   
   

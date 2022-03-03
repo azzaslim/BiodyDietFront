@@ -24,7 +24,7 @@ signIn(){
   let data = JSON.stringify(this.userData.value);
   this.authService.login(data)
   .subscribe(
-    response=> {console.log(response), 
+    response=> {
       this.router.navigate(['/home']),
       sessionStorage.setItem('jwt', JSON.stringify(response)),
       sessionStorage.setItem('isLoggedIn', "true"),

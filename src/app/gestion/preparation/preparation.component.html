@@ -7,6 +7,7 @@
 
 <body>
   <app-navmenu></app-navmenu>
+  <div class="container">
   <div class="progressbar-wrapper">
     
     <a href="parametre" class="btn0">Paramètre </a><br><div class="inferieur" >></div>&ensp;
@@ -14,11 +15,11 @@
     <a href="preparations" class="btn2" >Gestion des préparations hyperprotéinées </a>&ensp; 
    <br>
 </div>
-<div class="titre" style="font-size: 2vw;">Gestion des préparations hyperprotéinées</div>
+<h1 class="titre" style="font-size: 2vw;">Gestion des préparations hyperprotéinées</h1>
 
 <br>
-<div id="granddiv">
-<div class="form1" >
+<div class="row">
+<div class="form1 col-3" >
   <div class="titre1" > Préparations Originales</div>
  <mat-card  class="C1" >
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -122,7 +123,7 @@
 </div>
 
 
-<div class="form11" >
+<div class="form11 col-3" >
   <div class="titre1" > Portions</div>
  <mat-card class="C2" >
   <section >  
@@ -133,7 +134,7 @@
 </div>
 
 
-<div class="form12" >
+<div class="form12  col-3" >
   <div class="titre1" > Compositions par 100g</div>
  <mat-card class="C3" >
   <section >  
@@ -241,9 +242,9 @@
  </mat-card>
 </div>
 
-<div class="form13" >
+<div class="form13 col-3" >
   <div class="titre1" > Symtomes</div>
- <mat-card class="C4"  >
+ <mat-card class="C3" >
   <section id="sec">  
     <mat-checkbox >Symtome</mat-checkbox>
     <br>  <br>
@@ -253,14 +254,15 @@
   </section>
  </mat-card>
 </div>
+</div>
 <div class="divboutton " > 
 <div class="b1"> <a href="/" style="color:#FFF; text-decoration: none;"> Masquer</a></div> 
   <div class="b2"> <a href="/" style="color:#FFF; text-decoration: none;"> Modifier</a></div>
-  <div class="b3"> <a href="/" style="color:#FFF; text-decoration: none;"> Ajouter</a></div> 
+  <div class="b3"> <a href="ajoutpreparation" style="color:#FFF; text-decoration: none;"> Ajouter</a></div> 
   <div class="b4"> <a href="/" style="color:#FFF; text-decoration: none;"> Supprimer</a></div>
 </div>
 </div>
-
+=
     <app-footer></app-footer>
     </body>
     

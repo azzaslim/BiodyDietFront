@@ -38,6 +38,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { InfoPersonneComponent } from './info-personne/info-personne.component';
 import { AuthGuardService } from './auth-guard.service';
 import { PrescriptionComponent } from './prescription/prescription.component';
+import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-preparation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { PrescriptionComponent } from './prescription/prescription.component';
   InfoComponent,
   LoginComponent,
    PrescriptionComponent,
-   InfoPersonneComponent
+   InfoPersonneComponent,
+   AjouterPreparationComponent
   
   
    

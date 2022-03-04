@@ -1,3 +1,4 @@
+import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-preparation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
   { path: 'info/:nom', component: InfoComponent , canActivate : [AuthGuardService] },
   { path: '', component: LoginComponent   },
+  { path: 'ajoutpreparation', component: AjouterPreparationComponent },
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
 ];
 

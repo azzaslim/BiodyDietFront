@@ -71,10 +71,8 @@
 
 mat-checkbox 
 {
-transform: scale(1,1);
 color: #8f8684;
-padding-left: 2vw;;
-font-size: 0.5vw;
+font-size: small;
 }
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
 background-color: #23b4b8!important;

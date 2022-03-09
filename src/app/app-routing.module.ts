@@ -1,7 +1,7 @@
+import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-preparation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
 import { RechercheformComponent } from './rechercheprofil/rechercheform/rechercheform.component';
 import { ListeprofilComponent } from './listeprofil/listeprofil.component';
 import { ParametreComponent } from './parametre/parametre.component';
@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'info/:nom', component: InfoComponent , canActivate : [AuthGuardService] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent  },
+  { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
 ];
 

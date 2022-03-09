@@ -39,6 +39,7 @@ import { InfoPersonneComponent } from './info-personne/info-personne.component';
 import { AuthGuardService } from './auth-guard.service';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import { RegisterComponent } from './register/register.component';
+import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-preparation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { RegisterComponent } from './register/register.component';
   LoginComponent,
    PrescriptionComponent,
    InfoPersonneComponent,
-   RegisterComponent
+   RegisterComponent,
+   AjouterPreparationComponent
   
   
    

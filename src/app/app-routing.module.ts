@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { InfoPersonneComponent } from './info-personne/info-personne.component';
 import { AuthGuardService } from './auth-guard.service';
 import { PrescriptionComponent } from './prescription/prescription.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent , canActivate : [AuthGuardService]  },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
   { path: 'info/:nom', component: InfoComponent , canActivate : [AuthGuardService] },
   { path: '', component: LoginComponent   },
+  { path: 'register', component:RegisterComponent  },
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
 ];
 

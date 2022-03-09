@@ -1,0 +1,58 @@
+<div class="main ">
+    <p class="titre" text-align="center">Sign up</p>
+
+    <form [formGroup]="registerData" (ngSubmit)="register()">
+
+        <mat-form-field appearance="outline" class="un">
+            <mat-label>Nom</mat-label>
+            <input matInput type="text" class="form-control" formControlName="firstName">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="pass">
+            <mat-label>Prénom</mat-label>
+            <input matInput type="text" class="form-control" formControlName="lastName">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="un ">
+            <mat-label>Date de Naissance</mat-label>
+            <input matInput type="text" class="form-control" formControlName="birthDate">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="un ">
+            <mat-label>Occupation</mat-label>
+            <input matInput type="text" class="form-control" formControlName="occupation">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="un ">
+            <mat-label>Ville</mat-label>
+            <input matInput type="text" class="form-control" formControlName="country">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="un ">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" class="form-control" formControlName="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="un ">
+            <mat-label>Mot de Passe</mat-label>
+            <input matInput type="password" class="form-control" name="password" formControlName="password">
+            <div *ngIf="f['password'].touched && f['password'].invalid" class="alert">
+                <div *ngIf="f['password'].errors && f['password'].errors['required']"> password is required </div>
+            </div>
+
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="un ">
+            <mat-label>confirmation mot de passe</mat-label>
+            <input matInput type="password" class="form-control" name="confirm_pass" formControlName="confirm_pass">
+            <div *ngIf="f['confirm_pass'].touched && f['confirm_pass'].invalid" class="alert">
+                <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['required']"> confirm password is required </div>
+                <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['confirmedValidator']"> password dont' match</div>
+            </div>
+        </mat-form-field>
+        <br><br>
+        <button class="submit " type="submit" [disabled]="!registerData.valid">Sign up</button>
+
+    </form>
+    <p>vous avez un compte déjà?
+        <a href=" "> Se connecter </a>
+</div>

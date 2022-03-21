@@ -14,7 +14,7 @@ import { AddPatientService, Profil } from '../Services/add-patient.service';
 })
 export class ListeprofilComponent implements  OnInit {
 
-  displayedColumns = ['id','first_name','last_name','date_of_birth'];
+  displayedColumns = ['id','firstName','lastName','birthDate'];
   dataSource = new MatTableDataSource<Profil>();
 
   constructor(private _liveAnnouncer: LiveAnnouncer,private router: Router, private user: AddPatientService) {

@@ -17,7 +17,7 @@ export interface Profil{
 })
 export class AddPatientService {
   
-  URL="http://localhost:8000/api/get/patients";
+  URL="http://localhost:8000/get/patients";
   constructor(private http:HttpClient,private router:Router, private formBuilder : FormBuilder,) { }
   register(patient: any){
     console.log(patient);

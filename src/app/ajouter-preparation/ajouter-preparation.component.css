@@ -178,4 +178,19 @@ background-color: #23b4b8 !important;
 
 }
 
+.submit {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #70caca, #07dfdf);
+  border: 0;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 9vw;
+  font-size: 2vw;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  height: 3vw;
+  margin-bottom: 2vw;
+}
 

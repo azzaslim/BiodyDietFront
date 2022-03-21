@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ADD_PREPARATION_URL, LOGIN_URL, REGISTER_URL } from 'src/common/url';
+import { ADD_PREPARATION_URL, GETALL_Product_URL, LOGIN_URL, REGISTER_URL } from 'src/common/url';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +40,14 @@ export class AuthService {
     return this.http.post<any>(ADD_PREPARATION_URL, prep, { headers });
     
   }
+
+  // GetProducts(){
+    
+  //   const headers = new HttpHeaders({'Content-Type': 'application/json',});
+  //   return this.http.post<any>( GETALL_Product_URL,{ headers });
+    
+  // }
+ 
 
 
   logout() {    

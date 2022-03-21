@@ -68,10 +68,12 @@ add(){
   this.authService.add(data)
   .subscribe(
     response=> {
-      this.router.navigate(['/'])
+      this.router.navigate(['/preparations'])
     },
     err => console.log(err),
   )
     }
 
+
+   
 }

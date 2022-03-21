@@ -40,6 +40,9 @@ import { AuthGuardService } from './auth-guard.service';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import { RegisterComponent } from './register/register.component';
 import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-preparation.component';
+import { VerifaccountComponent } from './reset/verifaccount/verifaccount.component';
+import { ChangePasswordComponent } from './reset/change-password/change-password.component';
+import { AddPatientService } from './Services/add-patient.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +63,9 @@ import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-prepa
    PrescriptionComponent,
    InfoPersonneComponent,
    RegisterComponent,
-   AjouterPreparationComponent
+   AjouterPreparationComponent,
+   VerifaccountComponent,
+   ChangePasswordComponent
   
   
    
@@ -91,6 +96,7 @@ import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-prepa
   ],
   providers: [
   AuthService,
+  AddPatientService,
   
   {
     provide: STEPPER_GLOBAL_OPTIONS,

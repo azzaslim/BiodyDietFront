@@ -1,0 +1,19 @@
+<div class="col-5 offset-3 center">
+    <p class="titre row ">
+        Réinitialiser votre mot de passe</p>
+    <form [formGroup]="userEmail" (ngSubmit)="signIn()">
+
+        <mat-form-field appearance="outline" class="row col-10 offset-1 mt-2">
+            <mat-label>username</mat-label>
+            <input matInput type="text" class="form-control" formControlName="username">
+        </mat-form-field>
+        <br><br>
+
+        <button class="submit row " type="submit">Continuer</button>
+
+    </form>
+
+    <p class="offset-1 font-size-3"><a href=""> se connecter avec mot de passe?  </a>
+
+
+</div>

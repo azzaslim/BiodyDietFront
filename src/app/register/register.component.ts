@@ -15,20 +15,7 @@ export class RegisterComponent implements OnInit {
   minPw = 8;
   returnUrl!: string;  
 
-  /*
-    registerData= new FormGroup({
-      firstName: new FormControl('' ,[Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      birthDate: new FormControl('', [Validators.required]),
-      occupation: new FormControl('', [Validators.required]),
-      country : new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),  
-          password:new FormControl('', [ Validators.required]),
-          confirm_pass: new FormControl('', [ Validators.required]),
-    }
-      )
-    
-  */
+
       registerData : FormGroup =new FormGroup({});
   constructor(private authService:AuthService ,private router:Router, private formBuilder : FormBuilder,  ) { 
 

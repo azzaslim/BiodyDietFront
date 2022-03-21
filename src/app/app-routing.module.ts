@@ -36,6 +36,7 @@ const routes: Routes = [
   { path: 'register', component:RegisterComponent  },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
+
 ];
 
 @NgModule({

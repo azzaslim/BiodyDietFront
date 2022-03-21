@@ -17,6 +17,8 @@ import { InfoPersonneComponent } from './info-personne/info-personne.component';
 import { AuthGuardService } from './auth-guard.service';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import { RegisterComponent } from './register/register.component';
+import { VerifaccountComponent } from './reset/verifaccount/verifaccount.component';
+import { ChangePasswordComponent } from './reset/change-password/change-password.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent , canActivate : [AuthGuardService]  },
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'info/:nom', component: InfoComponent , canActivate : [AuthGuardService] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent  },
+  { path: 'verification', component:VerifaccountComponent  },
+  { path: 'reset', component:ChangePasswordComponent  },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
 

@@ -1,9 +1,10 @@
 import { StepperSelectionEvent } from '@angular/cdk/stepper/stepper';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatHorizontalStepper, MatStepper } from '@angular/material/stepper/stepper';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+import { AddPatientService } from '../Services/add-patient.service';
+
 @Component({
   selector: 'app-prescription',
   templateUrl: './prescription.component.html',
@@ -16,26 +17,53 @@ export class PrescriptionComponent implements OnInit {
   panelOpenState2 = false;
   panelOpenState3 = false;
   panelOpenState4 = false;
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
+  patientForm!: FormGroup;
+  questionnaireForm !: FormGroup;
   
-  constructor(private _formBuilder: FormBuilder,private router: Router, private authService: AuthService) {}
+  constructor(private _formBuilder: FormBuilder,private router: Router, private AddPatientService: AddPatientService) {}
 //Validators.required
   ngOnInit() {
 
-    this.firstFormGroup = this._formBuilder.group({
+    this.patientForm = this._formBuilder.group({
       firstName: [''],
       lastName: [''],
-      birthDate: [''],
+      date_of_birth: [''],
       weight: [''],
       height: [''],
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+    this.questionnaireForm =  this._formBuilder.group({
+      first: [''],
+      second: [''],
+      third: [''],
+      forth: [''],
+      
     });
+
     
   
   }
+ 
+
+  onSubmit(){
+    //console.log(this.questionnaireForm.value);
+  }
+
+    
+
+register(){
   
+  let data = this.patientForm.value
+  
+  this.AddPatientService.register(data)
+  .subscribe(
+    response=> { 
+    },
+    err => console.log(err),
+  )
+
+
+
+
+    }
  
 }

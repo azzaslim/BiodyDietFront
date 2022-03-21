@@ -40,6 +40,7 @@ const routes: Routes = [
   { path: 'reset', component:ChangePasswordComponent  },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
+
 ];
 
 @NgModule({

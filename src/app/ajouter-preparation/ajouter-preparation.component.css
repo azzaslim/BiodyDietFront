@@ -166,52 +166,16 @@ background-color: #23b4b8 !important;
  
 }
 
-  tbody, thead tr { display: block;  }
-  
-  tbody {
-    height: 23vw;
-    overflow-y: auto;
-    overflow-x: hidden;
-    font-size: 1VW;
-    color: #8f8684;
-  }
-  
-  tbody td, thead th {
-    width: 13vw;
-    font-size: 1VW;
-    color: #8f8684;
-  }
-  
-  thead th:last-child {
-    width: 15vw; 
-    font-size: 1VW;
-  }
-  
-   .table1 tbody td:hover 
-  {
-    background-color: #23b4b8;
-  }
-  .table2 tbody
-  {
-    height: 20vw;
-    font-size: 1VW;
-    color: #8f8684;
-  }
-  .table2 thead tr th  {
-    background-color: #d1d1d1;
-    color: #978f8d;
-  }
-  
+ 
 
+.example-container {
 
-  
+  height: 400px;
 
-.center {
-  
-  
-      display: inline-block;
-      flex-direction: column;
-  
+  max-width: 100%;
+
+  overflow: auto;
+
 }
 
 

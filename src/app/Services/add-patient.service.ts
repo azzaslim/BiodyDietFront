@@ -6,9 +6,9 @@ import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 export interface Profil{
-  first_name: string;
+  firstName: string;
   id: number;
-  last_name: number;
+  lastName: number;
   completed: string;
 }
 

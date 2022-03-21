@@ -7,6 +7,12 @@ import { Observable } from 'rxjs';
 import {ADD_PREPARATION_URL, GETALL_Product_URL, LOGIN_URL, REGISTER_URL } from 'src/common/url';
 import {VERIF_URL,RESET_URL } from 'src/common/url';
 
+export interface Product{
+  id: number;
+  name: string;
+  composition: string;
+  portion: string;
+}
 
 
 @Injectable({
@@ -17,7 +23,8 @@ export class AuthService {
   // private LOGIN_URL="http://localhost:8000/login";
    private REGISTER_URL="http://localhost:8000/register";
   // private ADD_PREPARATION_URL="http://localhost:8000/api/add/preparation";
-
+   GETPRODUCT_URL="http://localhost:8000/getproducts";
+  
   constructor(private http:HttpClient,private router:Router, private formBuilder : FormBuilder,) { }
 
 
@@ -72,6 +79,9 @@ export class AuthService {
   // }
  
 
+  getProducts(): Observable<Product[]>{
+    return this.http.get<Product[]>(this. GETPRODUCT_URL);
+  }
 
   logout() {    
     sessionStorage.setItem('isLoggedIn','false');    

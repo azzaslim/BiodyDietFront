@@ -43,6 +43,7 @@ import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-prepa
 import { VerifaccountComponent } from './reset/verifaccount/verifaccount.component';
 import { ChangePasswordComponent } from './reset/change-password/change-password.component';
 import { AddPatientService } from './Services/add-patient.service';
+import {CdkTableModule} from '@angular/cdk/table'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,6 +91,7 @@ import { AddPatientService } from './Services/add-patient.service';
     ReactiveFormsModule,
     MatStepperModule,
     MatExpansionModule,
+    CdkTableModule
   
     
    

@@ -13,6 +13,12 @@ export interface Product{
   composition: string;
   portion: string;
 }
+export interface Nutrient{
+  id: number;
+  name: string;
+  tenor: string;
+  unity: string;
+}
 
 
 @Injectable({
@@ -24,7 +30,7 @@ export class AuthService {
    private REGISTER_URL="http://localhost:8000/register";
   // private ADD_PREPARATION_URL="http://localhost:8000/api/add/preparation";
    GETPRODUCT_URL="http://localhost:8000/getproducts";
-  
+   GETNutrient_URL="http://localhost:8000/getnutrients";
   constructor(private http:HttpClient,private router:Router, private formBuilder : FormBuilder,) { }
 
 
@@ -87,5 +93,8 @@ export class AuthService {
     sessionStorage.setItem('isLoggedIn','false');    
     sessionStorage.clear(); 
     console.clear()
-    }    
+    }   
+    getNutrients(): Observable<Nutrient[]>{
+      return this.http.get<Nutrient[]>(this. GETNutrient_URL);
+    } 
 }

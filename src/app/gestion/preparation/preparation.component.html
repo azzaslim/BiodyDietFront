@@ -25,58 +25,24 @@
   
  
 
-    <table mat-table [dataSource]="data" class="mat-elevation-z8">
+  <table cdk-table [dataSource]="dataSource" class="mat-elevation-z8">
+   <ng-container matColumnDef="name">
+
+     
+
+      <td cdk-cell *cdkCellDef="let element"> {{element.name}} </td>
+
+    </ng-container>
+
   
-    
+
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns1;"></tr>
+
+  </table>
+
+
   
-      <!--- Note that these columns can be defined in any order.
-  
-            The actual rendered columns are set as a property on the row definition" -->
-  
-    
-  
-      <!-- ID Column -->
-  
-      <ng-container matColumnDef="id">
-  
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Name Column -->
-  
-      <ng-container matColumnDef="name">
-  
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Email Column -->
-  
-      <ng-container matColumnDef="email">
-  
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-  
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-    </table>
-  
+ 
   
  
  </mat-card>
@@ -99,55 +65,25 @@
  <mat-card class="C3 example-container mat-elevation-z8" >
   
 
-    <table mat-table [dataSource]="data" class="mat-elevation-z8">
-  
-    
-  
-      <!--- Note that these columns can be defined in any order.
-  
-            The actual rendered columns are set as a property on the row definition" -->
-  
-    
-  
-      <!-- ID Column -->
-  
-      <ng-container matColumnDef="id">
-  
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Name Column -->
-  
+   <table cdk-table [dataSource]="dataSource" class="mat-elevation-z8">
+
       <ng-container matColumnDef="name">
   
-        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <th cdk-header-cell *cdkHeaderCellDef> Name </th>
   
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Email Column -->
-  
-      <ng-container matColumnDef="email">
-  
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        <td cdk-cell *cdkCellDef="let element"> {{element.name}} </td>
   
       </ng-container>
+
+      <ng-container matColumnDef="tenor">
   
-    
+        <th cdk-header-cell *cdkHeaderCellDef> Teneur </th>
   
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <td cdk-cell *cdkCellDef="let element"> {{element.tenor}} </td>
   
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </ng-container>
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
   
     </table>
   

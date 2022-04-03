@@ -1,25 +1,26 @@
 .titre
-{   margin-top: 3vw;
+{   
+    margin-top: 3vw;
     text-align: center;
     color:#23b4b8 ;
     font-weight:900;
     font-family: ' sans-serif' ;
 }
 .préparation{
-    cursor: pointer;
-    font-size:2.5vw;
-    font-weight: 900;
+      cursor: pointer;
+      font-size:2.5vw;
+      font-weight: 900;
       border-radius: 5em;
       color: #FFF;
       width:25vw;
       background:  #23b4b8 ;
       display: flex;
-       width: 25vw;
+      width: 25vw;
       margin-top: 20vh;
       margin-bottom: 25vh;
-   font-family: 'serif';
-    text-align: center;
-     margin-left: 2vw;
+      font-family: 'serif';
+      text-align: center;
+      margin-left: 2vw;
       box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
       
   }
@@ -279,4 +280,17 @@ height: 25vw;
  
 
 }
+ mat-row{
+  border-bottom-style: none;
+ 
+    border-bottom: none;
+    border-color: white;
+  
+}
+th{
+  position: fixed;
+  background-color: #d1d1d1;
+  color: #8f8684;
+}
+
 

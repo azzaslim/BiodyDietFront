@@ -17,7 +17,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListeprofilComponent implements OnInit {
 
+<<<<<<< HEAD
   displayedColumns = ['id', 'firstName', 'lastName', 'birthDate'];
+=======
+  displayedColumns = ['id','firstName','lastName','birthDate'];
+>>>>>>> 04eed1fc2cd7d18d83ffd994bfdf907b7eb007f3
   dataSource = new MatTableDataSource<Profil>();
 
   constructor(private _liveAnnouncer: LiveAnnouncer,private toastr: ToastrService, private router: Router, private user: AddPatientService, private authService: AuthService) {

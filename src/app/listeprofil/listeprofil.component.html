@@ -37,10 +37,17 @@
 
 
     <ng-container matColumnDef="birthDate">
+<<<<<<< HEAD
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date_of_birth ">
             Date de naissance
         </th>
         <td mat-cell *matCellDef="let element "> <a [routerLink]="[ '/info',element.id] "> {{element.birthDate.timestamp*1000.05 | date: 'dd-MM-yyyy'}} </a> </td>
+=======
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by birthDate">
+            Date de naissance
+        </th>
+        <td mat-cell *matCellDef="let element "> <a [routerLink]="[ '/info',element.id] ">{{element.birthDate}} </a> </td>
+>>>>>>> 04eed1fc2cd7d18d83ffd994bfdf907b7eb007f3
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>

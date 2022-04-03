@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService, Product } from '../auth.service';
 import { ConfirmedValidator } from '../confirmed-validator';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-ajouter-preparation',
@@ -11,42 +12,11 @@ import { ConfirmedValidator } from '../confirmed-validator';
 })
 export class AjouterPreparationComponent implements OnInit {
 
-  data = [
-
-    {id: 1, name: 'Rajesh', email: 'rajesh@gmail.com'},
-
-    {id:2, name: 'Paresh', email: 'paresh@gmail.com'},
-
-    {id:3, name: 'Naresh', email: 'naresh@gmail.com'},
-
-    {id:4, name: 'Suresh', email: 'suresh@gmail.com'},
-
-    {id:5, name: 'Karan', email: 'karan@gmail.com'},
-
-    {id:6, name: 'dummy', email: 'dummy@gmail.com'},
-
-    {id:7, name: 'dummy1', email: 'dummy@gmail.com'},
-
-    {id:8, name: 'dummy2', email: 'dummy@gmail.com'},
-
-    {id:9, name: 'dummy3', email: 'dummy@gmail.com'},
-
-    {id:10, name: 'dummy4', email: 'dummy@gmail.com'},
-
-    {id:11, name: 'dummy5', email: 'dummy@gmail.com'},
-
-    {id:12, name: 'dummy6', email: 'dummy@gmail.com'},
-
-    {id:13, name: 'dummy7', email: 'dummy@gmail.com'},
-
-    {id:14, name: 'dummy8', email: 'dummy@gmail.com'},
-
-  ];
-
-  displayedColumns = ['id', 'name', 'email'];
+  displayedColumns = ['composition'];
+  dataSource = new MatTableDataSource<Product>();
   
   addData : FormGroup =new FormGroup({});
-  constructor(private authService:AuthService ,private router:Router, private formBuilder : FormBuilder,  ) { 
+  constructor(private authService:AuthService ,private router:Router, private formBuilder : FormBuilder,private user: AuthService ) { 
 
     this.addData=formBuilder.group({
       name:['',[Validators.required]],
@@ -56,22 +26,29 @@ export class AjouterPreparationComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+  
   get f() {
     return this.addData.controls;
   }
 add(){
-  
   let data = this.addData.value
   
   this.authService.add(data)
   .subscribe(
     response=> {
-      this.router.navigate(['/'])
+      this.router.navigate(['/preparations'])
     },
     err => console.log(err),
   )
     }
 
+    ngOnInit(): void {
+      this.user.getProducts().subscribe((x) =>{
+        this.dataSource =new MatTableDataSource(x);
+        console.log(x);
+    });
+
+
+   
+}
 }

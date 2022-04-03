@@ -36,7 +36,7 @@
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Mot de Passe</mat-label>
             <input matInput type="password" class="form-control" name="password" formControlName="password">
-            <div *ngIf="f['password'].touched && f['password'].invalid" class="alert">
+            <div *ngIf="f['password'].touched && f['password'].invalid">
                 <div *ngIf="f['password'].errors && f['password'].errors['required']"> password is required </div>
             </div>
 
@@ -44,9 +44,9 @@
         <mat-form-field appearance="outline" class="un ">
             <mat-label>confirmation mot de passe</mat-label>
             <input matInput type="password" class="form-control" name="confirm_pass" formControlName="confirm_pass">
-            <div *ngIf="f['confirm_pass'].touched && f['confirm_pass'].invalid" class="alert">
+            <div *ngIf="f['confirm_pass'].touched && f['confirm_pass'].invalid">
                 <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['required']"> confirm password is required </div>
-                <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['confirmedValidator']"> password dont' match</div>
+                <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['ConfirmedValidator']"> password dont' match</div>
             </div>
         </mat-form-field>
         <br><br>

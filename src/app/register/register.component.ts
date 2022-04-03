@@ -10,50 +10,42 @@ import { ConfirmedValidator } from '../confirmed-validator';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  message!: string;  
   formGroup?: FormGroup;
-  minPw = 8;
-  returnUrl!: string;  
+  registerData: FormGroup = new FormGroup({});
 
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder,) {
 
-      registerData : FormGroup =new FormGroup({});
-  constructor(private authService:AuthService ,private router:Router, private formBuilder : FormBuilder,  ) { 
-
-    this.registerData=formBuilder.group({
-      firstName:['',[Validators.required]],
-      lastName:['',[Validators.required]],
-      birthDate:['',[Validators.required]],
-      occupation:['',[Validators.required]],
-      country:['',[Validators.required]],
-      email:['',[Validators.required]],
-      password:['',[Validators.required]],
-      confirm_pass:['',[Validators.required]]
+    this.registerData = formBuilder.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      birthDate: ['', [Validators.required]],
+      occupation: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      confirm_pass: ['', [Validators.required]]
     },
-    {
-      validator: ConfirmedValidator('password','confirm_pass')   
-     } )
+      {
+        validator: ConfirmedValidator('password', 'confirm_pass')
+      })
   }
-  
-    ngOnInit() {   
-   
-    }
-  SaveForm(){
 
+  ngOnInit() { }
+
+  get f() {
+    return this.registerData.controls;
   }
-    get f() {
-      return this.registerData.controls;
-    }
-  register(){
-    
+  register() {
+
     let data = this.registerData.value
-    
+
     this.authService.register(data)
-    .subscribe(
-      response=> {
-        this.router.navigate(['/'])
-      },
-      err => console.log(err),
-    )
-      }
+      .subscribe(
+        response => {
+          this.router.navigate(['/'])
+        },
+        err => console.log(err),
+      )
+  }
 
 }

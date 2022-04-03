@@ -27,7 +27,7 @@ export class PrescriptionComponent implements OnInit {
     this.patientForm = this._formBuilder.group({
       firstName: [''],
       lastName: [''],
-      date_of_birth: [''],
+      birth_date: [''],
       weight: [''],
       height: [''],
     });
@@ -45,16 +45,15 @@ export class PrescriptionComponent implements OnInit {
  
 
   onSubmit(){
-    //console.log(this.questionnaireForm.value);
+    console.log(this.questionnaireForm.value);
   }
 
     
 
-register(){
+  async register(){
   
-  let data = this.patientForm.value
-  
-  this.AddPatientService.register(data)
+  let data = this.patientForm.value;
+  (await this.AddPatientService.register(data))
   .subscribe(
     response=> { 
     },

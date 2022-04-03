@@ -24,7 +24,7 @@ a{
 table td{
     border: 0.1vw solid #9c9e9e;
     height:1vw;
-    font-size: 1.5vw;
+    font-size: 1vw;
    
    
     
@@ -56,15 +56,15 @@ input  {
   .chercher{
       text-decoration: none;
       background-color: #23b4b8 ;
-      height:3vw;
       color:#FFF;
       font-weight: bold;
-      padding-top: 0.8vw;
+      padding:auto;
       width:10vw;
       padding-left: 2vw;
       font-size: 1vw;
       margin-top:4vw;
       margin-bottom: 1vw;
       border-radius: 0vw 25vw 25vw 0vw ;
+      padding-top: 1vw;;
   }
   

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-export interface Profil{
+export interface Profil {
   first_name: string;
   id: number;
   last_name: number;
@@ -16,18 +16,27 @@ export interface Profil{
   providedIn: 'root'
 })
 export class AddPatientService {
-  
-  URL="http://localhost:8000/api/get/patients";
-  constructor(private http:HttpClient,private router:Router, private formBuilder : FormBuilder,) { }
-  register(patient: any){
-    console.log(patient);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    return this.http.post<any>(ADD_PATIENT_URL, patient, { headers });
-    
+
+  URL = "http://localhost:8000/api/get/patients";
+  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
+
+  async register(patient: any) {
+    console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return await this.http.post(ADD_PATIENT_URL,patient, { headers});   
+
   }
-  getPatients(): Observable<Profil[]>{
-    return this.http.get<Profil[]>(this.URL);
+  getToken() {
+    return localStorage.getItem('jwt');
+  }
+  async getPatients(): Promise<Observable<Profil[]>> {
+   // return this.http.get<Profil[]>(this.URL);
+   console.log(this.getToken());
+   let headers = new HttpHeaders().set(
+     'Authorization', `Bearer ${this.getToken()} `,
+   )
+   return await this.http.get<Profil[]>(this.URL,{headers}); 
   }
 }

@@ -38,7 +38,7 @@
                         <div class="row d-flex justify-content-center ">
                             <mat-form-field appearance="outline" class=" col-md-4 ">
                                 <mat-label>Date de Naissance</mat-label>
-                                <input matInput placeholder="30/11/1980 " formControlName="date_of_birth">
+                                <input matInput placeholder="30/11/1980 " formControlName="birth_date">
                             </mat-form-field>
 
                             <mat-form-field appearance="outline" class=" col-md-4 ">
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class=" boutton d-flex justify-content-center ">
-                            <button type="submit " mat-button matStepperNext>SUIVANT</button>
+                            <button type="submit" mat-button matStepperNext>SUIVANT</button>
                         </div>
                     </form>
                 </mat-card-content>
@@ -65,7 +65,7 @@
         </mat-step>
 
 
-        <mat-step [stepControl]="questionnaireForm" label="Questionnaire ">
+        <mat-step [stepControl]="questionnaireForm" label="Questionnaire">
 
             <mat-accordion class="panel ">
                 <form [formGroup]="questionnaireForm" (ngSubmit)="onSubmit()">

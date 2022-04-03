@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent  },
   { path: 'verification', component:VerifaccountComponent  },
-  { path: 'reset', component:ChangePasswordComponent  },
+  { path: 'reset/:token', component:ChangePasswordComponent   },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
 

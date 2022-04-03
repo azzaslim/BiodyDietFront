@@ -9,11 +9,9 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   title = 'biodycomplement';
-  public href: string = "";
   constructor(private router: Router) {}
 
     ngOnInit() {
-        this.href = this.router.url;
-        console.log(this.router.url);
+       
     }
 }

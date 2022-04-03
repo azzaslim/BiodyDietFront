@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import Swal from 'sweetalert2';
+import { ConfirmedValidator } from 'src/app/confirmed-validator';
+
 
 @Component({
   selector: 'app-change-password',
@@ -10,27 +12,48 @@ import Swal from 'sweetalert2';
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
+  token!: string;
+  formGroup?: FormGroup;
 
-  userData= new FormGroup({
-    password : new FormControl(''),
-    confirm_password : new FormControl('')
-    });
-    
-constructor(private authService:AuthService ,private router:Router, private formBuilder : FormBuilder,  ) {  }
+  userData: FormGroup = new FormGroup({});
+
+
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {
+    this.userData = formBuilder.group({
+
+      password: ['', [Validators.required]],
+      confirm_pass: ['', [Validators.required]]
+    },
+      {
+        validator: ConfirmedValidator('password', 'confirm_pass')
+      })
+  }
 
   ngOnInit(): void {
+    let id = this.route.snapshot.params.token;
+    localStorage.setItem('token', id);
   }
-  signIn(){
+  get f() {
+    return this.userData.controls;
+  }
+  reset() {
+
     let data = JSON.stringify(this.userData.value);
     this.authService.change_password(data)
-    .subscribe(
-      response=> {
-        this.router.navigate(['']),
-        this.successNotification()},
-      err => console.log(err),
-    )
-      }
-      successNotification() {
-        Swal.fire('Hi', 'votre mot de passe a été changé avec succés !!', 'success');
-      }
+      .subscribe(
+        response => {
+          this.router.navigate(['']),
+            localStorage.removeItem('token'),
+            this.successNotification()
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    localStorage.clear();
+
+  }
+  successNotification() {
+    Swal.fire( 'votre mot de passe a été changé avec succés !!', 'success');
+  }
 }

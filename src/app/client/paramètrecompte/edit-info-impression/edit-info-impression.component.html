@@ -1,0 +1,98 @@
+<app-navmenu>
+</app-navmenu>
+<div class="progressbar-wrapper">
+
+    <a href="parametre" class="btn0">Paramètres </a><br>
+    <div class="inferieur">></div>&ensp;
+    <a href="editCompte" class="btn1">Paramètre du compte </a>&ensp;
+    <div class="inferieur">></div>&ensp;
+    <a href="editImpression" class="btn2"> Mes informations d'impression</a>&ensp;
+</div>
+<div class="titre" style="font-size: 2vw;">mes informations d'impression</div>
+<br> <br>
+
+<div class="flex-parent-element ">
+
+    <div  class="flex-child-element image">
+       
+                      
+            <input id="fileInput" type="file"  (change)="fileProgress($event)">
+           
+                    <div class="d-flex icon ">
+                        <label for="fileInput"> 
+                            <i id='icon' class="material-icons">file_edit</i>
+                          </label>
+                         
+                    </div>
+                    <div *ngIf="fileUploadProgress">
+                        Upload progress: {{ fileUploadProgress }}
+                    </div>
+                    <div class="image-preview mb-3" *ngIf="previewUrl">
+                        <img [src]="previewUrl" height="30%" width="30%"/>                 
+                    </div>
+         
+                    <div class="mb-3" *ngIf="uploadedFilePath">
+                        {{uploadedFilePath}}
+                    </div>
+                     
+                  
+                </div>
+           
+
+     
+<div   class="flex-child-element" >
+    <form  [formGroup]="CurrentUser">
+
+        <div class="row" >
+            
+        <mat-form-field appearance="standard" class=" col-md-5 ">
+            <mat-label>Nom</mat-label>
+            <input matInput  placeholder="Laura " formControlName="firstName" >
+        </mat-form-field>
+        </div>
+        
+        <div class="row" >
+        <mat-form-field appearance="standard" class=" col-md-5 ">
+            <mat-label>Prénom</mat-label>
+            <input matInput  placeholder="Martin " formControlName="lastName" >
+        </mat-form-field>
+        </div>
+        
+        <div class="row" >
+        <mat-form-field appearance="standard" class=" col-md-5 ">
+            <mat-label>Entreprise</mat-label>
+            <input matInput  placeholder="Martin " formControlName="entreprise">
+        </mat-form-field>
+        </div>
+        
+        <div class="row" >
+        <mat-form-field appearance="standard" class=" col-md-5 ">
+            <mat-label>Adresse</mat-label>
+            <input matInput  placeholder="Martin " formControlName="adresse">
+        </mat-form-field>
+        </div>
+        
+        <div class="row" >
+        <mat-form-field appearance="standard" class=" col-md-5 ">
+            <mat-label>Code Postale</mat-label>
+            <input matInput  placeholder="Martin " formControlName="codePostale">
+        </mat-form-field>
+        </div>
+        
+        <div class="row" >
+        <mat-form-field appearance="standard" class=" col-md-5 ">
+            <mat-label>Ville</mat-label>
+            <input matInput  placeholder="Martin " formControlName="country">
+        </mat-form-field>
+        </div>
+        
+       
+        </form>
+        <div  class=" boutton   ">
+            <button mat-button (click)="onSubmit(); updateUser(); "  >Modifier</button>
+        </div>
+</div>
+
+</div>
+
+<app-footer></app-footer>

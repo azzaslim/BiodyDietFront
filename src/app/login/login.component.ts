@@ -18,22 +18,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  signIn() {
-   let data = JSON.stringify(this.userData.value);
-  this.authService.login(data)
-  .subscribe(
-    response=> {
-      this.router.navigate(['/home']),
+   signIn() {
+    let data = JSON.stringify(this.userData.value);
+   this.authService.login(data)
+   .subscribe(
+     response=> {
+       this.router.navigate(['/home']),
+       console.log(response),
+       localStorage.setItem('jwt',response['token']),
+       sessionStorage.setItem('isLoggedIn', "true"),
+       console.log(localStorage.getItem('jwt'));
       
-      localStorage.setItem('jwt',response["token"]),
-      sessionStorage.setItem('isLoggedIn', "true"),
-      console.log(localStorage.getItem('jwt'));
-     
-    },
-    err => {console.log(err),
-      this.failNotification()
-    })
-  }
+     },
+     err => {console.log(err),
+       this.failNotification()
+     })
+   }
+ 
 
   failNotification() {
     Swal.fire('email ou mot de passe est incorrect', 'veuillez verifiez votre coordonnées !!', 'error');
@@ -42,3 +43,5 @@ export class LoginComponent implements OnInit {
 
 
 }
+
+

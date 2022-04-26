@@ -1,3 +1,5 @@
+import { AddsymptomComponent } from './addsymptom/addsymptom.component';
+import { SymptommanageComponent } from './symptommanage/symptommanage.component';
 import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-preparation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'editCompte', component: EditcompteComponent , canActivate : [AuthGuardService] },
   { path: 'editImpression', component: EditInfoImpressionComponent , canActivate : [AuthGuardService] },
   { path: 'gestion', component: GestionComplementComponent , canActivate : [AuthGuardService] },
+  { path: 'symptom', component: SymptommanageComponent , canActivate : [AuthGuardService] },
+  { path: 'addsymptom', component: AddsymptomComponent , canActivate : [AuthGuardService] },
   { path: 'produits', component: ProduitsComponent , canActivate : [AuthGuardService] },
   { path: 'preparations', component: PreparationComponent , canActivate : [AuthGuardService] },
   { path: 'complements', component: ComplementsComponent , canActivate : [AuthGuardService] },
@@ -35,7 +39,7 @@ const routes: Routes = [
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
   { path: 'info/:nom', component: InfoComponent , canActivate : [AuthGuardService] },
   { path: '', component: LoginComponent   },
-  { path: 'register', component:RegisterComponent  },
+  { path: 'register', component:RegisterComponent},
   { path: 'verification', component:VerifaccountComponent  },
   { path: 'reset/:token', component:ChangePasswordComponent   },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},

@@ -2,78 +2,64 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-import { GETPROFILE_URL, LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
+import { addSymptom_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
 import { environment } from "src/environments/environment";
-
 import { ADD_PREPARATION_URL } from 'src/common/url';
-=======
 import { Observable } from 'rxjs';
 
-import {ADD_PREPARATION_URL, GETALL_Product_URL, LOGIN_URL, REGISTER_URL } from 'src/common/url';
-import {VERIF_URL,RESET_URL } from 'src/common/url';
 
-export interface Product{
+export interface Product {
   id: number;
   name: string;
   composition: string;
   portion: string;
 }
-export interface Nutrient{
+export interface Nutrient {
   id: number;
   name: string;
   tenor: string;
   unity: string;
 }
->>>>>>> 04eed1fc2cd7d18d83ffd994bfdf907b7eb007f3
+export interface Symptom {
+  id: number;
+  name: string;
+}
 
 
 @Injectable({
   providedIn: 'root'
 })
-<<<<<<< HEAD
 export class AuthService implements OnInit {
-
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
-  ngOnInit(): void {}
-
-
- 
-login(user: any) {
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
-  return this.http.post<any>(LOGIN_URL, user, { headers });
-}
-
-
-   async getProfile() {
-=======
-export class AuthService {
-
+  ngOnInit(): void { }
   // private LOGIN_URL="http://localhost:8000/login";
-   private REGISTER_URL="http://localhost:8000/register";
+  private REGISTER_URL = "http://localhost:8000/register";
   // private ADD_PREPARATION_URL="http://localhost:8000/api/add/preparation";
-   GETPRODUCT_URL="http://localhost:8000/getproducts";
-   GETNutrient_URL="http://localhost:8000/getnutrients";
-  constructor(private http:HttpClient,private router:Router, private formBuilder : FormBuilder,) { }
+  GETPRODUCT_URL = "http://localhost:8000/getproducts";
+  GETNutrient_URL = "http://localhost:8000/getnutrients";
 
 
   login(user: any) {
->>>>>>> 04eed1fc2cd7d18d83ffd994bfdf907b7eb007f3
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer' + this.getToken(),
       'Content-Type': 'application/json',
-
     });
-    console.log("method get Token",this.getToken());
-    return await this.http.get(GETPROFILE_URL, { headers}).toPromise();   
-   } 
-
+    return this.http.post<any>(LOGIN_URL, user, { headers });
+  }
+  
+  
+     async getProfile() {
+      const headers = new HttpHeaders({
+        'Authorization': 'Bearer' + this.getToken(),
+        'Content-Type': 'application/json',
+  
+      });
+      console.log("method get Token",this.getToken());
+      return await this.http.get(GETPROFILE_URL, { headers}).toPromise();   
+     } 
 
   getToken() {
     return localStorage.getItem('jwt');
-    
+
   }
 
 
@@ -101,7 +87,7 @@ export class AuthService {
 
   }
 
-
+//add preparation
   add(prep: any) {
     console.log(prep);
     const headers = new HttpHeaders({
@@ -112,27 +98,51 @@ export class AuthService {
   }
 
   // GetProducts(){
-    
+
   //   const headers = new HttpHeaders({'Content-Type': 'application/json',});
   //   return this.http.post<any>( GETALL_Product_URL,{ headers });
-    
-  // }
- 
 
-  getProducts(): Observable<Product[]>{
-    return this.http.get<Product[]>(this. GETPRODUCT_URL);
+  // }
+
+//products
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.GETPRODUCT_URL);
   }
 
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
     sessionStorage.clear();
     console.clear()
-<<<<<<< HEAD
   }
-=======
-    }   
-    getNutrients(): Observable<Nutrient[]>{
-      return this.http.get<Nutrient[]>(this. GETNutrient_URL);
-    } 
->>>>>>> 04eed1fc2cd7d18d83ffd994bfdf907b7eb007f3
+//nutients
+  getNutrients(): Observable<Nutrient[]> {
+    return this.http.get<Nutrient[]>(this.GETNutrient_URL);
+  }
+//symptoms
+ async addsymptom(symptom: any) {
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    console.log(this.getToken());
+    
+    return await this.http.post<any>(addSymptom_URL, symptom, { headers });
+
+  }
+  //  async getSymptoms() {
+  //   const headers = new HttpHeaders({
+  //     'Authorization': 'Bearer' + this.getToken(),
+  //     'Content-Type': 'application/json',
+
+  //   });
+  //   console.log("method get Token",this.getToken());
+  //   return await this.http.get(getSymptoms_URL, { headers}).toPromise();
+  //  }
+  async getSymptoms(): Promise<Observable<Symptom[]>> {
+    // return this.http.get<Profil[]>(this.URL);
+    console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return await this.http.get<Symptom[]>(getSymptoms_URL,{headers}); 
+   }
 }

@@ -36,7 +36,7 @@
 
   
 
-    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns1;"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
 
@@ -71,7 +71,8 @@
   
         <th cdk-header-cell *cdkHeaderCellDef> Name </th>
   
-        <td cdk-cell *cdkCellDef="let element"> {{element.name}} </td>
+        <td cdk-cell *cdkCellDef="let element" (click)="search('{{element.name}}')" 
+        > {{element.name}} </td>
   
       </ng-container>
 
@@ -82,8 +83,8 @@
         <td cdk-cell *cdkCellDef="let element"> {{element.tenor}} </td>
   
       </ng-container>
-      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true" ></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;" ></tr>
   
     </table>
   

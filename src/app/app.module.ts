@@ -43,12 +43,14 @@ import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-prepa
 import { VerifaccountComponent } from './reset/verifaccount/verifaccount.component';
 import { ChangePasswordComponent } from './reset/change-password/change-password.component';
 import { AddPatientService } from './Services/add-patient.service';
-<<<<<<< HEAD
-import { ToastrModule } from 'ngx-toastr';
 
-=======
-import {CdkTableModule} from '@angular/cdk/table'; 
->>>>>>> 04eed1fc2cd7d18d83ffd994bfdf907b7eb007f3
+
+
+
+import {CdkTableModule} from '@angular/cdk/table';
+import { SymptommanageComponent } from './symptommanage/symptommanage.component';
+import { AddsymptomComponent } from './addsymptom/addsymptom.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,9 @@ import {CdkTableModule} from '@angular/cdk/table';
    RegisterComponent,
    AjouterPreparationComponent,
    VerifaccountComponent,
-   ChangePasswordComponent
+   ChangePasswordComponent,
+   SymptommanageComponent,
+   AddsymptomComponent
   
   
    
@@ -96,12 +100,10 @@ import {CdkTableModule} from '@angular/cdk/table';
     ReactiveFormsModule,
     MatStepperModule,
     MatExpansionModule,
-<<<<<<< HEAD
-    ToastrModule.forRoot()
-=======
-    CdkTableModule
-  
->>>>>>> 04eed1fc2cd7d18d83ffd994bfdf907b7eb007f3
+    CdkTableModule,
+
+    
+
     
    
   ],

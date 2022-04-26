@@ -1,0 +1,16 @@
+<app-navmenu></app-navmenu>
+<div class="col-5 offset-3 center">
+    <p class="titre row">Ajout Symptom</p>
+    <form [formGroup]="addData" (ngSubmit)="add()">
+        <br><br>
+        <mat-form-field appearance="outline" class="row col-10 offset-1 mt-2">
+            <mat-label>Symptom</mat-label>
+            <input matInput type="text" class="form-control" name="symptom_name" formControlName="symptom_name">
+        </mat-form-field>
+        <br><br>
+        <button class="submit row " type="submit">Ajouter</button>
+
+    </form>
+
+</div>
+<app-footer></app-footer>

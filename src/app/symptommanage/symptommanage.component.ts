@@ -1,37 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
+import { Symptom } from '../auth.service';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AddPatientService, Profil } from '../Services/add-patient.service';
+import { AddPatientService } from '../Services/add-patient.service';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
-
-
-
 @Component({
-  selector: 'app-listeprofil',
-  templateUrl: './listeprofil.component.html',
-  styleUrls: ['./listeprofil.component.css']
+  selector: 'app-symptommanage',
+  templateUrl: './symptommanage.component.html',
+  styleUrls: ['./symptommanage.component.css']
 })
-export class ListeprofilComponent implements OnInit {
-
-
- 
-
-  displayedColumns = ['id','firstName','lastName','birthDate'];
-
-  dataSource = new MatTableDataSource<Profil>();
-
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private user: AddPatientService, private authService: AuthService) {
-
-  }
-
+export class SymptommanageComponent implements OnInit {
+  displayedColumns = ['symptom_name'];
+  dataSource = new MatTableDataSource<Symptom>();
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private user: AddPatientService, private authService: AuthService) { }
   @ViewChild(MatSort) sort!: MatSort;
-
-  async ngOnInit() {
-    (await this.user.getPatients()).subscribe((x) => {
+    async ngOnInit() {
+      
+    (await this.authService.getSymptoms()).subscribe((x) => {
       this.dataSource = new MatTableDataSource(x);
       console.log(x);
       this.dataSource.sort = this.sort;
@@ -46,6 +34,7 @@ export class ListeprofilComponent implements OnInit {
     }
     )
   };
+
   announceSortChange(sortState: Sort) {
 
     if (sortState.direction) {

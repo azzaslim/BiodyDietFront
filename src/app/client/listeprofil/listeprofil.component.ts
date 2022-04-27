@@ -4,10 +4,9 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AddPatientService, Profil } from '../Services/Rest-patient.service';
 import Swal from 'sweetalert2';
-import { AddPatientService, Profil } from '../client/Services/Rest-patient.service';
-import { AuthService } from '../client/Services/RestUser.service';
-
+import { AuthService } from '../Services/RestUser.service';
 
 
 @Component({
@@ -16,36 +15,40 @@ import { AuthService } from '../client/Services/RestUser.service';
   styleUrls: ['./listeprofil.component.css']
 })
 export class ListeprofilComponent implements OnInit {
-
-
- 
-
-  displayedColumns = ['id','firstName','lastName','birthDate'];
+  id!: number;
+  displayedColumns = ['id', 'firstName', 'lastName', 'birthDate'];
 
   dataSource = new MatTableDataSource<Profil>();
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private user: AddPatientService, private authService: AuthService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: AddPatientService, private authService: AuthService) {
 
   }
 
   @ViewChild(MatSort) sort!: MatSort;
 
-   async ngOnInit() {
+  async ngOnInit() {
+localStorage.removeItem('profil');
+
     (await this.user.getPatients()).subscribe((x) => {
+      if (x.length==0)
+      {
+        alert("no patient exist");
+        this.router.navigate(['/home'])
+      }
+      else
       this.dataSource = new MatTableDataSource(x);
-      console.log(x);
       this.dataSource.sort = this.sort;
 
     },
       err => {
         this.authService.logout(),
-        console.log(err),
-        this.failNotification();
-       // this.showToasterError();
-      
-    }
+          console.log(err),
+          this.failNotification();
+        // this.showToasterError();
+
+      }
     )
-  };
+  }
   announceSortChange(sortState: Sort) {
 
     if (sortState.direction) {
@@ -54,21 +57,20 @@ export class ListeprofilComponent implements OnInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   failNotification() {
     Swal.fire('votre session a expiré', 'veuillez reconnecter s\' il vous plait  !!', 'error');
   }
-  confirmBox(){
-    Swal.fire({
-      title: 'votre session a expirée',
-      text: 'veuillez reconnecter s\' il vous plait  !!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Ok!',
-    }).then((result) => {
-     
-        this.authService.logout()
-      
-    })
+  async GetOnePatient(id: any) {
+
+    (await this.user.getOnePatient(this.id))
+      .subscribe(
+        response => {
+        },
+        err => console.log(err),
+      )
   }
 }

@@ -6,50 +6,55 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavmenuComponent } from './shared/navmenu/navmenu.component';
-import { HomeComponent } from './home/home.component';
 import { FormControl, FormControlName, FormGroup, FormGroupName, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { RechercheformComponent } from './rechercheprofil/rechercheform/rechercheform.component';
-import { RechercheprofilModule } from './rechercheprofil/rechercheprofil.module';
 import {MatInputModule} from '@angular/material/input';
-  import {MatFormFieldModule} from '@angular/material/form-field';
+  import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-import { ListeprofilComponent } from './listeprofil/listeprofil.component';
-import { ParametreComponent } from './parametre/parametre.component';
+
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { EditcompteComponent } from './paramètrecompte/editcompte/editcompte.component';
-import { EditInfoImpressionComponent } from './paramètrecompte/edit-info-impression/edit-info-impression.component';
-import { GestionComplementComponent } from './gestion/gestion-complement/gestion-complement.component';
-import { PreparationComponent } from './gestion/preparation/preparation.component';
-import { ComplementsComponent } from './gestion/complements/complements.component';
-import { ProduitsComponent } from './gestion/produits/produits.component';
-import { InfoComponent } from './personne/info/info.component';
-import { AuthService } from './auth.service';
-import { LoginComponent } from './login/login.component';
+
+import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
+import { PreparationComponent } from './client/gestion/preparation/preparation.component';
+import { ComplementsComponent } from './client/gestion/complements/complements.component';
+import { ProduitsComponent } from './client/gestion/produits/produits.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { InfoPersonneComponent } from './info-personne/info-personne.component';
-import { AuthGuardService } from './auth-guard.service';
-import { PrescriptionComponent } from './prescription/prescription.component';
-import { RegisterComponent } from './register/register.component';
-import { AjouterPreparationComponent } from './ajouter-preparation/ajouter-preparation.component';
-import { VerifaccountComponent } from './reset/verifaccount/verifaccount.component';
-import { ChangePasswordComponent } from './reset/change-password/change-password.component';
-import { AddPatientService } from './Services/add-patient.service';
-
-
-
-
 import {CdkTableModule} from '@angular/cdk/table';
-import { SymptommanageComponent } from './symptommanage/symptommanage.component';
-import { AddsymptomComponent } from './addsymptom/addsymptom.component'; 
+import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component'; 
+import { DatePipe } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HomeComponent } from './client/home/home.component';
+import { ListeprofilComponent } from './client/listeprofil/listeprofil.component';
+import { LoginComponent } from './client/login/login.component';
+import { ParametreComponent } from './client/parametre/parametre.component';
+import { EditInfoImpressionComponent } from './client/paramètrecompte/edit-info-impression/edit-info-impression.component';
+import { EditcompteComponent } from './client/paramètrecompte/editcompte/editcompte.component';
+import { PatientsDialogComponent } from './client/patients-dialog/patients-dialog.component';
+import { AuthService } from './client/Services/RestUser.service';
+import {MatListModule} from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { PrescriptionComponent } from './client/prescription/prescription.component';
+import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
+import { InfoPersonneComponent } from './client/info-personne/info-personne.component';
+import { RegisterComponent } from './client/register/register.component';
+import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
+import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
+import { AuthGuardService } from './client/Services/auth-guard.service';
+import { AddPatientService } from './client/Services/Rest-patient.service';
+import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
+import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -59,14 +64,12 @@ import { AddsymptomComponent } from './addsymptom/addsymptom.component';
     HomeComponent,
     ListeprofilComponent,
     ParametreComponent,
-  RechercheformComponent,
   EditcompteComponent,
   EditInfoImpressionComponent,
   GestionComplementComponent,
   PreparationComponent,
   ComplementsComponent,
   ProduitsComponent,
-  InfoComponent,
   LoginComponent,
    PrescriptionComponent,
    InfoPersonneComponent,
@@ -75,17 +78,19 @@ import { AddsymptomComponent } from './addsymptom/addsymptom.component';
    VerifaccountComponent,
    ChangePasswordComponent,
    SymptommanageComponent,
-   AddsymptomComponent
+   AddsymptomComponent,
+   PatientsDialogComponent,
+   AddNutrientComponent,
+   NutrientComponent,  
   
   
    
   ],
   imports: [
+    MatListModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
-   
-    RechercheprofilModule,
     MatFormFieldModule,
     MatInputModule,
   MatButtonModule,
@@ -93,7 +98,6 @@ import { AddsymptomComponent } from './addsymptom/addsymptom.component';
     MatCheckboxModule,
     MatIconModule,
     MatCardModule,
-    MatTableModule,
     MatSortModule,
     HttpClientModule,
     FormsModule,
@@ -101,22 +105,24 @@ import { AddsymptomComponent } from './addsymptom/addsymptom.component';
     MatStepperModule,
     MatExpansionModule,
     CdkTableModule,
-
-    
-
-    
-   
+    CdkTableModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSelectModule,
   ],
   providers: [
   AuthService,
   AddPatientService,
-  
+  DatePipe,
+
   {
     provide: STEPPER_GLOBAL_OPTIONS,
     useValue: { displayDefaultIndicatorType: false }
   },
 AuthGuardService],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PrescriptionComponent]
+
 })
 export class AppModule { }

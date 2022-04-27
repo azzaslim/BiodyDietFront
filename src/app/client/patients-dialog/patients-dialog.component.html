@@ -1,0 +1,43 @@
+
+
+<div style="display:flex;text-align:center;">
+  
+    <input matInput (keyup)="applyFilter($event)" class="searchbar center" type="text" placeholder="Search.."  #input>
+    <button class="chercher" > CHERCHER </button>
+</div>
+<div class="example-container cdk-elevation-z8">
+    <table cdk-table [dataSource]="dataSource" class=" table-hover mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container cdkColumnDef="id">
+          
+    
+            <td cdk-cell *cdkCellDef="let element"> {{ element.id }} 
+    
+            </td>
+    
+        </ng-container>
+    
+        Name Column
+        <ng-container cdkColumnDef="firstName">
+          
+            <td cdk-cell *cdkCellDef="let element">{{element.firstName}} </td>
+        </ng-container>
+    
+        <ng-container cdkColumnDef="lastName">
+           
+    <tr>
+            <td cdk-cell *cdkCellDef="let element "> {{element.lastName}}  </td>
+    </tr>
+        </ng-container>
+    
+    
+        <ng-container cdkColumnDef="birthDate">
+          
+            <td cdk-cell *cdkCellDef="let element ">  {{element.birthDate }} </td>
+           
+            <td cdk-cell *cdkCellDef="let element "> {{element.birthDate}} </td>
+        </ng-container>
+    
+        <tr cdk-row *cdkRowDef="let row; columns: displayedColumns; " (click)="editProfil(row)"></tr>
+    </table>
+</div>

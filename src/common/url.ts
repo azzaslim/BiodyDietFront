@@ -13,3 +13,12 @@ export const ADD_PREPARATION_URL= BASE_URL +'addproduct';
 export const GETALL_Product_URL= BASE_URL +'getproducts';
 export const addSymptom_URL= BASE_URL +'api/addsymptom';
 export const getSymptoms_URL= BASE_URL +'api/getsymptoms';
+
+export const GET_ONE_PATIENT_URL= BASE_URL +'api/get/Onepatients';
+
+export const UPDATE_USER_URL= BASE_URL +'api/updateUser';
+export const UPDATE_LOGO_URL= BASE_URL +'api/updateLogo';
+export const GET_USERS_URL= BASE_URL +'api/get/users';
+export const DELETE_USER_URL= BASE_URL +'api/delete/user';
+export const ADD_NUTRIENT_URL= BASE_URL +'api/addnutrient';
+export const GETALL_NUTRIENTS_URL= BASE_URL +'api/getnutrient ';

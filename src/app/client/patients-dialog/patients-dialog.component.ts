@@ -38,13 +38,16 @@ export class PatientsDialogComponent implements OnInit {
 
     (await this.user.getPatients()).subscribe((x) => {
       this.dataSource = new MatTableDataSource(x);
-      this.dataSource.sort = this.sort;
-
+if (x.length==0)
+{
+  this.onNoClick()
+  alert('no patient exist')
+}
     },
       err => {
         this.authService.logout(),
-          console.log(err),
-          this.failNotification();
+          console.log(err);
+        //  this.failNotification();
         // this.showToasterError();
 
       }
@@ -55,7 +58,7 @@ export class PatientsDialogComponent implements OnInit {
 
   }
   async editProfil(profil: Profil) {
-    let route = '**';
+    let route = 'presc';
     localStorage.setItem('profil', JSON.stringify(profil.id));
 
     this.router.navigate([route]);

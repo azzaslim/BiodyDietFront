@@ -55,7 +55,7 @@ path!:any;
   async updateUser(){
   let data = this.CurrentUser.value;
   console.log(data),
-  (await this.authService.updateUser(data))
+  (await this.authService.updateCurrentUser(data))
     .subscribe(
       (      response: any) => {
         this.successNotification()

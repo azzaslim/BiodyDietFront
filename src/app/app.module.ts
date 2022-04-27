@@ -48,11 +48,19 @@ import { PrescriptionComponent } from './client/prescription/prescription.compon
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-import { AuthGuardService } from './client/Services/auth-guard.service';
 import { AddPatientService } from './client/Services/Rest-patient.service';
 import { AuthService } from './client/Services/RestUser.service';
 import {MatListModule} from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { AHomeComponent } from './admin/a-home/a-home.component';
+import { AuthGuardService } from './guard/auth-guard.service';
+import { ChildGuard } from './guard/Admin.guard';
+import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
+import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-groupes.component';
+import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.component';
+import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
+import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
+import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 
 
 
@@ -77,7 +85,15 @@ import { MatSelectModule } from '@angular/material/select';
    AjouterPreparationComponent,
    VerifaccountComponent,
    ChangePasswordComponent,
-   PatientsDialogComponent,  
+   PatientsDialogComponent,
+   AHomeComponent,
+  
+   ListeUsersComponent,
+   ListeGroupesComponent,
+   DetailUserComponent,
+   EditUserComponent,
+   DetailGroupeComponent,
+   EditGroupeComponent,  
 
 
    
@@ -113,7 +129,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatTableModule,
     MatSelectModule,
-
     
 
     
@@ -131,7 +146,8 @@ import { MatSelectModule } from '@angular/material/select';
     provide: STEPPER_GLOBAL_OPTIONS,
     useValue: { displayDefaultIndicatorType: false }
   },
-AuthGuardService],
+AuthGuardService,
+ChildGuard],
 
   bootstrap: [AppComponent],
   entryComponents: [PrescriptionComponent]

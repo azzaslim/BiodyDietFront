@@ -13,8 +13,7 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     localStorage.removeItem('profil');
 
-    localStorage.setItem("currentUser",(JSON.stringify(await this.authService.getProfile())));
-
+    
   }
 
 }

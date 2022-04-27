@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ADD_PATIENT_URL, GET_ONE_PATIENT_URL } from 'src/app/client/common/url';
+import { ADD_PATIENT_URL, GET_ONE_PATIENT_URL } from 'src/app/common/url';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
@@ -26,6 +26,7 @@ export class AddPatientService {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
+    console.log(patient);
     return await this.http.post(ADD_PATIENT_URL,patient, { headers});   
 
   }
@@ -56,6 +57,14 @@ export class AddPatientService {
    get profilExist(): boolean {
     return localStorage.getItem('profil') ? true : false;
  }
+
+ async deleteUser(id :number): Promise<Observable<any>> {
+  let headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${this.getToken()}`
+  })
+  return this.http.post<any>(GET_ONE_PATIENT_URL,JSON.stringify({id: id}),{headers}); 
+ } 
 
 
   

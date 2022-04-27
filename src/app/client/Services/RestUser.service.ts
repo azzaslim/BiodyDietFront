@@ -157,9 +157,9 @@ export class AuthService implements OnInit {
    localStorage.removeItem('jwt')
   }
 
-  getNutrients(): Observable<Nutrient[]> {
+  /* getNutrients(): Observable<Nutrient[]> {
     return this.http.get<Nutrient[]>(this.GETNutrient_URL);
-  }
+  } */
 
   async updateLogo( logo: any) {
     const headers = new HttpHeaders({

@@ -52,6 +52,7 @@ import { AuthGuardService } from './client/Services/auth-guard.service';
 import { AddPatientService } from './client/Services/Rest-patient.service';
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
+import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
 
 
 
@@ -81,7 +82,8 @@ import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component'
    AddsymptomComponent,
    PatientsDialogComponent,
    AddNutrientComponent,
-   NutrientComponent,  
+   NutrientComponent,
+   NutrientdetailsComponent,  
   
   
    

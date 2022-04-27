@@ -113,9 +113,9 @@ export class AuthService implements OnInit {
     console.clear()
   }
 //nutients
-  getNutrients(): Observable<Nutrient[]> {
+ /*  getNutrients(): Observable<Nutrient[]> {
     return this.http.get<Nutrient[]>(this.GETNutrient_URL);
-  }
+  } */
 //symptoms
  /* async addsymptom(symptom: any) {
     let headers = new HttpHeaders().set(

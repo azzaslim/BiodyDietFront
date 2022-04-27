@@ -1,3 +1,4 @@
+import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'preparations', component: PreparationComponent , canActivate : [AuthGuardService] },
   { path: 'complements', component: ComplementsComponent , canActivate : [AuthGuardService] },
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
+  { path: 'nutrientdetails/:id', component: NutrientdetailsComponent , canActivate : [AuthGuardService] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent},
   { path: 'verification', component:VerifaccountComponent  },

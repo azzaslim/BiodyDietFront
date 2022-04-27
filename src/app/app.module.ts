@@ -27,28 +27,29 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
-
-import { ToastrModule } from 'ngx-toastr';
-
-import {CdkTableModule} from '@angular/cdk/table'; 
+import {CdkTableModule} from '@angular/cdk/table';
+import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component'; 
 import { DatePipe } from '@angular/common';
-
-import {NgxPrintModule} from 'ngx-print';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
 import { HomeComponent } from './client/home/home.component';
-import { InfoPersonneComponent } from './client/info-personne/info-personne.component';
 import { ListeprofilComponent } from './client/listeprofil/listeprofil.component';
 import { LoginComponent } from './client/login/login.component';
 import { ParametreComponent } from './client/parametre/parametre.component';
 import { EditInfoImpressionComponent } from './client/paramètrecompte/edit-info-impression/edit-info-impression.component';
 import { EditcompteComponent } from './client/paramètrecompte/editcompte/editcompte.component';
 import { PatientsDialogComponent } from './client/patients-dialog/patients-dialog.component';
+import { AuthService } from './client/Services/RestUser.service';
+import {MatListModule} from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { PrescriptionComponent } from './client/prescription/prescription.component';
+import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
+import { InfoPersonneComponent } from './client/info-personne/info-personne.component';
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
 import { AddPatientService } from './client/Services/Rest-patient.service';
+<<<<<<< HEAD
 import { AuthService } from './client/Services/RestUser.service';
 import {MatListModule} from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
@@ -61,6 +62,11 @@ import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.com
 import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
 import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
+=======
+import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
+import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
+
+>>>>>>> 733408228767c975987993cd81e32fce299cb35d
 
 
 
@@ -85,6 +91,7 @@ import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.c
    AjouterPreparationComponent,
    VerifaccountComponent,
    ChangePasswordComponent,
+<<<<<<< HEAD
    PatientsDialogComponent,
    AHomeComponent,
   
@@ -98,18 +105,22 @@ import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.c
 
    
 
+=======
+   SymptommanageComponent,
+   AddsymptomComponent,
+   PatientsDialogComponent,
+   AddNutrientComponent,
+   NutrientComponent,  
+>>>>>>> 733408228767c975987993cd81e32fce299cb35d
   
   
    
   ],
   imports: [
-    MatListModule, 
-
+    MatListModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
-   
-    
     MatFormFieldModule,
     MatInputModule,
   MatButtonModule,
@@ -123,12 +134,12 @@ import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.c
     ReactiveFormsModule,
     MatStepperModule,
     MatExpansionModule,
-    ToastrModule.forRoot(),
     CdkTableModule,
-    NgxPrintModule,
+    CdkTableModule,
     MatDialogModule,
     MatTableModule,
     MatSelectModule,
+<<<<<<< HEAD
     
 
     
@@ -136,6 +147,8 @@ import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.c
   
     
    
+=======
+>>>>>>> 733408228767c975987993cd81e32fce299cb35d
   ],
   providers: [
   AuthService,

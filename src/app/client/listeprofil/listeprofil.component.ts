@@ -6,7 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddPatientService, Profil } from '../Services/Rest-patient.service';
 import Swal from 'sweetalert2';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../Services/RestUser.service';
 
 
@@ -22,7 +21,7 @@ export class ListeprofilComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Profil>();
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private user: AddPatientService, private authService: AuthService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: AddPatientService, private authService: AuthService) {
 
   }
 
@@ -35,6 +34,7 @@ localStorage.removeItem('profil');
       if (x.length==0)
       {
         alert("no patient exist");
+<<<<<<< HEAD
 
   this.role = JSON.parse(localStorage.getItem('currentUser')!).role
           if (this.role == 'ROLE_ADMIN') {
@@ -42,6 +42,10 @@ localStorage.removeItem('profil');
           }
           else
             this.router.navigate(['/home'])      }
+=======
+        this.router.navigate(['/home'])
+      }
+>>>>>>> 733408228767c975987993cd81e32fce299cb35d
       else
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;

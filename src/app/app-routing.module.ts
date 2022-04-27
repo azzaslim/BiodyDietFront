@@ -1,7 +1,8 @@
+import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
+import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
 import { ProduitsComponent } from './client/gestion/produits/produits.component';
 import { PreparationComponent } from './client/gestion/preparation/preparation.component';
@@ -17,6 +18,7 @@ import { PrescriptionComponent } from './client/prescription/prescription.compon
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
+<<<<<<< HEAD
 import { AHomeComponent } from './admin/a-home/a-home.component';
 import { ChildGuard } from './guard/Admin.guard';
 import { AuthGuardService } from './guard/auth-guard.service';
@@ -30,6 +32,11 @@ import { UserGuard } from './guard/User.guard';
 
 
 
+=======
+import { AuthGuardService } from './client/Services/auth-guard.service';
+import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
+import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+>>>>>>> 733408228767c975987993cd81e32fce299cb35d
 const routes: Routes = [
   { path: 'home', component: HomeComponent  , canActivate : [AuthGuardService,UserGuard]},
   { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService]  },
@@ -37,12 +44,16 @@ const routes: Routes = [
   { path: 'editCompte', component: EditcompteComponent , canActivate : [AuthGuardService] },
   { path: 'editImpression', component: EditInfoImpressionComponent , canActivate : [AuthGuardService] },
   { path: 'gestion', component: GestionComplementComponent , canActivate : [AuthGuardService] },
+  { path: 'symptom', component: SymptommanageComponent , canActivate : [AuthGuardService] },
+  { path: 'nutrient', component: NutrientComponent, canActivate : [AuthGuardService] },
+  { path: 'addsymptom', component: AddsymptomComponent , canActivate : [AuthGuardService] },
+  { path: 'addnutrient', component: AddNutrientComponent , canActivate : [AuthGuardService] },
   { path: 'produits', component: ProduitsComponent , canActivate : [AuthGuardService] },
   { path: 'preparations', component: PreparationComponent , canActivate : [AuthGuardService] },
   { path: 'complements', component: ComplementsComponent , canActivate : [AuthGuardService] },
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
   { path: '', component: LoginComponent   },
-  { path: 'register', component:RegisterComponent  },
+  { path: 'register', component:RegisterComponent},
   { path: 'verification', component:VerifaccountComponent  },
   { path: 'reset/:token', component:ChangePasswordComponent   },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},

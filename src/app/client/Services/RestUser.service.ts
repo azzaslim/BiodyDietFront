@@ -2,19 +2,15 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-import { DELETE_USER_URL, GETPROFILE_URL, GET_ONE_USER_URL, GET_USERS_URL, LOGIN_URL, REGISTER_URL, UPDATE_CURRENT_USER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL } from 'src/app/common/url';
+import { addSymptom_URL, DELETE_USER_URL, GETPROFILE_URL, getSymptoms_URL, GET_ONE_USER_URL, GET_USERS_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL } from 'src/app/client/common/url';
 import { environment } from "src/environments/environment";
-import { ADD_PREPARATION_URL } from 'src/app/common/url';
+import { ADD_PREPARATION_URL } from 'src/app/client/common/url';
 import { BehaviorSubject, Observable } from 'rxjs';
-=======
+import { UPDATE_CURRENT_USER_URL } from 'src/common/url';
 
-import { addSymptom_URL, ADD_PREPARATION_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL} from 'src/common/url';
 //import { ADD_PREPARATION_URL } from 'src/common/url';
 
-import { async, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
+
 
 
 export interface Product {
@@ -58,17 +54,7 @@ export class AuthService implements OnInit {
   private subject = new BehaviorSubject<User>(null!);
   User = new BehaviorSubject<any>(null);
 
-  getToken() {
-    return localStorage.getItem('jwt');
 
-<<<<<<< HEAD
-  user$: Observable<User> = this.subject.asObservable();
-
-  isLoggedIn$!: Observable<boolean>;
-  isLoggedOut$!: Observable<boolean>;
-=======
-  }
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
   login(user: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -81,7 +67,6 @@ export class AuthService implements OnInit {
     this.isLoggedIn();
     return this.http.post<any>(LOGIN_URL, user, { headers });
   }
-<<<<<<< HEAD
   isLoggedIn(): Boolean {
     if (this.loggedIn !== 1) return false
     else
@@ -102,21 +87,9 @@ export class AuthService implements OnInit {
     return localStorage.getItem("jwt");
 
   }
-=======
   
   
-     async getProfile() {
-      const headers = new HttpHeaders({
-
-        'Authorization': 'Bearer' + this.getToken(),
-        'Content-Type': 'application/json',
   
-      });
-      console.log("method get Token",this.getToken());
-      return await this.http.get(GETPROFILE_URL, { headers}).toPromise();   
-
-     } 
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
 
   
 
@@ -184,11 +157,6 @@ export class AuthService implements OnInit {
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
     localStorage.clear();
-<<<<<<< HEAD
-    this.User.next(null!);
-    console.clear();
-    this.loggedIn = 0;
-=======
     console.clear()
 
 //nutients
@@ -211,7 +179,6 @@ export class AuthService implements OnInit {
    // localStorage.removeItem('previewUrl')
    localStorage.removeItem('profil')
    localStorage.removeItem('jwt')
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
   }
 
   getNutrients(): Observable<Nutrient[]> {
@@ -261,14 +228,12 @@ export class AuthService implements OnInit {
       'Authorization': 'Bearer ' + this.getToken(),
       'Content-Type': 'application/json',
 
-<<<<<<< HEAD
     });
 console.log(user)
     const params = new HttpParams().set('Id',JSON.parse(localStorage.getItem('user to manage')!))
 
     return await this.http.put<any>(UPDATE_USER_URL+ "/" +params,  user, { headers});
   }
-=======
    async getSymptoms(): Promise<Observable<Symptom[]>> {
     // return this.http.get<Profil[]>(this.URL);
     console.log(this.getToken());
@@ -284,7 +249,6 @@ console.log(user)
     console.log(this.getToken());
     
     return await this.http.post<any>(addSymptom_URL, symptom, { headers });
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
 
   }
 

@@ -81,8 +81,6 @@
     background-color: #096868 !important;
 }
 
-  mat-form-field {
-  }
 
   #fileInput{
     display: none;
@@ -102,8 +100,7 @@
 .separator {
     display: flex;
     align-items: center;
-    text-align: center;
-    font-size: 150%;
+    font-size: 100%;
   }
   
   .separator::before,
@@ -148,3 +145,8 @@ mat-card-content{
 }
 .mat-elevation-z8 {
     box-shadow: none;}
+    mat-card-title{
+        justify-content: center;
+        position: center;
+    
+    }

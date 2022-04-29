@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { User, AuthService } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
 
@@ -14,12 +13,12 @@ import Swal from 'sweetalert2';
 })
 export class ListeUsersComponent implements OnInit {
   id!: number;
-  displayedColumns : string[]  = ['id','firstName','lastName','email','roles','action'];
+  displayedColumns : string[]  = ['id','firstName','lastName','email','typeUser','action'];
   actions!: string ;
 
   dataSource = new MatTableDataSource<User>();
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private toastr: ToastrService, private router: Router, private user: AuthService, private authService: AuthService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: AuthService, private authService: AuthService) {
 
   }
 
@@ -79,8 +78,7 @@ Swal.fire('cet utilisateur a été supprimé', '', 'success')
 })
   }
   async deleteuser(){
-    console.log(typeof(JSON.parse(localStorage.getItem('user to delete')!))),
-    (await this.authService.deleteUser(JSON.parse(localStorage.getItem('user to delete')!)))
+    (await this.authService.deleteUser(JSON.parse(localStorage.getItem('user to manage')!)))
     .subscribe(
       async response => {
        console.log(response)
@@ -96,7 +94,11 @@ Swal.fire('cet utilisateur a été supprimé', '', 'success')
 
   async userToManage(user: User) {
 localStorage.setItem('user to manage', JSON.stringify(user.id));
+(await this.authService.getUser(localStorage.getItem('user to manage'))).subscribe(
+  response => {
+    console.log(response)    
+        localStorage.setItem("usertoupdate",JSON.stringify(response))
 
-  }
- 
+  })
+}
 }

@@ -13,9 +13,8 @@ table{
     margin-top:0.5vw;
     table-layout: fixed;
     margin:auto;
-   width:80% !important;
+   width:100% !important;
    position: sticky;
-   height:130% ;
 
  
    
@@ -35,33 +34,34 @@ table td{
 
 
 input  {
-    float: left;
-    padding: 1vw;
-    border-color: solid #56afaf;
-  background-color: #FFF;
-  margin-top:4vw;
-  margin-left:10vw;
-  margin-bottom: 1vw;;
-  border-radius: 25vw 0vw 0vw 25vw ;
-  border-width:0.2vw;
-    font-size: 1vw;
-    width:15vw;
+  float: left;
+  padding: 1vw;
+  border: solid #56afaf;
+background-color: #FFF;
+margin-top:4vw;
+margin-left:25vw;
+margin-bottom: 1vw;;
+border-radius: 25vw 0vw 0vw 25vw ;
+border-width:0.2vw;
+  font-size: 1vw;
+  width:15vw;
+  height:3vw;
+}
+.chercher{
+    text-decoration: none;
+    background-color: #23b4b8 ;
+    color:#FFF;
+    font-weight: bold;
     height:3vw;
-  }
-  .chercher{
-      text-decoration: none;
-      background-color: #23b4b8 ;
-      color:#FFF;
-      font-weight: bold;
-      height:3vw;
-      padding: 1vw;
+    padding: 1vw;
 
-      width:8%;
-      font-size: 1vw;
-      margin-top:4vw;
-      margin-bottom: 1vw;
-      border-radius: 0vw 25vw 25vw 0vw ;
-  }
+    width:8%;
+    font-size: 1vw;
+    margin-top:4vw;
+    margin-bottom: 1vw;
+    border-radius: 0vw 25vw 25vw 0vw ;
+}
+
   
   
   .example-container {
@@ -78,4 +78,7 @@ box-shadow: none;
 }
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
   border-color: green;
+}
+button{
+  float: right;
 }

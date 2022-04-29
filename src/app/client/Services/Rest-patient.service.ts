@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { ADD_PATIENT_URL, GET_ONE_PATIENT_URL } from 'src/app/common/url';
-=======
+import { ADD_PATIENT_URL, GET_ONE_PATIENT_URL } from 'src/app/client/common/url';
 
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ADD_PATIENT_URL, GET_ONE_PATIENT_URL } from 'src/common/url';
 
 
 

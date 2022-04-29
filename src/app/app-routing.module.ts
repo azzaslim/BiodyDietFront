@@ -18,8 +18,7 @@ import { PrescriptionComponent } from './client/prescription/prescription.compon
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-<<<<<<< HEAD
-import { AHomeComponent } from './admin/a-home/a-home.component';
+
 import { ChildGuard } from './guard/Admin.guard';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
@@ -29,14 +28,13 @@ import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-gro
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
 import { UserGuard } from './guard/User.guard';
-
-
-
-=======
-import { AuthGuardService } from './client/Services/auth-guard.service';
-import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
 import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
+import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
+import { AHomeComponent } from './admin/a-home/a-home.component';
+
+
+
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent  , canActivate : [AuthGuardService,UserGuard]},
   { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService]  },

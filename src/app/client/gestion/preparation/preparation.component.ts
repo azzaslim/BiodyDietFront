@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, Nutrient, Product } from 'src/app/auth.service';
 import {MatTableDataSource} from '@angular/material/table';
+import { AuthService, Product } from '../../Services/RestUser.service';
 
 
 

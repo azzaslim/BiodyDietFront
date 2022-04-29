@@ -1,0 +1,32 @@
+
+.example-card {
+    margin:auto;
+    margin-top: 5%;
+    
+  }
+  ::ng-deep .mat-icon {
+    color: rgb(43, 157, 161);
+   }
+   .titre{
+       color:rgb(25, 76, 78);
+       font-weight:bold;
+       font-size: larger;
+
+   }
+  
+   mat-card-title{
+    justify-content: center;
+    position: center;
+    margin-bottom: 4vw;
+
+}
+  button{
+    float: center;
+  }
+  .detail{
+     }
+  .line {
+margin-top: 8%;  }
+
+  
+ 

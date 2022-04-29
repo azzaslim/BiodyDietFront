@@ -34,7 +34,6 @@ localStorage.removeItem('profil');
       if (x.length==0)
       {
         alert("no patient exist");
-<<<<<<< HEAD
 
   this.role = JSON.parse(localStorage.getItem('currentUser')!).role
           if (this.role == 'ROLE_ADMIN') {
@@ -42,10 +41,6 @@ localStorage.removeItem('profil');
           }
           else
             this.router.navigate(['/home'])      }
-=======
-        this.router.navigate(['/home'])
-      }
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
       else
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;

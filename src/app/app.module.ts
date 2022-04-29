@@ -16,7 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatRowDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
 import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
@@ -49,10 +49,7 @@ import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
 import { AddPatientService } from './client/Services/Rest-patient.service';
-<<<<<<< HEAD
-import { AuthService } from './client/Services/RestUser.service';
-import {MatListModule} from '@angular/material/list';
-import { MatSelectModule } from '@angular/material/select';
+
 import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { ChildGuard } from './guard/Admin.guard';
@@ -62,11 +59,10 @@ import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.com
 import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
 import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
-=======
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
-
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
+import { MatDivider, MatDividerModule } from '@angular/material/divider';
+// or
 
 
 
@@ -91,30 +87,21 @@ import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component'
    AjouterPreparationComponent,
    VerifaccountComponent,
    ChangePasswordComponent,
-<<<<<<< HEAD
    PatientsDialogComponent,
    AHomeComponent,
-  
    ListeUsersComponent,
    ListeGroupesComponent,
    DetailUserComponent,
    EditUserComponent,
    DetailGroupeComponent,
    EditGroupeComponent,  
-
-
-   
-
-=======
    SymptommanageComponent,
    AddsymptomComponent,
    PatientsDialogComponent,
    AddNutrientComponent,
+   NutrientComponent,
+     
    NutrientComponent,  
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
-  
-  
-   
   ],
   imports: [
     MatListModule,
@@ -139,16 +126,9 @@ import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component'
     MatDialogModule,
     MatTableModule,
     MatSelectModule,
-<<<<<<< HEAD
+    MatDividerModule
     
-
     
-  
-  
-    
-   
-=======
->>>>>>> 733408228767c975987993cd81e32fce299cb35d
   ],
   providers: [
   AuthService,

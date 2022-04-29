@@ -40,7 +40,7 @@ export interface Symptom {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class RestUserService implements OnInit {
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void { }
 

@@ -2,7 +2,7 @@ import { RestNutrientService } from './../../../client/Services/rest-nutrient.se
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/client/Services/RestUser.service';
+import { RestUserService } from 'src/app/client/Services/RestUser.service';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/client/Services/RestUser.service';
 })
 export class AddNutrientComponent implements OnInit {
   addData : FormGroup =new FormGroup({});
-  constructor(private authService:RestNutrientService ,private router:Router, private formBuilder : FormBuilder,private user: AuthService ) { 
+  constructor(private RestUserService:RestNutrientService ,private router:Router, private formBuilder : FormBuilder,private user: RestUserService ) { 
 
     this.addData=formBuilder.group({
       name:['',[Validators.required]],
@@ -28,7 +28,7 @@ export class AddNutrientComponent implements OnInit {
    async add(){
     let data = this.addData.value;
     
-    (await this.authService.addNutrient(data))
+    (await this.RestUserService.addNutrient(data))
     .subscribe(
       response=> {
         this.router.navigate(['/nutrient'])

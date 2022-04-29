@@ -39,7 +39,7 @@ import { ParametreComponent } from './client/parametre/parametre.component';
 import { EditInfoImpressionComponent } from './client/paramètrecompte/edit-info-impression/edit-info-impression.component';
 import { EditcompteComponent } from './client/paramètrecompte/editcompte/editcompte.component';
 import { PatientsDialogComponent } from './client/patients-dialog/patients-dialog.component';
-import { AuthService } from './client/Services/RestUser.service';
+import { RestUserService } from './client/Services/RestUser.service';
 import {MatListModule} from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { PrescriptionComponent } from './client/prescription/prescription.component';
@@ -48,7 +48,7 @@ import { InfoPersonneComponent } from './client/info-personne/info-personne.comp
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-import { AddPatientService } from './client/Services/Rest-patient.service';
+import { RestPatientService } from './client/Services/Rest-patient.service';
 
 import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AuthGuardService } from './guard/auth-guard.service';
@@ -62,7 +62,10 @@ import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.c
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
+import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 // or
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -101,7 +104,8 @@ import { MatDivider, MatDividerModule } from '@angular/material/divider';
    AddNutrientComponent,
    NutrientComponent,
      
-   NutrientComponent,  
+   NutrientComponent,
+         AddUserComponent,  
   ],
   imports: [
     MatListModule,
@@ -126,13 +130,13 @@ import { MatDivider, MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatTableModule,
     MatSelectModule,
-    MatDividerModule
-    
+    MatDividerModule,
+    MatRadioModule,
     
   ],
   providers: [
-  AuthService,
-  AddPatientService,
+  RestUserService,
+  RestPatientService,
   DatePipe,
 
   {

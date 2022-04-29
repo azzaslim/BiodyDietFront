@@ -4,7 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService, User } from 'src/app/client/Services/RestUser.service';
+import { RestUserService, User } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -28,7 +28,7 @@ export class DetailUserComponent implements OnInit {
      createdAt!:string;
      modifiedAt!:string;
  
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestUserService: AuthService, private authService: AuthService, private datePipe :DatePipe ) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestUserService: RestUserService, private datePipe :DatePipe ) {
 
   }
 

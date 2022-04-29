@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmedValidator } from '../Validator-Password/confirmed-validator';
-import { AuthService } from '../Services/RestUser.service';
+import { RestUserService } from '../Services/RestUser.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   formGroup?: FormGroup;
   registerData: FormGroup = new FormGroup({});
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder,) {
+  constructor(private RestUserService: RestUserService, private router: Router, private formBuilder: FormBuilder,) {
 
     this.registerData = formBuilder.group({
       firstName: ['', [Validators.required]],
@@ -58,7 +58,7 @@ if (isNaN(prasedDate) || this.registerData.get('birthDate')!.value.length < 10) 
 if ((typeof (this.registerData.get('codePostale')!.value) === null) )
 alert("entrez un valide code postale") */
   else {
-    this.authService.register(data)
+    this.RestUserService.register(data)
       .subscribe(
         response => {
           this.router.navigate(['/'])

@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { GET_ALL_PATIENT_URL } from 'src/common/url';
 
 
 
@@ -19,10 +20,13 @@ export interface Profil {
 @Injectable({
   providedIn: 'root'
 })
-export class AddPatientService {
+export class RestPatientService {
+  getUsers() {
+    throw new Error('Method not implemented.');
+  }
 
 
-  URL = "http://localhost:8000/api/get/patients";
+  URL = "http://localhost:8000/api/get/patientsByUser";
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
 
   async AddPatient(patient: any) {
@@ -46,6 +50,12 @@ export class AddPatientService {
    )
    return await this.http.get<Profil[]>(this.URL,{headers}); 
   }
+  async getAllPatients(): Promise<Observable<Profil[]>> {
+    // return this.http.get<Profil[]>(this.URL);
+    console.log(this.getToken());
+ 
+    return await this.http.get<Profil[]>(GET_ALL_PATIENT_URL); 
+   }
 
 
 

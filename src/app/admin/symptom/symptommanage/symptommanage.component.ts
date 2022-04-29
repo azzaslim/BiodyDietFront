@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { MatSort, Sort } from '@angular/material/sort';
 
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { AuthService } from 'src/app/client/Services/RestUser.service';
+import { RestUserService } from 'src/app/client/Services/RestUser.service';
 import { Symptom } from './../../../client/Services/rest-symptom.service';
 import Swal from 'sweetalert2';
 
@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
 export class SymptommanageComponent implements OnInit {
   displayedColumns = ['id','symptom_name'];
   dataSource = new MatTableDataSource<Symptom>();
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private user: AuthService, private authService: AuthService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private user: RestUserService, private RestUserService: RestUserService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
       (await this.user.getSymptoms()).subscribe((x) => {
@@ -35,7 +35,7 @@ export class SymptommanageComponent implements OnInit {
   
       },
         err => {
-         /*  this.authService.logout(),
+         /*  this.RestUserService.logout(),
             console.log(err),
             this.failNotification();
           */
@@ -65,7 +65,7 @@ export class SymptommanageComponent implements OnInit {
       confirmButtonText: 'Ok!',
     }).then((result) => {
      
-        this.authService.logout()
+        this.RestUserService.logout()
       
     })
   }

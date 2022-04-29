@@ -29,7 +29,7 @@ export interface Nutrient {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class RestUserService implements OnInit {
   getUsers() {
     throw new Error('Method not implemented.');
   }

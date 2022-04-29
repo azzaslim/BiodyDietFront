@@ -1,44 +1,133 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<app-navmenu></app-navmenu>
+<div class="card-wrapper row center justify-content-md-center">
+    <mat-card class="example-card col-md-3   justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <i class="fa fa-stethoscope" style="font-size:40px; color :rgb(14, 88, 110); margin-top: 1vw;"></i>
+            </mat-card-subtitle>
+            <mat-card-title> Patients </mat-card-title>
+            <mat-card-subtitle>{{nbPatients}} </mat-card-subtitle>
 
-   
-    <app-navmenu></app-navmenu>
-    <div class="col-10 body">
-    <div class="row d-flex justify-content-center">
-   
-        <div class="col-md-6 carre">
-            <a style="text-decoration:none;color:#FFF  ;" href="admin/ajout">  Nouvelle Prescription  </a>
+        </mat-card-header>
+        <mat-card-content>
+            <button  (click)="FailNotification()" mat-flat-button> &emsp;Afficher la liste </button>
 
-        </div>
-        </div>
-<div class="row d-flex justify-content-center ">
-<div class="col-md-4  carre" >    <h3>{{nbusers}}</h3>
-    <a style="text-decoration:none;color:#FFF  ;" href="admin/users/listeusers">Gestion des utilisateurs</a>
+        </mat-card-content>
 
+
+    </mat-card>
+    <mat-card class="example-card col-md-3   justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <mat-icon class="center">add</mat-icon> <br>
+
+            </mat-card-subtitle>
+            <mat-card-title> Nouveau Patient </mat-card-title>
+            <mat-card-subtitle> <br> </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+    <mat-card class="example-card col-md-3  justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <mat-icon class="center">account_circle</mat-icon> <br>
+
+            </mat-card-subtitle>
+            <mat-card-title>Gestion des Utilisateurs</mat-card-title>
+            <mat-card-subtitle>{{nbusers}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+
+
+    <mat-card class="example-card col-md-3   justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <mat-icon>supervised_user_circle</mat-icon>
+
+            </mat-card-subtitle>
+            <mat-card-title>  Gestion des groupes utilisateurs </mat-card-title>
+            <mat-card-subtitle>
+                {{nbusers}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+    <mat-card class="example-card col-md-3  justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <i class="fa fa-question-circle" style="font-size:40px; color :rgb(14, 88, 110)"></i>
+
+            </mat-card-subtitle>
+            <mat-card-title>Gestion du questionnaire</mat-card-title>
+            <mat-card-subtitle>
+                {{nbusers}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+    <mat-card class="example-card col-md-3   justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <i class="bi-card-checklist" style="font-size:40px; color :rgb(14, 88, 110)"></i>                
+            </mat-card-subtitle>
+            <mat-card-title>  Gestion des réponses questionnaires</mat-card-title>
+            <mat-card-subtitle>
+                {{nbusers}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+    <mat-card class="example-card col-md-3  justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <i class="fa fa-file-text-o" style="font-size:40px; color :rgb(14, 88, 110)"></i>
+
+            </mat-card-subtitle>
+            <mat-card-title>Gestion du module prescription</mat-card-title>
+            <mat-card-subtitle>
+                {{nbusers}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
 </div>
 
-<div class="col-md-4  carre">
-    <a style="text-decoration:none;color:#FFF  ;" href="admin/groupes/listegroupes">  Gestion des groupes    </a>
 
-</div>
-
-<div class="col-md-4  carre">
-   
-    Paramétrage des fiches conseil
-</div>
-</div>
-<div class="row d-flex justify-content-center">
-
-<div class="col-md-4  carre">
-   Paramétrage du questionnaire
-</div>
-
-<div class="col-md-4  carre">
-    Paramétrage des préparations hyperprotéinées
-</div>
-<div class="col-md-4  carre">
-Paramétrage des compléments alimentaires
-</div>
-
-</div>
-</div>
-        <app-footer></app-footer>
-    
+<app-footer></app-footer>

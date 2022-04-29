@@ -79,6 +79,3 @@ box-shadow: none;
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
   border-color: green;
 }
-button{
-  float: right;
-}

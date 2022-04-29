@@ -150,3 +150,26 @@ mat-card-content{
         position: center;
     
     }
+    .radio-section{
+        margin-top: 1vw !important;
+        display:flex ;
+
+    }
+    input:checked {
+        border: 6px solid black;
+        color: #00babb;
+      }
+      input[type="radio"]  {
+  margin-top: 2vw !important;
+
+}
+input[type="radio"]:checked  {
+  color: aqua !important;
+}
+label span{
+    display:inline-block;
+    margin-right: 15px;
+  }
+  .example-margin{
+      margin-right: 5px;
+  }

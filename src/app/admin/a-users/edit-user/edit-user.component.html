@@ -7,7 +7,7 @@
 <div class="separator">Modifier cet Utilisateur</div>
 <div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
     <a href="admin/users/listeusers"><button mat-flat-button color="primary" ><mat-icon>keyboard_return</mat-icon> &emsp;Retour à la liste des utilisateurs</button></a>
-    <a href="admin/users/edituser"><button mat-flat-button color="primary" ><mat-icon>group_add</mat-icon>&emsp;Ajouter un nouveau Utilisateur</button></a>
+    <a href="admin/users/adduser"><button mat-flat-button color="primary" ><mat-icon>group_add</mat-icon>&emsp;Ajouter un nouveau Utilisateur</button></a>
     <a href="admin/users/consultuser"><button mat-flat-button color="primary"><mat-icon>edit</mat-icon>&emsp;Afficher les details de  cet Utilisateur</button></a>
 </div>
 <div class="outline">
@@ -47,12 +47,21 @@
             <input matInput  placeholder="Martin " formControlName="birthDate">
         </mat-form-field>
         
-        <mat-form-field appearance="standard" class=" col-md-6 ">
-            <mat-label>type</mat-label>
-            <mat-icon matPrefix class="my-icon">tag_faces</mat-icon>
-
-            <input matInput  placeholder="Martin " formControlName="type">
-        </mat-form-field>
+        <div class="radio-section space-around" class=" col-md-6 ">
+            <label class="example-margin">Type:</label>
+            <label>
+                <input type="radio" value="Utilisateur" formControlName="type">
+                  <span>Utilisateur</span>
+              </label>
+              <label>
+                <input type="radio" value="Administrateur" formControlName="type">
+                  <span>Administrateur</span>
+              </label>
+              <label>
+                <input type="radio" value="Manager" formControlName="type">
+                  <span>Manager</span>
+              </label>
+        </div>
         </div>
 
         <div class="row center" >

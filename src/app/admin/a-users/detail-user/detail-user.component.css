@@ -13,7 +13,9 @@
        font-size: larger;
 
    }
-  
+   mat-card-title-group{
+       justify-content: center;
+  }
    mat-card-title{
     justify-content: center;
     position: center;
@@ -23,8 +25,7 @@
   button{
     float: center;
   }
-  .detail{
-     }
+ 
   .line {
 margin-top: 8%;  }
 

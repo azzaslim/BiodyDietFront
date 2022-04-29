@@ -4,9 +4,9 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddPatientService, Profil } from '../Services/Rest-patient.service';
+import { RestPatientService, Profil } from '../Services/Rest-patient.service';
 import Swal from 'sweetalert2';
-import { AuthService } from '../Services/RestUser.service';
+import { RestUserService } from '../Services/RestUser.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class ListeprofilComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Profil>();
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: AddPatientService, private authService: AuthService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: RestPatientService, private RestUserService: RestUserService) {
 
   }
 
@@ -47,7 +47,7 @@ localStorage.removeItem('profil');
 
     },
       err => {
-        this.authService.logout(),
+        this.RestUserService.logout(),
           console.log(err),
           this.failNotification();
         // this.showToasterError();

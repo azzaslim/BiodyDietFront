@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AuthService, User } from 'src/app/client/Services/RestUser.service';
+import { RestUserService, User } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,7 +20,7 @@ Prenom!:string;
 CurrentUser !: FormGroup;
 
 
-  constructor(private authService: AuthService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer, private datePipe: DatePipe) { 
+  constructor(private RestUserService: RestUserService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer, private datePipe: DatePipe) { 
     
     this.CurrentUser = this._formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
@@ -39,7 +39,7 @@ CurrentUser !: FormGroup;
   }
 
   async ngOnInit() {
-    (await this.authService.getUser(localStorage.getItem('user to manage'))).subscribe(
+    (await this.RestUserService.getUser(localStorage.getItem('user to manage'))).subscribe(
       response => {
         console.log(response)    
             localStorage.setItem("usertoupdate",JSON.stringify(response))
@@ -53,20 +53,21 @@ CurrentUser !: FormGroup;
               entreprise: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['entreprise']],
               country: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['country']],
               birthDate: [this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['birthDate']['timestamp'] * 1000.05, 'dd/MM/yyyy')!],
-              type: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['roles']], 
+              type: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['typeUser']], 
               endDate: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['endDate']], 
         
-        
             });
+
       })
-    
+      console.log(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['roles'])
+
 }
 
 
   async updateUser(){
   let data = this.CurrentUser.value;
   console.log(data),
-  (await this.authService.updateUser(data))
+  (await this.RestUserService.updateUser(data))
     .subscribe(
       (      response: any) => {
         console.log(response),

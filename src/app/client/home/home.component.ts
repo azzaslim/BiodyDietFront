@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../Services/RestUser.service';
+import { RestUserService } from '../Services/RestUser.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { AuthService } from '../Services/RestUser.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(private RestUserService:RestUserService) { }
 
   async ngOnInit(): Promise<void> {
     localStorage.removeItem('profil');

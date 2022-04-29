@@ -31,6 +31,7 @@ import { UserGuard } from './guard/User.guard';
 import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
 import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
 import { AHomeComponent } from './admin/a-home/a-home.component';
+import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 
 
 
@@ -62,6 +63,7 @@ const routes: Routes = [
  { path: 'admin/users/listeusers', component: ListeUsersComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/edituser', component: EditUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/consultuser', component: DetailUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/users/adduser', component: AddUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
 
  { path: 'admin/groupes/listegroupes', component: ListeGroupesComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/groupes/editgroupe', component: EditGroupeComponent , canActivate : [AuthGuardService,ChildGuard]  },

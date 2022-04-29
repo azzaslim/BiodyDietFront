@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HttpClient, HttpEventType, HttpHeaders,  } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AuthService } from '../../Services/RestUser.service';
+import { RestUserService } from '../../Services/RestUser.service';
 
 
 @Component({
@@ -26,7 +26,7 @@ fileUploadProgress!: string ;
 uploadedFilePath!: string;
  reader = new FileReader();      
 path!:any;
-  constructor(private authService: AuthService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer) { 
+  constructor(private RestUserService: RestUserService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer) { 
     this.CurrentUser = this._formBuilder.group({
       firstName: [JSON.parse(localStorage.getItem('currentUser')!).firstName],
       lastName: [JSON.parse(localStorage.getItem('currentUser')!).lastName],
@@ -41,7 +41,7 @@ path!:any;
   }
 
   async ngOnInit() {
-       localStorage.setItem("currentUser",(JSON.stringify(await this.authService.getProfile())));
+       localStorage.setItem("currentUser",(JSON.stringify(await this.RestUserService.getProfile())));
       this.path=JSON.parse(localStorage.getItem('currentUser')!).logo;
 
       
@@ -55,7 +55,7 @@ path!:any;
   async updateUser(){
   let data = this.CurrentUser.value;
   console.log(data),
-  (await this.authService.updateCurrentUser(data))
+  (await this.RestUserService.updateCurrentUser(data))
     .subscribe(
       (      response: any) => {
         this.successNotification()
@@ -93,7 +93,7 @@ preview() {
 }
   async onSubmit() {
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + this.authService.getToken(),
+      'Authorization': 'Bearer ' + this.RestUserService.getToken(),
 
     });
   const formData = new FormData();

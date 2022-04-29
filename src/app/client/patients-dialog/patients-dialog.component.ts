@@ -6,8 +6,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Profil, AddPatientService } from '../Services/Rest-patient.service';
-import { AuthService } from '../Services/RestUser.service';
+import { Profil, RestPatientService } from '../Services/Rest-patient.service';
+import { RestUserService } from '../Services/RestUser.service';
 import {MatListModule} from '@angular/material/list';
 
 
@@ -31,7 +31,7 @@ export class PatientsDialogComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Profil>();
   constructor(public dialogRef: MatDialogRef<PatientsDialogComponent>, private _liveAnnouncer: LiveAnnouncer,
-    @Inject(MAT_DIALOG_DATA) public data: Profil, private user: AddPatientService, private authService: AuthService, private router: Router, private datePipe: DatePipe
+    @Inject(MAT_DIALOG_DATA) public data: Profil, private user: RestPatientService, private RestUserService: RestUserService, private router: Router, private datePipe: DatePipe
   ) { }
   @ViewChild(MatSort) sort!: MatSort;
   async ngOnInit() {
@@ -45,7 +45,7 @@ if (x.length==0)
 }
     },
       err => {
-        this.authService.logout(),
+        this.RestUserService.logout(),
           console.log(err);
         //  this.failNotification();
         // this.showToasterError();

@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User, AuthService } from 'src/app/client/Services/RestUser.service';
+import { User, RestUserService } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +18,7 @@ export class ListeUsersComponent implements OnInit {
 
   dataSource = new MatTableDataSource<User>();
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: AuthService, private authService: AuthService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: RestUserService, private RestUserService: RestUserService) {
 
   }
 
@@ -38,7 +38,7 @@ export class ListeUsersComponent implements OnInit {
       this.dataSource.sort = this.sort;
     },
       err => {
-        this.authService.logout(),
+        this.RestUserService.logout(),
           console.log(err),
           this.failNotification();
         // this.showToasterError();
@@ -78,7 +78,7 @@ Swal.fire('cet utilisateur a été supprimé', '', 'success')
 })
   }
   async deleteuser(){
-    (await this.authService.deleteUser(JSON.parse(localStorage.getItem('user to manage')!)))
+    (await this.RestUserService.deleteUser(JSON.parse(localStorage.getItem('user to manage')!)))
     .subscribe(
       async response => {
        console.log(response)
@@ -94,7 +94,7 @@ Swal.fire('cet utilisateur a été supprimé', '', 'success')
 
   async userToManage(user: User) {
 localStorage.setItem('user to manage', JSON.stringify(user.id));
-(await this.authService.getUser(localStorage.getItem('user to manage'))).subscribe(
+(await this.RestUserService.getUser(localStorage.getItem('user to manage'))).subscribe(
   response => {
     console.log(response)    
         localStorage.setItem("usertoupdate",JSON.stringify(response))

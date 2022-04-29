@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ConfirmedValidator } from 'src/app/client/Validator-Password/confirmed-validator';
-import { AuthService } from '../../Services/RestUser.service';
+import { RestUserService } from '../../Services/RestUser.service';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class ChangePasswordComponent implements OnInit {
   userData: FormGroup = new FormGroup({});
 
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {
+  constructor(private RestUserService: RestUserService, private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {
     this.userData = formBuilder.group({
 
       password: ['', [Validators.required]],
@@ -39,7 +39,7 @@ export class ChangePasswordComponent implements OnInit {
   reset() {
 
     let data = JSON.stringify(this.userData.value);
-    this.authService.change_password(data)
+    this.RestUserService.change_password(data)
       .subscribe(
         response => {
           this.router.navigate(['']),

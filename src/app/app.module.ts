@@ -65,6 +65,8 @@ import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 // or
 import {MatRadioModule} from '@angular/material/radio';
+import { AddPatientComponent } from './admin/add-patient/add-patient.component';
+import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
 
 
 
@@ -105,7 +107,9 @@ import {MatRadioModule} from '@angular/material/radio';
    NutrientComponent,
      
    NutrientComponent,
-         AddUserComponent,  
+         AddUserComponent,
+         AddPatientComponent,
+         PrescriptComponent,  
   ],
   imports: [
     MatListModule,

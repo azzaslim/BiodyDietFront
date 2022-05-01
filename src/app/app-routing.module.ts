@@ -32,6 +32,8 @@ import { SymptommanageComponent } from './admin/symptom/symptommanage/symptomman
 import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
 import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
+import { AddPatientComponent } from './admin/add-patient/add-patient.component';
+import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
 
 
 
@@ -64,6 +66,11 @@ const routes: Routes = [
  { path: 'admin/users/edituser', component: EditUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/consultuser', component: DetailUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/adduser', component: AddUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
+
+ { path: 'admin/addPatient', component: AddPatientComponent , canActivate : [AuthGuardService,ChildGuard]  },
+
+ { path: 'admin/ModulePrescription/Prescript', component:  PrescriptComponent, canActivate : [AuthGuardService,ChildGuard]  },
+
 
  { path: 'admin/groupes/listegroupes', component: ListeGroupesComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/groupes/editgroupe', component: EditGroupeComponent , canActivate : [AuthGuardService,ChildGuard]  },

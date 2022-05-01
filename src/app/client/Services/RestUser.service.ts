@@ -6,7 +6,7 @@ import { addSymptom_URL, DELETE_USER_URL, GETPROFILE_URL, getSymptoms_URL, GET_O
 import { environment } from "src/environments/environment";
 import { ADD_PREPARATION_URL } from 'src/app/client/common/url';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UPDATE_CURRENT_USER_URL } from 'src/common/url';
+import { ADD_USER_URL, UPDATE_CURRENT_USER_URL } from 'src/common/url';
 
 //import { ADD_PREPARATION_URL } from 'src/common/url';
 
@@ -195,7 +195,6 @@ export class RestUserService implements OnInit {
   }
   async getUsers(): Promise<Observable<User[]>> {
     // return this.http.get<Profil[]>(this.URL);
-    console.log(this.getToken());
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
@@ -251,6 +250,13 @@ console.log(user)
     return await this.http.post<any>(addSymptom_URL, symptom, { headers });
 
   }
+  AddUser(user: any) {
+    console.log(user);
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return this.http.post<any>(ADD_USER_URL, user, { headers });
 
+  }
   }
 

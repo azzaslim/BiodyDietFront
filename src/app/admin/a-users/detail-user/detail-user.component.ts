@@ -35,7 +35,13 @@ export class DetailUserComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   async ngOnInit() {
-     this.getInfoUser()
+    (await this.RestUserService.getUser(localStorage.getItem('user to manage'))).subscribe(
+      response => {
+        console.log(response)    
+            localStorage.setItem("usertoupdate",JSON.stringify(response))
+            this.getInfoUser()
+
+      })
   }
   async getInfoUser(){
    

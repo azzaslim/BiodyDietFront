@@ -15,13 +15,11 @@ export class AHomeComponent implements OnInit {
   constructor(private RestUserService: RestUserService,private RestPatientService : RestPatientService , router: Router) { }
 
   async ngOnInit() {
-  
+    this.nbPatients = localStorage.getItem('nbPatients')!;
     this.nbusers = localStorage.getItem('nbusers')!
-    this.nbPatients = localStorage.getItem('nbPatients')!
   }
 
   FailNotification() {
-
     Swal.fire({
       position: 'center',
       icon: 'info',

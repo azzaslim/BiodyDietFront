@@ -1,2 +1,141 @@
 <app-navmenu></app-navmenu>
+
+
+<br><br>
+
+           
+<div class="separator">Ajouter un nouveau Utilisateur</div>
+
+<div class="outline">
+
+<mat-card class="  mat-elevation-z8 col-md-8 center "  >
+    <mat-card-header>
+        <mat-card-title class="title-overlap col-md-7">Informations Personelles</mat-card-title>
+    </mat-card-header>
+    <br> <br>
+    <mat-card-content>
+    <form  [formGroup]="AddUserForm" >
+
+        <div class="row center" >
+            
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Nom</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
+
+            <input matInput  placeholder="Laura " formControlName="firstName" >
+        </mat-form-field>
+        
+        
+        <mat-form-field appearance="standard" class="col-md-6">
+            <mat-label>Prénom</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="lastName" >
+        </mat-form-field>
+    </div>
+    <div class="row center" >
+            
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Email</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
+
+            <input matInput  placeholder="Laura " formControlName="email" >
+        </mat-form-field>
+        
+        
+        <mat-form-field appearance="standard" class="col-md-6">
+            <mat-label>Mot de passe</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
+
+            <input matInput type="password" placeholder="Martin " formControlName="password" >
+        </mat-form-field>
+    </div>
+
+    <div class="row center" >
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Date de Naissance</mat-label>
+            <mat-icon matPrefix class="my-icon">date_range</mat-icon>
+
+            <input matInput type="text" placeholder="Martin " formControlName="birthDate">
+        </mat-form-field>
+        
+        <div class="radio-section space-around" class=" col-md-6 ">
+            <label class="example-margin">Type:</label>
+            <label>
+                <input type="radio" value="Utilisateur" formControlName="type">
+                  <span>Utilisateur</span>
+              </label>
+              <label>
+                <input type="radio" value="Administrateur" formControlName="type">
+                  <span>Administrateur</span>
+              </label>
+              <label>
+                <input type="radio" value="Manager" formControlName="type">
+                  <span>Manager</span>
+              </label>
+        </div>
+        </div>
+
+        <div class="row center" >
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Entreprise</mat-label>
+            <input matInput  placeholder="Martin " formControlName="entreprise">
+        </mat-form-field>
+        
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Occupation</mat-label>
+            <mat-icon matPrefix class="my-icon">folder_shared</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="occupation">
+        </mat-form-field>
+
+       
+        </div>
+        
+        <div class="row" >
+            <mat-form-field appearance="standard" class=" col-md-6 ">
+                <mat-label>Adresse</mat-label>
+                <mat-icon matPrefix class="my-icon">home</mat-icon>
+
+                <input matInput  placeholder="Martin " formControlName="adresse">
+            </mat-form-field>
+            <mat-form-field appearance="standard" class=" col-md-6 ">
+                <mat-label>Ville</mat-label>
+                
+                <mat-icon matPrefix class="my-icon">location_on</mat-icon>
+
+                <input matInput  placeholder="Martin " formControlName="country">
+            </mat-form-field>
+            </div>
+            <div class="row" >
+
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Code Postale</mat-label>
+            <mat-icon matPrefix class="my-icon">code</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="codePostale">
+        </mat-form-field>
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Delai Module Prescription</mat-label>
+            <mat-icon matPrefix class="my-icon">block</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="endDate">
+        </mat-form-field>
+        </div>
+        
+       
+        
+       
+        </form>
+        <div  class=" boutton   ">
+            <button mat-button (click)=" AddUser(); " [disabled]="!AddUserForm.valid" >Enregistrer</button>
+        </div>
+        </mat-card-content>
+        </mat-card>
+        </div>
+  
+        <div class="d-grid gap-2 d-md-flex mt-4">
+            <a href="admin/users/listeusers"><button mat-flat-button color="primary" ><mat-icon>keyboard_return</mat-icon> &emsp;Retour à la liste des utilisateurs</button></a>
+        </div>
+<br><br><br><br>
 <app-footer></app-footer>

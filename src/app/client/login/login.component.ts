@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('')
   });
   role!: string;
-  constructor(private RestUserService: RestUserService,private RestPatientService: RestPatientService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private RestUserService: RestUserService, private RestPatientService: RestPatientService, private router: Router, private formBuilder: FormBuilder) {
   }
   ngOnInit() {
 
@@ -26,33 +26,30 @@ export class LoginComponent implements OnInit {
       .subscribe(
         async response => {
           localStorage.setItem('jwt', response['token']),
-          sessionStorage.setItem('isLoggedIn', "true"),
+
+          (await this.RestPatientService.getAllPatients()).subscribe(
+            Response => {
+              localStorage.setItem('nbPatients', JSON.stringify(Response.length))
+              console.log(Response)
+            });
+
+            (await this.RestUserService.getUsers()).subscribe((x) => {
+              localStorage.setItem("nbusers", x.length.toString())
+            })
           localStorage.setItem("currentUser", (JSON.stringify(await this.RestUserService.getProfile())));
+
           this.role = JSON.parse(localStorage.getItem('currentUser')!).role
           if (this.role == 'ROLE_ADMIN') {
-            this.returnNBPatients();
-            this.returnNBUser();
             this.router.navigate(['/admin/home'])
-         
+
           }
           else
             this.router.navigate(['/home'])
         },
         err => {
           console.log(err),
-          this.failNotification()
+            this.failNotification()
         })
-  }
-  async returnNBPatients() {
-    (await this.RestPatientService.getAllPatients()).subscribe((x) => {
-      localStorage.setItem('nbPatients', JSON.stringify(x.length))
-    })
-  }
-  async returnNBUser() {
-    (await this.RestUserService.getUsers()).subscribe((x) => {
-      localStorage.setItem("nbusers", x.length.toString())
-    }
-    )
   }
 
   failNotification() {

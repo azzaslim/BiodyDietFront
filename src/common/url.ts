@@ -23,3 +23,4 @@ export const DELETE_USER_URL= BASE_URL +'api/delete/user';
 export const ADD_NUTRIENT_URL= BASE_URL +'api/addnutrient';
 export const GETALL_NUTRIENTS_URL= BASE_URL +'api/getnutrient ';
 export const GET_ALL_PATIENT_URL= BASE_URL +'get/Allpatients';
+export const ADD_USER_URL= BASE_URL +'api/addUser';

@@ -93,12 +93,14 @@ Swal.fire('cet utilisateur a été supprimé', '', 'success')
 
 
   async userToManage(user: User) {
-localStorage.setItem('user to manage', JSON.stringify(user.id));
 (await this.RestUserService.getUser(localStorage.getItem('user to manage'))).subscribe(
   response => {
     console.log(response)    
         localStorage.setItem("usertoupdate",JSON.stringify(response))
 
   })
+  localStorage.setItem('user to manage', JSON.stringify(user.id));
+
 }
+
 }

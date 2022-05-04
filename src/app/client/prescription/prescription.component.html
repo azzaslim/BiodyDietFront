@@ -27,12 +27,20 @@
 
                             <mat-form-field appearance="outline" class=" col-md-6 ">
                                 <mat-label>Nom</mat-label>
-                                <input matInput placeholder="Laura " formControlName="firstName">
+                                <input matInput placeholder="Laura " type="text" formControlName="firstName" required>
+                                <div *ngIf="f['firstName'].touched && f['firstName'].invalid">
+                                    <div *ngIf="f['firstName'].errors && f['firstName'].errors['required']"> le nom est obligatoire </div>
+                                    <div *ngIf="f['firstName'].errors && f['firstName'].errors['pattern']">ce champ doit avoir des caractères</div>
+                                </div>
                             </mat-form-field>
 
                             <mat-form-field appearance="outline" class="col-md-6 ">
                                 <mat-label>Prénom</mat-label>
-                                <input matInput placeholder="Martin " formControlName="lastName">
+                                <input matInput placeholder="Martin " type="text" formControlName="lastName" required>
+                                <div *ngIf="f['lastName'].touched && f['lastName'].invalid">
+                                    <div *ngIf="f['lastName'].errors && f['lastName'].errors['required']"> le prénom est obligatoire </div>
+                                    <div *ngIf="f['lastName'].errors && f['lastName'].errors['pattern']">ce champ doit avoir des caractères</div>
+                                </div>
                             </mat-form-field>
                         </div>
 
@@ -40,22 +48,32 @@
                         <div class="row d-flex justify-content-center ">
                             <mat-form-field appearance="outline" class=" col-md-4 ">
                                 <mat-label>Date de Naissance</mat-label>
-                                <input matInput placeholder="30/11/1980 " formControlName="birth_date">
+                                <input matInput placeholder="30/11/1980 " formControlName="birth_date" required>
+                                <div *ngIf="f['birth_date'].touched && f['birth_date'].invalid">
+                                    <div *ngIf="f['birth_date'].errors && f['birth_date'].errors['required']"> la date de naissance est obligatoire </div>
+                                    <div *ngIf="f['birth_date'].errors && f['birth_date'].errors['pattern']">ce champ doit avoir cette forme dd-mm-aaaa</div>
+                                </div>
                             </mat-form-field>
 
                             <mat-form-field appearance="outline" class=" col-md-4 ">
                                 <mat-label>Poids</mat-label>
-                                <input matInput placeholder="80 " type="number" min="14 " max="250" formControlName="weight">
+                                <input matInput placeholder="80 " type="number" min="14 " max="250" formControlName="weight" required>
+                                <div *ngIf="f['weight'].touched && f['weight'].invalid">
+                                    <div *ngIf="f['weight'].errors && f['weight'].errors['required']"> le poids est obligatoire </div>
+                                </div>
                             </mat-form-field>
 
                             <mat-form-field appearance="outline" class="col-md-4 ">
                                 <mat-label>Taille</mat-label>
-                                <input matInput placeholder="176 " type="number" min="100 " max="220" formControlName="height">
+                                <input matInput placeholder="176 " type="number" min="100 " max="220" formControlName="height" required>
+                                <div *ngIf="f['height'].touched && f['height'].invalid">
+                                    <div *ngIf="f['height'].errors && f['height'].errors['required']"> la taille est obligatoire </div>
+                                </div>
                             </mat-form-field>
                         </div>
 
                         <div class=" boutton d-flex justify-content-center ">
-                            <button  mat-button matStepperNext>SUIVANT</button>
+                            <button  mat-button  [disabled]="!patientForm.valid"matStepperNext>SUIVANT</button>
                         </div>
                     </form>
                 </mat-card-content>
@@ -142,7 +160,7 @@
 
                 <mat-expansion-panel style="border-radius: 3em ; " (opened)="panelOpenState4=true ; " (closed)="panelOpenState4=false ">
                     <mat-expansion-panel-header [style.background-color]="panelOpenState4 ? '#d1cdcd !important' : '' " style="border-bottom-left-radius: 0em ; border-bottom-right-radius: 0em ; size:5vw !important ">
-                        <mat-panel-title [style.color]="panelOpenState4 ? 'white !important' : '#a49c9b !important' " style=" ">
+                        <mat-panel-title [style.color]="panelOpenState4 ? 'white !important' : '#a49c9b !important' " >
                             Analyse BiodyManager
                         </mat-panel-title>
                     </mat-expansion-panel-header>

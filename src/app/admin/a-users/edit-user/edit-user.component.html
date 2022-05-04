@@ -1,0 +1,114 @@
+<app-navmenu></app-navmenu>
+
+
+<br><br>
+
+           
+<div class="separator">Modifier cet Utilisateur</div>
+<div class="outline">
+
+<mat-card class="  mat-elevation-z8  col-10 "  >
+    <mat-card-header>
+        <mat-card-title class="title-overlap"><h3>Informations Personelles</h3></mat-card-title>
+    </mat-card-header>
+    <br> <br>
+    <mat-card-content>
+    <form  [formGroup]="CurrentUser" >
+
+        <div class="row center" >
+            
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Nom</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
+
+            <input matInput  placeholder="Laura " formControlName="firstName" >
+        </mat-form-field>
+        
+        
+        <mat-form-field appearance="standard" class="col-md-6">
+            <mat-label>Prénom</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="lastName" >
+        </mat-form-field>
+    </div>
+
+
+    <div class="row center" >
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Date de Naissance</mat-label>
+            <mat-icon matPrefix class="my-icon">date_range</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="birthDate">
+        </mat-form-field>
+        
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>type</mat-label>
+            <mat-icon matPrefix class="my-icon">tag_faces</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="type">
+        </mat-form-field>
+        </div>
+
+        <div class="row center" >
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Entreprise</mat-label>
+            <input matInput  placeholder="Martin " formControlName="entreprise">
+        </mat-form-field>
+        
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Occupation</mat-label>
+            <mat-icon matPrefix class="my-icon">folder_shared</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="occupation">
+        </mat-form-field>
+
+       
+        </div>
+        
+        <div class="row" >
+            <mat-form-field appearance="standard" class=" col-md-6 ">
+                <mat-label>Adresse</mat-label>
+                <mat-icon matPrefix class="my-icon">home</mat-icon>
+
+                <input matInput  placeholder="Martin " formControlName="adresse">
+            </mat-form-field>
+            <mat-form-field appearance="standard" class=" col-md-6 ">
+                <mat-label>Ville</mat-label>
+                
+                <mat-icon matPrefix class="my-icon">location_on</mat-icon>
+
+                <input matInput  placeholder="Martin " formControlName="country">
+            </mat-form-field>
+            </div>
+            <div class="row" >
+
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Code Postale</mat-label>
+            <mat-icon matPrefix class="my-icon">code</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="codePostale">
+        </mat-form-field>
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Delai Module Prescription</mat-label>
+            <mat-icon matPrefix class="my-icon">block</mat-icon>
+
+            <input matInput  placeholder="Martin " formControlName="endDate">
+        </mat-form-field>
+        </div>
+        
+       
+        
+       
+        </form>
+        <div  class=" boutton   ">
+            <button mat-button (click)=" updateUser(); "  >Modifier</button>
+        </div>
+        </mat-card-content>
+        </mat-card>
+        </div>
+        <a href="admin/users/listeusers">   <button mat-icon-button color="primary"  style="float: right; margin-right: 30vw;" title="Modifier">Retour à la liste des utilisateurs</button></a>
+  
+
+
+<app-footer></app-footer>

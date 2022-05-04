@@ -2,7 +2,7 @@
 
 <div style="display:flex;text-align:center;">
   
-    <input matInput (keyup)="applyFilter($event)" class="searchbar center" type="text" placeholder="Search.."  #input>
+    <input matInput (keyup)="applyFilter($event)" class="bar center" type="text" placeholder="Search.."  #input>
     <button class="chercher" > CHERCHER </button>
 </div>
 <div class="example-container cdk-elevation-z8">
@@ -33,9 +33,8 @@
     
         <ng-container cdkColumnDef="birthDate">
           
-            <td cdk-cell *cdkCellDef="let element ">  {{element.birthDate }} </td>
+            <td cdk-cell *cdkCellDef="let element ">  {{element.birthDate.timestamp*1000.05 | date: 'dd-MM-yyyy'}} </td>
            
-            <td cdk-cell *cdkCellDef="let element "> {{element.birthDate}} </td>
         </ng-container>
     
         <tr cdk-row *cdkRowDef="let row; columns: displayedColumns; " (click)="editProfil(row)"></tr>

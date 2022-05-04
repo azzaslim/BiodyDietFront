@@ -292,5 +292,12 @@ th{
   background-color: #d1d1d1;
   color: #8f8684;
 }
+.mat-row.hovered {
+  background: #eee;
+}
+
+.mat-row.highlighted {
+background: #999;
+}
 
 

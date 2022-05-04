@@ -17,6 +17,7 @@ import { AuthService } from '../Services/RestUser.service';
 export class ListeprofilComponent implements OnInit {
   id!: number;
   displayedColumns = ['id', 'firstName', 'lastName', 'birthDate'];
+  role!: string;
 
   dataSource = new MatTableDataSource<Profil>();
 
@@ -33,8 +34,13 @@ localStorage.removeItem('profil');
       if (x.length==0)
       {
         alert("no patient exist");
-        this.router.navigate(['/home'])
-      }
+         this.role = JSON.parse(localStorage.getItem('currentUser')!).role
+          if (this.role == 'ROLE_ADMIN') {
+            this.router.navigate(['/admin/home'])
+          }
+          else
+            this.router.navigate(['/home'])      }
+
       else
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;

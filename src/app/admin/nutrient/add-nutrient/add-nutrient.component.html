@@ -1,4 +1,3 @@
-<app-navmenu></app-navmenu>
 <mat-card  class=" col-10 ">
 <mat-card-content>
 <form [formGroup]="addData" (ngSubmit)="add()"  >
@@ -6,22 +5,33 @@
     <div class=" row center ">
    
        
-        <mat-form-field appearance="outline" class=" col-md-4 ">
+        <mat-form-field appearance="outline" class=" row center  ">
             <mat-label>Nom</mat-label>
-            <input matInput placeholder="Nutriment" formControlName="name" >
+            <input matInput placeholder="Nutriment" id="name" formControlName="name" >
+            <div *ngIf="f['name'].touched && f['name'].invalid">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']"> le nom est obligatoire </div>
+                <div *ngIf="f['name'].errors && f['name'].errors['pattern']">ce champ doit avoir des caractères</div>
+            </div>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="col-md-4 ">
+        <mat-form-field appearance="outline" class="row center  ">
             <mat-label>Teneur</mat-label>
-            <input matInput placeholder="Teneur" formControlName="tenor">
+            <input matInput placeholder="Teneur"  id="tenor" formControlName="tenor">
+            <div *ngIf="f['tenor'].touched && f['tenor'].invalid">
+                <div *ngIf="f['tenor'].errors && f['tenor'].errors['required']"> le tenor est obligatoire </div>
+                <div *ngIf="f['tenor'].errors && f['tenor'].errors['pattern']">ce champ doit avoir des caractères</div>
+            </div>
         </mat-form-field>
-        <mat-form-field appearance="outline" class=" col-md-4">
+        <mat-form-field appearance="outline" class=" row center ">
             <mat-label>unité</mat-label>
-            <input matInput placeholder="KG" formControlName="unity">
+            <input matInput placeholder="KG" id="unity" formControlName="unity">
+            <div *ngIf="f['unity'].touched && f['unity'].invalid">
+                <div *ngIf="f['unity'].errors && f['unity'].errors['required']"> l'unite est obligatoire </div>
+                <div *ngIf="f['unity'].errors && f['unity'].errors['pattern']">ce champ doit avoir des caractères</div>
+            </div>
         </mat-form-field>
-        <button type="submit" class=" boutton d-flex justify-content-center mat-button matStepperNext">Ajouter</button>
+        <button [disabled]="!addData.valid" type="submit" class=" boutton d-flex justify-content-center mat-button matStepperNext">Ajouter</button>
     </div>
 </form>
 </mat-card-content>
 </mat-card>
-<app-footer></app-footer>

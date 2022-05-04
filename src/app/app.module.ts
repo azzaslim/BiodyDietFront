@@ -48,11 +48,21 @@ import { InfoPersonneComponent } from './client/info-personne/info-personne.comp
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-import { AuthGuardService } from './client/Services/auth-guard.service';
 import { AddPatientService } from './client/Services/Rest-patient.service';
+
+import { AHomeComponent } from './admin/a-home/a-home.component';
+import { AuthGuardService } from './guard/auth-guard.service';
+import { ChildGuard } from './guard/Admin.guard';
+import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
+import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-groupes.component';
+import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.component';
+import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
+import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
+import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
 import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
+import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
 
 
 
@@ -78,15 +88,21 @@ import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutri
    AjouterPreparationComponent,
    VerifaccountComponent,
    ChangePasswordComponent,
+   PatientsDialogComponent,
+   AHomeComponent,
+   ListeUsersComponent,
+   ListeGroupesComponent,
+   DetailUserComponent,
+   EditUserComponent,
+   DetailGroupeComponent,
+   EditGroupeComponent,  
    SymptommanageComponent,
    AddsymptomComponent,
    PatientsDialogComponent,
    AddNutrientComponent,
    NutrientComponent,
    NutrientdetailsComponent,  
-  
-  
-   
+   NutrientComponent, EditNutrientComponent,  
   ],
   imports: [
     MatListModule,
@@ -121,7 +137,8 @@ import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutri
     provide: STEPPER_GLOBAL_OPTIONS,
     useValue: { displayDefaultIndicatorType: false }
   },
-AuthGuardService],
+AuthGuardService,
+ChildGuard],
 
   bootstrap: [AppComponent],
   entryComponents: [PrescriptionComponent]

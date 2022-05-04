@@ -7,6 +7,9 @@ import { Symptom } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
 import { AuthService} from 'src/app/client/Services/RestUser.service';
 import { RestNutrientService, Nutrient  } from './../../../client/Services/rest-nutrient.service';
+import { AddNutrientComponent } from '../add-nutrient/add-nutrient.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-nutrient',
@@ -14,29 +17,30 @@ import { RestNutrientService, Nutrient  } from './../../../client/Services/rest-
   styleUrls: ['./nutrient.component.css']
 })
 export class NutrientComponent implements OnInit {
-  displayedColumns = ['id','name','tenor','unity'];
+  displayedColumns = ['id','name','tenor','unity','action'];
+  actions!: string ;
   dataSource = new MatTableDataSource<Nutrient>();
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private user: RestNutrientService, private authService: AuthService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private nutrient: RestNutrientService, private restnutrient: RestNutrientService,private dialog: MatDialog, private authservice: AuthService) { }
   @ViewChild(MatSort) sort!: MatSort;
       async ngOnInit() {
-      (await this.user.getNutrients()).subscribe((x) => {
+      (await this.nutrient.getNutrients()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no  exist");
-          this.router.navigate(['/home'])
+          this.router.navigate(['/admin/home'])
         }
-        else{}
-        this.dataSource = new MatTableDataSource(x);
-        this.dataSource.sort = this.sort;
-  
-      },
-        err => {
-         /*  this.authService.logout(),
-            console.log(err),
-            this.failNotification();
-          */
-  
-        }
+        else
+      localStorage.setItem("nbnutrients",x.length.toString())
+      this.dataSource = new MatTableDataSource(x);
+      this.dataSource.sort = this.sort;
+    },
+      err => {
+        this.authservice.logout(),
+          console.log(err),
+          this.failNotification();
+        // this.showToasterError();
+
+      }
       )
   };
 
@@ -49,24 +53,59 @@ export class NutrientComponent implements OnInit {
     }
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   failNotification() {
     Swal.fire('votre session a expiré', 'veuillez reconnecter s\' il vous plait  !!', 'error');
   }
-  confirmBox(){
-    Swal.fire({
-      title: 'votre session a expirée',
-      text: 'veuillez reconnecter s\' il vous plait  !!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Ok!',
-    }).then((result) => {
-     
-        this.authService.logout()
-      
-    })
+  ConfirmationNotification() {
+    
+Swal.fire({
+  title: 'Etes-vous sur ?',
+  icon: 'info',
+  showDenyButton: true,
+  showCancelButton: false,
+  confirmButtonText: 'Supprimer',
+  denyButtonText: `Annuler`,
+}).then((result) => {
+  if (result.isConfirmed) {
+this.deletenutrient()
+Swal.fire('ce nutiment a été supprimé', '', 'success')
+} 
+})
   }
+  async deletenutrient(){
+    console.log(typeof(JSON.parse(localStorage.getItem('nutrient to manage')!))),
+    (await this.restnutrient.deleteNutrient(JSON.parse(localStorage.getItem('nutrient to manage')!)))
+    .subscribe(
+      async response => {
+       console.log(response)
+       this.router.navigate(['/admin/nutrient/nutrientlist'])
+       this.ngOnInit()
+      },
+      err => {
+        console.log(err)
+      })
+   
+  }
+  async nutrientToManage(nutrient: Nutrient) {
+    localStorage.setItem('nutrient to manage', JSON.stringify(nutrient.id));
+  }
+  async openDialog(): Promise<void> {
+    
+        const dialogRef = this.dialog.open(AddNutrientComponent, {
+          width: '50%',
+          height: '55%',
+          data: {},
+        });
+     
+        
+      
+      }
+    
   
-
  
 
 }

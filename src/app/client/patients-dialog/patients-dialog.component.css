@@ -23,6 +23,11 @@ a{
 table td{
     height:1vw;
     font-size: 1vw; 
+    
+}
+table tr:hover{
+ background-color: rgb(248, 247, 246);
+  
 }
 table tr{
   height:1vw;
@@ -65,7 +70,6 @@ input  {
   }
   table {
     width: 130%;
-    height:110%;
     position: sticky;
     border: none;
   }

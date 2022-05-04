@@ -9,10 +9,18 @@ import { AuthService } from 'src/app/client/Services/RestUser.service';
   styleUrls: ['./navmenu.component.css']
 })
 export class NavmenuComponent implements OnInit {
-
+   homePath!:string
+   role!:string
+ 
+ 
   constructor(private _formBuilder: FormBuilder,private router: Router, private authService: AuthService) {}
-
   ngOnInit(): void {
+    this.role = JSON.parse(localStorage.getItem('currentUser')!).role
+
+    if (this.role == 'ROLE_ADMIN') {
+  this.homePath="admin/home"   }
+    else
+    this.homePath="home"   
   }
   disconnect() {  
     console.log('logout');  

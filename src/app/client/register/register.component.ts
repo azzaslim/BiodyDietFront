@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirectiv
 import { Router } from '@angular/router';
 import { ConfirmedValidator } from '../Validator-Password/confirmed-validator';
 import { AuthService } from '../Services/RestUser.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -41,15 +42,34 @@ export class RegisterComponent implements OnInit {
   register() {
 
     let data = this.registerData.value
-console.log(data)
-    this.authService.register(data)
+ const prasedDate = Date.parse(this.registerData.get('birthDate')!.value)
+if (isNaN(prasedDate) || this.registerData.get('birthDate')!.value.length < 10) {
+  alert("date de naissance doit etre sous la forme dd-mm-aaaa ou dd/mm/aaaa")
+}
+/* if ((typeof (this.registerData.get('firstName')!.value) && 
+ (this.registerData.get('lastName')!.value)&& 
+ (this.registerData.get('country')!.value) &&
+ (this.registerData.get('occupation')!.value) &&
+ (this.registerData.get('entreprise')!.value)
+  !== 'string')) {
 
+  alert("veuillez entrer des informations corrects")
+}
+if ((typeof (this.registerData.get('codePostale')!.value) === null) )
+alert("entrez un valide code postale") */
+  else {
+    this.authService.register(data)
       .subscribe(
         response => {
           this.router.navigate(['/'])
         },
-        err => console.log(err),
+        err => {console.log(err),
+        this.failNotification()}
       )
+  }
+}
+  failNotification(){
+    Swal.fire('cet email est déjà utilisé ','veuillez verifier votre information','error')
   }
 
 }

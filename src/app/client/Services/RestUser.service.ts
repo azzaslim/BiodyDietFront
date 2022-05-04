@@ -1,13 +1,19 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { addSymptom_URL, ADD_PREPARATION_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL} from 'src/common/url';
+import { DELETE_USER_URL,  GET_ONE_USER_URL, GET_USERS_URL,  UPDATE_CURRENT_USER_URL } from 'src/app/common/url';
+
+import { BehaviorSubject} from 'rxjs';
+
+
+import { ADD_PREPARATION_URL, GETPROFILE_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL} from 'src/common/url';
 //import { ADD_PREPARATION_URL } from 'src/common/url';
 
 import { async, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+
 
 
 export interface Product {
@@ -21,6 +27,11 @@ export interface Nutrient {
   name: string;
   tenor: string;
   unity: string;
+}
+export interface User {
+  firstName: string;
+  id: number;
+  lastName: number;
 }
 
 export interface Symptom {
@@ -42,32 +53,45 @@ export class AuthService implements OnInit {
 
   GETPRODUCT_URL = "http://localhost:8000/getproducts";
   GETNutrient_URL = "http://localhost:8000/getnutrients";
+  loggedIn!: number;
+  private subject = new BehaviorSubject<User>(null!);
+  User = new BehaviorSubject<any>(null);
 
-  getToken() {
-    return localStorage.getItem('jwt');
-
-  }
+  
   login(user: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
+    this.loggedIn = 1;
+    this.User.next(user);
+    localStorage.setItem('AUTH_DATA', JSON.stringify(user));
+
+
+    this.isLoggedIn();
     return this.http.post<any>(LOGIN_URL, user, { headers });
   }
-  
-  
-     async getProfile() {
-      const headers = new HttpHeaders({
 
-        'Authorization': 'Bearer' + this.getToken(),
-        'Content-Type': 'application/json',
-  
-      });
-      console.log("method get Token",this.getToken());
-      return await this.http.get(GETPROFILE_URL, { headers}).toPromise();   
+  isLoggedIn(): Boolean {
+    if (this.loggedIn !== 1) return false
+    else
+      return true
+  }
 
-     } 
+  async getProfile() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.getToken(),
+      'Content-Type': 'application/json',
 
-  
+    });
+    return await this.http.get(GETPROFILE_URL, { headers }).toPromise();
+  }
+
+  getToken() {
+    //return localStorage.getItem('jwt');
+    return localStorage.getItem("jwt");
+
+  }
+
 
     
   register(user: any) {
@@ -94,14 +118,14 @@ export class AuthService implements OnInit {
     return this.http.post<any>(environment.apiURL + 'reset/' + localStorage.getItem('token'), user, { headers });
 
   }
-  async updateUser( user: any) {
+  async updateCurrentUser(user: any) {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.getToken(),
       'Content-Type': 'application/json',
     });
-    
-    return await this.http.put<any>(UPDATE_USER_URL,user, { headers});   
-   } 
+
+    return await this.http.put<any>(UPDATE_CURRENT_USER_URL, user, { headers });
+  }
 
 
   add(prep: any) {
@@ -133,8 +157,12 @@ export class AuthService implements OnInit {
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
     localStorage.clear();
-    console.clear()
+    this.User.next(null!);
+    console.clear();
+    this.loggedIn = 0;
 
+    console.clear()
+  }
 //nutients
   // getNutrients(): Observable<Nutrient[]> {
   //   return this.http.get<Nutrient[]>(this.GETNutrient_URL);
@@ -153,39 +181,60 @@ export class AuthService implements OnInit {
  
 
    // localStorage.removeItem('previewUrl')
-   localStorage.removeItem('profil')
-   localStorage.removeItem('jwt')
-  }
+   
 
   /* getNutrients(): Observable<Nutrient[]> {
     return this.http.get<Nutrient[]>(this.GETNutrient_URL);
   } */
 
-  async updateLogo( logo: any) {
+  async updateLogo(logo: any) {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.getToken(),
 
     });
-    
-    return await this.http.post<any>(UPDATE_LOGO_URL,logo, { headers});   
-   } 
 
-   async getSymptoms(): Promise<Observable<Symptom[]>> {
+    return await this.http.post<any>(UPDATE_LOGO_URL, logo, { headers });
+  }
+  async getUsers(): Promise<Observable<User[]>> {
     // return this.http.get<Profil[]>(this.URL);
     console.log(this.getToken());
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
-    return await this.http.get<Symptom[]>(getSymptoms_URL,{headers}); 
-   }
-   async addsymptom(symptom: any) {
+    return await this.http.get<User[]>(GET_USERS_URL, { headers });
+  }
+  public get UserSubjectValue() {
+    if (this.User) {
+      return this.User.value;
+    } else {
+      return null
+    }
+  }
+  async deleteUser(id: any) {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
-    console.log(this.getToken());
-    
-    return await this.http.post<any>(addSymptom_URL, symptom, { headers });
 
+    return await this.http.post<any>(DELETE_USER_URL, JSON.stringify({id: id}), { headers });
+  }
+  async getUser(id:any): Promise<Observable<any>> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getToken()}`
+    })
+
+    return this.http.post<any>(GET_ONE_USER_URL,JSON.stringify({id:JSON.parse(id)}),{headers}); 
+   } 
+   async updateUser(user: any) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.getToken(),
+      'Content-Type': 'application/json',
+    });
+
+console.log(user)
+    const params = new HttpParams().set('Id',JSON.parse(localStorage.getItem('user to manage')!))
+
+    return await this.http.put<any>(UPDATE_USER_URL+ "/" +params,  user, { headers});
   }
 
   }

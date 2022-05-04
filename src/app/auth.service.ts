@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { addSymptom_URL, ADD_PREPARATION_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
+import {ADD_PREPARATION_URL, GETPROFILE_URL,  LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -102,10 +102,10 @@ export class AuthService implements OnInit {
 
   // }
 
-//products
+/* //products
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.GETPRODUCT_URL);
-  }
+  } */
 
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');

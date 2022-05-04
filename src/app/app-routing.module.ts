@@ -19,37 +19,68 @@ import { PrescriptionComponent } from './client/prescription/prescription.compon
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-import { AuthGuardService } from './client/Services/auth-guard.service';
-import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
+
+import { AHomeComponent } from './admin/a-home/a-home.component';
+import { ChildGuard } from './guard/Admin.guard';
+import { AuthGuardService } from './guard/auth-guard.service';
+import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
+import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.component';
+import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
+import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-groupes.component';
+import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
+import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
+import { UserGuard } from './guard/User.guard';
 import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
+import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
 const routes: Routes = [
-  { path: 'home', component: HomeComponent , canActivate : [AuthGuardService]  },
+  { path: 'home', component: HomeComponent  , canActivate : [AuthGuardService,UserGuard]},
   { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService]  },
   { path: 'parametre', component: ParametreComponent , canActivate : [AuthGuardService]  },
   { path: 'editCompte', component: EditcompteComponent , canActivate : [AuthGuardService] },
   { path: 'editImpression', component: EditInfoImpressionComponent , canActivate : [AuthGuardService] },
   { path: 'gestion', component: GestionComplementComponent , canActivate : [AuthGuardService] },
-  { path: 'symptom', component: SymptommanageComponent , canActivate : [AuthGuardService] },
-  { path: 'nutrient', component: NutrientComponent, canActivate : [AuthGuardService] },
-  { path: 'addsymptom', component: AddsymptomComponent , canActivate : [AuthGuardService] },
-  { path: 'addnutrient', component: AddNutrientComponent , canActivate : [AuthGuardService] },
+  { path: 'admin/symptom/symptomlist', component: SymptommanageComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/nutrient/nutrientlist', component: NutrientComponent, canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/symptom/addsymptom', component: AddsymptomComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/nutrient/addnutrient', component: AddNutrientComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'produits', component: ProduitsComponent , canActivate : [AuthGuardService] },
   { path: 'preparations', component: PreparationComponent , canActivate : [AuthGuardService] },
   { path: 'complements', component: ComplementsComponent , canActivate : [AuthGuardService] },
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
-  { path: 'nutrientdetails/:id', component: NutrientdetailsComponent , canActivate : [AuthGuardService] },
+  { path: 'admin/nutrient/nutrientdetails/:id', component: NutrientdetailsComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path:  'admin/nutrient/editnutrient', component: EditNutrientComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent},
   { path: 'verification', component:VerifaccountComponent  },
   { path: 'reset/:token', component:ChangePasswordComponent   },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
- { path: '**', component: PrescriptionComponent , canActivate : [AuthGuardService] }
+ { path: 'presc', component: PrescriptionComponent , canActivate : [AuthGuardService] },
+ //********************************************************************************************* */
+ { path: 'admin/home', component: AHomeComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/users/listeusers', component: ListeUsersComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/users/edituser', component: EditUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/users/consultuser', component: DetailUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
+
+ { path: 'admin/groupes/listegroupes', component: ListeGroupesComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/groupes/editgroupe', component: EditGroupeComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/groupes/consultgroupe', component: DetailGroupeComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService,ChildGuard]  },
+  
+  { path: 'admin/gestion', component: GestionComplementComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/produits', component: ProduitsComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/preparations', component: PreparationComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/complements', component: ComplementsComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService,ChildGuard]},
+
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const ArrayOfComponents = [ListeprofilComponent, 
+  HomeComponent, ]

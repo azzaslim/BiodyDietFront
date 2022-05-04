@@ -31,3 +31,4 @@ export const GET_QUESTIONNAIRE_URL= BASE_URL +'api/getquestionnaire ';
 export const GET_ONE_QUESTIONNAIRE_URL= BASE_URL +'api/get/OneQuestionnaire';
 
 export const DELETE_QUESTIONNAIRE_URL= BASE_URL +'api/delete/questionnaire';
+export const UPDATE_QUESTIONNAIRE_URL= BASE_URL +'api/updateQuestionnaire';

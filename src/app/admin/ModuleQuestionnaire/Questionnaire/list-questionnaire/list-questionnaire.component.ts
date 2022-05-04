@@ -104,8 +104,8 @@ export class ListQuestionnaireComponent implements OnInit {
   checkValue(event: any) {
   }
 
-  async updateUser() {
- /*    let data = this.dataSource.data[JSON.parse(localStorage.getItem('user to manage')!)].modulePresc;
+ /*  async updateUser() {
+    let data = this.dataSource.data[JSON.parse(localStorage.getItem('user to manage')!)].modulePresc;
     (await this.RestUserService.updateUser(JSON.stringify({ souscription: data })))
       .subscribe(
         (response: any) => {
@@ -114,7 +114,7 @@ export class ListQuestionnaireComponent implements OnInit {
         },
 
 
-      ) */
-  }
+      )
+  } */
   
 }

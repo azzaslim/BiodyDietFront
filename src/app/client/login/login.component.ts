@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { RestPatientService } from '../Services/Rest-patient.service';
+import { RestQuestionnaireService } from '../Services/rest-questionnaire.service';
 import { RestUserService } from '../Services/RestUser.service';
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('')
   });
   role!: string;
-  constructor(private RestUserService: RestUserService, private RestPatientService: RestPatientService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private RestUserService: RestUserService, private RestPatientService: RestPatientService, private router: Router, private formBuilder: FormBuilder, private RestQuestionnaireService: RestQuestionnaireService) {
   }
   ngOnInit() {
 
@@ -32,6 +33,11 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('nbPatients', JSON.stringify(Response.length))
               console.log(Response)
             });
+            (await this.RestQuestionnaireService.getQuestionnaires()).subscribe(
+              Response => {
+                localStorage.setItem('nbQuestionnaire', JSON.stringify(Response.length))
+                console.log(Response)
+              });
 
             (await this.RestUserService.getUsers()).subscribe((x) => {
               localStorage.setItem("nbusers", x.length.toString())

@@ -75,6 +75,7 @@ import { DetailAnswersComponent } from './admin/ModuleQuestionnaire/Answers/deta
 import { ListAnswersComponent } from './admin/ModuleQuestionnaire/Answers/list-answers/list-answers.component';
 import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
 import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
 
 
 
@@ -122,7 +123,8 @@ import { SymptommanageComponent } from './admin/symptom/symptommanage/symptomman
          DetailQuestionnaireComponent,
          ListAnswersComponent,
          AddAnswersComponent,
-         DetailAnswersComponent,  
+         DetailAnswersComponent,
+         EditQuestionnaireComponent,  
   ],
   imports: [
     MatListModule,

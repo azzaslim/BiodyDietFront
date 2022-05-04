@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ADD_PATIENT_URL, GET_ONE_PATIENT_URL } from 'src/app/client/common/url';
+import { ADD_PATIENT_URL, ADD_QUESTIONNAIRE_URL, GET_ONE_PATIENT_URL } from 'src/app/common/url';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -79,7 +79,6 @@ export class RestPatientService {
   })
   return this.http.post<any>(GET_ONE_PATIENT_URL,JSON.stringify({id: id}),{headers}); 
  } 
-
 
   
 }

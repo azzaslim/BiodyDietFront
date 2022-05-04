@@ -26,3 +26,8 @@ export const GET_USERS_URL= BASE_URL +'api/get/users';
 export const DELETE_USER_URL= BASE_URL +'api/delete/user';
 export const ADD_NUTRIENT_URL= BASE_URL +'api/addnutrient';
 export const GETALL_NUTRIENTS_URL= BASE_URL +'api/getnutrient ';
+export const ADD_QUESTIONNAIRE_URL= BASE_URL +'api/addquestionnaire ';
+export const GET_QUESTIONNAIRE_URL= BASE_URL +'api/getquestionnaire ';
+export const GET_ONE_QUESTIONNAIRE_URL= BASE_URL +'api/get/OneQuestionnaire';
+
+export const DELETE_QUESTIONNAIRE_URL= BASE_URL +'api/delete/questionnaire';

@@ -9,8 +9,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { RestUserService } from 'src/app/client/Services/RestUser.service';
-import { Symptom } from './../../../client/Services/rest-symptom.service';
 import Swal from 'sweetalert2';
+import { Symptom } from 'src/app/client/Services/rest-symptom.service';
 
 @Component({
   selector: 'app-symptommanage',

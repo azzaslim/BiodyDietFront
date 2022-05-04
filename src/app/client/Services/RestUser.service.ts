@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { addSymptom_URL, DELETE_USER_URL, GETPROFILE_URL, getSymptoms_URL, GET_ONE_USER_URL, GET_USERS_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL } from 'src/app/client/common/url';
+import { addSymptom_URL, DELETE_USER_URL, GETPROFILE_URL, getSymptoms_URL, GET_ONE_USER_URL, GET_USERS_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL } from 'src/app/common/url';
 import { environment } from "src/environments/environment";
-import { ADD_PREPARATION_URL } from 'src/app/client/common/url';
+import { ADD_PREPARATION_URL } from 'src/app/common/url';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ADD_USER_URL, UPDATE_CURRENT_USER_URL } from 'src/common/url';
 
@@ -29,13 +29,13 @@ export interface User {
   firstName: string;
   id: number;
   lastName: number;
+  modulePresc:boolean;
 }
 
 export interface Symptom {
   id: number;
   name: string;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -89,11 +89,6 @@ export class RestUserService implements OnInit {
   }
   
   
-  
-
-  
-
-    
   register(user: any) {
     console.log(user);
     const headers = new HttpHeaders({
@@ -118,6 +113,7 @@ export class RestUserService implements OnInit {
     return this.http.post<any>(environment.apiURL + 'reset/' + localStorage.getItem('token'), user, { headers });
 
   }
+
   async updateCurrentUser(user: any) {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.getToken(),
@@ -138,18 +134,6 @@ export class RestUserService implements OnInit {
   }
 
 
-  // GetProducts(){
-
-  //   const headers = new HttpHeaders({'Content-Type': 'application/json',});
-  //   return this.http.post<any>( GETALL_Product_URL,{ headers });
-
-  // }
-
-
-//products
-
-
-
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.GETPRODUCT_URL);
   }
@@ -159,22 +143,7 @@ export class RestUserService implements OnInit {
     localStorage.clear();
     console.clear()
 
-//nutients
-  // getNutrients(): Observable<Nutrient[]> {
-  //   return this.http.get<Nutrient[]>(this.GETNutrient_URL);
-  // }
-//symptoms
-  
-  //  async getSymptoms() {
-  //   const headers = new HttpHeaders({
-  //     'Authorization': 'Bearer' + this.getToken(),
-  //     'Content-Type': 'application/json',
 
-  //   });
-  //   console.log("method get Token",this.getToken());
-  //   return await this.http.get(getSymptoms_URL, { headers}).toPromise();
-  //  }
- 
 
    // localStorage.removeItem('previewUrl')
    localStorage.removeItem('profil')
@@ -228,7 +197,6 @@ export class RestUserService implements OnInit {
       'Content-Type': 'application/json',
 
     });
-console.log(user)
     const params = new HttpParams().set('Id',JSON.parse(localStorage.getItem('user to manage')!))
 
     return await this.http.put<any>(UPDATE_USER_URL+ "/" +params,  user, { headers});

@@ -12,13 +12,16 @@ export class NavmenuComponent implements OnInit {
    homePath!:string
    role!:string
  
- 
+   isAdmin = true;
+
   constructor(private _formBuilder: FormBuilder,private router: Router, private RestUserService: RestUserService) {}
   ngOnInit(): void {
     this.role = JSON.parse(localStorage.getItem('currentUser')!).role
 
     if (this.role == 'ROLE_ADMIN') {
-  this.homePath="admin/home"   }
+      this.isAdmin =false;
+  this.homePath="admin/home"  
+ }
     else
     this.homePath="home"   
   }

@@ -104,7 +104,7 @@
                 <div class="row">
 
 
-                    <select appearance="standard" class="col-md-7 offset-2 " hidden class="custom-select mb-3 mt-3"
+                    <select appearance="standard" class="col-md-7 offset-2 "  class="custom-select mb-3 mt-3"
                         (change)="changeActivity($event)" formControlName="Activity">
                         <option value="">Niveau d'activité</option>
                         <option *ngFor="let act of Activities" [ngValue]="act">
@@ -112,6 +112,7 @@
                         </option>
                     </select>
                 </div>
+                   
             </form>
             <div class=" boutton   ">
                 <button mat-button (click)=" AddPatient(); " [disabled]="!AddPatientForm.valid">Enregistrer</button>

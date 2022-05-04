@@ -12,11 +12,14 @@ import Swal from 'sweetalert2';
 export class AHomeComponent implements OnInit {
   nbusers!: string;
   nbPatients!: string;
+  nbQuestionnaire!:string;
   constructor(private RestUserService: RestUserService,private RestPatientService : RestPatientService , router: Router) { }
 
   async ngOnInit() {
     this.nbPatients = localStorage.getItem('nbPatients')!;
-    this.nbusers = localStorage.getItem('nbusers')!
+    this.nbusers = localStorage.getItem('nbusers')!;
+    this.nbQuestionnaire = localStorage.getItem('nbQuestionnaire')!
+
   }
 
   FailNotification() {

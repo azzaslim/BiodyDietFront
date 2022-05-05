@@ -21,7 +21,7 @@ export class PrescriptComponent implements OnInit {
     this.nbPatients = localStorage.getItem('nbPatients')!;
     this.nbusers = localStorage.getItem('nbusers')!;
     
-    this.nbnutrient= localStorage.getItem('nbnutrient')!;
+    this.nbnutrient= localStorage.getItem('nbnutrients')!;
    this.nbsymptoms=localStorage.getItem('nbsymptoms')!;
   }
 

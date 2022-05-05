@@ -5,15 +5,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
-
 import { MatSort, Sort } from '@angular/material/sort';
 
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { AuthService } from 'src/app/client/Services/RestUser.service';
+
 import { Symptom } from './../../../client/Services/rest-symptom.service';
 import Swal from 'sweetalert2';
 import { AddsymptomComponent } from '../addsymptom/addsymptom.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RestUserService } from 'src/app/client/Services/RestUser.service';
 @Component({
   selector: 'app-symptommanage',
   templateUrl: './symptommanage.component.html',
@@ -22,7 +22,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class SymptommanageComponent implements OnInit {
   displayedColumns = ['id','symptom_name','action'];
   dataSource = new MatTableDataSource<Symptom>();
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestSymptomService, private authService: AuthService) { }
+
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestSymptomService, private authService: RestUserService) { }
+
+
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
       (await this.user.getSymptoms()).subscribe((x) => {
@@ -32,6 +35,7 @@ export class SymptommanageComponent implements OnInit {
           this.router.navigate(['/home'])
         }
         else
+      
       localStorage.setItem("nbsymptoms",x.length.toString())
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;

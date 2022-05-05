@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './shared/footer/footer.component';
+
 import { NavmenuComponent } from './shared/navmenu/navmenu.component';
 import { FormControl, FormControlName, FormGroup, FormGroupName, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,7 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatRowDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
 import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
@@ -39,7 +39,7 @@ import { ParametreComponent } from './client/parametre/parametre.component';
 import { EditInfoImpressionComponent } from './client/paramètrecompte/edit-info-impression/edit-info-impression.component';
 import { EditcompteComponent } from './client/paramètrecompte/editcompte/editcompte.component';
 import { PatientsDialogComponent } from './client/patients-dialog/patients-dialog.component';
-import { AuthService } from './client/Services/RestUser.service';
+import { RestUserService } from './client/Services/RestUser.service';
 import {MatListModule} from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { PrescriptionComponent } from './client/prescription/prescription.component';
@@ -48,7 +48,6 @@ import { InfoPersonneComponent } from './client/info-personne/info-personne.comp
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-import { AddPatientService } from './client/Services/Rest-patient.service';
 
 import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AuthGuardService } from './guard/auth-guard.service';
@@ -61,8 +60,20 @@ import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-gr
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
+
 import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
 import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
+import { MatDivider, MatDividerModule } from '@angular/material/divider';
+import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
+// or
+import {MatRadioModule} from '@angular/material/radio';
+import { AddPatientComponent } from './admin/add-patient/add-patient.component';
+import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
+import { RestPatientService } from './client/Services/Rest-patient.service';
+import { FooterComponent } from './shared/footer/footer.component';
+import { RestNutrientService } from './client/Services/rest-nutrient.service';
+import { RestSymptomService } from './client/Services/rest-symptom.service';
+
 
 
 
@@ -70,8 +81,6 @@ import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutri
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    NavmenuComponent,
     HomeComponent,
     ListeprofilComponent,
     ParametreComponent,
@@ -90,7 +99,6 @@ import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutri
    ChangePasswordComponent,
    PatientsDialogComponent,
    AHomeComponent,
-   ListeUsersComponent,
    ListeGroupesComponent,
    DetailUserComponent,
    EditUserComponent,
@@ -98,15 +106,21 @@ import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutri
    EditGroupeComponent,  
    SymptommanageComponent,
    AddsymptomComponent,
-   PatientsDialogComponent,
    AddNutrientComponent,
+   NutrientdetailsComponent,   
+   EditNutrientComponent,  
+   AddUserComponent,
+   AddPatientComponent,
+   PrescriptComponent,  
    NutrientComponent,
-   NutrientdetailsComponent,  
-   NutrientComponent, EditNutrientComponent,  
+   ListeUsersComponent,
+   FooterComponent,
+   NavmenuComponent,
+   ChangePasswordComponent
   ],
   imports: [
-    MatListModule,
-    BrowserModule,
+  
+  MatListModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
     MatFormFieldModule,
@@ -123,14 +137,28 @@ import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutri
     MatStepperModule,
     MatExpansionModule,
     CdkTableModule,
-    CdkTableModule,
     MatDialogModule,
     MatTableModule,
     MatSelectModule,
+    MatDividerModule,
+    MatRadioModule,
+  
+   
+
+
+    
+
+
+
+    
+    
+
   ],
   providers: [
-  AuthService,
-  AddPatientService,
+  RestUserService,
+  RestPatientService,
+  RestNutrientService,
+  RestSymptomService,
   DatePipe,
 
   {

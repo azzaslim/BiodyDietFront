@@ -29,7 +29,11 @@ export interface Nutrient {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class RestUserService implements OnInit {
+  getUsers() {
+    throw new Error('Method not implemented.');
+  }
+
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void { }
   private REGISTER_URL = "http://localhost:8000/register";

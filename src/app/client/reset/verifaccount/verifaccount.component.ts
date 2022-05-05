@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../Services/RestUser.service';
+import { RestUserService } from '../../Services/RestUser.service';
 
 @Component({
   selector: 'app-verifaccount',
@@ -15,7 +15,7 @@ export class VerifaccountComponent implements OnInit {
    
     });
     
-constructor(private authService:AuthService ,private router:Router, private formBuilder : FormBuilder,  ) { 
+constructor(private RestUserService:RestUserService ,private router:Router, private formBuilder : FormBuilder,  ) { 
 }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ constructor(private authService:AuthService ,private router:Router, private form
   signIn(){
     let data = JSON.stringify(this.userEmail.value);
     console.log(data);
-    this.authService.verif_email(data)
+    this.RestUserService.verif_email(data)
     .subscribe(
       response=>{ 
       this.successNotification(),

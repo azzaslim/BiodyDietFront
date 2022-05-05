@@ -1,3 +1,4 @@
+
 import { environment } from "src/environments/environment";
 
 export const BASE_URL=environment.apiURL;
@@ -9,11 +10,14 @@ export const GET_PATIENT_URL= BASE_URL +'api/get/patient';
 export const GETPROFILE_URL= BASE_URL +'api/getProfile';
 export const RESET_URL= BASE_URL +'api/reset/reset';
 export const ADD_PREPARATION_URL= BASE_URL +'addproduct';
+
 export const GETALL_Product_URL= BASE_URL +'getproducts';
+
 export const UPDATE_CURRENT_USER_URL= BASE_URL +'api/updateCurrentUser';
 export const GET_ONE_USER_URL= BASE_URL +'api/get/OneUser';
 export const addSymptom_URL= BASE_URL +'api/addsymptom';
 export const getSymptoms_URL= BASE_URL +'api/getsymptoms';
+
 export const GET_ONE_PATIENT_URL= BASE_URL +'api/get/Onepatients';
 export const UPDATE_USER_URL= BASE_URL +'api/updateUser';
 export const UPDATE_LOGO_URL= BASE_URL +'api/updateLogo';

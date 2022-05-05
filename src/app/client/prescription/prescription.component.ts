@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatHorizontalStepper, MatStepper } from '@angular/material/stepper/stepper';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddPatientService, Profil } from '../Services/Rest-patient.service';
+import { RestPatientService, Profil } from '../Services/Rest-patient.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -39,7 +39,7 @@ export class PrescriptionComponent implements OnInit {
   profil!: string;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private user: AddPatientService, private route: ActivatedRoute, private AddPatientService: AddPatientService, private datePipe: DatePipe, private dialog: MatDialog) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, private user: RestPatientService, private route: ActivatedRoute, private AddPatientService: RestPatientService, private datePipe: DatePipe, private dialog: MatDialog) {
 
   }
   async ngOnInit() {

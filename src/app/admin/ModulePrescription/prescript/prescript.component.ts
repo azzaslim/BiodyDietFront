@@ -5,26 +5,19 @@ import { RestUserService } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-a-home',
-  templateUrl: './a-home.component.html',
-  styleUrls: ['./a-home.component.css']
+  selector: 'app-prescript',
+  templateUrl: './prescript.component.html',
+  styleUrls: ['./prescript.component.css']
 })
-export class AHomeComponent implements OnInit {
-
+export class PrescriptComponent implements OnInit {
 
   nbusers!: string;
   nbPatients!: string;
-  nbnutrient!:string;
-  nbsymptoms!:string;
-  nbQuestionnaire!:string;
   constructor(private RestUserService: RestUserService,private RestPatientService : RestPatientService , router: Router) { }
 
   async ngOnInit() {
     this.nbPatients = localStorage.getItem('nbPatients')!;
-    this.nbusers= localStorage.getItem('nbusers')!;
-   this.nbnutrient= localStorage.getItem('nbnutrients')!;
-   this.nbsymptoms=localStorage.getItem('nbsymptoms')!;
-   this.nbQuestionnaire = localStorage.getItem('nbQuestionnaire')!
+    this.nbusers = localStorage.getItem('nbusers')!
   }
 
   FailNotification() {

@@ -2,8 +2,9 @@ import { RestNutrientService } from './../../../client/Services/rest-nutrient.se
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/client/Services/RestUser.service';
+
 import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -17,7 +18,9 @@ export class AddNutrientComponent implements OnInit {
   tenor!: string;
   unity!: string;
   addData : FormGroup =new FormGroup({});
+
   constructor(private authService:RestNutrientService ,private router:Router, private formBuilder : FormBuilder,private user: RestNutrientService ) { 
+
 
     this.addData=formBuilder.group({
       name:['',[Validators.required]],
@@ -29,17 +32,10 @@ export class AddNutrientComponent implements OnInit {
     return this.addData.controls;
   }
    async add(){
-    
+
       let data = this.addData.value;
       const name = this.addData.get('name')!.value;
-     /*  if ((typeof (this.addData.get('name')!.value) !== 'string')) {
   
-        alert("entrez un valide nom")
-      }
-      const tenor = this.addData.get('tenor')!.value
-      if (isNaN(tenor) ||(typeof (this.addData.get('tenor')!.value) !== 'string')) {
-        alert("entrer un tenor valide")
-      } */
      
       const unity = this.addData.get('unity')!.value;
       if (typeof (this.addData.get('unity')!.value) !== 'string') {

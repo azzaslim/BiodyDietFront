@@ -3,9 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Symptom } from 'src/app/client/Services/RestUser.service';
+import { Symptom, RestUserService } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
-import { AuthService} from 'src/app/client/Services/RestUser.service';
+
 import { RestNutrientService, Nutrient  } from './../../../client/Services/rest-nutrient.service';
 import { AddNutrientComponent } from '../add-nutrient/add-nutrient.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -20,7 +20,7 @@ export class NutrientComponent implements OnInit {
   displayedColumns = ['id','name','tenor','unity','action'];
   actions!: string ;
   dataSource = new MatTableDataSource<Nutrient>();
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private nutrient: RestNutrientService, private restnutrient: RestNutrientService,private dialog: MatDialog, private authservice: AuthService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private nutrient: RestNutrientService, private restnutrient: RestNutrientService,private dialog: MatDialog, private authservice: RestUserService) { }
   @ViewChild(MatSort) sort!: MatSort;
       async ngOnInit() {
       (await this.nutrient.getNutrients()).subscribe((x) => {

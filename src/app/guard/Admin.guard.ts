@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../client/Services/RestUser.service';
+import { RestUserService } from '../client/Services/RestUser.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChildGuard implements CanActivate {
   role!: string
-  constructor(private router: Router,private  authService : AuthService) { }      
+  constructor(private router: Router,private  RestUserService : RestUserService) { }      
 
   canActivate(
     route: ActivatedRouteSnapshot,

@@ -3,16 +3,18 @@ import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { DELETE_USER_URL,  GET_ONE_USER_URL, GET_USERS_URL,  UPDATE_CURRENT_USER_URL } from 'src/app/common/url';
+
+import { DELETE_USER_URL,  GET_ONE_USER_URL, GET_USERS_URL,  UPDATE_CURRENT_USER_URL } from 'src/common/url';
 
 import { BehaviorSubject} from 'rxjs';
 
 
-import { ADD_PREPARATION_URL, GETPROFILE_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL} from 'src/common/url';
+import { addSymptom_URL, ADD_PREPARATION_URL, ADD_USER_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL} from 'src/common/url';
 //import { ADD_PREPARATION_URL } from 'src/common/url';
 
 import { async, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+
 
 
 
@@ -43,7 +45,7 @@ export interface Symptom {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class RestUserService implements OnInit {
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void { }
 
@@ -57,7 +59,6 @@ export class AuthService implements OnInit {
   private subject = new BehaviorSubject<User>(null!);
   User = new BehaviorSubject<any>(null);
 
-  
   login(user: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -181,7 +182,8 @@ export class AuthService implements OnInit {
  
 
    // localStorage.removeItem('previewUrl')
-   
+
+
 
   /* getNutrients(): Observable<Nutrient[]> {
     return this.http.get<Nutrient[]>(this.GETNutrient_URL);
@@ -197,7 +199,6 @@ export class AuthService implements OnInit {
   }
   async getUsers(): Promise<Observable<User[]>> {
     // return this.http.get<Profil[]>(this.URL);
-    console.log(this.getToken());
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
@@ -237,5 +238,32 @@ console.log(user)
     return await this.http.put<any>(UPDATE_USER_URL+ "/" +params,  user, { headers});
   }
 
+   async getSymptoms(): Promise<Observable<Symptom[]>> {
+    // return this.http.get<Profil[]>(this.URL);
+    console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return await this.http.get<Symptom[]>(getSymptoms_URL,{headers}); 
+   }
+   async addsymptom(symptom: any) {
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    console.log(this.getToken());
+    
+    return await this.http.post<any>(addSymptom_URL, symptom, { headers });
+
   }
+  AddUser(user: any) {
+    console.log(user);
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return this.http.post<any>(ADD_USER_URL, user, { headers });
+
+
+    }
+  }
+
 

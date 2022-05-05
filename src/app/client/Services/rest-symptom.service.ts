@@ -7,7 +7,8 @@ import { addSymptom_URL, ADD_PREPARATION_URL, GETPROFILE_URL, getSymptoms_URL, G
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { DELETE_Symptom_URL } from 'src/app/common/url';
+import { DELETE_Symptom_URL } from '../common/url';
+
 
 export interface Symptom {
   id: number;

@@ -19,8 +19,8 @@ import { PrescriptionComponent } from './client/prescription/prescription.compon
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-
 import { AHomeComponent } from './admin/a-home/a-home.component';
+
 import { ChildGuard } from './guard/Admin.guard';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
@@ -33,6 +33,14 @@ import { UserGuard } from './guard/User.guard';
 import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
 import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
 import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
+import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
+import { AddPatientComponent } from './admin/add-patient/add-patient.component';
+import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
+
+
+
+
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent  , canActivate : [AuthGuardService,UserGuard]},
   { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService]  },
@@ -62,6 +70,12 @@ const routes: Routes = [
  { path: 'admin/users/listeusers', component: ListeUsersComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/edituser', component: EditUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/consultuser', component: DetailUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/users/adduser', component: AddUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
+
+ { path: 'admin/addPatient', component: AddPatientComponent , canActivate : [AuthGuardService,ChildGuard]  },
+
+ { path: 'admin/ModulePrescription/Prescript', component:  PrescriptComponent, canActivate : [AuthGuardService,ChildGuard]  },
+
 
  { path: 'admin/groupes/listegroupes', component: ListeGroupesComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/groupes/editgroupe', component: EditGroupeComponent , canActivate : [AuthGuardService,ChildGuard]  },

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/client/Services/RestUser.service';
+import { RestUserService } from 'src/app/client/Services/RestUser.service';
 
 @Component({
   selector: 'app-navmenu',
@@ -13,7 +13,7 @@ export class NavmenuComponent implements OnInit {
    role!:string
  
  
-  constructor(private _formBuilder: FormBuilder,private router: Router, private authService: AuthService) {}
+  constructor(private _formBuilder: FormBuilder,private router: Router, private RestUserService: RestUserService) {}
   ngOnInit(): void {
     this.role = JSON.parse(localStorage.getItem('currentUser')!).role
 
@@ -24,7 +24,7 @@ export class NavmenuComponent implements OnInit {
   }
   disconnect() {  
     console.log('logout');  
-    this.authService.logout();  
+    this.RestUserService.logout();  
     this.router.navigate(['/'])
   } 
 }

@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import { RestNutrientService } from 'src/app/client/Services/rest-nutrient.service';
 import Swal from 'sweetalert2';
 

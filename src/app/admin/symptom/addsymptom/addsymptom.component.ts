@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/client/Services/RestUser.service';
+
+
+
 import Swal from 'sweetalert2';
 import { RestSymptomService } from './../../../client/Services/rest-symptom.service';
+
 @Component({
   selector: 'app-addsymptom',
   templateUrl: './addsymptom.component.html',
@@ -13,7 +16,8 @@ export class AddsymptomComponent implements OnInit {
   symptom_name!: string;
   id!:number;
   addData : FormGroup =new FormGroup({});
-  constructor(private authService:RestSymptomService ,private router:Router, private formBuilder : FormBuilder,private user: AuthService ) { 
+
+  constructor(private authService:RestSymptomService ,private router:Router, private formBuilder : FormBuilder ) { 
 
     this.addData=formBuilder.group({
       symptom_name:['',[Validators.required]],
@@ -37,6 +41,7 @@ export class AddsymptomComponent implements OnInit {
       let data = this.addData.value;
      localStorage.removeItem('symptom_name');
     (await this.authService.addsymptom(data))
+
   .subscribe(
     response=> {
       this.router.navigate(['/admin/symptom/symptomlist'])

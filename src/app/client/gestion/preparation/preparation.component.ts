@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, Symptom } from 'src/app/client/Services/RestUser.service';
-import { Product } from 'src/app/client/Services/RestUser.service';
+
+import { Product, RestUserService } from 'src/app/client/Services/RestUser.service';
 import {MatTableDataSource} from '@angular/material/table';
 import { RestProductService } from '../../Services/rest-product.service';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
@@ -11,6 +11,10 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { AddsymptomComponent } from 'src/app/admin/symptom/addsymptom/addsymptom.component';
 import Swal from 'sweetalert2';
 import {SelectionModel} from '@angular/cdk/collections';
+
+
+
+
 
 
 @Component({
@@ -25,7 +29,8 @@ export class PreparationComponent implements OnInit {
  
   //dataSource1 = new MatTableDataSource<Nutrient>();
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: AuthService) { }
+
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
       (await this.user.getProducts()).subscribe((x) => {
@@ -55,6 +60,7 @@ export class PreparationComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

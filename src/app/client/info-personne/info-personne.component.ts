@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddPatientService, Profil } from '../Services/Rest-patient.service';
-import { AuthService } from '../Services/RestUser.service';
+import { RestPatientService, Profil } from '../Services/Rest-patient.service';
+import { RestUserService } from '../Services/RestUser.service';
 
 @Component({
   selector: 'app-info-personne',
@@ -25,7 +25,7 @@ export class InfoPersonneComponent implements OnInit {
   profil!:string;
 
 
-  constructor(private _formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router, private user: AddPatientService, private authService: AuthService) {
+  constructor(private _formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router, private user:  RestPatientService, private RestUserService: RestUserService) {
     
   }
 //Validators.required

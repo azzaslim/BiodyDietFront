@@ -4,21 +4,17 @@
 <br><br>
 
            
-<div class="separator">Modifier cet Utilisateur</div>
-<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
-    <a href="admin/users/listeusers"><button mat-flat-button color="primary" ><mat-icon>keyboard_return</mat-icon> &emsp;Retour à la liste des utilisateurs</button></a>
-    <a href="admin/users/adduser"><button mat-flat-button color="primary" ><mat-icon>group_add</mat-icon>&emsp;Ajouter un nouveau Utilisateur</button></a>
-    <a href="admin/users/consultuser"><button mat-flat-button color="primary"><mat-icon>edit</mat-icon>&emsp;Afficher les details de  cet Utilisateur</button></a>
-</div>
+<div class="separator">Ajouter un nouveau Utilisateur</div>
+
 <div class="outline">
 
-<mat-card class="  mat-elevation-z8  col-10 "  >
+<mat-card class="  mat-elevation-z8 col-md-8 center "  >
     <mat-card-header>
-        <mat-card-title class="title-overlap">Informations Personelles</mat-card-title>
+        <mat-card-title class="title-overlap col-md-7">Informations Personelles</mat-card-title>
     </mat-card-header>
     <br> <br>
     <mat-card-content>
-    <form  [formGroup]="CurrentUser" >
+    <form  [formGroup]="AddUserForm" >
 
         <div class="row center" >
             
@@ -37,14 +33,30 @@
             <input matInput  placeholder="Martin " formControlName="lastName" >
         </mat-form-field>
     </div>
+    <div class="row center" >
+            
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Email</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
 
+            <input matInput  placeholder="Laura " formControlName="email" >
+        </mat-form-field>
+        
+        
+        <mat-form-field appearance="standard" class="col-md-6">
+            <mat-label>Mot de passe</mat-label>
+            <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon>
+
+            <input matInput type="password" placeholder="Martin " formControlName="password" >
+        </mat-form-field>
+    </div>
 
     <div class="row center" >
         <mat-form-field appearance="standard" class=" col-md-6 ">
             <mat-label>Date de Naissance</mat-label>
             <mat-icon matPrefix class="my-icon">date_range</mat-icon>
 
-            <input matInput  placeholder="Martin " formControlName="birthDate">
+            <input matInput type="text" placeholder="Martin " formControlName="birthDate">
         </mat-form-field>
         
         <div class="radio-section space-around" class=" col-md-6 ">
@@ -116,12 +128,14 @@
        
         </form>
         <div  class=" boutton   ">
-            <button mat-button (click)=" updateUser(); "  >Modifier</button>
+            <button mat-button (click)=" AddUser(); " [disabled]="!AddUserForm.valid" >Enregistrer</button>
         </div>
         </mat-card-content>
         </mat-card>
         </div>
   
-
-
+        <div class="d-grid gap-2 d-md-flex mt-4">
+            <a href="admin/users/listeusers"><button mat-flat-button color="primary" ><mat-icon>keyboard_return</mat-icon> &emsp;Retour à la liste des utilisateurs</button></a>
+        </div>
+<br><br><br><br>
 <app-footer></app-footer>

@@ -19,7 +19,6 @@ table{
    margin-top:0.5vw;
    margin:auto;
    position: sticky;
-   height:30 ;
 }
 table td{
   height:1vh;
@@ -72,18 +71,14 @@ input  {
   .example-container {
     height: 50%;
     overflow: auto;
+
   }
   .mat-elevation-z8 {
 box-shadow: none;
+height: 600px;
 
 }
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-  background-color: green;
-}
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-  border-color: green;
-}
+
 .submit {
   cursor: pointer;
   border-radius: 5em;
@@ -101,4 +96,7 @@ box-shadow: none;
 :host ::ng-deep .mat-tab-body-wrapper {
   height: 60%;
 
+}
+th{
+  background-color: #FFF;
 }

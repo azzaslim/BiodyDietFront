@@ -7,7 +7,8 @@ import { addSymptom_URL, ADD_PREPARATION_URL, GETPROFILE_URL, getSymptoms_URL, G
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { DELETE_Symptom_URL } from '../common/url';
+import { DELETE_Symptom_URL } from 'src/app/common/url';
+
 
 
 export interface Symptom {
@@ -50,7 +51,7 @@ export class RestSymptomService {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
-
+console.log(id)
     return await this.http.post<any>(DELETE_Symptom_URL, JSON.stringify({id: id}), { headers });
   }
   async getOneSymptom(id :number): Promise<Observable<any>> {

@@ -75,6 +75,7 @@ input  {
   }
   .mat-elevation-z8 {
 box-shadow: none;
+height: 600px;
 
 }
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
@@ -101,4 +102,7 @@ box-shadow: none;
 :host ::ng-deep .mat-tab-body-wrapper {
   height: 60%;
 
+}
+th{
+  background-color: #FFF;
 }

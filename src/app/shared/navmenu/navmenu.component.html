@@ -5,7 +5,7 @@
 
 <div class="navbar     justify-content-center ">
   <li> <a href={{homePath}}><mat-icon class="icon" style="color:white" color="white" aria-label="Example home icon">home</mat-icon></a></li>
-   <li ><a href=listeprofil> Liste des profils</a></li>
+   <li ><a href=listeprofil  *ngIf="isAdmin"> Liste des profils</a></li>
    <li> <a href="parametre">Paramètres</a></li>
    <li class="deconnexion"><button (click)="disconnect()" >Deconnexion</button></li>
 </div>

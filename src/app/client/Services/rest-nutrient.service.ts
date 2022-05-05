@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { GET_ONE_NUTRIENT_URL, UPDATE_NUTRIENT_URL } from 'src/app/common/url';
 import { ADD_NUTRIENT_URL, DELETE_Nutrient_URL, GETALL_NUTRIENTS_URL } from 'src/common/url';
-import { GET_ONE_NUTRIENT_URL, UPDATE_NUTRIENT_URL } from '../common/url';
+
 
 export interface Nutrient{
   id: number;

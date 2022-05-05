@@ -14,6 +14,7 @@ export class AHomeComponent implements OnInit {
 
   nbusers!: string;
   nbPatients!: string;
+
   nbnutrient!:string;
   nbsymptoms!:string;
   nbQuestionnaire!:string;
@@ -21,10 +22,12 @@ export class AHomeComponent implements OnInit {
 
   async ngOnInit() {
     this.nbPatients = localStorage.getItem('nbPatients')!;
+
     this.nbusers= localStorage.getItem('nbusers')!;
    this.nbnutrient= localStorage.getItem('nbnutrients')!;
    this.nbsymptoms=localStorage.getItem('nbsymptoms')!;
    this.nbQuestionnaire = localStorage.getItem('nbQuestionnaire')!
+
   }
 
   FailNotification() {

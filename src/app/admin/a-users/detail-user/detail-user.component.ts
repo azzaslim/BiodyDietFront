@@ -38,7 +38,7 @@ export class DetailUserComponent implements OnInit {
     (await this.RestUserService.getUser(localStorage.getItem('user to manage'))).subscribe(
       response => {
         console.log(response)    
-            localStorage.setItem("usertoupdate",JSON.stringify(response))
+           // localStorage.setItem("usertoupdate",JSON.stringify(response))
             this.getInfoUser()
 
       })
@@ -46,19 +46,19 @@ export class DetailUserComponent implements OnInit {
   async getInfoUser(){
    
       //this.datePipe.transform(response[0]['birthDate']['timestamp'] * 1000.05, 'dd/MM/yyyy'
-    this.firstName= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['firstName'],
-    this.lastName= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['lastName'],
-    this.email= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['email'],
-    this.typeUser= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['typeUser'],
-    this.birthDate=this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['birthDate']['timestamp']* 1000.05, 'dd/MM/yyyy')!
-    this.occupation= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['occupation'],
+    this.firstName= JSON.parse(localStorage.getItem('usertoupdate')!)['firstName'],
+    this.lastName= JSON.parse(localStorage.getItem('usertoupdate')!)['lastName'],
+    this.email= JSON.parse(localStorage.getItem('usertoupdate')!)['email'],
+    this.typeUser= JSON.parse(localStorage.getItem('usertoupdate')!)['typeUser'],
+    this.birthDate=this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)['birthDate']['timestamp']* 1000.05, 'dd/MM/yyyy')!
+    this.occupation= JSON.parse(localStorage.getItem('usertoupdate')!)['occupation'],
     console.log(this.birthDate)
-    this.entreprise= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['entreprise'],
-    this.adresse= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['adresse'],
-    this.country= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['country'],
-    this.codePostale= JSON.parse(localStorage.getItem('usertoupdate')!)[0]['codePostale'],
-    this.createdAt= this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['createdAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
-    this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['modifiedAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
+    this.entreprise= JSON.parse(localStorage.getItem('usertoupdate')!)['entreprise'],
+    this.adresse= JSON.parse(localStorage.getItem('usertoupdate')!)['adresse'],
+    this.country= JSON.parse(localStorage.getItem('usertoupdate')!)['country'],
+    this.codePostale= JSON.parse(localStorage.getItem('usertoupdate')!)['codePostale'],
+    this.createdAt= this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)['createdAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
+    this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)['modifiedAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
   }
 
   

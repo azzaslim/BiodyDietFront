@@ -18,7 +18,7 @@ export class AddPatientComponent implements OnInit {
   Nom!:string;
   Prenom!:string;
   AddPatientForm !: FormGroup;
-  Activities: any = ['choisir','Florida', 'South Dakota', 'Tennessee', 'Michigan'];
+  Activities: any = ["choisir un niveau d\'activité",'très faible', 'faible', 'Moyenne', 'forte','très forte'];
 
   
     constructor(private RestPatientService: RestPatientService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer, private datePipe: DatePipe) { 

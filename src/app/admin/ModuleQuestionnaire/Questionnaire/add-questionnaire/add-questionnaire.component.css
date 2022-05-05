@@ -1,0 +1,96 @@
+
+ 
+.boutton{
+    background-color: #70caca;
+   margin-left:5% !important;
+   margin-right: 15% !important;
+  margin-top: 3%;
+   color:#FFF;
+     border-radius: 5em;
+     text-align: center;
+ }
+.boutton:hover{
+    background-color: #096868 !important;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    font-size: 100%;
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+  }
+  
+  .separator:not(:empty)::before {
+    margin-right: .25em;
+  }
+  
+  .separator:not(:empty)::after {
+    margin-left: .25em;
+  }
+ 
+  ::ng-deep .mat-icon {
+ color: rgb(43, 157, 161);
+}
+
+.outline{
+    margin-top: 7% !important;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    width: 80%;
+margin-left: auto;
+margin-right: auto;
+}
+.title-overlap{
+  position: absolute;
+  top: -17px;
+  left: 20px;
+  background-color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+mat-card-content{
+    box-shadow: none;
+    margin: auto;
+}
+mat-card{
+    padding-left : 10% ;
+    padding-right : 10% ;
+    margin: auto;
+    vertical-align: center !important;
+}
+
+    mat-card-title{
+        justify-content: center;
+        position: center;
+    
+    }
+    .radio-section{
+        margin-top: 1vw !important;
+        display:flex ;
+
+    }
+    input:checked {
+        border: 6px solid black;
+        color: #00babb;
+      }
+      input[type="radio"]  {
+  margin-top: 2vw !important;
+
+}
+input[type="radio"]:checked  {
+  color: aqua !important;
+}
+label span{
+    display:inline-block;
+    margin-right: 15px;
+  }
+  .example-margin{
+      margin-right: 5px;
+  }

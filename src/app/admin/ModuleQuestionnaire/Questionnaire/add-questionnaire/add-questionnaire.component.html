@@ -1,0 +1,50 @@
+<app-navmenu></app-navmenu>
+<br> <br> <br><br> <br> <br>
+<div class="separator">QUESTIONNAIRE</div>
+
+<div class="outline">
+
+    <mat-card class="  mat-elevation-z8 col-md-8 center ">
+        <mat-card-header>
+            <mat-card-title class="title-overlap col-md-7">Nouveau questionnaire</mat-card-title>
+        </mat-card-header>
+        <br> <br>
+        <mat-card-content>
+<form [formGroup]="AddQuestionnaireForm">
+
+    <div class="row center">
+
+        <mat-form-field appearance="standard" class=" col-md-6 ">
+            <mat-label>Titre</mat-label>
+            <mat-icon matPrefix class="my-icon">title</mat-icon>
+
+            <input matInput placeholder="titre " formControlName="title">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="standard" class="col-md-6">
+            <mat-label>Ordre</mat-label>
+            <mat-icon matPrefix class="my-icon">format_list_numbered_rtl</mat-icon>
+
+            <input matInput placeholder="ordre " formControlName="order">
+        </mat-form-field>
+    </div>
+
+    <section class="example-section" >
+        <p><mat-checkbox   title="activation souscription" formControlName="published"   (change)="checkValue(isChecked?'désactivé':'activé')">Est Publié</mat-checkbox></p>
+        
+      </section>
+</form>
+<div class=" boutton   ">
+    <button mat-button (click)=" AddPatient(); " [disabled]="!AddQuestionnaireForm.valid">Enregistrer</button>
+</div>
+</mat-card-content>
+</mat-card>
+</div>
+
+<div class="d-grid gap-2 d-md-flex mt-4">
+<a href="admin/questionnaire/Listequestionnaire"><button mat-flat-button color="primary">
+        <mat-icon>keyboard_return</mat-icon> &emsp;Retour à la liste des questionnaire
+    </button></a>
+</div>
+<app-footer></app-footer>

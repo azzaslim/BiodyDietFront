@@ -13,11 +13,16 @@ export class PrescriptComponent implements OnInit {
 
   nbusers!: string;
   nbPatients!: string;
+  nbnutrient!: string;
+  nbsymptoms!: string;
   constructor(private RestUserService: RestUserService,private RestPatientService : RestPatientService , router: Router) { }
 
   async ngOnInit() {
     this.nbPatients = localStorage.getItem('nbPatients')!;
-    this.nbusers = localStorage.getItem('nbusers')!
+    this.nbusers = localStorage.getItem('nbusers')!;
+    
+    this.nbnutrient= localStorage.getItem('nbnutrient')!;
+   this.nbsymptoms=localStorage.getItem('nbsymptoms')!;
   }
 
   FailNotification() {

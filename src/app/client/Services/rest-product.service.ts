@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GETALL_PRODUCTS_URL, ADD_PRODUCT_URL, GET_ONE_PRODUCT_URL, DELETE_PRODUCT_URL, UPDATE_PRODUCT_URL } from '../common/url';
+import { GETALL_PRODUCTS_URL, ADD_PRODUCT_URL, GET_ONE_PRODUCT_URL, DELETE_PRODUCT_URL, UPDATE_PRODUCT_URL } from 'src/app/common/url';
 
 
 

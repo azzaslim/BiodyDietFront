@@ -8,12 +8,13 @@ import { Router } from '@angular/router';
 import { MatSort, Sort } from '@angular/material/sort';
 
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-
 import { Symptom } from './../../../client/Services/rest-symptom.service';
 import Swal from 'sweetalert2';
 import { AddsymptomComponent } from '../addsymptom/addsymptom.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RestUserService } from 'src/app/client/Services/RestUser.service';
+
+
 @Component({
   selector: 'app-symptommanage',
   templateUrl: './symptommanage.component.html',
@@ -96,11 +97,13 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
    
   }
   async symptomToManage(symptom: Symptom) {
-    console.log('symptom to manage', JSON.stringify(symptom.id));
+   // console.log('symptom to manage', JSON.stringify(symptom.id));
     localStorage.setItem('symptom to manage', JSON.stringify(symptom.id));
-    console.log('symptom to manage', JSON.stringify(symptom.id));
+    
   }
     
+
+  
   
   confirmBox(){
     Swal.fire({

@@ -28,8 +28,7 @@ import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkTableModule} from '@angular/cdk/table';
-import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
-import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component'; 
+
 import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './client/home/home.component';
@@ -73,8 +72,15 @@ import { RestPatientService } from './client/Services/Rest-patient.service';
 import { FooterComponent } from './shared/footer/footer.component';
 import { RestNutrientService } from './client/Services/rest-nutrient.service';
 import { RestSymptomService } from './client/Services/rest-symptom.service';
-
-
+import { ListQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/list-questionnaire/list-questionnaire.component';
+import { AddQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/add-questionnaire/add-questionnaire.component';
+import { DetailQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/detail-questionnaire/detail-questionnaire.component';
+import { AddAnswersComponent } from './admin/ModuleQuestionnaire/Answers/add-answers/add-answers.component';
+import { DetailAnswersComponent } from './admin/ModuleQuestionnaire/Answers/detail-answers/detail-answers.component';
+import { ListAnswersComponent } from './admin/ModuleQuestionnaire/Answers/list-answers/list-answers.component';
+import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
+import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
 
 
 
@@ -116,7 +122,19 @@ import { RestSymptomService } from './client/Services/rest-symptom.service';
    ListeUsersComponent,
    FooterComponent,
    NavmenuComponent,
-   ChangePasswordComponent
+   ChangePasswordComponent,
+     
+   NutrientComponent,
+         AddUserComponent,
+         AddPatientComponent,
+         PrescriptComponent,
+         ListQuestionnaireComponent,
+         AddQuestionnaireComponent,
+         DetailQuestionnaireComponent,
+         ListAnswersComponent,
+         AddAnswersComponent,
+         DetailAnswersComponent,
+         EditQuestionnaireComponent,  
   ],
   imports: [
   

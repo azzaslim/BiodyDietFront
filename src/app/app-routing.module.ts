@@ -30,12 +30,17 @@ import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-gro
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
 import { UserGuard } from './guard/User.guard';
-import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
-import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
 import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 import { AddPatientComponent } from './admin/add-patient/add-patient.component';
 import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
+import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
+import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+import { ListQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/list-questionnaire/list-questionnaire.component';
+import { AddQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/add-questionnaire/add-questionnaire.component';
+import { DetailQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/detail-questionnaire/detail-questionnaire.component';
+import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
+
 
 
 
@@ -43,7 +48,7 @@ import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescri
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent  , canActivate : [AuthGuardService,UserGuard]},
-  { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService]  },
+  { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService ,UserGuard]  },
   { path: 'parametre', component: ParametreComponent , canActivate : [AuthGuardService]  },
   { path: 'editCompte', component: EditcompteComponent , canActivate : [AuthGuardService] },
   { path: 'editImpression', component: EditInfoImpressionComponent , canActivate : [AuthGuardService] },
@@ -88,6 +93,11 @@ const routes: Routes = [
   { path: 'admin/complements', component: ComplementsComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'admin/ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService,ChildGuard]},
 
+
+  { path: 'admin/questionnaire/Listequestionnaire', component: ListQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/questionnaire/addquestionnaire', component: AddQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/questionnaire/Detailquestionnaire', component: DetailQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/questionnaire/Editquestionnaire', component: EditQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
 
 ];
 

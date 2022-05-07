@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GETALL_PRODUCTS_URL, ADD_PRODUCT_URL, GET_ONE_PRODUCT_URL, DELETE_PRODUCT_URL, UPDATE_PRODUCT_URL } from 'src/app/common/url';
+import { GETALL_preparations_URL,GETALL_PRODUCTS_URL, ADD_PRODUCT_URL, GET_ONE_PRODUCT_URL, DELETE_PRODUCT_URL, UPDATE_PRODUCT_URL, GET_ONE_PREPARATION_URL, GETALL_SYMPTOMS_URL, GETALL_COMPLEMENTS_URL } from 'src/app/common/url';
 
 
 
@@ -28,7 +28,24 @@ export class RestProductService {
  }
 
  //getProduct
-  async getProducts(): Promise<Observable<Product[]>> {
+  async getpreparation(): Promise<Observable<Product[]>> {
+   
+    console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return await this.http.get<Product[]>(GETALL_preparations_URL,{headers}); 
+   }
+
+   async getcomplements(): Promise<Observable<Product[]>> {
+   
+    console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return await this.http.get<Product[]>(GETALL_COMPLEMENTS_URL,{headers}); 
+   }
+   async getproducts(): Promise<Observable<Product[]>> {
    
     console.log(this.getToken());
     let headers = new HttpHeaders().set(
@@ -36,6 +53,8 @@ export class RestProductService {
     )
     return await this.http.get<Product[]>(GETALL_PRODUCTS_URL,{headers}); 
    }
+
+   
    
    //addProduct
    async addProduct(product: any) {
@@ -84,5 +103,7 @@ console.log(product)
     return await this.http.put<any>(UPDATE_PRODUCT_URL+ "/" +params,  product, { headers});
   }
 
+ 
+  
   
 }

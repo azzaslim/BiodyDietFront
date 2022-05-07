@@ -278,4 +278,16 @@ height: 25vw;
   overflow: auto;
 
 }
+.mat-row.hovered {
+  background: #eee;
+}
+
+.mat-row.highlighted {
+background: #999;
+}
+table{
+  box-shadow: none;
+
+}
+
 

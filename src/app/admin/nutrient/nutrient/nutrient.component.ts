@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Symptom, RestUserService } from 'src/app/client/Services/RestUser.service';
+import {  RestUserService } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
 
 import { RestNutrientService, Nutrient  } from './../../../client/Services/rest-nutrient.service';

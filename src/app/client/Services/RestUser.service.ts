@@ -43,10 +43,7 @@ export interface User {
   modulePresc:boolean;
 }
 
-export interface Symptom {
-  id: number;
-  name: string;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -230,15 +227,15 @@ console.log(user)
     return await this.http.put<any>(UPDATE_USER_URL+ "/" +params,  user, { headers});
   }
 
-   async getSymptoms(): Promise<Observable<Symptom[]>> {
+   /* async getSymptoms(): Promise<Observable<Symptom[]>> {
     // return this.http.get<Profil[]>(this.URL);
     console.log(this.getToken());
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
     return await this.http.get<Symptom[]>(getSymptoms_URL,{headers}); 
-   }
-   async addsymptom(symptom: any) {
+   } */
+   /* async addsymptom(symptom: any) {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
@@ -246,7 +243,7 @@ console.log(user)
     
     return await this.http.post<any>(addSymptom_URL, symptom, { headers });
 
-  }
+  } */
   AddUser(user: any) {
     console.log(user);
     let headers = new HttpHeaders().set(

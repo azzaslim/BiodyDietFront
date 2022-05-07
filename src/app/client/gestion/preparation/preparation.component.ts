@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Product, RestUserService } from 'src/app/client/Services/RestUser.service';
+import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
 import {MatTableDataSource} from '@angular/material/table';
 import { RestProductService } from '../../Services/rest-product.service';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
@@ -11,6 +12,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { AddsymptomComponent } from 'src/app/admin/symptom/addsymptom/addsymptom.component';
 import Swal from 'sweetalert2';
 import {SelectionModel} from '@angular/cdk/collections';
+import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 
 
 
@@ -26,14 +28,18 @@ export class PreparationComponent implements OnInit {
   displayedColumns = ['name'];
   dataSource = new MatTableDataSource<Product>();
   selection = new SelectionModel<Product>(false, []);
- 
-  //dataSource1 = new MatTableDataSource<Nutrient>();
+  displayedColumns1 = ['portion'];
+  dataSource1 = new MatTableDataSource<Product>();
+  displayedColumns2 = ['symptom_name'];
+  dataSource2=new MatTableDataSource<Symptom>();
+  symptoms!:string;
+   list=[];
 
-
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
-      (await this.user.getProducts()).subscribe((x) => {
+      this.getOneNutrient();
+      (await this.user.getpreparation()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no product exist");
@@ -50,8 +56,26 @@ export class PreparationComponent implements OnInit {
           this.failNotification();
 
       }
-      )
-  };
+      );
+      (await this.symptomservice.getSymptoms()).subscribe((x) => {
+        if (x.length==0)
+        {
+          alert("no Symptom exist");
+          this.router.navigate(['/home'])
+        }
+        else
+      localStorage.setItem("nbsymptoms",x.length.toString());
+      this.dataSource2= new MatTableDataSource(x);
+      this.dataSource2.sort = this.sort;
+    },
+      err => {
+        this.authService.logout(),
+          console.log(err),
+          this.failNotification();
+
+      }
+      );
+      };
 
   announceSortChange(sortState: Sort) {
 
@@ -86,12 +110,11 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
 })
   }
  
-  async symptomToManage(product: Product) {
-    console.log('product to manage', JSON.stringify(product.id));
-    localStorage.setItem('product to manage', JSON.stringify(product.id));
-    console.log('product to manage', JSON.stringify(product.id));
-  }
-    
+  async preparationToManage(product: Product) {
+    // console.log('symptom to manage', JSON.stringify(symptom.id));
+     localStorage.setItem('product to manage', JSON.stringify(product.id));
+     localStorage.setItem('product', JSON.stringify(product));
+   }
   
   confirmBox(){
     Swal.fire({
@@ -123,7 +146,7 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
     .subscribe(
       async response => {
        console.log(response)
-       this.router.navigate(['/admin/product/productlist'])
+       this.router.navigate(['/preparation'])
        this.ngOnInit()
       },
       err => {
@@ -134,6 +157,27 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
   search(id :string){
     console.log(id);
      }
-   
+     async getOneNutrient(){
+     ( (await (this.user.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
+      this.dataSource1 = new MatTableDataSource(x);
+      this.dataSource1.sort = this.sort;
   
+    },
+      err => {
+        this.authService.logout(),
+          console.log(err),
+          this.failNotification();
+
+      }
+      
+      )
+      )
+      //this.symptoms =JSON.parse(localStorage.getItem('product')!);
+     /* this.list.forEach(element => {
+        console.log(element);
+      }); */
+      this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom'][0]['symptom_name'];
+    //console.log(this.symptoms);
+
+    }
 }

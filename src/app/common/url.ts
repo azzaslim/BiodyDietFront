@@ -34,8 +34,9 @@ export const DELETE_PRODUCT_URL= BASE_URL+'api/deleteProduct';
 export const GET_ONE_PRODUCT_URL= BASE_URL+'api/get/OneProduct';
 export const UPDATE_PRODUCT_URL= BASE_URL+'/api/updateProduct';
 export const ADD_PRODUCT_URL= BASE_URL+'api/addproduct';
+export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETALL_PRODUCTS_URL= BASE_URL+'api/getproducts';
-
+export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
 
 export const ADD_QUESTIONNAIRE_URL= BASE_URL +'api/addquestionnaire ';
 export const GET_QUESTIONNAIRE_URL= BASE_URL +'api/getquestionnaire ';
@@ -44,3 +45,5 @@ export const GET_ONE_QUESTIONNAIRE_URL= BASE_URL +'api/get/OneQuestionnaire';
 export const DELETE_QUESTIONNAIRE_URL= BASE_URL +'api/delete/questionnaire';
 export const UPDATE_QUESTIONNAIRE_URL= BASE_URL +'api/updateQuestionnaire';
 
+export const GET_ONE_PREPARATION_URL = BASE_URL +'api/get/OneProduct';
+export const GETALL_SYMPTOMS_URL = BASE_URL +'api/getsymptoms'

@@ -3,18 +3,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <app-navmenu></app-navmenu>
-<div class="card-wrapper row center justify-content-md-center">
+
+
+<div class="card-wrapper row   justify-content-md-center">
     <mat-card class="example-card col-md-3   justify-content-center">
         <mat-card-header>
             <mat-card-subtitle>
-                <i class="fa fa-stethoscope" style="font-size:40px; color :rgb(14, 88, 110); margin-top: 1vw;"></i>
+                <i class="fa fa-stethoscope" style="font-size:40px; color :#23b4b8; margin-top: 1vw;"></i>
             </mat-card-subtitle>
             <mat-card-title> Patients </mat-card-title>
             <mat-card-subtitle>{{nbPatients}} </mat-card-subtitle>
 
         </mat-card-header>
         <mat-card-content>
-            <button  (click)="FailNotification()" mat-flat-button> &emsp;Afficher la liste </button>
+            <button (click)="FailNotification()" mat-flat-button> &emsp;Afficher la liste </button>
 
         </mat-card-content>
 
@@ -44,8 +46,8 @@
 
             </mat-card-subtitle>
             <mat-card-title>Gestion des Utilisateurs</mat-card-title>
-            <mat-card-subtitle>{{nbusers}} </mat-card-subtitle>
-
+            <mat-card-subtitle>{{nbusers}}
+            </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
@@ -62,7 +64,7 @@
                 <mat-icon>supervised_user_circle</mat-icon>
 
             </mat-card-subtitle>
-            <mat-card-title>  Gestion des groupes utilisateurs </mat-card-title>
+            <mat-card-title> Gestion des groupes utilisateurs </mat-card-title>
             <mat-card-subtitle>
                 {{nbusers}} </mat-card-subtitle>
 
@@ -77,47 +79,34 @@
     <mat-card class="example-card col-md-3  justify-content-center">
         <mat-card-header>
             <mat-card-subtitle>
-                <i class="fa fa-question-circle" style="font-size:40px; color :rgb(14, 88, 110)"></i>
+                <i class="fa fa-question-circle" style="font-size:40px; color :#23b4b8"></i>
 
             </mat-card-subtitle>
-            <mat-card-title>Gestion du questionnaire</mat-card-title>
+            <mat-card-title>Gestion module questionnaire</mat-card-title>
             <mat-card-subtitle>
-                {{nbQuestionnaire}} </mat-card-subtitle>
+                <br>
+            </mat-card-subtitle>
 
         </mat-card-header>
         <mat-card-content>
-            <a href="admin/questionnaire/Listequestionnaire"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+            <a href="admin/ModuleQuestionnaire"><button mat-flat-button> &emsp;Afficher la liste
+                </button></a>
 
         </mat-card-content>
 
 
     </mat-card>
-    <mat-card class="example-card col-md-3   justify-content-center">
-        <mat-card-header>
-            <mat-card-subtitle>
-                <i class="bi-card-checklist" style="font-size:40px; color :rgb(14, 88, 110)"></i>                
-            </mat-card-subtitle>
-            <mat-card-title>  Gestion des réponses questionnaires</mat-card-title>
-            <mat-card-subtitle>
-                {{nbusers}} </mat-card-subtitle>
 
-        </mat-card-header>
-        <mat-card-content>
-            <a href="admin/users/listeusers"><button mat-flat-button> &emsp;Afficher la liste </button></a>
-
-        </mat-card-content>
-
-
-    </mat-card>
     <mat-card class="example-card col-md-3  justify-content-center">
         <mat-card-header>
             <mat-card-subtitle>
-                <i class="fa fa-file-text-o" style="font-size:40px; color :rgb(14, 88, 110)"></i>
+                <i class="fa fa-file-text-o" style="font-size:40px; color :#23b4b8"></i>
 
             </mat-card-subtitle>
             <mat-card-title>Gestion du module prescription</mat-card-title>
             <mat-card-subtitle>
-                {{nbusers}} </mat-card-subtitle>
+                <br>
+            </mat-card-subtitle>
 
         </mat-card-header>
         <mat-card-content>
@@ -127,7 +116,9 @@
 
 
     </mat-card>
+
 </div>
 
+<br><br><br><br>
 
 <app-footer></app-footer>

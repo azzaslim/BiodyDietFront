@@ -76,6 +76,10 @@ import { ListAnswersComponent } from './admin/ModuleQuestionnaire/Answers/list-a
 import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
 import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
 import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
+import { EditAnswersComponent } from './admin/ModuleQuestionnaire/Answers/edit-answers/edit-answers.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HomeMQuestionnaireComponent } from './admin/ModuleQuestionnaire/home-m-questionnaire/home-m-questionnaire.component';
+import { MatOptionModule } from '@angular/material/core';
 
 
 
@@ -124,7 +128,9 @@ import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Question
          ListAnswersComponent,
          AddAnswersComponent,
          DetailAnswersComponent,
-         EditQuestionnaireComponent,  
+         EditQuestionnaireComponent,
+         EditAnswersComponent,
+         HomeMQuestionnaireComponent,  
   ],
   imports: [
     MatListModule,
@@ -151,6 +157,8 @@ import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Question
     MatSelectModule,
     MatDividerModule,
     MatRadioModule,
+    NgMultiSelectDropDownModule,
+    MatOptionModule
     
     
   ],

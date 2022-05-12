@@ -1,0 +1,118 @@
+
+ 
+.boutton{
+    background-color: #70caca;
+   margin-left:5% !important;
+   margin-right: 15% !important;
+  margin-top: 3%;
+   color:#FFF;
+     border-radius: 5em;
+     text-align: center;
+ }
+.boutton:hover{
+    background-color: #096868 !important;
+}
+
+.separator {
+    display: flex;
+    text-align: center;
+    font-size: 200%;
+    color: #4eb5b8;
+  }
+  .separator1 {
+    font-size: 200%;
+    margin-left: 7%;
+    margin-top: 3%;
+    color: #4eb5b8;
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+  }
+  
+  .separator:not(:empty)::before {
+    margin-right: .25em;
+  }
+  
+  .separator:not(:empty)::after {
+    margin-left: .25em;
+  }
+ 
+  ::ng-deep .mat-icon {
+ color: rgb(43, 157, 161);
+}
+
+.outline{
+    margin-top: 5%;
+    border-radius: 8px;
+    border-style: dotted;
+    border-width: 1px;
+    width: 90%;
+    margin: auto;
+    margin-top: 3%;
+    padding-left: 12%;
+
+
+}
+.title-overlap{
+  position: absolute;
+  top: -17px;
+  left: 20px;
+  background-color: white;
+  padding-right: 10rem;
+  color:rgb(43, 157, 161);
+  display: block;
+}
+mat-card-content{
+    box-shadow: none;
+
+}
+mat-card{
+    margin-left: 10%;
+    margin-right: auto;
+    border: none;
+    box-shadow: none;
+
+}
+.mat-card{
+    display: inline ;
+    padding: auto;
+
+}
+
+    mat-card-title{
+        justify-content: center;
+    
+    }
+    .radio-section{
+        margin-top: 1vw !important;
+        display:flex ;
+
+    }
+    input:checked {
+        border: 6px solid black;
+        color: #00babb;
+      }
+      input[type="radio"]  {
+  margin-top: 2vw !important;
+
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #4eb5b8;
+}
+ 
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: #4eb5b8;
+  }
+label span{
+    display:inline-block;
+    margin-right: 15px;
+  }
+ 
+  mat-form-field,.custom-select1{
+     
+  }

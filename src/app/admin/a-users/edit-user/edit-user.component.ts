@@ -52,14 +52,13 @@ CurrentUser !: FormGroup;
               adresse: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['adresse']],
               entreprise: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['entreprise']],
               country: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['country']],
-              birthDate: [this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['birthDate']['timestamp'] * 1000.05, 'dd/MM/yyyy')!],
+              birthDate: [this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['birthDate'], 'dd/MM/yyyy')!],
               type: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['typeUser']], 
               endDate: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['endDate']], 
         
             });
 
       })
-      console.log(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['roles'])
 
 }
 

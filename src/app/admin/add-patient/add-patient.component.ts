@@ -63,17 +63,7 @@ export class AddPatientComponent implements OnInit {
   if (isNaN(prasedDate) || this.AddPatientForm.get('birth_date')!.value.length < 10) {
   alert("date de naissance doit etre sous la forme dd-mm-aaaa ou dd/mm/aaaa")
   }
-  /* if ((typeof (this.registerData.get('firstName')!.value) && 
-  (this.registerData.get('lastName')!.value)&& 
-  (this.registerData.get('country')!.value) &&
-  (this.registerData.get('occupation')!.value) &&
-  (this.registerData.get('entreprise')!.value)
-  !== 'string')) {
-  
-  alert("veuillez entrer des informations corrects")
-  }
-  if ((typeof (this.registerData.get('codePostale')!.value) === null) )
-  alert("entrez un valide code postale") */
+
   else {
     (await this.RestPatientService.AddPatient(data))
       .subscribe(

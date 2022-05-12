@@ -61,9 +61,11 @@ mat-card-content{
     margin: auto;
 }
 mat-card{
-    padding-left : 10% ;
-    padding-right : 10% ;
+    padding-left : 3% ;
+    padding-right : 3% ;
     margin: auto;
+    box-shadow: none;
+    border: none;
 }
 
     mat-card-title{

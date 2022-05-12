@@ -1,1 +1,121 @@
-<p>add-answers works!</p>
+<app-navmenu></app-navmenu>
+
+
+<br><br>
+
+
+<div class="separator">Réponses</div>
+
+<div class="outline">
+    <mat-card class="  mat-elevation-z8 col-md-8 center ">
+        <mat-card-header>
+            <mat-card-title class="title-overlap col-md-7">Nouvelle Réponse</mat-card-title>
+        </mat-card-header>
+        <br> <br>
+        <mat-card-content>
+            <form [formGroup]="AddAnswerForm">
+
+                <div class="row center">
+
+                    <mat-form-field appearance="standard" class=" custom-select col-md-5 mb-4 mt-3">
+                        <mat-label>Titre</mat-label>
+                        <mat-icon matPrefix class="my-icon">title</mat-icon>
+
+                        <input matInput placeholder="titre " formControlName="title">
+                    </mat-form-field>
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3" >
+                    <mat-select (change)="changeQuestionnaire($event)" formControlName="Questionnaire">
+                        <mat-option value="" disabled selected>Questionnaire</mat-option>
+                        <mat-option *ngFor="let quest of Questionnaires" [value]="quest">
+                            {{ quest }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                </div>
+                <div class="row center">
+                    <mat-form-field appearance="standard" class="col-md-5">
+                        <mat-label>Ordre</mat-label>
+                        <mat-icon matPrefix class="my-icon">format_list_numbered_rtl</mat-icon>
+
+                        <input matInput placeholder="ordre " formControlName="order">
+                    </mat-form-field>
+                    <section class="example-section col-md-5 mt-3">
+                        <p>
+                            <mat-checkbox title="activation souscription" formControlName="published"
+                                (change)="checkValue(isChecked?'désactivé':'activé')">Est Publié</mat-checkbox>
+                        </p>
+
+                    </section>
+
+                </div>
+                <div class="separator1">Indications</div>
+                <div class="row center">
+
+
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3 ">
+                        <mat-select formControlName="I_preparation" multiple [(ngModel)]="I_ListPreparation"  placeholder="choisir une préparation">
+                            
+                            <mat-option *ngFor="let option of I_dropdownListPreparation;  let i=index;" [value]="option"
+                                [disabled]="C_ListPreparation[i] == option">
+                                {{option}}
+
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3" >
+                        <mat-select formControlName="I_suppliment" multiple [(ngModel)]="I_ListSuppliments" placeholder="choisir un complément">
+                            <mat-option *ngFor="let option of I_dropdownListSuppliments;  let i=index;" [value]="option"
+                                [disabled]="C_ListSuppliments[i] == option">
+                                {{option}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                   
+
+
+                </div>
+                <div class="separator1 ">Contre Indications</div>
+
+                <div class="row center">
+
+                    <mat-form-field appearance="standard"  class="custom-select col-md-5 mb-4 mt-3" >
+                        <mat-select formControlName="C_preparation" multiple [(ngModel)]="C_ListPreparation" placeholder="choisir une préparation">
+                            <mat-option *ngFor="let option of C_dropdownListPreparation;  let i=index;" [value]="option"
+                                [disabled]="I_ListPreparation[i] == option">
+                                {{option}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3" >
+                        <mat-select formControlName="C_suppliment" multiple [(ngModel)]="C_ListSuppliments" placeholder="choisir un complément">
+                            <mat-option *ngFor="let option of C_dropdownListSuppliments;  let i=index;" [value]="option"
+                                [disabled]="I_ListSuppliments[i] == option">
+                                {{option}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+            </form>
+            <div class=" boutton   ">
+                <button mat-button (click)=" AddAnswer(); " [disabled]="!AddAnswerForm.valid">Enregistrer</button>
+            </div>
+           
+        </mat-card-content>
+    </mat-card>
+
+</div>
+
+<div class="d-grid gap-2 d-md-flex mt-4">
+    <a href="admin/answers/Listeanswers"><button mat-flat-button color="primary">
+            <mat-icon>keyboard_return</mat-icon> &emsp;Retour à la liste des réponse
+        </button></a>
+</div>
+<br><br><br><br><br><br><br><br>
+<app-footer></app-footer>

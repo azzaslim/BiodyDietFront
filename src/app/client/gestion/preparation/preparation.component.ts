@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import {MatTableDataSource} from '@angular/material/table';
-import { RestUserService, Product } from '../../Services/RestUser.service';
+import { Product, RestProductService } from '../../Services/rest-product.service';
 
 
 
@@ -16,10 +16,10 @@ export class PreparationComponent implements OnInit {
   dataSource = new MatTableDataSource<Product>();
  
   //dataSource1 = new MatTableDataSource<Nutrient>();
-  constructor(private RestUserService:RestUserService ,private router:Router, private formBuilder : FormBuilder,private user: RestUserService) { }
+  constructor(private RestProductService:RestProductService ,private router:Router, private formBuilder : FormBuilder) { }
   
   ngOnInit(): void {
-    this.user.getProducts().subscribe((x) =>{
+    this.RestProductService.getProducts().subscribe((x) =>{
       this.dataSource =new MatTableDataSource(x);
       console.log(x);
   });

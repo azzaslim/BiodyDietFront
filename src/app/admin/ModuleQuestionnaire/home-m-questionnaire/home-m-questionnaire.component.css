@@ -16,9 +16,15 @@ flex-direction: column;  }
     margin-right: 0 !important;
 }
 .card-wrapper{
-margin-top: 5%;
-
-}
+margin-top: 10%;}
 mat-card-title{
     color: #123640;
+}
+.titre
+{
+    text-align: center;
+    color:#56afaf;
+    font-weight:900;
+    font-family: ' sans-serif' ;
+    margin-top: 3vw;
 }

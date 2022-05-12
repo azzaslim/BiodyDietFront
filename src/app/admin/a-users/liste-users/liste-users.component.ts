@@ -20,7 +20,7 @@ export class ListeUsersComponent implements OnInit {
   checked!: boolean;
   dataSource = new MatTableDataSource<User>();
 edit_url!: string;
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: RestUserService, private RestUserService: RestUserService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestUserService: RestUserService) {
     this.souscriptionForm = new FormGroup({
       souscription: new FormControl()
     });
@@ -31,7 +31,7 @@ edit_url!: string;
 
   async ngOnInit() {
 
-    (await this.user.getUsers()).subscribe((x) => {
+    (await this.RestUserService.getUsers()).subscribe((x) => {
      console.log("tableau",x)
       if (x.length == 0) {
         alert("no user exist");
@@ -153,7 +153,5 @@ edit_url!: string;
 
       )
   }
-  gotodetail(){
-    this.router.navigate(['/admin/users/consultuser'])
-  }
+
 }

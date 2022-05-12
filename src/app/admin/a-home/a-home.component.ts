@@ -13,13 +13,13 @@ export class AHomeComponent implements OnInit {
   nbusers!: string;
   nbPatients!: string;
   nbQuestionnaire!:string;
+  nbresponse!:string;
   constructor(private RestUserService: RestUserService,private RestPatientService : RestPatientService , router: Router) { }
 
   async ngOnInit() {
     this.nbPatients = localStorage.getItem('nbPatients')!;
     this.nbusers = localStorage.getItem('nbusers')!;
     this.nbQuestionnaire = localStorage.getItem('nbQuestionnaire')!
-
   }
 
   FailNotification() {

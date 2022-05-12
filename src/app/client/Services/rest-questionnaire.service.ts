@@ -39,8 +39,9 @@ export class RestQuestionnaireService {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
+    const params = new HttpParams().set('Id', JSON.parse(localStorage.getItem('Questionnaire to manage')!))
 
-    return await this.http.post<any>(DELETE_QUESTIONNAIRE_URL, JSON.stringify({ id: id }), { headers });
+    return await this.http.delete<any>(DELETE_QUESTIONNAIRE_URL+'/'+params, { headers });
   }
 
   async getQuestionnaire(id: any): Promise<Observable<any>> {

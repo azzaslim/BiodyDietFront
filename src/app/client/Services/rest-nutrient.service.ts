@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ADD_NUTRIENT_URL, GETALL_NUTRIENTS_URL } from 'src/common/url';
+import { GETALL_NUTRIENTS_URL, ADD_NUTRIENT_URL } from 'src/app/common/url';
 
 export interface Nutrient{
   id: number;

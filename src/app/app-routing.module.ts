@@ -1,3 +1,4 @@
+import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
@@ -18,6 +19,7 @@ import { PrescriptionComponent } from './client/prescription/prescription.compon
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
+import { AHomeComponent } from './admin/a-home/a-home.component';
 
 import { ChildGuard } from './guard/Admin.guard';
 import { AuthGuardService } from './guard/auth-guard.service';
@@ -28,8 +30,7 @@ import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-gro
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
 import { UserGuard } from './guard/User.guard';
-
-import { AHomeComponent } from './admin/a-home/a-home.component';
+import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 import { AddPatientComponent } from './admin/add-patient/add-patient.component';
 import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
@@ -49,6 +50,7 @@ import { HomeMQuestionnaireComponent } from './admin/ModuleQuestionnaire/home-m-
 
 
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent  , canActivate : [AuthGuardService,UserGuard]},
   { path: 'listeprofil', component: ListeprofilComponent , canActivate : [AuthGuardService ,UserGuard]  },
@@ -56,14 +58,16 @@ const routes: Routes = [
   { path: 'editCompte', component: EditcompteComponent , canActivate : [AuthGuardService] },
   { path: 'editImpression', component: EditInfoImpressionComponent , canActivate : [AuthGuardService] },
   { path: 'gestion', component: GestionComplementComponent , canActivate : [AuthGuardService] },
-  { path: 'symptom', component: SymptommanageComponent , canActivate : [AuthGuardService] },
-  { path: 'nutrient', component: NutrientComponent, canActivate : [AuthGuardService] },
-  { path: 'addsymptom', component: AddsymptomComponent , canActivate : [AuthGuardService] },
-  { path: 'addnutrient', component: AddNutrientComponent , canActivate : [AuthGuardService] },
+  { path: 'admin/symptom/symptomlist', component: SymptommanageComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/nutrient/nutrientlist', component: NutrientComponent, canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/symptom/addsymptom', component: AddsymptomComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/nutrient/addnutrient', component: AddNutrientComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'produits', component: ProduitsComponent , canActivate : [AuthGuardService] },
   { path: 'preparations', component: PreparationComponent , canActivate : [AuthGuardService] },
   { path: 'complements', component: ComplementsComponent , canActivate : [AuthGuardService] },
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
+  { path: 'admin/nutrient/nutrientdetails/:id', component: NutrientdetailsComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path:  'admin/nutrient/editnutrient', component: EditNutrientComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent},
   { path: 'verification', component:VerifaccountComponent  },
@@ -110,7 +114,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
 export const ArrayOfComponents = [ListeprofilComponent, 

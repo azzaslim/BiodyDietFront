@@ -4,9 +4,11 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestPatientService, Profil } from '../Services/Rest-patient.service';
+
 import Swal from 'sweetalert2';
 import { RestUserService } from '../Services/RestUser.service';
+import { Profil, RestPatientService } from '../Services/Rest-patient.service';
+
 
 
 @Component({
@@ -35,12 +37,14 @@ localStorage.removeItem('profil');
       {
         alert("no patient exist");
 
-  this.role = JSON.parse(localStorage.getItem('currentUser')!).role
+         this.role = JSON.parse(localStorage.getItem('currentUser')!).role
+
           if (this.role == 'ROLE_ADMIN') {
             this.router.navigate(['/admin/home'])
           }
           else
             this.router.navigate(['/home'])      }
+
       else
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;

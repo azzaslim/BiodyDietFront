@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ADD_QUESTIONNAIRE_URL, DELETE_QUESTIONNAIRE_URL, GET_ONE_QUESTIONNAIRE_URL, GET_QUESTIONNAIRE_URL, UPDATE_QUESTIONNAIRE_URL } from 'src/app/common/url';
+import { ADD_QUESTIONNAIRE_URL, GET_QUESTIONNAIRE_URL, DELETE_QUESTIONNAIRE_URL, GET_ONE_QUESTIONNAIRE_URL, UPDATE_QUESTIONNAIRE_URL } from 'src/common/url';
 export interface Questionnaire {
   id: number;
   title: string;

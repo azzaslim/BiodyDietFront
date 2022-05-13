@@ -1,4 +1,3 @@
-<app-navmenu></app-navmenu>
 <div class="col-5 offset-3 center">
     <p class="titre row">Ajout Symptom</p>
     <form [formGroup]="addData" (ngSubmit)="add()">
@@ -6,9 +5,13 @@
         <mat-form-field appearance="outline" class="row col-10 offset-1 mt-2">
             <mat-label>Symptom</mat-label>
             <input matInput type="text" class="form-control" name="symptom_name" formControlName="symptom_name">
+            <div *ngIf="f['symptom_name'].touched && f['symptom_name'].invalid">
+                <div *ngIf="f['symptom_name'].errors && f['symptom_name'].errors['required']"> le nom est obligatoire </div>
+                <div *ngIf="f['symptom_name'].errors && f['symptom_name'].errors['pattern']">ce champ doit avoir des caractères</div>
+            </div>
         </mat-form-field>
         <br><br>
-        <button class="submit row " type="submit">Ajouter</button>
+        <button class="submit row " [disabled]="!addData.valid" type="submit">Ajouter</button>
 
     </form>
 

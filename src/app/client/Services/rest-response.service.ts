@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ADD_QUESTIONNAIRE_URL, GET_QUESTIONNAIRE_URL, DELETE_QUESTIONNAIRE_URL, GET_ONE_QUESTIONNAIRE_URL, UPDATE_QUESTIONNAIRE_URL, ADD_ANSWER_URL, DELETE_ANSWER_URL, GET_ANSWERS_URL, GET_ONE_ANSWER_URL, UPDATE_ANSWER_URL } from 'src/app/common/url';
+import { ADD_ANSWER_URL, GET_ANSWERS_URL, DELETE_ANSWER_URL, GET_ONE_ANSWER_URL, UPDATE_ANSWER_URL } from 'src/common/url';
 import { Questionnaire } from './rest-questionnaire.service';
 export interface Answer {
   id: number;

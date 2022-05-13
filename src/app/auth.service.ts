@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { addSymptom_URL, ADD_PREPARATION_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
+import {ADD_PREPARATION_URL, GETPROFILE_URL,  LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -37,7 +37,7 @@ export class RestUserService implements OnInit {
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void { }
   private REGISTER_URL = "http://localhost:8000/register";
-  GETPRODUCT_URL = "http://localhost:8000/getproducts";
+
   GETNutrient_URL = "http://localhost:8000/getnutrients";
 
 
@@ -106,10 +106,10 @@ export class RestUserService implements OnInit {
 
   // }
 
-//products
+/* //products
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.GETPRODUCT_URL);
-  }
+  } */
 
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
@@ -117,9 +117,9 @@ export class RestUserService implements OnInit {
     console.clear()
   }
 //nutients
-  getNutrients(): Observable<Nutrient[]> {
+ /*  getNutrients(): Observable<Nutrient[]> {
     return this.http.get<Nutrient[]>(this.GETNutrient_URL);
-  }
+  } */
 //symptoms
  /* async addsymptom(symptom: any) {
     let headers = new HttpHeaders().set(

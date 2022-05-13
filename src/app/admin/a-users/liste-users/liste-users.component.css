@@ -9,17 +9,14 @@
     margin-right: 3vw;
 }
 table{
-   
     margin-top:0.5vw;
     table-layout: fixed;
     margin:auto;
    width:100% !important;
    position: sticky;
 
- 
-   
-  
-  
+   height:130% ;
+
 }
 a{
     text-decoration: none;

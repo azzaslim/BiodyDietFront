@@ -2,12 +2,23 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { addSymptom_URL, ADD_USER_URL, DELETE_USER_URL, GETPROFILE_URL, getSymptoms_URL, GET_ONE_USER_URL, GET_USERS_URL, LOGIN_URL, REGISTER_URL, UPDATE_CURRENT_USER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL } from 'src/app/common/url';
-import { environment } from "src/environments/environment";
+import { BehaviorSubject, Observable } from 'rxjs';
+ import { DELETE_USER_URL,  GET_ONE_USER_URL, GET_USERS_URL,UPDATE_CURRENT_USER_URL } from 'src/common/url';
+/*import { environment } from "src/environments/environment";
 import { ADD_PREPARATION_URL } from 'src/app/common/url';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ADD_USER_URL, UPDATE_CURRENT_USER_URL } from 'src/common/url'; */
 
+
+
+
+
+
+
+import { addSymptom_URL, ADD_PREPARATION_URL, ADD_USER_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL} from 'src/common/url';
 //import { ADD_PREPARATION_URL } from 'src/common/url';
+
+import { environment } from 'src/environments/environment';
 
 
 
@@ -26,15 +37,16 @@ export interface User {
   modulePresc:boolean;
 }
 
-export interface Symptom {
-  id: number;
-  name: string;
-}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestUserService implements OnInit {
+  add(data: any) {
+    throw new Error('Method not implemented.');
+  }
+  
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void { }
 
@@ -47,7 +59,6 @@ export class RestUserService implements OnInit {
   private subject = new BehaviorSubject<User>(null!);
   User = new BehaviorSubject<any>(null);
 
-
   login(user: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -59,6 +70,7 @@ export class RestUserService implements OnInit {
     this.isLoggedIn();
     return this.http.post<any>(LOGIN_URL, user, { headers });
   }
+
   isLoggedIn(): Boolean {
     if (this.loggedIn !== 1) return false
     else
@@ -78,8 +90,7 @@ export class RestUserService implements OnInit {
     return localStorage.getItem("jwt");
 
   }
-  
-  
+
   register(user: any) {
     console.log(user);
     const headers = new HttpHeaders({
@@ -123,18 +134,33 @@ export class RestUserService implements OnInit {
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
     localStorage.clear();
+    this.User.next(null!);
+    console.clear();
+    this.loggedIn = 0;
+
+
     console.clear()
+  }
+//nutients
+  // getNutrients(): Observable<Nutrient[]> {
+  //   return this.http.get<Nutrient[]>(this.GETNutrient_URL);
+  // }
+//symptoms
+  
+  //  async getSymptoms() {
+  //   const headers = new HttpHeaders({
+  //     'Authorization': 'Bearer' + this.getToken(),
+  //     'Content-Type': 'application/json',
 
 
 
    // localStorage.removeItem('previewUrl')
-   localStorage.removeItem('profil')
-   localStorage.removeItem('jwt')
-  }
 
-  getNutrients(): Observable<Nutrient[]> {
+
+
+  /* getNutrients(): Observable<Nutrient[]> {
     return this.http.get<Nutrient[]>(this.GETNutrient_URL);
-  }
+  } */
 
   async updateLogo(logo: any) {
     const headers = new HttpHeaders({
@@ -177,28 +203,14 @@ export class RestUserService implements OnInit {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.getToken(),
       'Content-Type': 'application/json',
-
     });
+
+
+console.log(user)
+
     const params = new HttpParams().set('Id',JSON.parse(localStorage.getItem('user to manage')!))
 
     return await this.http.put<any>(UPDATE_USER_URL+ "/" +params,  user, { headers});
-  }
-   async getSymptoms(): Promise<Observable<Symptom[]>> {
-    // return this.http.get<Profil[]>(this.URL);
-    console.log(this.getToken());
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    return await this.http.get<Symptom[]>(getSymptoms_URL,{headers}); 
-   }
-   async addsymptom(symptom: any) {
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    console.log(this.getToken());
-    
-    return await this.http.post<any>(addSymptom_URL, symptom, { headers });
-
   }
   AddUser(user: any) {
     console.log(user);
@@ -207,6 +219,8 @@ export class RestUserService implements OnInit {
     )
     return this.http.post<any>(ADD_USER_URL, user, { headers });
 
+
+    }
   }
-  }
+
 

@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './shared/footer/footer.component';
+
 import { NavmenuComponent } from './shared/navmenu/navmenu.component';
 import { FormControl, FormControlName, FormGroup, FormGroupName, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -47,7 +47,6 @@ import { InfoPersonneComponent } from './client/info-personne/info-personne.comp
 import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
-import { RestPatientService } from './client/Services/Rest-patient.service';
 
 import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AuthGuardService } from './guard/auth-guard.service';
@@ -60,14 +59,20 @@ import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-gr
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
 import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
+
+import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
+import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 // or
 import {MatRadioModule} from '@angular/material/radio';
 import { AddPatientComponent } from './admin/add-patient/add-patient.component';
 import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
+import { RestPatientService } from './client/Services/Rest-patient.service';
+import { FooterComponent } from './shared/footer/footer.component';
+import { RestNutrientService } from './client/Services/rest-nutrient.service';
+import { RestSymptomService } from './client/Services/rest-symptom.service';
 import { ListQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/list-questionnaire/list-questionnaire.component';
-
 import { AddQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/add-questionnaire/add-questionnaire.component';
 import { DetailQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/detail-questionnaire/detail-questionnaire.component';
 import { AddAnswersComponent } from './admin/ModuleQuestionnaire/Answers/add-answers/add-answers.component';
@@ -86,8 +91,6 @@ import { MatOptionModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    NavmenuComponent,
     HomeComponent,
     ListeprofilComponent,
     ParametreComponent,
@@ -106,7 +109,6 @@ import { MatOptionModule } from '@angular/material/core';
    ChangePasswordComponent,
    PatientsDialogComponent,
    AHomeComponent,
-   ListeUsersComponent,
    ListeGroupesComponent,
    DetailUserComponent,
    EditUserComponent,
@@ -114,9 +116,17 @@ import { MatOptionModule } from '@angular/material/core';
    EditGroupeComponent,  
    SymptommanageComponent,
    AddsymptomComponent,
-   PatientsDialogComponent,
    AddNutrientComponent,
+   NutrientdetailsComponent,   
+   EditNutrientComponent,  
+   AddUserComponent,
+   AddPatientComponent,
+   PrescriptComponent,  
    NutrientComponent,
+   ListeUsersComponent,
+   FooterComponent,
+   NavmenuComponent,
+   ChangePasswordComponent,
      
    NutrientComponent,
          AddUserComponent,
@@ -133,8 +143,8 @@ import { MatOptionModule } from '@angular/material/core';
          HomeMQuestionnaireComponent,  
   ],
   imports: [
-    MatListModule,
-    BrowserModule,
+  
+  MatListModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
     MatFormFieldModule,
@@ -151,7 +161,6 @@ import { MatOptionModule } from '@angular/material/core';
     MatStepperModule,
     MatExpansionModule,
     CdkTableModule,
-    CdkTableModule,
     MatDialogModule,
     MatTableModule,
     MatSelectModule,
@@ -159,12 +168,23 @@ import { MatOptionModule } from '@angular/material/core';
     MatRadioModule,
     NgMultiSelectDropDownModule,
     MatOptionModule
+  
+   
+
+
+    
+
+
+
     
     
+
   ],
   providers: [
   RestUserService,
   RestPatientService,
+  RestNutrientService,
+  RestSymptomService,
   DatePipe,
 
   {

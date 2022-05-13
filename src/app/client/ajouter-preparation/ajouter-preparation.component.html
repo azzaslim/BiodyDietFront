@@ -81,25 +81,31 @@
           
           </div>
         </mat-card>
-          <mat-card class=" col-md-3 form12 "  >
-      <h1 class="Lable4"> Symtomes</h1>
-     
-       
-          <mat-checkbox>Symtome</mat-checkbox>
-          <br> <br>
-          <mat-checkbox>Symtome</mat-checkbox>
-          <br> <br>
-          <mat-checkbox>Symtome</mat-checkbox>
+        <div class="form13 col-md-3 " >
+        <div class="titre1" > Symtomes</div>
+        <mat-card class="C3 example-container mat-elevation-z8" >
+        
+       <table cdk-table [dataSource]="dataSource2" class="mat-elevation-z8">
       
-     
-    </mat-card>
+        <ng-container cdkColumnDef="symptom_name">
+          <td cdk-cell *cdkCellDef="let element"  
+          >  <mat-checkbox >{{element.symptom_name}} </mat-checkbox></td>
+      
+        </ng-container>
+        <tr cdk-row *matRowDef="let row; columns: displayedColumns2;" ></tr>
+      
+      </table>
+      </mat-card>
+      </div>
+    
   </div>
   <button class="submit " type="submit" >Add</button>
 </mat-card-content>
   </mat-card>
   
-</form>
-</div>
+
+
+
 
 
 

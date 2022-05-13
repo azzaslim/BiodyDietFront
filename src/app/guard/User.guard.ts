@@ -14,8 +14,9 @@ export class UserGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.role = JSON.parse(localStorage.getItem('currentUser')!).role
-      if (this.role == 'ROLE_USER') {
+      if (this.role == 'ROLE_USER' || this.role == '') {
 return true      }
+else 
 alert ('vous n\'avez pas l\'acces vers cet page')
 this.router.navigate((['/admin/home']))
 return false  }

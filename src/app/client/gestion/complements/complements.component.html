@@ -19,164 +19,111 @@
 
 <br>
 <div class="row">
-<div class="form1 col-md-3" >
-  <div class="titre1" > Préparations Originales</div>
- <mat-card  class="example-container mat-elevation-z8" >
-  
- 
-
-    <table mat-table [dataSource]="data" class="mat-elevation-z8">
-  
-    
-  
-      <!--- Note that these columns can be defined in any order.
-  
-            The actual rendered columns are set as a property on the row definition" -->
-  
-    
-  
-      <!-- ID Column -->
-  
-      <ng-container matColumnDef="id">
-  
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Name Column -->
-  
-      <ng-container matColumnDef="name">
-  
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Email Column -->
-  
-      <ng-container matColumnDef="email">
-  
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-  
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-    </table>
-  
-  
- 
- </mat-card>
-</div>
-
-
-<div class="form11 col-md-3" >
-  <div class="titre1" > Portions</div>
- <mat-card class="C2" >
-  <section >  
-    <p class="prep1">1 Barre=45g</p>
-    <p class="prep1">2 Barre=90g </p>
-  </section>
- </mat-card>
-</div>
-
-
-<div class="form12  col-md-3" >
-  <div class="titre1" > Compositions par 100g</div>
- <mat-card class="C3 example-container mat-elevation-z8" >
-  
-
-    <table mat-table [dataSource]="data" class="mat-elevation-z8">
-  
-    
-  
-      <!--- Note that these columns can be defined in any order.
-  
-            The actual rendered columns are set as a property on the row definition" -->
-  
-    
-  
-      <!-- ID Column -->
-  
-      <ng-container matColumnDef="id">
-  
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Name Column -->
-  
-      <ng-container matColumnDef="name">
-  
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <!-- Email Column -->
-  
-      <ng-container matColumnDef="email">
-  
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  
-      </ng-container>
-  
-    
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-  
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-    </table>
-  
- 
- 
+  <div class="form1 col-md-3" >
+    <div class="titre1" > Préparations Originales</div>
+   <mat-card  class="example-container mat-elevation-z8" >
     
    
- </mat-card>
-</div>
-
-<div class="form13 col-md-3 " >
-  <div class="titre1" > Symtomes</div>
- <mat-card class="C3" >
-    <mat-checkbox >Symtome</mat-checkbox>
-    <br>  <br>
-    <mat-checkbox >Symtome</mat-checkbox>
-    <br>  <br>
-    <mat-checkbox >Symtome</mat-checkbox>
- 
- </mat-card>
-</div>
-</div>
-<div class="divboutton " > 
-<div class="b1"> <a href="/" style="color:#FFF; text-decoration: none;"> Masquer</a></div> 
-  <div class="b2"> <a href="/" style="color:#FFF; text-decoration: none;"> Modifier</a></div>
-  <div class="b3"> <a href="ajoutpreparation" style="color:#FFF; text-decoration: none;"> Ajouter</a></div> 
-  <div class="b4"> <a href="/" style="color:#FFF; text-decoration: none;"> Supprimer</a></div>
-</div>
-</div>
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+     <ng-container matColumnDef="name">
+  
+       
+  
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  
+      </ng-container>
+  
+    
+  
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row); preparationToManage(row); getOneNutrient()" 
+        [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+        (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr>
+  
+    </table>
+   
+   </mat-card>
+  </div>
+  
+  
+  <div class="form11 col-md-3" >
+    <div class="titre1" > Portions</div>
+    <mat-card class="C3 example-container mat-elevation-z8" >
+    <table cdk-table [dataSource]="dataSource1" class="mat-elevation-z8">
+  
+      <ng-container cdkColumnDef="portion">
+        <td cdk-cell *cdkCellDef="let element" (click)="search('{{element.portion}}')" 
+        > {{element.portion}} </td>
+  
+      </ng-container>
+  
+       <ng-container matColumnDef="tenor">
+  
+        <th mat-header-cell *matHeaderCellDef> Teneur </th>
+  
+        <td mat-cell *matCellDef="let element"> {{element.tenor}} </td>
+  
+      </ng-container> 
+      
+      <tr cdk-row *matRowDef="let row; columns: displayedColumns1;" ></tr>
+  
+    </table>
+    </mat-card>
+  </div>
+  
+  
+  <div class="form12  col-md-3" >
+    <div class="titre1" > Compositions par 100g</div>
+   <mat-card class="C3 example-container mat-elevation-z8" >
+    
+  
+     <table cdk-table [dataSource]="dataSource1" class="mat-elevation-z8">
+  
+        <ng-container cdkColumnDef="portion">
+          <td cdk-cell *matCellDef="let element" (click)="search('{{element.portion}}')" 
+          > {{element.portion}} </td>
+    
+        </ng-container>
+  
+        <!-- <ng-container matColumnDef="tenor">
+    
+          <th mat-header-cell *matHeaderCellDef> Teneur </th>
+    
+          <td mat-cell *matCellDef="let element"> {{element.tenor}} </td>
+    
+        </ng-container> -->
+        
+        <tr cdk-row *matRowDef="let row; columns: displayedColumns1;" ></tr>
+    
+      </table>
+    
+   </mat-card>
+  </div> 
+  
+  <div class="form13 col-md-3 " >
+    <div class="titre1" > Symtomes</div>
+    <mat-card class="C3 example-container mat-elevation-z8"   >
+    
+   <table cdk-table [dataSource]="dataSource2" class="mat-elevation-z8">
+  
+    <ng-container cdkColumnDef="symptom_name">
+      <td cdk-cell *cdkCellDef="let element" (click)="search('{{element.symptom_name}}')" 
+      >  <mat-checkbox >{{element.symptom_name}} </mat-checkbox></td>
+  
+    </ng-container>
+    <tr cdk-row *matRowDef="let row; columns: displayedColumns2;" ></tr>
+  
+  </table>
+  </mat-card>
+  </div>
+  </div>
+  <div class="divboutton " > 
+  <div class="b1"> <a href="/" style="color:#FFF; text-decoration: none;"> Masquer</a></div> 
+    <div class="b2"> <a href="/" style="color:#FFF; text-decoration: none;"> Modifier</a></div>
+    <div class="b3"> <a href="ajoutpreparation" style="color:#FFF; text-decoration: none;"> Ajouter</a></div> 
+    <div class="b4"> <a href="/" style="color:#FFF; text-decoration: none;"(click)="ConfirmationNotification()" > Supprimer</a></div>
+  </div>
+  </div>
 
     <app-footer></app-footer>
     </body>

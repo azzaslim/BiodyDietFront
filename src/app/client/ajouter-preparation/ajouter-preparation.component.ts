@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ConfirmedValidator } from '../Validator-Password/confirmed-validator';
-import {MatTableDataSource} from '@angular/material/table';
-import { RestUserService, Product } from '../Services/RestUser.service';
-import { RestSymptomService } from '../Services/rest-symptom.service';
-import { Symptom}  from '../Services/rest-symptom.service';
-import { MatSort, Sort } from '@angular/material/sort';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import Swal from 'sweetalert2';
+import { LiveAnnouncer } from "@angular/cdk/a11y";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { MatSort, Sort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
+import { Router } from "@angular/router";
+import Swal from "sweetalert2";
+import { Product, RestProductService } from "../Services/rest-product.service";
+import { Symptom, RestSymptomService } from "../Services/rest-symptom.service";
+import { RestUserService } from "../Services/RestUser.service";
+
 @Component({
   selector: 'app-ajouter-preparation',
   templateUrl: './ajouter-preparation.component.html',
@@ -21,7 +21,7 @@ export class AjouterPreparationComponent implements OnInit {
   displayedColumns2 = ['symptom_name'];
   dataSource2=new MatTableDataSource<Symptom>();
   addData : FormGroup =new FormGroup({});
-  constructor(private _liveAnnouncer: LiveAnnouncer,private RestUserService:RestUserService ,private router:Router, private formBuilder : FormBuilder,private user: RestUserService,private symptomservice:RestSymptomService,private authService: RestUserService ) { 
+  constructor(private _liveAnnouncer: LiveAnnouncer,private RestProductService : RestProductService ,private router:Router, private formBuilder : FormBuilder,private user: RestUserService,private symptomservice:RestSymptomService,private authService: RestUserService ) { 
 
     this.addData=formBuilder.group({
       name:['',[Validators.required]],
@@ -45,10 +45,10 @@ export class AjouterPreparationComponent implements OnInit {
   get f() {
     return this.addData.controls;
   }
-add(){
+  async add(){
   let data = this.addData.value
   
-  this.RestUserService.add(data)
+  ;(await this.RestProductService.addProduct(data))
   .subscribe(
     response=> {
       this.router.navigate(['/preparations'])
@@ -58,7 +58,7 @@ add(){
     }
 
     async ngOnInit(): Promise<void> {
-      this.user.getProducts().subscribe((x) =>{
+      this.RestProductService.getProducts().subscribe((x) =>{
         this.dataSource =new MatTableDataSource(x);
         console.log(x);
     });

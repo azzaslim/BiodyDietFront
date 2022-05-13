@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GETALL_preparations_URL,GETALL_PRODUCTS_URL, ADD_PRODUCT_URL, GET_ONE_PRODUCT_URL, DELETE_PRODUCT_URL, UPDATE_PRODUCT_URL, GET_ONE_PREPARATION_URL, GETALL_SYMPTOMS_URL, GETALL_COMPLEMENTS_URL, UPDATE_PRODUCT_VISIBILITY_URL } from 'src/app/common/url';
+import { GETALL_PREPARATION_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
 
 
 
@@ -12,17 +13,42 @@ export interface Product {
   name: string;
   composition: string;
   portion: string;
+  type:string;
+  indication:boolean
 }
 @Injectable({
   providedIn: 'root'
 })
 export class RestProductService {
-  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
-  //get Token
-  getToken() {
-    return localStorage.getItem('jwt');
 
+  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
+
+
+  getToken() {
+    return localStorage.getItem("jwt");
+
+  } 
+  getProducts(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return this.http.get<Product[]>(GETALL_PRODUCTS_URL,{headers});
   }
+  getPreparations(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return this.http.get<Product[]>(GETALL_PREPARATION_URL,{headers});
+  }
+  getSuppliments(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return this.http.get<Product[]>(GETALL_SUPPLIMENTS_URL,{headers});
+  }
+
+  
+  
   get ProductExist(): boolean {
     return localStorage.getItem('Product') ? true : false;
  }
@@ -45,14 +71,7 @@ export class RestProductService {
     )
     return await this.http.get<Product[]>(GETALL_COMPLEMENTS_URL,{headers}); 
    }
-   async getproducts(): Promise<Observable<Product[]>> {
-   
-    console.log(this.getToken());
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    return await this.http.get<Product[]>(GETALL_PRODUCTS_URL,{headers}); 
-   }
+ 
 
    
    

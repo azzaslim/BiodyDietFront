@@ -37,7 +37,7 @@ export class RestUserService implements OnInit {
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void { }
   private REGISTER_URL = "http://localhost:8000/register";
-  GETPRODUCT_URL = "http://localhost:8000/getproducts";
+
   GETNutrient_URL = "http://localhost:8000/getnutrients";
 
 

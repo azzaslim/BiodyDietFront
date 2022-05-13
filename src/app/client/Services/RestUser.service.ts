@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
  import { DELETE_USER_URL,  GET_ONE_USER_URL, GET_USERS_URL,UPDATE_CURRENT_USER_URL } from 'src/common/url';
 /*import { environment } from "src/environments/environment";
 import { ADD_PREPARATION_URL } from 'src/app/common/url';
@@ -12,24 +13,17 @@ import { ADD_USER_URL, UPDATE_CURRENT_USER_URL } from 'src/common/url'; */
 
 
 
-import { BehaviorSubject} from 'rxjs';
 
 
 import { addSymptom_URL, ADD_PREPARATION_URL, ADD_USER_URL, GETPROFILE_URL, getSymptoms_URL, LOGIN_URL, REGISTER_URL, UPDATE_LOGO_URL, UPDATE_USER_URL, VERIF_URL} from 'src/common/url';
 //import { ADD_PREPARATION_URL } from 'src/common/url';
 
-import { async, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
 
 
-export interface Product {
-  id: number;
-  name: string;
-  composition: string;
-  portion: string;
-}
+
 export interface Nutrient {
   id: number;
   name: string;
@@ -49,6 +43,10 @@ export interface User {
   providedIn: 'root'
 })
 export class RestUserService implements OnInit {
+  add(data: any) {
+    throw new Error('Method not implemented.');
+  }
+  
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void { }
 
@@ -56,7 +54,6 @@ export class RestUserService implements OnInit {
   private REGISTER_URL = "http://localhost:8000/register";
   // private ADD_PREPARATION_URL="http://localhost:8000/api/add/preparation";
 
-  GETPRODUCT_URL = "http://localhost:8000/getproducts";
   GETNutrient_URL = "http://localhost:8000/getnutrients";
   loggedIn!: number;
   private subject = new BehaviorSubject<User>(null!);
@@ -68,7 +65,6 @@ export class RestUserService implements OnInit {
     });
     this.loggedIn = 1;
     this.User.next(user);
-    localStorage.setItem('AUTH_DATA', JSON.stringify(user));
 
 
     this.isLoggedIn();
@@ -91,7 +87,6 @@ export class RestUserService implements OnInit {
   }
 
   getToken() {
-    //return localStorage.getItem('jwt');
     return localStorage.getItem("jwt");
 
   }
@@ -131,19 +126,10 @@ export class RestUserService implements OnInit {
   }
 
 
-  add(prep: any) {
-    console.log(prep);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    return this.http.post<any>(ADD_PREPARATION_URL, prep, { headers });
-
-  }
+  
 
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.GETPRODUCT_URL);
-  }
+ 
 
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
@@ -226,24 +212,6 @@ console.log(user)
 
     return await this.http.put<any>(UPDATE_USER_URL+ "/" +params,  user, { headers});
   }
-
-   /* async getSymptoms(): Promise<Observable<Symptom[]>> {
-    // return this.http.get<Profil[]>(this.URL);
-    console.log(this.getToken());
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    return await this.http.get<Symptom[]>(getSymptoms_URL,{headers}); 
-   } */
-   /* async addsymptom(symptom: any) {
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    console.log(this.getToken());
-    
-    return await this.http.post<any>(addSymptom_URL, symptom, { headers });
-
-  } */
   AddUser(user: any) {
     console.log(user);
     let headers = new HttpHeaders().set(

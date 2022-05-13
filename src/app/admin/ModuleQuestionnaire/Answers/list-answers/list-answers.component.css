@@ -1,0 +1,61 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.titre
+{
+    text-align: right;
+    color:#0a0a0a;
+    font-weight:900;
+    font-family: ' sans-serif' ;
+    margin-top: 3vw;
+    margin-right: 3vw;
+    height: 50%;
+}
+table{
+    margin-top:0.5vw;
+    table-layout: fixed;
+    margin:auto;
+   width:90% !important;
+   position: sticky;
+ 
+   
+  
+  
+}
+a{
+    text-decoration: none;
+    color:#707272;
+}
+table td{
+    height:1vh;
+}
+table th{
+background-color: #FFF;}
+
+  
+  
+  .example-container {
+    height: 600px;
+    overflow: auto;  
+margin-right: 0;}
+
+
+
+  .mat-elevation-z8 {
+box-shadow: none;
+height: 600px;
+
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: green;
+}
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: green;
+
+}
+::ng-deep .mat-checkbox {
+  margin-top: 10px;
+
+}
+.d-grid{
+    margin-top: 4%;
+}

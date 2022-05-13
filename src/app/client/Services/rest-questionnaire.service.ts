@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ADD_QUESTIONNAIRE_URL, DELETE_QUESTIONNAIRE_URL, GET_ONE_QUESTIONNAIRE_URL, GET_QUESTIONNAIRE_URL, UPDATE_QUESTIONNAIRE_URL } from 'src/app/common/url';
+import { ADD_QUESTIONNAIRE_URL, GET_QUESTIONNAIRE_URL, DELETE_QUESTIONNAIRE_URL, GET_ONE_QUESTIONNAIRE_URL, UPDATE_QUESTIONNAIRE_URL } from 'src/common/url';
 export interface Questionnaire {
   id: number;
   title: string;
@@ -39,8 +39,9 @@ export class RestQuestionnaireService {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
+    const params = new HttpParams().set('Id', JSON.parse(localStorage.getItem('Questionnaire to manage')!))
 
-    return await this.http.post<any>(DELETE_QUESTIONNAIRE_URL, JSON.stringify({ id: id }), { headers });
+    return await this.http.delete<any>(DELETE_QUESTIONNAIRE_URL+'/'+params, { headers });
   }
 
   async getQuestionnaire(id: any): Promise<Observable<any>> {

@@ -7,9 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AddsymptomComponent } from 'src/app/admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
 import Swal from 'sweetalert2';
-import { RestProductService } from '../../Services/rest-product.service';
-import { Product, RestUserService } from '../../Services/RestUser.service';
+import { Product, RestProductService } from '../../Services/rest-product.service';
 import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
+import { RestUserService } from '../../Services/RestUser.service';
 
 @Component({
   selector: 'app-complements',

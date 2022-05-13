@@ -3,11 +3,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { addSymptom_URL, ADD_PREPARATION_URL, GETPROFILE_URL, getSymptoms_URL, GET_ONE_SYMPTOM_URL, LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { DELETE_Symptom_URL } from 'src/app/common/url';
+import { addSymptom_URL, ADD_PREPARATION_URL, DELETE_Symptom_URL, GETPROFILE_URL, getSymptoms_URL, GET_ONE_SYMPTOM_URL, LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
+
 
 
 

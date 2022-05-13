@@ -35,12 +35,19 @@
     }
     mat-icon{
     font-size:60px;
-    color :rgb(14, 88, 110);
+    color :#23b4b8;
     }
     mat-card-header {
 flex-direction: column;  }
 .row{
     margin-right: 0 !important;
+}
+.card-wrapper{
+margin-top: 5%;
+
+}
+mat-card-title{
+    color: #123640;
 }
 card-wrapper{
     height: 100%;

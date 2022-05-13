@@ -7,9 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AddsymptomComponent } from 'src/app/admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
 import Swal from 'sweetalert2';
-import { RestProductService } from '../../Services/rest-product.service';
+import { Product, RestProductService } from '../../Services/rest-product.service';
 import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
-import { Product, RestUserService } from '../../Services/RestUser.service';
+import { RestUserService } from '../../Services/RestUser.service';
 
 @Component({
   selector: 'app-produits',
@@ -28,11 +28,11 @@ export class ProduitsComponent implements OnInit {
   symptoms!:string;
    list=[];
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
       this.getOneNutrient();
-      (await this.user.getproducts()).subscribe((x) => {
+      (await this.RestProductService.getProducts()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no product exist");
@@ -135,7 +135,7 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
   }
   async deleteProduct(){
     //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
-    (await this.user.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
+    (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
     .subscribe(
       async response => {
        console.log(response)
@@ -151,7 +151,7 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
     console.log(id);
      }
      async getOneNutrient(){
-     ( (await (this.user.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
+     ( (await (this.RestProductService.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
       this.dataSource1 = new MatTableDataSource(x);
       this.dataSource1.sort = this.sort;
   

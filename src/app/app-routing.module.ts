@@ -47,6 +47,13 @@ import { SupplementdetailsComponent } from './admin/ModulePrescription/supplemen
 import { EditSupplementComponent } from './admin/ModulePrescription/supplementmanage/edit-supplement/edit-supplement.component';
 import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
 
+import { ListAnswersComponent } from './admin/ModuleQuestionnaire/Answers/list-answers/list-answers.component';
+import { AddAnswersComponent } from './admin/ModuleQuestionnaire/Answers/add-answers/add-answers.component';
+import { DetailAnswersComponent } from './admin/ModuleQuestionnaire/Answers/detail-answers/detail-answers.component';
+import { EditAnswersComponent } from './admin/ModuleQuestionnaire/Answers/edit-answers/edit-answers.component';
+import { HomeMQuestionnaireComponent } from './admin/ModuleQuestionnaire/home-m-questionnaire/home-m-questionnaire.component';
+
+
 
 
 
@@ -109,6 +116,12 @@ const routes: Routes = [
   { path: 'admin/questionnaire/addquestionnaire', component: AddQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'admin/questionnaire/Detailquestionnaire', component: DetailQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'admin/questionnaire/Editquestionnaire', component: EditQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
+
+  { path: 'admin/answers/Listeanswers', component: ListAnswersComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/answers/addanswers', component: AddAnswersComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/answers/Detailanswer', component: DetailAnswersComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/answers/Editanswer', component: EditAnswersComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/ModuleQuestionnaire', component: HomeMQuestionnaireComponent , canActivate : [AuthGuardService,ChildGuard] },
 
 ];
 

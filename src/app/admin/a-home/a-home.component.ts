@@ -18,10 +18,13 @@ export class AHomeComponent implements OnInit {
   nbnutrient!:string;
   nbsymptoms!:string;
   nbQuestionnaire!:string;
+  nbresponse!:string;
   constructor(private RestUserService: RestUserService,private RestPatientService : RestPatientService , router: Router) { }
 
   async ngOnInit() {
     this.nbPatients = localStorage.getItem('nbPatients')!;
+    this.nbusers = localStorage.getItem('nbusers')!;
+    this.nbQuestionnaire = localStorage.getItem('nbQuestionnaire')!
 
     this.nbusers= localStorage.getItem('nbusers')!;
    this.nbnutrient= localStorage.getItem('nbnutrients')!;

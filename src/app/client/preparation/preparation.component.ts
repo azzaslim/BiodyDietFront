@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Product, RestUserService } from 'src/app/client/Services/RestUser.service';
 import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
 import {MatTableDataSource} from '@angular/material/table';
-import { RestProductService } from '../Services/rest-product.service';
+import { RestProductService, Product } from '../Services/rest-product.service';
+
+
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort, Sort } from '@angular/material/sort';
@@ -13,6 +14,7 @@ import { AddsymptomComponent } from 'src/app/admin/ModulePrescription/symptom/ad
 import Swal from 'sweetalert2';
 import {SelectionModel} from '@angular/cdk/collections';
 import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
+import { RestUserService } from '../Services/RestUser.service';
 
 
 

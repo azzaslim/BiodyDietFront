@@ -20,7 +20,7 @@ import { MatRowDef, MatTableDataSource, MatTableModule } from '@angular/material
 import { MatSortModule } from '@angular/material/sort';
 
 import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
-import { PreparationComponent } from './client/preparation/preparation.component';
+
 import { ComplementsComponent } from './client/gestion/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/produits/produits.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -57,11 +57,7 @@ import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.com
 import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
 import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
-import { AddNutrientComponent } from './admin/ModulePrescription/nutrient/add-nutrient/add-nutrient.component';
-import { NutrientComponent } from './admin/ModulePrescription/nutrient/nutrient/nutrient.component';
 
-import { NutrientdetailsComponent } from './admin/ModulePrescription/nutrient/nutrientdetails/nutrientdetails.component';
-import { EditNutrientComponent } from './admin/ModulePrescription/nutrient/edit-nutrient/edit-nutrient.component';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 // or
@@ -78,16 +74,27 @@ import { DetailQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questi
 import { AddAnswersComponent } from './admin/ModuleQuestionnaire/Answers/add-answers/add-answers.component';
 import { DetailAnswersComponent } from './admin/ModuleQuestionnaire/Answers/detail-answers/detail-answers.component';
 import { ListAnswersComponent } from './admin/ModuleQuestionnaire/Answers/list-answers/list-answers.component';
-import { AddsymptomComponent } from './admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
-import { SymptommanageComponent } from './admin/ModulePrescription/symptom/symptommanage/symptommanage.component';
+
 import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
-import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symptom-details/symptom-details.component';
+import { EditAnswersComponent } from './admin/ModuleQuestionnaire/Answers/edit-answers/edit-answers.component';
+
+import { HomeMQuestionnaireComponent } from './admin/ModuleQuestionnaire/home-m-questionnaire/home-m-questionnaire.component';
+import { MatOptionModule } from '@angular/material/core';
+import { SymptommanageComponent } from './admin/ModulePrescription/symptom/symptommanage/symptommanage.component';
+import { AddNutrientComponent } from './admin/ModulePrescription/nutrient/add-nutrient/add-nutrient.component';
+import { EditNutrientComponent } from './admin/ModulePrescription/nutrient/edit-nutrient/edit-nutrient.component';
+import { NutrientComponent } from './admin/ModulePrescription/nutrient/nutrient/nutrient.component';
+import { NutrientdetailsComponent } from './admin/ModulePrescription/nutrient/nutrientdetails/nutrientdetails.component';
+import { AddsymptomComponent } from './admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
+import { PreparationComponent } from './client/preparation/preparation.component';
+import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
 import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
-import { SupplementComponent } from './admin/ModulePrescription/supplementmanage/supplement/supplement.component';
 import { PreparationDetailsComponent } from './admin/admin-preparation/preparation-details/preparation-details.component';
+import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symptom-details/symptom-details.component';
 import { SupplementdetailsComponent } from './admin/ModulePrescription/supplementmanage/supplementdetails/supplementdetails.component';
 import { EditSupplementComponent } from './admin/ModulePrescription/supplementmanage/edit-supplement/edit-supplement.component';
-import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
+import { SupplementComponent } from './admin/ModulePrescription/supplementmanage/supplement/supplement.component';
+
 
 
 @NgModule({
@@ -141,16 +148,19 @@ import { PreparationeditComponent } from './admin/admin-preparation/preparatione
          AddAnswersComponent,
          DetailAnswersComponent,
          EditQuestionnaireComponent,
-         SymptomDetailsComponent,
-         AdminPrepationManageComponent,
-         SupplementComponent,
-         PreparationDetailsComponent,
-         SupplementdetailsComponent,
-         EditSupplementComponent,
+         EditAnswersComponent,
+         HomeMQuestionnaireComponent,  
          PreparationeditComponent,
+         AdminPrepationManageComponent,
+        PreparationDetailsComponent,
+        SymptomDetailsComponent,
+        SupplementdetailsComponent,
+        EditSupplementComponent,
+        SupplementComponent
+        
+
   ],
   imports: [
-
 
   MatListModule,
     AppRoutingModule,
@@ -174,6 +184,7 @@ import { PreparationeditComponent } from './admin/admin-preparation/preparatione
     MatSelectModule,
     MatDividerModule,
     MatRadioModule,
+    MatOptionModule
   
    
 

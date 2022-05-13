@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { AddsymptomComponent } from 'src/app/admin/symptom/addsymptom/addsymptom.component';
+import { AddsymptomComponent } from 'src/app/admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
 import Swal from 'sweetalert2';
 import { RestProductService } from '../../Services/rest-product.service';
 import { Product, RestUserService } from '../../Services/RestUser.service';
@@ -31,7 +31,7 @@ export class ComplementsComponent implements OnInit {
   constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
-      this.getOneNutrient();
+      this.getOneProduct();
       (await this.user.getcomplements()).subscribe((x) => {
         if (x.length==0)
         {
@@ -88,23 +88,22 @@ export class ComplementsComponent implements OnInit {
   }
   ConfirmationNotification() {
     
-Swal.fire({
-  title: 'Etes-vous sur ?',
-  icon: 'info',
-  showDenyButton: true,
-  showCancelButton: false,
-  confirmButtonText: 'Supprimer',
-  denyButtonText: `Annuler`,
-}).then((result) => {
-  if (result.isConfirmed) {
-this.deleteProduct()
-Swal.fire('ce symptom a été supprimé', '', 'success')
-} 
-})
-  }
+    Swal.fire({
+      title: 'Etes-vous sur ?',
+      icon: 'info',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Supprimer',
+      denyButtonText: `Annuler`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+    this.deleteProduct();
+    Swal.fire('ce symptom a été supprimé', '', 'success');
+    } 
+    })
+      }
  
   async preparationToManage(product: Product) {
-    // console.log('symptom to manage', JSON.stringify(symptom.id));
      localStorage.setItem('product to manage', JSON.stringify(product.id));
      localStorage.setItem('product', JSON.stringify(product));
    }
@@ -150,7 +149,7 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
   search(id :string){
     console.log(id);
      }
-     async getOneNutrient(){
+     async getOneProduct(){
      ( (await (this.user.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
       this.dataSource1 = new MatTableDataSource(x);
       this.dataSource1.sort = this.sort;
@@ -172,5 +171,18 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
       this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom'][0]['symptom_name'];
     //console.log(this.symptoms);
 
+    }
+    async UpdateProductVisibility(){
+      (await this.user.UpdateProductVisibility(JSON.parse(localStorage.getItem('product to manage')!)))
+      .subscribe(
+        async response => {
+         console.log(response)
+         this.router.navigate(['/preparation'])
+         this.ngOnInit()
+        },
+        err => {
+          console.log(err)
+        })
+     
     }
 }

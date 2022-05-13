@@ -14,7 +14,7 @@ export class AHomeComponent implements OnInit {
 
   nbusers!: string;
   nbPatients!: string;
-
+  nbsupplements!:string;
   nbnutrient!:string;
   nbsymptoms!:string;
   nbQuestionnaire!:string;
@@ -27,7 +27,7 @@ export class AHomeComponent implements OnInit {
    this.nbnutrient= localStorage.getItem('nbnutrients')!;
    this.nbsymptoms=localStorage.getItem('nbsymptoms')!;
    this.nbQuestionnaire = localStorage.getItem('nbQuestionnaire')!
-
+//this.nbsupplements=localStorage.getItem('nbsupplements');
   }
 
   FailNotification() {

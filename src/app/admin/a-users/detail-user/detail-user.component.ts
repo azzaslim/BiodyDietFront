@@ -38,7 +38,7 @@ export class DetailUserComponent implements OnInit {
     (await this.RestUserService.getUser(localStorage.getItem('user to manage'))).subscribe(
       response => {
         console.log(response)    
-           // localStorage.setItem("usertoupdate",JSON.stringify(response))
+            //localStorage.setItem("usertoupdate",JSON.stringify(response))
             this.getInfoUser()
 
       })

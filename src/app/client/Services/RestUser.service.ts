@@ -147,9 +147,9 @@ export class RestUserService implements OnInit {
 
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
-    localStorage.clear();
+    //localStorage.clear();
     this.User.next(null!);
-    console.clear();
+    //console.clear();
     this.loggedIn = 0;
 
 

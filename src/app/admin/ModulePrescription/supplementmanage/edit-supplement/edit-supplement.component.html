@@ -1,0 +1,51 @@
+<app-navmenu></app-navmenu>
+
+
+<br><br>
+
+           
+<div class="separator">Modifier ce supplement</div>
+<div class="outline">
+
+<mat-card class="  mat-elevation-z8  col-10 "  >
+    <mat-card-header>
+        <mat-card-title class="title-overlap"><h3>Informations supplement</h3></mat-card-title>
+    </mat-card-header>
+    <br> <br>
+    <mat-card-content>
+    <form  [formGroup]="CurrentProduct" >
+
+        <div class="row center" >
+            
+            <mat-form-field appearance="standard" class=" row center  ">
+                <mat-label>Nom</mat-label>
+                
+                <input matInput placeholder="name" id="name" formControlName="name" >
+                
+            </mat-form-field>
+    
+            <mat-form-field appearance="standard" class="row center  ">
+                <mat-label>Protion</mat-label>
+                <input matInput placeholder="portion"  id="portion" formControlName="portion">
+            </mat-form-field>
+            <mat-form-field appearance="standard" class="row center  ">
+                <mat-label>Comment</mat-label>
+                <input matInput placeholder="comment"  id="comment" formControlName="comment">
+            </mat-form-field>
+            <mat-form-field appearance="standard" class="row center  ">
+                <mat-label>Composition</mat-label>
+                <input matInput placeholder="composition"  id="composition" formControlName="composition">
+            </mat-form-field>
+       </div>
+        </form>
+        <div  class=" boutton">
+            <button mat-button (click)=" updateProduct(); ">Modifier</button>
+        </div>
+        </mat-card-content>
+        </mat-card>
+        </div>
+        <a href="admin/supplements">   <button mat-icon-button color="primary"  style="float: right; margin-right: 30vw;" title="Modifier">Retour à la liste des supplements</button></a>
+  
+
+
+<app-footer></app-footer>

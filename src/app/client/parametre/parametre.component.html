@@ -5,7 +5,7 @@
 <div class="titre" style="font-size: 2vw;">Paramètres</div>
 <div class="bouttons d-flex justify-content-center" style="display:flex; ">
     <a class="paramCompte" style="color:#FFF ;  text-decoration:none;" href="editCompte"> Paramètres du compte</a>
-    <a class="parame2" style="color:#FFF ;  text-decoration:none;" href="gestion"> Paramètres des compléments</a>
+    <a class="parame2" style="color:#FFF ;  text-decoration:none;"  href="gestion" *ngIf="isAdmin"> Paramètres des compléments</a>
 
 
 </div>

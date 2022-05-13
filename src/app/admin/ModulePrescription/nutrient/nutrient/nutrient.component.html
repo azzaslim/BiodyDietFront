@@ -1,0 +1,67 @@
+<app-navmenu></app-navmenu>
+<div class="row d-flex ">
+    <div  class="col-md-3" style="display:flex">
+    <input matInput (keyup)="applyFilter($event)" class="searchbar" type="text" placeholder="Search.."  #input>
+    <a class="center chercher"> CHERCHER </a>
+    <button class="submit col-md-3" type="submit" (click)="openDialog()">Ajouter</button>
+
+</div>
+</div>
+
+<div class="title" >Liste des Nutriments </div>
+<div class="example-container mat-elevation-z8">
+
+<div class="table-responsive">
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)=" announceSortChange($event)" class="table table-striped w-auto ">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">
+            id
+        </th>
+
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+
+    </ng-container>
+
+    Name Column
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+            Nom
+        </th>
+        <td mat-cell *matCellDef="let element" >{{element.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="tenor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by tenor">
+            teneur
+        </th>
+        <td mat-cell *matCellDef="let element" >{{element.tenor}}</td>
+    </ng-container>
+    <ng-container matColumnDef="unity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by unity">
+            unite
+        </th>
+        <td mat-cell *matCellDef="let element" ><a >{{element.unity}}</a></td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <tr><th mat-header-cell *matHeaderCellDef> Action </th></tr>
+        <tr>
+          <td mat-cell *matCellDef="let row" style="width:20%">
+           <a href="admin/nutrient/nutrientdetails"><button mat-icon-button color="primary"  title="Afficher les details"  ><mat-icon>preview</mat-icon></button></a> 
+           <a href="admin/nutrient/editnutrient">   <button mat-icon-button color="primary"  title="Modifier"><mat-icon style="color: darkgoldenrod;">edit</mat-icon></button></a>
+            <button mat-icon-button color="primary"  title="supprimer" (click)="ConfirmationNotification()"><mat-icon  style="color: brown;">delete</mat-icon></button>
+          
+
+          </td>
+        <tr>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true  "></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; "(click)="nutrientToManage(row) "></tr>
+</table>
+</div>
+</div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
+    <a href="/admin/ModulePrescription/Prescript"><button mat-flat-button color="primary">
+            <mat-icon>keyboard_return</mat-icon>&emsp; retour au menu 
+        </button></a>
+</div>
+<app-footer></app-footer>

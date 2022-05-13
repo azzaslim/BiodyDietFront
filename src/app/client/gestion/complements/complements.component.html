@@ -36,7 +36,7 @@
   
     
   
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row); preparationToManage(row); getOneNutrient()" 
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)=" preparationToManage(row); getOneProduct(); " 
         [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
         (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr>
   
@@ -111,14 +111,14 @@
       >  <mat-checkbox >{{element.symptom_name}} </mat-checkbox></td>
   
     </ng-container>
-    <tr cdk-row *matRowDef="let row; columns: displayedColumns2;" ></tr>
+    <tr cdk-row *matRowDef="let row; columns: displayedColumns2;"  ></tr>
   
   </table>
   </mat-card>
   </div>
   </div>
   <div class="divboutton " > 
-  <div class="b1"> <a href="/" style="color:#FFF; text-decoration: none;"> Masquer</a></div> 
+  <div class="b1"> <a href="/" style="color:#FFF; text-decoration: none;" (click)="UpdateProductVisibility()"> Masquer</a></div> 
     <div class="b2"> <a href="/" style="color:#FFF; text-decoration: none;"> Modifier</a></div>
     <div class="b3"> <a href="ajoutpreparation" style="color:#FFF; text-decoration: none;"> Ajouter</a></div> 
     <div class="b4"> <a href="/" style="color:#FFF; text-decoration: none;"(click)="ConfirmationNotification()" > Supprimer</a></div>

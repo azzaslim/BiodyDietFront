@@ -1,12 +1,12 @@
-import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
-import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
-import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
+import { NutrientdetailsComponent } from './admin/ModulePrescription/nutrient/nutrientdetails/nutrientdetails.component';
+import { NutrientComponent } from './admin/ModulePrescription/nutrient/nutrient/nutrient.component';
+import { AddNutrientComponent } from './admin/ModulePrescription/nutrient/add-nutrient/add-nutrient.component';
 import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
 import { ProduitsComponent } from './client/gestion/produits/produits.component';
-import { PreparationComponent } from './client/gestion/preparation/preparation.component';
+import { PreparationComponent } from './client/preparation/preparation.component';
 import { ComplementsComponent } from './client/gestion/complements/complements.component';
 import { HomeComponent } from './client/home/home.component';
 import { InfoPersonneComponent } from './client/info-personne/info-personne.component';
@@ -20,7 +20,6 @@ import { RegisterComponent } from './client/register/register.component';
 import { ChangePasswordComponent } from './client/reset/change-password/change-password.component';
 import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.component';
 import { AHomeComponent } from './admin/a-home/a-home.component';
-
 import { ChildGuard } from './guard/Admin.guard';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
@@ -30,17 +29,23 @@ import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-gro
 import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
 import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
 import { UserGuard } from './guard/User.guard';
-import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
+import { EditNutrientComponent } from './admin/ModulePrescription/nutrient/edit-nutrient/edit-nutrient.component';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 import { AddPatientComponent } from './admin/add-patient/add-patient.component';
 import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
-import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
-import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+import { AddsymptomComponent } from './admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
+import { SymptommanageComponent } from './admin/ModulePrescription/symptom/symptommanage/symptommanage.component';
 import { ListQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/list-questionnaire/list-questionnaire.component';
 import { AddQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/add-questionnaire/add-questionnaire.component';
 import { DetailQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/detail-questionnaire/detail-questionnaire.component';
 import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
-
+import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
+import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symptom-details/symptom-details.component';
+import { PreparationDetailsComponent } from './admin/admin-preparation/preparation-details/preparation-details.component';
+import { SupplementComponent } from './admin/ModulePrescription/supplementmanage/supplement/supplement.component';
+import { SupplementdetailsComponent } from './admin/ModulePrescription/supplementmanage/supplementdetails/supplementdetails.component';
+import { EditSupplementComponent } from './admin/ModulePrescription/supplementmanage/edit-supplement/edit-supplement.component';
+import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
 
 
 
@@ -59,9 +64,10 @@ const routes: Routes = [
   { path: 'admin/nutrient/addnutrient', component: AddNutrientComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'produits', component: ProduitsComponent , canActivate : [AuthGuardService] },
   { path: 'preparations', component: PreparationComponent , canActivate : [AuthGuardService] },
+  { path: 'admin/preparation/listpreparation', component: AdminPrepationManageComponent , canActivate : [AuthGuardService] },
   { path: 'complements', component: ComplementsComponent , canActivate : [AuthGuardService] },
   { path: 'info/:id', component: InfoPersonneComponent , canActivate : [AuthGuardService] },
-  { path: 'admin/nutrient/nutrientdetails/:id', component: NutrientdetailsComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/nutrient/nutrientdetails', component: NutrientdetailsComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path:  'admin/nutrient/editnutrient', component: EditNutrientComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent},
@@ -76,7 +82,11 @@ const routes: Routes = [
  { path: 'admin/users/edituser', component: EditUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/consultuser', component: DetailUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/users/adduser', component: AddUserComponent , canActivate : [AuthGuardService,ChildGuard]  },
-
+ { path: 'admin/symptom/consultsymptom', component: SymptomDetailsComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/preparation/consultpreparation', component: PreparationDetailsComponent, canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/preparation/etitpreparation', component: PreparationeditComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/supplement/etitsupplement', component: EditSupplementComponent , canActivate : [AuthGuardService,ChildGuard]  },
+ { path: 'admin/supplement/consultsupplement', component: SupplementdetailsComponent , canActivate : [AuthGuardService,ChildGuard]  },
  { path: 'admin/addPatient', component: AddPatientComponent , canActivate : [AuthGuardService,ChildGuard]  },
 
  { path: 'admin/ModulePrescription/Prescript', component:  PrescriptComponent, canActivate : [AuthGuardService,ChildGuard]  },
@@ -90,6 +100,7 @@ const routes: Routes = [
   { path: 'admin/gestion', component: GestionComplementComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'admin/produits', component: ProduitsComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'admin/preparations', component: PreparationComponent , canActivate : [AuthGuardService,ChildGuard] },
+  { path: 'admin/supplements', component: SupplementComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'admin/complements', component: ComplementsComponent , canActivate : [AuthGuardService,ChildGuard] },
   { path: 'admin/ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService,ChildGuard]},
 
@@ -103,6 +114,11 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
+
+
+
+
 exports: [RouterModule]
 })
 export class AppRoutingModule { }

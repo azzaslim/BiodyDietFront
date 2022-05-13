@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GETALL_preparations_URL,GETALL_PRODUCTS_URL, ADD_PRODUCT_URL, GET_ONE_PRODUCT_URL, DELETE_PRODUCT_URL, UPDATE_PRODUCT_URL, GET_ONE_PREPARATION_URL, GETALL_SYMPTOMS_URL, GETALL_COMPLEMENTS_URL } from 'src/app/common/url';
+import { GETALL_preparations_URL,GETALL_PRODUCTS_URL, ADD_PRODUCT_URL, GET_ONE_PRODUCT_URL, DELETE_PRODUCT_URL, UPDATE_PRODUCT_URL, GET_ONE_PREPARATION_URL, GETALL_SYMPTOMS_URL, GETALL_COMPLEMENTS_URL, UPDATE_PRODUCT_VISIBILITY_URL } from 'src/app/common/url';
 
 
 
@@ -73,15 +73,25 @@ export class RestProductService {
     })
     return this.http.post<any>(GET_ONE_PRODUCT_URL,JSON.stringify({id: id}),{headers}); 
    } 
-   async deleteProduct(id: any) {
+   
+  async deleteProduct(symptom: any) {
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    const params = new HttpParams().set('Id',JSON.parse(localStorage.getItem('product to manage')!))
+
+    return await this.http.delete<any>(DELETE_PRODUCT_URL+ "/" +params, { headers});
+  }
+
+  
+  async UpdateProductVisibility(id: any) {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
 
-    return await this.http.post<any>(DELETE_PRODUCT_URL, JSON.stringify({id: id}), { headers });
+    return await this.http.post<any>(UPDATE_PRODUCT_VISIBILITY_URL, JSON.stringify({id: id}), { headers });
   }
 
-  
   async getProduct(id:any): Promise<Observable<any>> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

@@ -54,15 +54,22 @@ export class RestNutrientService {
     })
     return this.http.post<any>(GET_ONE_NUTRIENT_URL,JSON.stringify({id: id}),{headers}); 
    } 
-   async deleteNutrient(id: any) {
+  /*  async deleteNutrient(id: any) {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
 
     return await this.http.post<any>(DELETE_Nutrient_URL, JSON.stringify({id: id}), { headers });
-  }
+  } */
 
-  
+  async deleteNutrient(nutrient: any) {
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    const params = new HttpParams().set('Id',JSON.parse(localStorage.getItem('nutrient to manage')!))
+
+    return await this.http.delete<any>(DELETE_Nutrient_URL+ "/" +params, { headers});
+  }
   async getNutrient(id:any): Promise<Observable<any>> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

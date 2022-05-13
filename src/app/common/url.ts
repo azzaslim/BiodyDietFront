@@ -30,14 +30,14 @@ export const GET_ONE_NUTRIENT_URL= BASE_URL +'api/get/OneNutrient';
 export const UPDATE_NUTRIENT_URL= BASE_URL +'api/updatenutrient';
 export const DELETE_Symptom_URL= BASE_URL +'api/deleteSymptom';
 export const GET_ONE_SYMPTOM_URL= BASE_URL +'api/get/OneSymptom';
-export const DELETE_PRODUCT_URL= BASE_URL+'api/deleteProduct';
+export const DELETE_PRODUCT_URL= BASE_URL+'api/deleteProduct1';
 export const GET_ONE_PRODUCT_URL= BASE_URL+'api/get/OneProduct';
-export const UPDATE_PRODUCT_URL= BASE_URL+'/api/updateProduct';
+export const UPDATE_PRODUCT_URL= BASE_URL+'api/updateProduct';
 export const ADD_PRODUCT_URL= BASE_URL+'api/addproduct';
 export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETALL_PRODUCTS_URL= BASE_URL+'api/getproducts';
 export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
-
+export const UPDATE_PRODUCT_VISIBILITY_URL= BASE_URL+'api/updatevisibility';
 export const ADD_QUESTIONNAIRE_URL= BASE_URL +'api/addquestionnaire ';
 export const GET_QUESTIONNAIRE_URL= BASE_URL +'api/getquestionnaire ';
 export const GET_ONE_QUESTIONNAIRE_URL= BASE_URL +'api/get/OneQuestionnaire';

@@ -37,9 +37,34 @@
                 <input matInput placeholder="composition"  id="composition" formControlName="composition">
             </mat-form-field>
        </div>
+       <div class="separator1">Symptoms</div>
+                <div class="row center">
+
+
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3 ">
+                        <mat-select formControlName="symptomsList" multiple [(ngModel)]="Symotoml"
+                            placeholder="choisir un symptom">
+
+                            <mat-option *ngFor="let option of dropdownListSymptom;  let i=index;" [value]="option">
+                                {{option}}
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3 ">
+                        <mat-select formControlName="NutrientsList" multiple [(ngModel)]="Nutrientl"
+                            placeholder="choisir un nutriment">
+
+                            <mat-option *ngFor="let option of dropdownListNutrient;  let i=index;" [value]="option">
+                                {{option}}
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    </div>
         </form>
         <div  class=" boutton">
-            <button mat-button (click)=" updateProduct(); ">Modifier</button>
+            <button mat-button (click)="updateProduct()">Modifier</button>
         </div>
         </mat-card-content>
         </mat-card>

@@ -19,10 +19,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatRowDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
-import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
+import { GestionComplementComponent } from './client/gestion-complement/gestion-complement.component';
 
-import { ComplementsComponent } from './client/gestion/complements/complements.component';
-import { ProduitsComponent } from './client/gestion/produits/produits.component';
+import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
+import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -52,11 +52,10 @@ import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { ChildGuard } from './guard/Admin.guard';
 import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
-import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-groupes.component';
+
 import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.component';
 import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
-import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
-import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
+;
 
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
@@ -86,7 +85,7 @@ import { EditNutrientComponent } from './admin/ModulePrescription/nutrient/edit-
 import { NutrientComponent } from './admin/ModulePrescription/nutrient/nutrient/nutrient.component';
 import { NutrientdetailsComponent } from './admin/ModulePrescription/nutrient/nutrientdetails/nutrientdetails.component';
 import { AddsymptomComponent } from './admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
-import { PreparationComponent } from './client/preparation/preparation.component';
+import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
 import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
 import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
 import { PreparationDetailsComponent } from './admin/admin-preparation/preparation-details/preparation-details.component';
@@ -94,6 +93,23 @@ import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symp
 import { SupplementdetailsComponent } from './admin/ModulePrescription/supplementmanage/supplementdetails/supplementdetails.component';
 import { EditSupplementComponent } from './admin/ModulePrescription/supplementmanage/edit-supplement/edit-supplement.component';
 import { SupplementComponent } from './admin/ModulePrescription/supplementmanage/supplement/supplement.component';
+import { AddPreparationComponent } from './admin/admin-preparation/add-preparation/add-preparation.component';
+import { ModuleGroupComponent } from './admin/module-group/module-group.component';
+import { ListeUsersGroupComponent } from './admin/a-group/liste-users-group/liste-users-group.component';
+import { DetailsGroupUsersComponent } from './admin/a-group/details-group-users/details-group-users.component';
+import { ProductGroupListComponent } from './admin/a-group/product-group-list/product-group-list.component';
+import { EditUserPreparationComponent } from './client/gestion/preparationManage/edit-user-preparation/edit-user-preparation.component';
+import { EditComplementComponent } from './client/gestion/ComplementManage/edit-complement/edit-complement.component';
+import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductManage/edit-cosmetic-product/edit-cosmetic-product.component';
+import { AddSupplementComponent } from './admin/ModulePrescription/supplementmanage/add-supplement/add-supplement.component';
+import { AddUserPreparationComponent } from './client/gestion/preparationManage/add-user-preparation/add-user-preparation.component';
+import { AddUserComplementComponent } from './client/gestion/ComplementManage/add-user-complement/add-user-complement.component';
+import { AddCosmeticProductComponent } from './client/gestion/CosmeticProductManage/add-cosmetic-product/add-cosmetic-product.component';
+import { AddUserGroupComponent } from './admin/a-group/add-user-group/add-user-group.component';
+import { CosmeticProductManageComponent } from './admin/ModulePrescription/CosmeticProductManage/cosmetic-product-manage/cosmetic-product-manage.component';
+import { AddAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/add-admin-cosmetic-product/add-admin-cosmetic-product.component';
+import { EditAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/edit-admin-cosmetic-product/edit-admin-cosmetic-product.component';
+import { DetailsAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/details-admin-cosmetic-product/details-admin-cosmetic-product.component';
 
 
 
@@ -118,11 +134,9 @@ import { SupplementComponent } from './admin/ModulePrescription/supplementmanage
    ChangePasswordComponent,
    PatientsDialogComponent,
    AHomeComponent,
-   ListeGroupesComponent,
    DetailUserComponent,
    EditUserComponent,
-   DetailGroupeComponent,
-   EditGroupeComponent,  
+   
    SymptommanageComponent,
    AddsymptomComponent,
    AddNutrientComponent,
@@ -136,7 +150,6 @@ import { SupplementComponent } from './admin/ModulePrescription/supplementmanage
    FooterComponent,
    NavmenuComponent,
    ChangePasswordComponent,
-     
    NutrientComponent,
          AddUserComponent,
          AddPatientComponent,
@@ -156,8 +169,25 @@ import { SupplementComponent } from './admin/ModulePrescription/supplementmanage
         SymptomDetailsComponent,
         SupplementdetailsComponent,
         EditSupplementComponent,
-        SupplementComponent
-        
+        SupplementComponent,
+        AddPreparationComponent,
+        ModuleGroupComponent,
+        ListeUsersGroupComponent,
+       VerifaccountComponent,
+        DetailsGroupUsersComponent,
+                ProductGroupListComponent,
+                EditUserPreparationComponent,
+                EditComplementComponent,
+                EditCosmeticProductComponent,
+                AddSupplementComponent,
+                AddUserPreparationComponent,
+                AddUserComplementComponent,
+                AddCosmeticProductComponent,
+                AddUserGroupComponent,
+                CosmeticProductManageComponent,
+                AddAdminCosmeticProductComponent,
+                EditAdminCosmeticProductComponent,
+                DetailsAdminCosmeticProductComponent,       
 
   ],
   imports: [

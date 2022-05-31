@@ -9,7 +9,7 @@ export const ADD_PATIENT_URL= BASE_URL +'api/add/patients';
 export const GET_PATIENT_URL= BASE_URL +'api/get/patient';
 export const GETPROFILE_URL= BASE_URL +'api/getProfile';
 export const RESET_URL= BASE_URL +'api/reset/reset';
-export const ADD_PREPARATION_URL= BASE_URL +'addproduct';
+//export const ADD_PREPARATION_URL= BASE_URL +'addproduct';
 
 export const GETALL_Product_URL= BASE_URL +'getproducts';
 
@@ -34,6 +34,8 @@ export const DELETE_PRODUCT_URL= BASE_URL+'api/deleteProduct1';
 export const GET_ONE_PRODUCT_URL= BASE_URL+'api/get/OneProduct';
 export const UPDATE_PRODUCT_URL= BASE_URL+'api/updateProduct';
 export const ADD_PRODUCT_URL= BASE_URL+'api/addproduct';
+export const ADD_SUPPLEMENT_URL= BASE_URL+'api/addSuppliment'
+export const ADD_PREPARATION_URL= BASE_URL+'api/addPreparation'
 export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETALL_PRODUCTS_URL= BASE_URL+'api/getproducts';
 export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
@@ -46,4 +48,12 @@ export const DELETE_QUESTIONNAIRE_URL= BASE_URL +'api/delete/questionnaire';
 export const UPDATE_QUESTIONNAIRE_URL= BASE_URL +'api/updateQuestionnaire';
 
 export const GET_ONE_PREPARATION_URL = BASE_URL +'api/get/OneProduct';
-export const GETALL_SYMPTOMS_URL = BASE_URL +'api/getsymptoms'
+export const GETALL_SYMPTOMS_URL = BASE_URL +'api/getsymptoms';
+export const  ADD_USER_GROUP_URL = BASE_URL +'api/getgroup';
+ export const  GET_ONE_GROUP_URL = BASE_URL +'api/get/OneGroup';
+ export const  GET_ALL_GROUPS_URL = BASE_URL +'api/getgroup'; 
+
+export const  DELETE_GROUP_URL = BASE_URL +'api/deleteGroup';
+export const  UPDATE_GROUP_URL = BASE_URL +'api/getgroup'; 
+
+

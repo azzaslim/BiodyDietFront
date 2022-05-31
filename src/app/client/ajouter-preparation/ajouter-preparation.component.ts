@@ -21,6 +21,11 @@ export class AjouterPreparationComponent implements OnInit {
   displayedColumns2 = ['symptom_name'];
   dataSource2=new MatTableDataSource<Symptom>();
   addData : FormGroup =new FormGroup({});
+  ListSymptom: Array<any> = [];
+  listnutrient: Array<any> = [];
+  SelectedSymptoms: Array<any> = [];
+  SelectedNutrients:Array<any> = [];
+  dropdownListSymptom: Array<any> = [];
   constructor(private _liveAnnouncer: LiveAnnouncer,private RestProductService : RestProductService ,private router:Router, private formBuilder : FormBuilder,private user: RestUserService,private symptomservice:RestSymptomService,private authService: RestUserService ) { 
 
     this.addData=formBuilder.group({
@@ -28,6 +33,8 @@ export class AjouterPreparationComponent implements OnInit {
       portion:['',[Validators.required]],
       comment:['',[Validators.required]],
       composition:['',[Validators.required]],
+      symptoms: [this.ListSymptom],
+      Nutrients:[this.listnutrient],
     })
   }
   announceSortChange(sortState: Sort) {
@@ -46,21 +53,30 @@ export class AjouterPreparationComponent implements OnInit {
     return this.addData.controls;
   }
   async add(){
-  let data = this.addData.value
   
-  ;(await this.RestProductService.addProduct(data))
+  this.ListSymptom.forEach(element =>this.SelectedSymptoms.push({'symptom_name': element}) );
+  this.listnutrient.forEach(element =>this.SelectedNutrients.push({'name': element}) );
+  this.addData.controls.symptoms.patchValue(this.SelectedSymptoms);
+        this.addData.controls.Nutrients.patchValue(this.SelectedNutrients);
+  let data = this.addData.value;
+  (await this.RestProductService.addProduct(data))
   .subscribe(
     response=> {
+      this.successNotification();
       this.router.navigate(['/preparations'])
     },
-    err => console.log(err),
+    err => {console.log(err),
+      this.failNotification();
+    }
+   
   )
+  
     }
 
     async ngOnInit(): Promise<void> {
       this.RestProductService.getProducts().subscribe((x) =>{
         this.dataSource =new MatTableDataSource(x);
-        console.log(x);
+        //console.log(x);
     });
     (await this.symptomservice.getSymptoms()).subscribe((x) => {
       if (x.length==0)
@@ -80,7 +96,26 @@ export class AjouterPreparationComponent implements OnInit {
 
     }
     );
-
+    (await this.symptomservice.getSymptoms()).subscribe((x) => {
+      let list2= [];
+      for (var i = 0; i < x.length; i++) {
+          list2.push(x[i]['symptom_name']);
+          this.dropdownListSymptom = list2;
+        }
+    })
    
 }
+
+successNotification() {
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Supplement ajouté avec succées',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
+
+
+
 }

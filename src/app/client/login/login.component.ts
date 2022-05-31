@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         async response => {
           localStorage.setItem('jwt', response['token']),
-
+/* 
           (await this.RestPatientService.getAllPatients()).subscribe(
             Response => {
               localStorage.setItem('nbPatients', JSON.stringify(Response.length))
@@ -38,17 +38,17 @@ export class LoginComponent implements OnInit {
               Response => {
                 localStorage.setItem('nbQuestionnaire', JSON.stringify(Response.length))
                 console.log(Response)
-              });
+              }); */
 
-              (await this.RestResponseService.getAnswers()).subscribe(
+              /* (await this.RestResponseService.getAnswers()).subscribe(
                 Response => {
                   localStorage.setItem('nbResponse', JSON.stringify(Response.length))
                   console.log(Response)
                 });
-
-            (await this.RestUserService.getUsers()).subscribe((x) => {
+ */
+            /* (await this.RestUserService.getUsers()).subscribe((x) => {
               localStorage.setItem("nbusers", x.length.toString())
-            })
+            }) */
           localStorage.setItem("currentUser", (JSON.stringify(await this.RestUserService.getProfile())));
 
           this.role = JSON.parse(localStorage.getItem('currentUser')!).role

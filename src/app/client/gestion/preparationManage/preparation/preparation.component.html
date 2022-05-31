@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+  <app-navmenu></app-navmenu>
+  <div class="container">
+    <div class="progressbar-wrapper">
+
+      <a href="parametre" class="btn0">Paramètre </a><br>
+      <div class="inferieur">></div>&ensp;
+      <a href="gestion" class="btn1">Gestion des compléments </a>
+      <div class="inferieur">></div>&ensp;
+      <a href="preparations" class="btn2">Gestion des préparations hyperprotéinées </a>&ensp;
+      <br>
+    </div>
+    <h1 class="titre" style="font-size: 2vw;">Gestion des préparations hyperprotéinées</h1>
+
+    <br>
+    <div class="row">
+      <div class="form1 col-md-3">
+        <div class="titre1"> Préparations Originales</div>
+        <mat-card class="example-container mat-elevation-z8">
+
+          <table class="mat-elevation-z8">
+            <div *ngFor="let row of products">
+
+            <td (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"> {{row.name}} </td>
+
+              <!-- <tr  (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"
+                [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+                (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr> -->
+            </div>
+
+
+
+          </table>
+
+        </mat-card>
+      </div>
+
+
+      <div class="form11 col-md-3">
+        <div class="titre1"> Portions</div>
+        <mat-card class="C3 example-container mat-elevation-z8">
+          <table class="mat-elevation-z8">
+            <div *ngFor="let row of portions">
+
+            <td (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"> {{row}} </td>
+            </div>
+
+
+
+          </table>
+        </mat-card>
+      </div>
+
+
+      <div class="form12  col-md-3">
+        <div class="titre1"> Compositions par 100g</div>
+        <mat-card class="C3 example-container mat-elevation-z8">
+
+
+          <table class="mat-elevation-z8">
+            <thead>
+              <tr>
+                <th>Tenor Unity</th>
+               
+                </tr>
+                </thead>
+          
+                <tbody>
+                  <tr  *ngFor="let row of nutrients">
+                   
+                    <td >{{row.tenor}} </td>
+                    <td>  </td>
+                    <td>{{row.unity}} </td>
+          </tr>
+          </tbody>
+           
+          </table>  <tr  *ngFor="let row of nutrients">
+                   
+            <td >{{row.tenor}} </td>
+            <td>  </td>
+            <td>{{row.unity}} </td>
+  </tr>
+
+        </mat-card>
+      </div>
+
+      <div class="form13 col-md-3 ">
+        <div class="titre1"> Symtomes</div>
+        <mat-card class="C3 example-container mat-elevation-z8">
+          <table  class="mat-elevation-z8">
+            <tr  *ngFor="let row of allsymptoms"  >
+              <td> <mat-checkbox [checked]="checkedBox(row.symptom_name)" (change)="checkedBox(row.symptom_name)">{{row.symptom_name}}</mat-checkbox> </td>
+            </tr> 
+          </table>
+        </mat-card>
+      </div>
+    </div>
+    <div class="divboutton ">
+      <button class="button" (click)="ConfirmUptadeVisibility()"> Masquer</button>
+      <button class="button"><a href="gestion/preparation/edit" class="href">Modifier</a></button>
+      <button class="button"> <a class="href" href="gestion/preparation/add"> Ajouter</a></button>
+      <button class="button" (click)="ConfirmationNotification()"> Supprimer</button>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>
+
+</html>

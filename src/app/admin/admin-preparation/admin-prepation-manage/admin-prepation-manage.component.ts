@@ -149,12 +149,12 @@ export class AdminPrepationManageComponent implements OnInit {
      /* this.list.forEach(element => {
         console.log(element);
       }); */
-      this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom'][0]['symptom_name'];
+      this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom']['symptom_name'];
     //console.log(this.symptoms);
 
     }
     async UpdateProductVisibility(){
-      (await this.user.UpdateProductVisibility(JSON.parse(localStorage.getItem('product to manage')!)))
+      (await this.user.UpdateProductVisibility())
       .subscribe(
         async response => {
          console.log(response)

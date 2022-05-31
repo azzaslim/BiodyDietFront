@@ -1,0 +1,19 @@
+<app-navmenu></app-navmenu>
+<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
+    <a href="admin/groupes/usersgrouplist"><button mat-flat-button color="primary" ><mat-icon>keyboard_return</mat-icon> &emsp;Retour à la liste des groups</button></a>
+</div>
+<mat-card class="example-card col-md-4 center">
+        <mat-card-title-group>
+          <mat-card-title>Information Group</mat-card-title>
+            <div class="line"><mat-divider></mat-divider></div>
+            <div class="line"><mat-divider></mat-divider></div>
+            <mat-card-subtitle> <mat-icon matPrefix class="my-icon">assignment_ind</mat-icon> <span class="titre" >Nom du group :    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </span><span class="detail " > {{group_name}}</span></mat-card-subtitle>
+          <mat-card-subtitle> <mat-icon matPrefix class="my-icon">date_range</mat-icon><span class="titre" >Créé le  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="detail" >{{createdAt}}</span></mat-card-subtitle>
+          <mat-card-subtitle> <mat-icon matPrefix class="my-icon">date_range</mat-icon><span class="titre" >Modifié le  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="detail" >{{modifiedAt}}</span></mat-card-subtitle>
+        </mat-card-title-group>
+      
+      </mat-card>
+    
+  
+  
+  <app-footer></app-footer>

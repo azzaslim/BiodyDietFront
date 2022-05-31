@@ -28,11 +28,11 @@ export class SupplementComponent implements OnInit {
   symptoms!:string;
    list=[];
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
       this.getOneProduct();
-      (await this.user.getcomplements()).subscribe((x) => {
+      (await this.RestProductService.getcomplements()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no product exist");
@@ -134,7 +134,7 @@ export class SupplementComponent implements OnInit {
   }
   async deleteProduct(){
     //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
-    (await this.user.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
+    (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
     .subscribe(
       async response => {
        console.log(response)
@@ -150,7 +150,7 @@ export class SupplementComponent implements OnInit {
     console.log(id);
      }
      async getOneProduct(){
-     ( (await (this.user.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
+     ( (await (this.RestProductService.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
       this.dataSource1 = new MatTableDataSource(x);
       this.dataSource1.sort = this.sort;
   
@@ -173,7 +173,7 @@ export class SupplementComponent implements OnInit {
 
     }
     async UpdateProductVisibility(){
-      (await this.user.UpdateProductVisibility(JSON.parse(localStorage.getItem('product to manage')!)))
+      (await this.RestProductService.UpdateProductVisibility())
       .subscribe(
         async response => {
          console.log(response)

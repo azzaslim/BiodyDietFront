@@ -10,7 +10,7 @@
   {
     flex-wrap: nowrap;
     list-style-type : none;
-    font-size:1vw;
+    font-size:small;
     margin-left: 3vw;
     margin-right: 3vw;
     background-color: #123640;
@@ -39,7 +39,7 @@
   mat-icon{
     transform: scale(1);
   
-    font-size: 1.5vw;
+    font-size: small;
     height: 1vw ;
     width: 1vw;
    
@@ -50,4 +50,17 @@
 border: none;
 color: white;
 margin-left: 3vw;
+   }
+   .abonnement{
+     background-color: red;
+     flex-wrap: nowrap;
+     list-style-type : none;
+     margin-left: 3vw;
+     padding-top: 0.5vw;
+     padding-bottom: 0.5vw;
+     margin-right: 3vw;
+     display: flex;
+     align-items: center !important;
+     font-weight: 900;
+     
    }

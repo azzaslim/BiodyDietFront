@@ -6,6 +6,7 @@ import {ADD_PREPARATION_URL, GETPROFILE_URL,  LOGIN_URL, REGISTER_URL, VERIF_URL
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LoadingService } from './loading.service';
 
 
 export interface Product {
@@ -34,7 +35,7 @@ export class RestUserService implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder,private loader: LoadingService) { }
   ngOnInit(): void { }
   private REGISTER_URL = "http://localhost:8000/register";
 
@@ -45,7 +46,9 @@ export class RestUserService implements OnInit {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
+
     return this.http.post<any>(LOGIN_URL, user, { headers });
+
   }
   
   
@@ -83,7 +86,9 @@ export class RestUserService implements OnInit {
   change_password(user: any) {
 
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
+      "Access-Control-Allow-Headers": "Content-Type",
+
+      'Content-Type': 'application/json'
     });
     return this.http.post<any>(environment.apiURL + 'reset/' + localStorage.getItem('token'), user, { headers });
 
@@ -115,6 +120,8 @@ export class RestUserService implements OnInit {
     sessionStorage.setItem('isLoggedIn', 'false');
     sessionStorage.clear();
     console.clear()
+    this.loader.hide()
+
   }
 //nutients
  /*  getNutrients(): Observable<Nutrient[]> {

@@ -14,7 +14,9 @@ export interface Product {
   composition: string;
   portion: string;
   type:string;
-  indication:boolean
+  indication:boolean;
+  comment:string;
+  reponse:string;
 }
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,6 @@ export class RestProductService {
 
   getToken() {
     return localStorage.getItem("jwt");
-
   } 
   getProducts(): Observable<Product[]> {
     let headers = new HttpHeaders().set(
@@ -53,15 +54,7 @@ export class RestProductService {
     return localStorage.getItem('Product') ? true : false;
  }
 
- //getProduct
-  async getpreparation(): Promise<Observable<Product[]>> {
-   
-    console.log(this.getToken());
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    return await this.http.get<Product[]>(GETALL_preparations_URL,{headers}); 
-   }
+
 
    async getcomplements(): Promise<Observable<Product[]>> {
    

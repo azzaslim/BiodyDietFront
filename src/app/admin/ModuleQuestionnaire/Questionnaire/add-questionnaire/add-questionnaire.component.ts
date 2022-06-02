@@ -19,7 +19,7 @@ export class AddQuestionnaireComponent implements OnInit {
 
   constructor(private RestQuestionnaireService: RestQuestionnaireService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer, private datePipe: DatePipe) { 
     this.AddQuestionnaireForm = this._formBuilder.group({
-      title: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+      title: ['', [Validators.required]],
       order: ['', ],
       published:['',]
       
@@ -50,7 +50,7 @@ export class AddQuestionnaireComponent implements OnInit {
       )
   }
   failNotification(){
-    Swal.fire('cet ordre est déjà utilisé ','veuillez verifier votre information','error')
+    Swal.fire('cet ordre est déjà utilisé ','veuillez changer','error')
   }
   
   successNotification() {

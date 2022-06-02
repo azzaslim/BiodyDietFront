@@ -33,22 +33,23 @@
                 <td mat-cell *matCellDef="let element ">{{element.ordering}} </td>
             </tr>
         </ng-container>
-        <ng-container matColumnDef="isPublished">
+        <ng-container matColumnDef="is_published">
             <th style="width: 10%;" mat-header-cell *matHeaderCellDef mat-sort-header
-                sortActionDescription="Sort by isPublished">
+                sortActionDescription="Sort by is_published">
                 Est publié
             </th>
             <tr>
                 <ng-container *matCellDef="let element">
-                    <td mat-cell *ngIf="(element.isPublished ===true );">
+                    <td mat-cell *ngIf="(element.is_published ===true );">
                         <mat-icon style="color: green;">done_outline</mat-icon>
                     </td>
-                    <td mat-cell *ngIf="(element.isPublished ===false ); ">
+                    <td mat-cell *ngIf="(element.is_published ===false ); ">
                         <mat-icon style="color: red;">not_interested</mat-icon>
                     </td>
                 </ng-container>
             </tr>
         </ng-container>
+
 
 
         <!-- Action Column-->
@@ -82,6 +83,11 @@
 
     </table>
 </div>
+<ng-container *ngIf="loading$ | async">
+    <div class="spinner_overlay"></div>
+
+    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+  </ng-container>
 <div class="d-grid  d-md-flex justify-content-md-around ">
     <a href="admin/questionnaire/addquestionnaire"><button mat-flat-button color="primary">
         <mat-icon>add_box</mat-icon>&emsp;Ajouter un nouveau questionnaire

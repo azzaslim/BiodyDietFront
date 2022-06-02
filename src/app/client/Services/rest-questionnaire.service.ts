@@ -8,7 +8,7 @@ export interface Questionnaire {
   id: number;
   title: string;
   order: number;
-  isPublished: boolean;
+  is_published: boolean;
 }
 
 @Injectable({

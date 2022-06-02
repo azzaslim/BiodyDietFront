@@ -8,6 +8,7 @@ import { Questionnaire } from './rest-questionnaire.service';
 export interface Answer {
   id: number;
   title: string;
+  name:string;
   order: number;
   isPublished: boolean;
   indication:boolean;

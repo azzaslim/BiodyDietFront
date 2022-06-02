@@ -1,0 +1,51 @@
+<table>
+   
+            <td>
+                <div class="header-space"></div>
+            </td>
+    <tbody>
+        <tr>
+            <td>
+                <div class="content">
+                    <router-outlet></router-outlet>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+<div class="header center">
+    <h1>BIODY <span id="title">D</span>IET </h1>
+</div>
+<mat-card *ngIf=" nomCheck ||adresseCheck|| villeCheck||entrepriseCheck || logoCheck" class="matcard">
+
+<div class="flex-parent-element ">
+    <div class="flex-child-element">
+
+    <div *ngIf="nomCheck" [(ngModel)]="nomCheck">{{nom}}</div>
+    <div *ngIf="adresseCheck">{{adresse}}</div>
+    <div *ngIf="villeCheck">{{ville}}</div>
+    <div *ngIf="entrepriseCheck">{{entreprise}}</div>
+</div>
+    <div class="flex-child-element-image " >
+        <div *ngIf="fileUploadProgress">
+            Upload progress: {{ fileUploadProgress }}
+        </div>
+        <div class="image-preview" *ngIf="previewUrl"  >
+            <img *ngIf="logoCheck" [src]="previewUrl" style="margin-left: 60%;" height="30%" width="30%" />
+        </div>
+
+    </div>
+</div> 
+</mat-card>
+<br>
+<div class="patientInfo" style="font-weight: 900;">{{pNom}} {{pAge}} {{pHeight}} {{pWeight}} </div>
+
+<h1 class="Tpresc" >Prescriptions compléments alimentaires :</h1>
+<div class="prod" *ngFor="let item of prodImpression"><span>{{item.prod}}</span><br><br>
+<ng-container *ngIf="prescriptionCheck">
+<span class="comment">{{item.comment}}</span> <br><hr>
+</ng-container>
+</div>
+

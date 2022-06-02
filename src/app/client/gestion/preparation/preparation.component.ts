@@ -39,7 +39,7 @@ export class PreparationComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
       this.getOneNutrient();
-      (await this.user.getpreparation()).subscribe((x) => {
+      (await this.user.getPreparations()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no product exist");

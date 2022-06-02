@@ -1,0 +1,115 @@
+.header,
+.header-space,
+.footer,
+.footer-space {
+    height: 100px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    margin-left: 35%;
+    font-size: 4vw;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+@media screen {
+     :host {
+        display: none;
+    }
+}
+
+#title {
+    color: #22b5b9
+}
+
+h1 {
+    font-size: 120%;
+    font-family: Courier New, monospace;
+}
+
+.matcard {
+    border: #22b5b9 0.2px solid !important;
+    border-radius: 0%;
+    box-shadow: none;
+    border-right: none !important;
+    border-left: none !important;
+}
+
+.patientInfo {
+    text-align: center;
+    box-shadow: none;
+    padding: 1vw;
+    font-size: 2vw;
+}
+
+@media print {
+    .patientInfo
+     {
+        background-color: #ededed !important;
+        -webkit-print-color-adjust: exact;
+    }
+}
+@media print {
+
+    .comment {
+        background-color: none !important;
+        -webkit-print-color-adjust: exact;
+    }
+    
+}
+@print {
+    @page :footer {
+        display: none
+    }
+  
+    @page :header {
+        display: none
+    }
+}
+
+.Tpresc {
+    color: #133741;
+    font-size: 160%;
+    font-weight: 900;
+}
+
+.prod {
+    color: #133741;
+    font-size: 3vw;
+    padding: 1vw;
+    margin-bottom: 4vw;
+font-family: 'lucida calligraphy';
+    display: inline;
+}
+.comment {
+    color: #133741;
+    font-size: 2vw;
+    display: inline;
+}
+
+hr {
+    border-top: solid 1px #133741 !important;
+}
+.flex-parent-element {
+    display: flex;
+  }
+  
+  .flex-child-element {
+    flex: 1;
+  
+  }
+  .flex-child-element-image{
+      margin-right: 0 !important;
+      margin-left:20% !important;
+     
+  }
+  
+
+  #fileInput{
+    display: none;
+  }

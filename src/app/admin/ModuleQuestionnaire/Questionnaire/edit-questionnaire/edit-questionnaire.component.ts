@@ -24,8 +24,8 @@ export class EditQuestionnaireComponent implements OnInit {
     constructor(private RestQuestionnaireService: RestQuestionnaireService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer, private datePipe: DatePipe) { 
       
       this.UpdateQuest = this._formBuilder.group({
-        title: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-        order: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+        title: ['', [Validators.required]],
+        order: ['', [Validators.required]],
         ispublished: [''],
 
   

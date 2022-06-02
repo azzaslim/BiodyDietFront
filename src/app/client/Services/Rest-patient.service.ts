@@ -52,9 +52,11 @@ export class RestPatientService {
   }
   async getAllPatients(): Promise<Observable<Profil[]>> {
     // return this.http.get<Profil[]>(this.URL);
-    console.log(this.getToken());
- 
-    return await this.http.get<Profil[]>(GET_ALL_PATIENT_URL); 
+    //console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return await this.http.get<Profil[]>(GET_ALL_PATIENT_URL,{headers}); 
    }
 
 

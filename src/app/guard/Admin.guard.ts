@@ -6,7 +6,7 @@ import { RestUserService } from '../client/Services/RestUser.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ChildGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   role!: string
   constructor(private router: Router,private  RestUserService : RestUserService) { }      
 

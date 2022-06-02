@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { RestUserService } from '../Services/RestUser.service';
 import { Profil, RestPatientService } from '../Services/Rest-patient.service';
+import { LoadingService } from 'src/app/loading.service';
 
 
 
@@ -18,19 +19,26 @@ import { Profil, RestPatientService } from '../Services/Rest-patient.service';
 })
 export class ListeprofilComponent implements OnInit {
   id!: number;
-  displayedColumns = ['id', 'firstName', 'lastName', 'birthDate'];
+  displayedColumns = ['id', 'first_name', 'last_name', 'birth_date'];
   role!: string;
 
   dataSource = new MatTableDataSource<Profil>();
+  loading$ = this.loader.loading$;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: RestPatientService, private RestUserService: RestUserService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private user: RestPatientService, private RestUserService: RestUserService,private loader: LoadingService) {
 
   }
 
   @ViewChild(MatSort) sort!: MatSort;
 
   async ngOnInit() {
-localStorage.removeItem('profil');
+    localStorage.removeItem('entrepriseCheck');
+    localStorage.removeItem('villeCheck');
+    localStorage.removeItem('logoCkeck');
+    localStorage.removeItem('nomCheck');
+    localStorage.removeItem('prescriptionCheck');
+    localStorage.removeItem('logoCheck');
+this.loader.show();
 
     (await this.user.getPatients()).subscribe((x) => {
       if (x.length==0)
@@ -39,7 +47,7 @@ localStorage.removeItem('profil');
 
          this.role = JSON.parse(localStorage.getItem('currentUser')!).role
 
-          if (this.role == 'ROLE_ADMIN') {
+          if ((this.role == 'ROLE_ADMIN')||(this.role == 'ROLE_MANAGER')) {
             this.router.navigate(['/admin/home'])
           }
           else
@@ -48,7 +56,7 @@ localStorage.removeItem('profil');
       else
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
-
+this.loader.hide()
     },
       err => {
         this.RestUserService.logout(),

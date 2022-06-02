@@ -44,7 +44,7 @@ export class AddAnswersComponent implements OnInit {
 
   constructor(private RestResponseService: RestResponseService, private _formBuilder: FormBuilder, private router: Router, private http: HttpClient, private sanitizer: DomSanitizer, private datePipe: DatePipe, private RestQuestionnaireService: RestQuestionnaireService, private RestProductService: RestProductService) {
     this.AddAnswerForm = this._formBuilder.group({
-      title: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+      title: ['', [Validators.required]],
       order: ['',],
       published: ['',],
       Questionnaire: ['', Validators.required],
@@ -115,7 +115,7 @@ console.log(this.SelectedProducts)
     )
   }
   failNotification() {
-    Swal.fire('cet ordre est déjà utilisé ', 'veuillez verifier votre information', 'error')
+    Swal.fire('cet ordre est déjà utilisé ', 'veuillez changer !', 'error')
   }
 
   successNotification() {

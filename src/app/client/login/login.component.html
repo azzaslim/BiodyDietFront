@@ -1,4 +1,11 @@
-<div class="col-5 offset-3 center">
+
+
+<ng-container *ngIf="loading$ | async">
+    <div class="spinner_overlay"></div>
+
+    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+  </ng-container>
+<div class="login col-5 offset-3 center">
     <p class="titre row ">
         Connexion</p>
     <form [formGroup]="userData" (ngSubmit)="signIn()">

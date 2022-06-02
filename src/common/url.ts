@@ -41,7 +41,7 @@ export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
 export const GET_ONE_QUESTIONNAIRE_URL= BASE_URL +'api/get/OneQuestionnaire';
 export const DELETE_QUESTIONNAIRE_URL= BASE_URL +'api/delete/questionnaire';
 export const UPDATE_QUESTIONNAIRE_URL= BASE_URL +'api/updateQuestionnaire';
-export const GET_ALL_PATIENT_URL= BASE_URL +'get/AllPatients';
+export const GET_ALL_PATIENT_URL= BASE_URL +'api/get/AllPatients';
 export const ADD_USER_URL= BASE_URL +'api/addUser';
 export const ADD_ANSWER_URL= BASE_URL +'api/addAnswer';
 export const GET_ANSWERS_URL= BASE_URL +'api/getAnswers';
@@ -52,4 +52,7 @@ export const GETALL_PREPARATION_URL= BASE_URL +'api/getPreparations';
 export const GETALL_SUPPLIMENTS_URL= BASE_URL +'api/getSuppliments';
 export const GET_ONE_PREPARATION_URL = BASE_URL +'api/get/OneProduct';
 export const GETALL_SYMPTOMS_URL = BASE_URL +'api/getsymptoms'
+export const GETANSWERS_BYQUEST_URL = BASE_URL +'api/getAnswersByQuest'
 
+export const ADD_PRESCRIPTION_URL= BASE_URL +'api/addPrescription';
+export const GET_PRESCRIPTION_URL= BASE_URL +'api/getPrescription';

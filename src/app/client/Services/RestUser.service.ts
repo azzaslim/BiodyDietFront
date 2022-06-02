@@ -3,6 +3,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
  import { DELETE_USER_URL,  GET_ONE_USER_URL, GET_USERS_URL,UPDATE_CURRENT_USER_URL } from 'src/common/url';
 /*import { environment } from "src/environments/environment";
 import { ADD_PREPARATION_URL } from 'src/app/common/url';
@@ -47,7 +48,7 @@ export class RestUserService implements OnInit {
     throw new Error('Method not implemented.');
   }
   
-  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder,private loader:LoadingService) { }
   ngOnInit(): void { }
 
   // private LOGIN_URL="http://localhost:8000/login";
@@ -137,6 +138,8 @@ export class RestUserService implements OnInit {
     this.User.next(null!);
     console.clear();
     this.loggedIn = 0;
+    this.loader.hide()
+
 
 
     console.clear()

@@ -23,7 +23,7 @@ import { GestionComplementComponent } from './client/gestion/gestion-complement/
 import { PreparationComponent } from './client/gestion/preparation/preparation.component';
 import { ComplementsComponent } from './client/gestion/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/produits/produits.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -50,7 +50,7 @@ import { VerifaccountComponent } from './client/reset/verifaccount/verifaccount.
 
 import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AuthGuardService } from './guard/auth-guard.service';
-import { ChildGuard } from './guard/Admin.guard';
+import { AdminGuard } from './guard/Admin.guard';
 import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
 import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-groupes.component';
 import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.component';
@@ -84,7 +84,11 @@ import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Question
 import { EditAnswersComponent } from './admin/ModuleQuestionnaire/Answers/edit-answers/edit-answers.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HomeMQuestionnaireComponent } from './admin/ModuleQuestionnaire/home-m-questionnaire/home-m-questionnaire.component';
-import { MatOptionModule } from '@angular/material/core';
+import { MatOptionModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { PrintLayoutComponent } from './print-layout/print-layout.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 
@@ -140,7 +144,9 @@ import { MatOptionModule } from '@angular/material/core';
          DetailAnswersComponent,
          EditQuestionnaireComponent,
          EditAnswersComponent,
-         HomeMQuestionnaireComponent,  
+         HomeMQuestionnaireComponent,
+         PrintLayoutComponent,
+         InvoiceComponent,  
   ],
   imports: [
   
@@ -167,7 +173,13 @@ import { MatOptionModule } from '@angular/material/core';
     MatDividerModule,
     MatRadioModule,
     NgMultiSelectDropDownModule,
-    MatOptionModule
+    MatOptionModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
   
    
 
@@ -186,13 +198,16 @@ import { MatOptionModule } from '@angular/material/core';
   RestNutrientService,
   RestSymptomService,
   DatePipe,
+  { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
 
   {
+    
     provide: STEPPER_GLOBAL_OPTIONS,
     useValue: { displayDefaultIndicatorType: false }
   },
 AuthGuardService,
-ChildGuard],
+AdminGuard,
+  ],
 
   bootstrap: [AppComponent],
   entryComponents: [PrescriptionComponent]

@@ -9,6 +9,8 @@
    <li> <a href="parametre">Paramètres</a></li>
    <li class="deconnexion"><button (click)="disconnect()" >Deconnexion</button></li>
 </div>
-     
-   
+
+<div *ngIf="soon" class="abonnement justify-content-center ">
+ <span>votre abonnement expire dans {{Days}} {{jours}}</span>
+ </div>
  

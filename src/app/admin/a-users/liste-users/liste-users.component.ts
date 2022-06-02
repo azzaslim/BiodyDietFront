@@ -5,6 +5,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User, RestUserService } from 'src/app/client/Services/RestUser.service';
+import { LoadingService } from 'src/app/loading.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,7 +21,9 @@ export class ListeUsersComponent implements OnInit {
   checked!: boolean;
   dataSource = new MatTableDataSource<User>();
 edit_url!: string;
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestUserService: RestUserService) {
+loading$ = this.loader.loading$;
+
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestUserService: RestUserService,private loader :LoadingService) {
     this.souscriptionForm = new FormGroup({
       souscription: new FormControl()
     });
@@ -30,8 +33,9 @@ edit_url!: string;
 
 
   async ngOnInit() {
-
+this.loader.show();
     (await this.RestUserService.getUsers()).subscribe((x) => {
+      this.loader.hide()
      console.log("tableau",x)
       if (x.length == 0) {
         alert("no user exist");

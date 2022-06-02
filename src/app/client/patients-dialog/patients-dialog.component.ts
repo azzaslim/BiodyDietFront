@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { Profil, RestPatientService } from '../Services/Rest-patient.service';
 import { RestUserService } from '../Services/RestUser.service';
 import {MatListModule} from '@angular/material/list';
+import { LoadingService } from 'src/app/loading.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class PatientsDialogComponent implements OnInit {
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
   id!: number;
-  displayedColumns = ['id', 'firstName', 'lastName', 'birthDate'];
+  displayedColumns = ['id', 'first_name', 'last_name', 'birth_date'];
   nom!: string;
   prenom!: string;
   BirthDate!: Date;
@@ -30,7 +31,7 @@ export class PatientsDialogComponent implements OnInit {
 
 
   dataSource = new MatTableDataSource<Profil>();
-  constructor(public dialogRef: MatDialogRef<PatientsDialogComponent>, private _liveAnnouncer: LiveAnnouncer,
+  constructor(public dialogRef: MatDialogRef<PatientsDialogComponent>, private _liveAnnouncer: LiveAnnouncer, private loader: LoadingService,
     @Inject(MAT_DIALOG_DATA) public data: Profil, private user: RestPatientService, private RestUserService: RestUserService, private router: Router, private datePipe: DatePipe
   ) { }
   @ViewChild(MatSort) sort!: MatSort;
@@ -58,12 +59,19 @@ if (x.length==0)
 
   }
   async editProfil(profil: Profil) {
-    let route = 'presc';
     localStorage.setItem('profil', JSON.stringify(profil.id));
+    this.loader.show()
+this.routerhome()
+this.loader.hide()
+    this.onNoClick();
+
+  }
+  routerhome(){
+    let route = 'ajout';
+    localStorage.removeItem('')
+        window.location.reload()
 
     this.router.navigate([route]);
-
-    this.onNoClick();
 
   }
   announceSortChange(sortState: Sort) {

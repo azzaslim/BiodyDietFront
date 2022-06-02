@@ -41,8 +41,8 @@ export class EditAnswersComponent implements OnInit {
   constructor(private RestResponseService: RestResponseService, private RestQuestionnaireService: RestQuestionnaireService, private _formBuilder: FormBuilder, private router: Router, private http: HttpClient, private sanitizer: DomSanitizer, private datePipe: DatePipe, private RestProductService: RestProductService) {
 
     this.UpdateQuest = this._formBuilder.group({
-      title: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-      order: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+      title: ['', [Validators.required]],
+      order: ['', [Validators.required]],
       ispublished: [''],
       Questionnaire: [''],
       Products: [this.I_ListPreparation, this.I_ListSuppliments, this.C_ListPreparation, this.C_ListSuppliments],

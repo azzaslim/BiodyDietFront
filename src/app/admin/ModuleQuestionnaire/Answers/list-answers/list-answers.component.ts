@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Questionnaire } from 'src/app/client/Services/rest-questionnaire.service';
 import { Answer, RestResponseService } from 'src/app/client/Services/rest-response.service';
 import { RestUserService } from 'src/app/client/Services/RestUser.service';
+import { LoadingService } from 'src/app/loading.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,13 +17,14 @@ import Swal from 'sweetalert2';
 })
 export class ListAnswersComponent implements OnInit {
   id!: number;
-  displayedColumns: string[] = ['id', 'name', 'ordering','isPublished','action'];
+  displayedColumns: string[] = ['id', 'name', 'ordering','Questionnaire','is_published','action'];
   actions!: string;
   souscriptionForm!: FormGroup;
   checked!: boolean;
   dataSource = new MatTableDataSource<Answer>();
+  loading$ = this.loader.loading$;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestResponseService: RestResponseService,private RestUserService :RestUserService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestResponseService: RestResponseService,private RestUserService :RestUserService,private loader: LoadingService) {
     this.souscriptionForm = new FormGroup({
       souscription: new FormControl()
     });
@@ -36,8 +38,9 @@ export class ListAnswersComponent implements OnInit {
     localStorage.removeItem('I_preparation'),
     localStorage.removeItem('C_suppliment'),
     localStorage.removeItem('I_suppliment'),
-
+this.loader.show();
     (await this.RestResponseService.getAnswers()).subscribe((x) => {
+      this.loader.hide()
       if (x.length == 0) {
         alert("il n\'exsite aucun questonnaire");
       }

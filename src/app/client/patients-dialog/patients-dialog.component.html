@@ -18,22 +18,22 @@
         </ng-container>
     
         Name Column
-        <ng-container cdkColumnDef="firstName">
+        <ng-container cdkColumnDef="first_name">
           
-            <td cdk-cell *cdkCellDef="let element">{{element.firstName}} </td>
+            <td cdk-cell *cdkCellDef="let element">{{element.first_name}} </td>
         </ng-container>
     
-        <ng-container cdkColumnDef="lastName">
+        <ng-container cdkColumnDef="last_name">
            
     <tr>
-            <td cdk-cell *cdkCellDef="let element "> {{element.lastName}}  </td>
+            <td cdk-cell *cdkCellDef="let element "> {{element.last_name}}  </td>
     </tr>
         </ng-container>
     
     
-        <ng-container cdkColumnDef="birthDate">
+        <ng-container cdkColumnDef="birth_date">
           
-            <td cdk-cell *cdkCellDef="let element ">  {{element.birthDate.timestamp*1000.05 | date: 'dd-MM-yyyy'}} </td>
+            <td cdk-cell *cdkCellDef="let element ">  {{element.birth_date | date : "dd/MM/yyyy"  }} </td>
            
         </ng-container>
     

@@ -57,3 +57,24 @@ height: 600px;
   margin-top: 10px;
 
 }
+mat-progress-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+::ng-deep.mat-progress-spinner circle,.mat-spinner circle {stroke: #70caca !important;
+background: none;}
+
+.spinner_overlay {
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.4;
+  z-index: 1000;
+}

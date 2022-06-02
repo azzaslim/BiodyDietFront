@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Questionnaire, RestQuestionnaireService } from 'src/app/client/Services/rest-questionnaire.service';
 import {  RestUserService } from 'src/app/client/Services/RestUser.service';
+import { LoadingService } from 'src/app/loading.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,13 +16,14 @@ import Swal from 'sweetalert2';
 })
 export class ListQuestionnaireComponent implements OnInit {
   id!: number;
-  displayedColumns: string[] = ['id', 'title', 'ordering','isPublished','action'];
+  displayedColumns: string[] = ['id', 'title', 'ordering','is_published','action'];
   actions!: string;
   souscriptionForm!: FormGroup;
   checked!: boolean;
   dataSource = new MatTableDataSource<Questionnaire>();
+  loading$ = this.loader.loading$;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestQuestionnaireService: RestQuestionnaireService,private RestUserService :RestUserService) {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private route: ActivatedRoute, private router: Router, private RestQuestionnaireService: RestQuestionnaireService,private loader :LoadingService, private RestUserService :RestUserService) {
     this.souscriptionForm = new FormGroup({
       souscription: new FormControl()
     });
@@ -31,8 +33,14 @@ export class ListQuestionnaireComponent implements OnInit {
 
 
   async ngOnInit() {
+this.getQuestionnaire()
+  }
+  async getQuestionnaire(){
+    this.loader.show();
 
     (await this.RestQuestionnaireService.getQuestionnaires()).subscribe((x) => {
+      this.loader.hide()
+
       if (x.length == 0) {
         alert("il n\'exsite aucun questonnaire");
         this.router.navigate(['/admin/home'])
@@ -42,7 +50,7 @@ export class ListQuestionnaireComponent implements OnInit {
         localStorage.setItem("nbQuestionnaire", x.length.toString())
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;}
-
+console.log((x[0].is_published ))
      /*  if (x[i].isPublished == true) {
         this.displayedColumns.isPublished
       } */

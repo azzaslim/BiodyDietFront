@@ -25,6 +25,15 @@
             <td mat-cell *matCellDef="let element">{{element.name}} </td>
         </ng-container>
 
+        Questionnaire
+        <ng-container matColumnDef="Questionnaire">
+            <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header
+                sortActionDescription="Sort by Questionnaire">
+                Questionnaire
+            </th>
+            <td mat-cell *matCellDef="let element">{{element.questionnaire.title}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="ordering">
             <th style="width: 10%;" mat-header-cell *matHeaderCellDef mat-sort-header
                 sortActionDescription="Sort by ordering">
@@ -34,17 +43,17 @@
                 <td mat-cell *matCellDef="let element ">{{element.ordering}} </td>
             </tr>
         </ng-container>
-        <ng-container matColumnDef="isPublished">
+        <ng-container matColumnDef="is_published">
             <th style="width: 10%;" mat-header-cell *matHeaderCellDef mat-sort-header
-                sortActionDescription="Sort by isPublished">
+                sortActionDescription="Sort by is_published">
                 Est publié
             </th>
             <tr>
                 <ng-container *matCellDef="let element">
-                    <td mat-cell *ngIf="(element.isPublished ===true );">
+                    <td mat-cell *ngIf="(element.is_published ===true );">
                         <mat-icon style="color: green;">done_outline</mat-icon>
                     </td>
-                    <td mat-cell *ngIf="(element.isPublished ===false ); ">
+                    <td mat-cell *ngIf="(element.is_published ===false ); ">
                         <mat-icon style="color: red;">not_interested</mat-icon>
                     </td>
                 </ng-container>
@@ -63,14 +72,13 @@
                             title="Afficher les details">
                             <mat-icon>preview</mat-icon>
                         </button></a>
-                    <a href="admin/answers/Editanswer"> <button mat-icon-button color="primary" 
-                            title="Modifier">
+                    <a href="admin/answers/Editanswer"> <button mat-icon-button color="primary" title="Modifier">
                             <mat-icon style="color: darkgoldenrod;">edit</mat-icon>
                         </button></a>
                     <button mat-icon-button color="primary" title="supprimer" (click)="ConfirmationNotification()">
                         <mat-icon style="color: brown;">delete</mat-icon>
                     </button>
-                   
+
 
                 </td>
             <tr>
@@ -84,9 +92,14 @@
     </table>
 
 </div>
+<ng-container *ngIf="loading$ | async">
+    <div class="spinner_overlay"></div>
+
+    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+  </ng-container>
 <div class="d-grid gap-2  justify-content-md-around mt-4">
     <a href="admin/answers/addanswers"><button mat-flat-button color="primary">
-        <mat-icon>add_box</mat-icon>&emsp;Ajouter une nouvelle réponse
+            <mat-icon>add_box</mat-icon>&emsp;Ajouter une nouvelle réponse
         </button></a>
 </div>
 

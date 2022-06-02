@@ -97,7 +97,7 @@
         <mat-card class="C3 example-container mat-elevation-z8">
           <table  class="mat-elevation-z8">
             <tr  *ngFor="let row of allsymptoms"  >
-              <td> <mat-checkbox [checked]="checkedBox(row.symptom_name)" (change)="checkedBox(row.symptom_name)">{{row.symptom_name}}</mat-checkbox> </td>
+              <td> <mat-checkbox [checked]="checkedBox(row.symptom_name)" [disabled]="true" (change)="checkedBox(row.symptom_name)">{{row.symptom_name}}</mat-checkbox> </td>
             </tr> 
           </table>
         </mat-card>

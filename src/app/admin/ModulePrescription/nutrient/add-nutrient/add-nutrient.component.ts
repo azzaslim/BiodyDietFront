@@ -2,7 +2,7 @@ import { RestNutrientService } from '../../../../client/Services/rest-nutrient.s
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 
 
@@ -19,7 +19,7 @@ export class AddNutrientComponent implements OnInit {
   unity!: string;
   addData : FormGroup =new FormGroup({});
 
-  constructor(private authService:RestNutrientService ,private router:Router, private formBuilder : FormBuilder,private user: RestNutrientService ) { 
+  constructor(public dialogRef: MatDialogRef<AddNutrientComponent>,private authService:RestNutrientService ,private router:Router, private formBuilder : FormBuilder,private user: RestNutrientService ) { 
 
 
     this.addData=formBuilder.group({
@@ -52,6 +52,7 @@ export class AddNutrientComponent implements OnInit {
           response=> {
             this.sucessNotification();
             this.router.navigate(['/admin/nutrient/nutrientlist'])
+            this.dialogRef.close();
           },
 
          
@@ -106,9 +107,9 @@ export class AddNutrientComponent implements OnInit {
 
 
             this.addData = this.formBuilder.group({
-              name: [localStorage.getItem('name')!, [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-              unity: [localStorage.getItem('unity')!, [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-              tenor: [localStorage.getItem('tenor')!, [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+              name: [localStorage.getItem('name')!, [Validators.required]],
+              unity: [localStorage.getItem('unity')!, [Validators.required]],
+              tenor: [localStorage.getItem('tenor')!, [Validators.required]],
             });
           },
           err => console.log(err),
@@ -116,9 +117,9 @@ export class AddNutrientComponent implements OnInit {
 
     }
     this.addData = this.formBuilder.group({
-      name: [localStorage.getItem('name')!, [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-      tenor: [localStorage.getItem('tenor')!, [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-      unity: [localStorage.getItem('unity')!, [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
+      name: [localStorage.getItem('name')!, [Validators.required]],
+      tenor: [localStorage.getItem('tenor')!, [Validators.required]],
+      unity: [localStorage.getItem('unity')!, [Validators.required]],
     });
   }
 

@@ -16,10 +16,10 @@
 
         <mat-form-field appearance="outline" class="row center  ">
             <mat-label>Teneur</mat-label>
-            <input matInput placeholder="Teneur"  id="tenor" formControlName="tenor">
+            <input matInput placeholder="Teneur" type="number"  id="tenor" formControlName="tenor">
             <div *ngIf="f['tenor'].touched && f['tenor'].invalid">
-                <div *ngIf="f['tenor'].errors && f['tenor'].errors['required']"> le tenor est obligatoire </div>
-                <div *ngIf="f['tenor'].errors && f['tenor'].errors['pattern']">ce champ doit avoir des caractères</div>
+                <div *ngIf="f['tenor'].errors && f['tenor'].errors['required']"> le tenor est obligatoire, il doit etre un réel </div>
+                <div *ngIf="f['tenor'].errors && f['tenor'].errors['pattern']">ce champ doit etre un réel</div>
             </div>
         </mat-form-field>
         <mat-form-field appearance="outline" class=" row center ">

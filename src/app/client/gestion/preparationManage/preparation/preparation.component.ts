@@ -230,11 +230,15 @@ export class PreparationComponent implements OnInit {
   checkedBox(symptom:any)
   {
     var x=false;
-    for (var i = 0; i < this.allsymptoms.length; i++) {
-      if(this.allsymptoms[i]== symptom)
+    console.log(this.symptoms);
+    for (var i = 0; i < this.symptoms.length; i++) {
+     
+     console.log( "symptommmmm",this.symptoms);
+      if(this.symptoms[i]== symptom)
       {
-          x= true;
-          this.allsymptoms[i].checked=true;
+      
+         x= true;
+         // this.allsymptoms[i].checked=true;
       }
      
     }

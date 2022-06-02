@@ -72,8 +72,8 @@ export class PrescriptionComponent implements OnInit {
   check!: boolean
   constructor(private _formBuilder: FormBuilder, private router: Router, private RestProductService: RestProductService, private user: RestPatientService, private route: ActivatedRoute, private AddPatientService: RestPatientService, private datePipe: DatePipe, private dialog: MatDialog, private RestQuestionnaireService: RestQuestionnaireService, private RestPrescriptionService: RestPrescriptionService, public printService: PrintService, private loader: LoadingService) {
     this.patientForm = this._formBuilder.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      firstName: ['', [Validators.required, Validators.pattern("[a-zA-Z\s ]+")]],
+      lastName: ['', [Validators.required, Validators.pattern("[a-zA-Z\s ]+")]],
       birth_date: ['', [Validators.required, Validators.pattern('^(((0[1-9]|[12][0-9]|30)[-/]?(0[13-9]|1[012])|31[-]?(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[-]?02)[-](?:19|20)[0-9]{2}|29[-]?02[-](?:19|20)[0-9]{2})$')]],
       weight: [, Validators.required],
       height: [, Validators.required],
@@ -104,8 +104,8 @@ export class PrescriptionComponent implements OnInit {
     localStorage.removeItem('prescriptionCheck');
     localStorage.removeItem('logoCheck');
     this.patientForm = this._formBuilder.group({
-      firstName: ['',Validators.required, Validators.pattern('^[a-zA-Z]+$')],
-      lastName: ['',Validators.required, Validators.pattern('^[a-zA-Z]+$')],
+      firstName: ['',Validators.required],
+      lastName: ['',Validators.required],
       birth_date: ['', [Validators.required, Validators.pattern('^(((0[1-9]|[12][0-9]|30)[/]?(0[13-9]|1[012])|31[/]?(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[/]?02)[/](?:19|20)[0-9]{2}|29[/]?02[/](?:19|20)[0-9]{2})$')]],
       weight: [,Validators.required],
       height: [,Validators.required],

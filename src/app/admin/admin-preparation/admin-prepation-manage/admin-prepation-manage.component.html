@@ -1,0 +1,80 @@
+<app-navmenu></app-navmenu>
+
+<div class="row d-flex ">
+    <div  class="col-md-3" style="display:flex">
+    <input matInput (keyup)="applyFilter($event)" class="searchbar" type="text" placeholder="Search.."  #input>
+    <a class="center chercher"> CHERCHER </a>
+   <button class="submit"> <a class="submit col-md-3" href="admin/preparation/addpreparation">Ajouter</a></button>
+    
+
+</div>
+</div>
+
+<div class="title" >Liste des Preparations </div>
+<div class="example-container mat-elevation-z8">
+
+
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)=" announceSortChange($event)" class="table table-striped table-hover ">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">
+            id
+        </th>
+
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+
+    </ng-container>
+
+    Name Column
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+            Nom
+        </th>
+        <td mat-cell *matCellDef="let element" >{{element.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="portion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by portion">
+            Portion
+        </th>
+        <td mat-cell *matCellDef="let element" >{{element.portion}}</td>
+    </ng-container>
+    <ng-container matColumnDef="composition">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by composition">
+            composition
+        </th>
+        <td mat-cell *matCellDef="let element" >{{element.composition}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <tr><th mat-header-cell *matHeaderCellDef> Action </th></tr>
+        <tr>
+          <td mat-cell *matCellDef="let row" style="width:20%">
+           <a href="admin/preparation/consultpreparation"><button mat-icon-button color="primary"  title="Afficher les details"  ><mat-icon>preview</mat-icon></button></a> 
+           <a href="admin/preparation/etitpreparation"> <button mat-icon-button color="primary" (click)="preparationToManage(row)"
+            title="Modifier">
+            <mat-icon style="color: darkgoldenrod;">edit</mat-icon>
+        </button></a>
+            <button mat-icon-button color="primary"  title="supprimer" (click)="ConfirmationNotification()"><mat-icon  style="color: brown;">delete</mat-icon></button>
+          </td>
+        <tr>
+      </ng-container>
+
+   
+
+
+  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true  "></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; " (click)=" preparationToManage(row)" ></tr>
+</table>
+
+</div>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
+    <a href="/admin/ModulePrescription/Prescript"><button mat-flat-button color="primary">
+            <mat-icon>keyboard_return</mat-icon>&emsp; retour au menu 
+        </button></a>
+</div>
+
+<app-footer></app-footer>

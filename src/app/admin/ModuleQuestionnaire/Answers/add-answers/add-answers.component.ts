@@ -8,7 +8,6 @@ import { RestQuestionnaireService } from 'src/app/client/Services/rest-questionn
 import { RestResponseService } from 'src/app/client/Services/rest-response.service';
 import { RestUserService } from 'src/app/client/Services/RestUser.service';
 import Swal from 'sweetalert2';
-import { IDropdownSettings, } from 'ng-multiselect-dropdown';
 import { RestProductService } from 'src/app/client/Services/rest-product.service';
 import { findLast } from '@angular/compiler/src/directive_resolver';
 
@@ -39,7 +38,7 @@ export class AddAnswersComponent implements OnInit {
   I_dropdownListSuppliments: Array<any> = [];
   indic!: number;
   C_indic!: number;
-  dropdownSettings!: IDropdownSettings;
+  //dropdownSettings!: IDropdownSettings;
   dropDownForm!: FormGroup;
 
   constructor(private RestResponseService: RestResponseService, private _formBuilder: FormBuilder, private router: Router, private http: HttpClient, private sanitizer: DomSanitizer, private datePipe: DatePipe, private RestQuestionnaireService: RestQuestionnaireService, private RestProductService: RestProductService) {
@@ -66,6 +65,7 @@ export class AddAnswersComponent implements OnInit {
     }),
 
       (await this.RestProductService.getProducts()).subscribe((x) => {
+        console.log(x)
         let tmp = [];
         let tmp2 = [];
 

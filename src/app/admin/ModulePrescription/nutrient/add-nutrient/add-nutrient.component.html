@@ -1,0 +1,37 @@
+<mat-card  class=" col-10 ">
+<mat-card-content>
+<form [formGroup]="addData" (ngSubmit)="add()"  >
+    <p class=" row center title ">Ajout Nutriment</p>
+    <div class=" row center ">
+   
+       
+        <mat-form-field appearance="outline" class=" row center  ">
+            <mat-label>Nom</mat-label>
+            <input matInput placeholder="Nutriment" id="name" formControlName="name" >
+            <div *ngIf="f['name'].touched && f['name'].invalid">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']"> le nom est obligatoire </div>
+                <div *ngIf="f['name'].errors && f['name'].errors['pattern']">ce champ doit avoir des caractères</div>
+            </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="row center  ">
+            <mat-label>Teneur</mat-label>
+            <input matInput placeholder="Teneur" type="number"  id="tenor" formControlName="tenor">
+            <div *ngIf="f['tenor'].touched && f['tenor'].invalid">
+                <div *ngIf="f['tenor'].errors && f['tenor'].errors['required']"> le tenor est obligatoire, il doit etre un réel </div>
+                <div *ngIf="f['tenor'].errors && f['tenor'].errors['pattern']">ce champ doit etre un réel</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class=" row center ">
+            <mat-label>unité</mat-label>
+            <input matInput placeholder="KG" id="unity" formControlName="unity">
+            <div *ngIf="f['unity'].touched && f['unity'].invalid">
+                <div *ngIf="f['unity'].errors && f['unity'].errors['required']"> l'unite est obligatoire </div>
+                <div *ngIf="f['unity'].errors && f['unity'].errors['pattern']">ce champ doit avoir des caractères</div>
+            </div>
+        </mat-form-field>
+        <button [disabled]="!addData.valid" type="submit" class=" boutton d-flex justify-content-center mat-button matStepperNext">Ajouter</button>
+    </div>
+</form>
+</mat-card-content>
+</mat-card>

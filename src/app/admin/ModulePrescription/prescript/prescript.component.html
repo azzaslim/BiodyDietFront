@@ -4,7 +4,7 @@
 </head>
 <app-navmenu></app-navmenu>
 <div class="card-wrapper  row center  justify-content-md-center">
-    <mat-card class="example-card col-md-4   justify-content-center">
+    <mat-card class="example-card col-md-3   justify-content-center">
         <mat-card-header>
             <mat-card-subtitle>
                 <i class="fa fa-stethoscope" style="font-size:40px; color :rgb(14, 88, 110); margin-top: 1vw;"></i>
@@ -14,30 +14,47 @@
 
         </mat-card-header>
         <mat-card-content>
-            <button   href="#" mat-flat-button> &emsp;Afficher la liste </button>
+            <a  href="/admin/preparation/listpreparation" mat-flat-button> &emsp;Afficher la liste </a>
 
         </mat-card-content>
 
 
     </mat-card>
-    <mat-card class="example-card col-md-4   justify-content-center">
+    <mat-card class="example-card col-md-3   justify-content-center">
         <mat-card-header>
             <mat-card-subtitle>
                 <mat-icon class="center">add</mat-icon> <br>
 
             </mat-card-subtitle>
             <mat-card-title> Supplements </mat-card-title>
-            <mat-card-subtitle> <br> </mat-card-subtitle>
+            <mat-card-subtitle> {{nbsupplements}} </mat-card-subtitle>
 
         </mat-card-header>
         <mat-card-content>
-            <a href="#"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+            <a href="admin/supplements"><button mat-flat-button> &emsp;Afficher la liste </button></a>
 
         </mat-card-content>
 
 
     </mat-card>
-    <mat-card class="example-card col-md-4  justify-content-center">
+    <mat-card class="example-card col-md-3 justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <mat-icon class="center">account_circle</mat-icon> <br>
+
+            </mat-card-subtitle>
+            <mat-card-title>Produits Cosmétiques</mat-card-title>
+            <mat-card-subtitle>{{nbnutrient}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/CosmeticProduct"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+    <mat-card class="example-card col-md-3  justify-content-center">
         <mat-card-header>
             <mat-card-subtitle>
                 <mat-icon class="center">account_circle</mat-icon> <br>
@@ -54,7 +71,7 @@
 
 
     </mat-card>
-    <mat-card class="example-card col-md-4  justify-content-center">
+    <mat-card class="example-card col-md-3  justify-content-center">
         <mat-card-header>
             <mat-card-subtitle>
                 <mat-icon class="center">account_circle</mat-icon> <br>

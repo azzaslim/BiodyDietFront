@@ -1,0 +1,76 @@
+<app-navmenu></app-navmenu>
+
+
+<br><br>
+
+           
+<div class="separator">Ajouter une preparation</div>
+<div class="outline">
+
+<mat-card class="  mat-elevation-z8  col-10 "  >
+    <mat-card-header>
+        <mat-card-title class="title-overlap"><h3>Informations preparation</h3></mat-card-title>
+    </mat-card-header>
+    <br> <br>
+    <mat-card-content>
+    <form  [formGroup]="AddNewProduct" >
+
+        <div class="row center" >
+            
+            <mat-form-field appearance="standard" class=" row center  ">
+                <mat-label>Nom</mat-label>
+                
+                <input matInput placeholder="name" id="name" formControlName="name" >
+                
+            </mat-form-field>
+    
+            <mat-form-field appearance="standard" class="row center  ">
+                <mat-label>Protion</mat-label>
+                <input matInput placeholder="portion"  id="portion" formControlName="portion">
+            </mat-form-field>
+            <mat-form-field appearance="standard" class="row center  ">
+                <mat-label>Comment</mat-label>
+                <input matInput placeholder="comment"  id="comment" formControlName="comment">
+            </mat-form-field>
+            <mat-form-field appearance="standard" class="row center  ">
+                <mat-label>Composition</mat-label>
+                <input matInput placeholder="composition"  id="composition" formControlName="composition">
+            </mat-form-field>
+       </div>
+       <div class="separator1">Symptoms</div>
+                <div class="row center">
+
+
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3 ">
+                        <mat-select formControlName="symptoms" multiple [(ngModel)]="ListSymptom"
+                            placeholder="choisir un symptom">
+
+                            <mat-option *ngFor="let option of dropdownListSymptom;  let i=index;" [value]="option">
+                                {{option}}
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3 ">
+                        <mat-select formControlName="Nutrients" multiple [(ngModel)]="listnutrient"
+                            placeholder="choisir un nutriment">
+
+                            <mat-option *ngFor="let option of dropdownListNutrient;  let i=index;" [value]="option">
+                                {{option}}
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    </div>
+        </form>
+        <div  class=" boutton">
+            <button mat-button (click)="Add_Product()"  >ajouter</button>
+        </div>
+        </mat-card-content>
+        </mat-card>
+        </div>
+        <a href="admin/preparation/listpreparation">   <button mat-icon-button color="primary"  style="float: right; margin-right: 30vw;" title="Modifier">Retour à la liste des preparations</button></a>
+  
+
+
+<app-footer></app-footer>

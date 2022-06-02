@@ -1,0 +1,47 @@
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<app-navmenu></app-navmenu>
+<div class="card-wrapper  row center  justify-content-md-center">
+    <mat-card class="example-card col-md-4   justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <mat-icon class="center">account_circle</mat-icon> <br>
+            </mat-card-subtitle>
+            <mat-card-title> Groupe utilisateur </mat-card-title>
+            <mat-card-subtitle>{{nbPatients}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a  href="/admin/groupes/usersgrouplist" mat-flat-button> &emsp;Afficher la liste </a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+    <mat-card class="example-card col-md-4   justify-content-center">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <mat-icon class="center">view_comfy</mat-icon> <br>
+
+            </mat-card-subtitle>
+            <mat-card-title> Groupe produit </mat-card-title>
+            <mat-card-subtitle> {{nbsupplements}} </mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content>
+            <a href="admin/groupes/productgrouplist"><button mat-flat-button> &emsp;Afficher la liste </button></a>
+
+        </mat-card-content>
+
+
+    </mat-card>
+   
+    
+</div>
+<br><br><br><br><br>
+
+
+<app-footer></app-footer>

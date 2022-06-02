@@ -19,10 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatRowDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
-import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
-import { PreparationComponent } from './client/gestion/preparation/preparation.component';
-import { ComplementsComponent } from './client/gestion/complements/complements.component';
-import { ProduitsComponent } from './client/gestion/produits/produits.component';
+
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -52,16 +49,9 @@ import { AHomeComponent } from './admin/a-home/a-home.component';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { AdminGuard } from './guard/Admin.guard';
 import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
-import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-groupes.component';
 import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.component';
 import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
-import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
-import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
-import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
-import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
 
-import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
-import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 // or
@@ -78,8 +68,7 @@ import { DetailQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questi
 import { AddAnswersComponent } from './admin/ModuleQuestionnaire/Answers/add-answers/add-answers.component';
 import { DetailAnswersComponent } from './admin/ModuleQuestionnaire/Answers/detail-answers/detail-answers.component';
 import { ListAnswersComponent } from './admin/ModuleQuestionnaire/Answers/list-answers/list-answers.component';
-import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
-import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
+
 import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
 import { EditAnswersComponent } from './admin/ModuleQuestionnaire/Answers/edit-answers/edit-answers.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
@@ -89,6 +78,16 @@ import { PrintLayoutComponent } from './print-layout/print-layout.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { AddNutrientComponent } from './admin/ModulePrescription/nutrient/add-nutrient/add-nutrient.component';
+import { EditNutrientComponent } from './admin/ModulePrescription/nutrient/edit-nutrient/edit-nutrient.component';
+import { NutrientComponent } from './admin/ModulePrescription/nutrient/nutrient/nutrient.component';
+import { NutrientdetailsComponent } from './admin/ModulePrescription/nutrient/nutrientdetails/nutrientdetails.component';
+import { AddsymptomComponent } from './admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
+import { SymptommanageComponent } from './admin/ModulePrescription/symptom/symptommanage/symptommanage.component';
+import { GestionComplementComponent } from './client/gestion-complement/gestion-complement.component';
+import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
+import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
+import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
 
 
 
@@ -113,11 +112,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
    ChangePasswordComponent,
    PatientsDialogComponent,
    AHomeComponent,
-   ListeGroupesComponent,
    DetailUserComponent,
    EditUserComponent,
-   DetailGroupeComponent,
-   EditGroupeComponent,  
+ 
    SymptommanageComponent,
    AddsymptomComponent,
    AddNutrientComponent,

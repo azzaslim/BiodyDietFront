@@ -31,8 +31,9 @@
         margin-right: 2vw;
         text-align: center;
         background-color:rgb(245, 243, 243) ;
-        margin-top: 2vw;
+        margin-top: 5vw;
     }
+    
     mat-icon{
     font-size:60px;
     color :#23b4b8;
@@ -43,7 +44,7 @@ flex-direction: column;  }
     margin-right: 0 !important;
 }
 .card-wrapper{
-margin-top: 5%;
+margin-top: 3%;
 
 }
 mat-card-title{

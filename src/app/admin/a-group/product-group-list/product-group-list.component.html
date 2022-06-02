@@ -1,0 +1,99 @@
+<app-navmenu></app-navmenu>
+
+<div class="titre" style="font-size: 1.5vw;">Liste des groupes produit</div>
+
+<div class="example-container mat-elevation-z8">
+
+
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)=" announceSortChange($event)"
+        class="table table-striped w-auto">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th style="width: 10%;" mat-header-cell *matHeaderCellDef mat-sort-header
+                sortActionDescription="Sort by id"> id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }}
+            </td>
+        </ng-container>
+
+        Name Column
+        <ng-container matColumnDef="group_name">
+            <th style="width: 7%;" mat-header-cell *matHeaderCellDef mat-sort-header
+                sortActionDescription="Sort by group_name">
+                Nom du groupe
+            </th>
+            <td mat-cell *matCellDef="let element">{{element.group_name}} </td>
+        </ng-container>
+
+        
+       <!--  <ng-container matColumnDef="actif">
+            <th style="width: 10%;" mat-header-cell *matHeaderCellDef mat-sort-header
+                sortActionDescription="Sort by actif">
+                actif
+            </th>
+            <tr>
+                <ng-container *matCellDef="let element">
+                    <td mat-cell *ngIf="(element.actif ===true );">
+                        <mat-icon style="color: green;">done_outline</mat-icon>
+                    </td>
+                    <td mat-cell *ngIf="(element.actif ===false); ">
+                        <mat-icon style="color: red;">not_interested</mat-icon>
+                    </td>
+                </ng-container>
+            </tr>
+        </ng-container> -->
+     <!--     <ng-container matColumnDef="actif">
+            <th style="width: 10%;" mat-header-cell *matHeaderCellDef mat-sort-header
+                sortActionDescription="Sort by actif">
+                Est publié
+            </th>
+            <tr>
+                <ng-container *matCellDef="let element">
+                    <td mat-cell *ngIf="((element.actif) !== );">
+                       bhhjj
+                    </td>
+                </ng-container>
+            </tr>
+        </ng-container> 
+ -->
+
+        <!-- Action Column-->
+        <ng-container matColumnDef="action">
+            <tr>
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+            </tr>
+            <tr>
+                <td mat-cell *matCellDef="let row" style="width:20%">
+                    <a href="admin/groupes/userssgroupdetails"><button mat-icon-button color="primary"
+                            group_name="Afficher les details">
+                            <mat-icon>preview</mat-icon>
+                        </button></a>
+                    <a href="admin/questionnaire/Editquestionnaire"> <button mat-icon-button color="primary" 
+                            group_name="Modifier">
+                            <mat-icon style="color: darkgoldenrod;">edit</mat-icon>
+                        </button></a>
+                    <button mat-icon-button color="primary" group_name="supprimer" (click)="ConfirmationNotification()">
+                        <mat-icon style="color: brown;">delete</mat-icon>
+                    </button>
+                    <a href="admin/listeUsersOfgroup"> <button mat-icon-button color="primary" 
+                        group_name="consulter">
+                         <mat-icon  style="color: darkgoldenrod;" class="center">account_circle</mat-icon> 
+                    </button></a>
+                   
+
+                </td>
+            <tr>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true  "></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="groupToManage(row) "></tr>
+
+
+    </table>
+</div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
+    <a href="/admin/groupmodule"><button mat-flat-button color="primary">
+            <mat-icon>keyboard_return</mat-icon>&emsp; retour au menu 
+        </button></a>
+</div>
+<app-footer></app-footer>

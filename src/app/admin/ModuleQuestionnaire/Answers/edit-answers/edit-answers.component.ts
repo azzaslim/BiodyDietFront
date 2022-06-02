@@ -77,7 +77,7 @@ export class EditAnswersComponent implements OnInit {
             this.C_dropdownListPreparation = tmp;
           }
           else {
-
+            
             tmp2.push(x[i].name);
             this.I_dropdownListSuppliments = tmp2;
             this.C_dropdownListSuppliments = tmp2;

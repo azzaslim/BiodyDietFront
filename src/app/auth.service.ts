@@ -103,19 +103,6 @@ export class RestUserService implements OnInit {
     return this.http.post<any>(ADD_PREPARATION_URL, prep, { headers });
 
   }
-
-  // GetProducts(){
-
-  //   const headers = new HttpHeaders({'Content-Type': 'application/json',});
-  //   return this.http.post<any>( GETALL_Product_URL,{ headers });
-
-  // }
-
-/* //products
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.GETPRODUCT_URL);
-  } */
-
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
     sessionStorage.clear();
@@ -123,35 +110,5 @@ export class RestUserService implements OnInit {
     this.loader.hide()
 
   }
-//nutients
- /*  getNutrients(): Observable<Nutrient[]> {
-    return this.http.get<Nutrient[]>(this.GETNutrient_URL);
-  } */
-//symptoms
- /* async addsymptom(symptom: any) {
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    console.log(this.getToken());
-    
-    return await this.http.post<any>(addSymptom_URL, symptom, { headers });
 
-  } */
-  //  async getSymptoms() {
-  //   const headers = new HttpHeaders({
-  //     'Authorization': 'Bearer' + this.getToken(),
-  //     'Content-Type': 'application/json',
-
-  //   });
-  //   console.log("method get Token",this.getToken());
-  //   return await this.http.get(getSymptoms_URL, { headers}).toPromise();
-  //  }
-  /* async getSymptoms(): Promise<Observable<Symptom[]>> {
-    // return this.http.get<Profil[]>(this.URL);
-    console.log(this.getToken());
-    let headers = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.getToken()} `,
-    )
-    return await this.http.get<Symptom[]>(getSymptoms_URL,{headers}); 
-   } */
 }

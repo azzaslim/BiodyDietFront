@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,6 +27,8 @@ export class RestSymptomService {
 
   }
 
+
+  
  //getSymptom
   async getSymptoms(): Promise<Observable<Symptom[]>> {
     // return this.http.get<Profil[]>(this.URL);
@@ -47,12 +49,13 @@ export class RestSymptomService {
     return await this.http.post<any>(addSymptom_URL, symptom, { headers });
 
   }
-  async deleteSymptom(id: any) {
+  async deleteSymptom(symptom: any) {
     let headers = new HttpHeaders().set(
       'Authorization', `Bearer ${this.getToken()} `,
     )
-console.log(id)
-    return await this.http.post<any>(DELETE_Symptom_URL, JSON.stringify({id: id}), { headers });
+    const params = new HttpParams().set('Id',JSON.parse(localStorage.getItem('symptom to manage')!))
+
+    return await this.http.delete<any>(DELETE_Symptom_URL+ "/" +params, { headers});
   }
   async getOneSymptom(id :number): Promise<Observable<any>> {
     let headers = new HttpHeaders({

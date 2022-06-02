@@ -81,7 +81,6 @@
                 <div class="separator1 ">Contre Indications</div>
 
                 <div class="row center">
-
                     <mat-form-field appearance="standard"  class="custom-select col-md-5 mb-4 mt-3" >
                         <mat-select formControlName="C_preparation" multiple [(ngModel)]="C_ListPreparation" placeholder="choisir une préparation">
                             <mat-option *ngFor="let option of C_dropdownListPreparation;  let i=index;" [value]="option"

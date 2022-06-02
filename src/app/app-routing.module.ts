@@ -1,13 +1,8 @@
-import { NutrientdetailsComponent } from './admin/nutrient/nutrientdetails/nutrientdetails.component';
-import { NutrientComponent } from './admin/nutrient/nutrient/nutrient.component';
-import { AddNutrientComponent } from './admin/nutrient/add-nutrient/add-nutrient.component';
+
 import { AjouterPreparationComponent } from './client/ajouter-preparation/ajouter-preparation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GestionComplementComponent } from './client/gestion/gestion-complement/gestion-complement.component';
-import { ProduitsComponent } from './client/gestion/produits/produits.component';
-import { PreparationComponent } from './client/gestion/preparation/preparation.component';
-import { ComplementsComponent } from './client/gestion/complements/complements.component';
+
 import { HomeComponent } from './client/home/home.component';
 import { InfoPersonneComponent } from './client/info-personne/info-personne.component';
 import { ListeprofilComponent } from './client/listeprofil/listeprofil.component';
@@ -26,16 +21,11 @@ import { AuthGuardService } from './guard/auth-guard.service';
 import { ListeUsersComponent } from './admin/a-users/liste-users/liste-users.component';
 import { DetailUserComponent } from './admin/a-users/detail-user/detail-user.component';
 import { EditUserComponent } from './admin/a-users/edit-user/edit-user.component';
-import { ListeGroupesComponent } from './admin/a-groupes/liste-groupes/liste-groupes.component';
-import { EditGroupeComponent } from './admin/a-groupes/edit-groupe/edit-groupe.component';
-import { DetailGroupeComponent } from './admin/a-groupes/detail-groupe/detail-groupe.component';
+
 import { UserGuard } from './guard/User.guard';
-import { EditNutrientComponent } from './admin/nutrient/edit-nutrient/edit-nutrient.component';
 import { AddUserComponent } from './admin/a-users/add-user/add-user.component';
 import { AddPatientComponent } from './admin/add-patient/add-patient.component';
 import { PrescriptComponent } from './admin/ModulePrescription/prescript/prescript.component';
-import { AddsymptomComponent } from './admin/symptom/addsymptom/addsymptom.component';
-import { SymptommanageComponent } from './admin/symptom/symptommanage/symptommanage.component';
 import { ListQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/list-questionnaire/list-questionnaire.component';
 import { AddQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/add-questionnaire/add-questionnaire.component';
 import { DetailQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/detail-questionnaire/detail-questionnaire.component';
@@ -47,6 +37,16 @@ import { EditAnswersComponent } from './admin/ModuleQuestionnaire/Answers/edit-a
 import { HomeMQuestionnaireComponent } from './admin/ModuleQuestionnaire/home-m-questionnaire/home-m-questionnaire.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { PrintLayoutComponent } from './print-layout/print-layout.component';
+import { AddNutrientComponent } from './admin/ModulePrescription/nutrient/add-nutrient/add-nutrient.component';
+import { EditNutrientComponent } from './admin/ModulePrescription/nutrient/edit-nutrient/edit-nutrient.component';
+import { NutrientComponent } from './admin/ModulePrescription/nutrient/nutrient/nutrient.component';
+import { NutrientdetailsComponent } from './admin/ModulePrescription/nutrient/nutrientdetails/nutrientdetails.component';
+import { AddsymptomComponent } from './admin/ModulePrescription/symptom/addsymptom/addsymptom.component';
+import { SymptommanageComponent } from './admin/ModulePrescription/symptom/symptommanage/symptommanage.component';
+import { GestionComplementComponent } from './client/gestion-complement/gestion-complement.component';
+import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
+import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
+import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
 
 
 
@@ -88,9 +88,6 @@ const routes: Routes = [
  { path: 'admin/ModulePrescription/Prescript', component:  PrescriptComponent, canActivate : [AuthGuardService,AdminGuard]  },
 
 
- { path: 'admin/groupes/listegroupes', component: ListeGroupesComponent , canActivate : [AuthGuardService,AdminGuard]  },
- { path: 'admin/groupes/editgroupe', component: EditGroupeComponent , canActivate : [AuthGuardService,AdminGuard]  },
- { path: 'admin/groupes/consultgroupe', component: DetailGroupeComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService,AdminGuard]  },
   
   { path: 'admin/gestion', component: GestionComplementComponent , canActivate : [AuthGuardService,AdminGuard] },

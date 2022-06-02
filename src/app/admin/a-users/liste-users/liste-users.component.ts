@@ -105,8 +105,8 @@ this.loader.show();
     console.log(user);
    
         (localStorage.setItem('user to manage', JSON.stringify(user.id)));
-        localStorage.setItem('usertoupdate', JSON.stringify(user));
-       
+        (localStorage.setItem('usertoupdate', JSON.stringify(user)));
+
 
   }
 
@@ -114,7 +114,7 @@ this.loader.show();
   async checkValue(id: any) {
     (await this.RestUserService.getUser(id)).subscribe(
       async response => {
-        localStorage.setItem('user to manage', JSON.stringify(id));
+       // localStorage.setItem('user to manage', JSON.stringify(id));
 
        
         if ((response[0]['modulePresc'] === true)) 

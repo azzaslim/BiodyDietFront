@@ -17,7 +17,7 @@
     <mat-card-content class="form-center">
     <div class="row col-10 offset-1">
       <mat-form-field appearance="outline">
-        <mat-label>Input</mat-label>
+        <mat-label>Name</mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
     </div>
@@ -26,7 +26,8 @@
       <div class="col-md-2">
         <mat-label>Portion</mat-label>
         <mat-form-field appearance="outline">
-          <input matInput formControlName="portion">
+          <mat-label>Protion</mat-label>
+        <input matInput placeholder="portion"  id="portion" formControlName="portion">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <input matInput formControlName="composition">
@@ -41,24 +42,19 @@
           <input matInput>
         </mat-form-field>
       </div>
-      <div class="col-md-2 ">
+      <div class="col-md-2 " >
         <mat-label>Commentaires</mat-label>
         <mat-form-field class="big-input" appearance="outline">
-          <input matInput formControlName="comment">
+          <mat-label>Comment</mat-label>
+                <input matInput placeholder="comment"  id="comment" formControlName="comment">
         </mat-form-field>
       </div>
    
 
-  <mat-card class=" col-md-3 form12 "  >
+  <div  class=" col-md-3 form12 "  >
       <mat-label class="Lable3"> Compositions par 100g</mat-label>
       
-
-       
-          
-       
-  
-
-          <div class="example-container mat-elevation-z8">
+          <mat-card class="example-container mat-elevation-z8">
 
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           
@@ -79,23 +75,22 @@
           
             </table>
           
-          </div>
-        </mat-card>
-        <div class="form13 col-md-3 " >
-        <div class="titre1" > Symtomes</div>
-        <mat-card class="C3 example-container mat-elevation-z8" >
-        
-       <table cdk-table [dataSource]="dataSource2" class="mat-elevation-z8">
-      
-        <ng-container cdkColumnDef="symptom_name">
-          <td cdk-cell *cdkCellDef="let element"  
-          >  <mat-checkbox >{{element.symptom_name}} </mat-checkbox></td>
-      
-        </ng-container>
-        <tr cdk-row *matRowDef="let row; columns: displayedColumns2;" ></tr>
-      
-      </table>
-      </mat-card>
+          </mat-card>
+        </div>
+        <div class="form12 col-md-3  " >
+        <div> Symtomes</div>
+
+          <mat-form-field appearance="standard" floatLabel="always" class="custom-select col-md-5 mb-4 mt-3 ">
+            <mat-select formControlName="symptoms" multiple [(ngModel)]="ListSymptom"
+                placeholder="choisir un symptom">
+
+                <mat-option *ngFor="let option of dropdownListSymptom;  let i=index;" [value]="option">
+                    {{option}}
+                </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+    
       </div>
     
   </div>

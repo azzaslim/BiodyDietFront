@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
               Response => {
                 localStorage.setItem('nbQuestionnaire', JSON.stringify(Response.length))
                 console.log(Response)
-              });
+              }); 
 
             (await this.RestResponseService.getAnswers()).subscribe(
               Response => {

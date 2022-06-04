@@ -32,13 +32,8 @@ export class CosmeticProductManageComponent implements OnInit {
   constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
-<<<<<<< HEAD:src/app/client/gestion/preparation/preparation.component.ts
-      this.getOneNutrient();
-      (await this.user.getPreparations()).subscribe((x) => {
-=======
       this.getOneProduct();
       (await this.RestProductService.getProducts()).subscribe((x) => {
->>>>>>> c0d747c904d87b0b2afb96bba4bc69a249c9b203:src/app/admin/ModulePrescription/CosmeticProductManage/cosmetic-product-manage/cosmetic-product-manage.component.ts
         if (x.length==0)
         {
           alert("no product exist");

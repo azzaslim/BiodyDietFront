@@ -71,7 +71,7 @@ import { ListAnswersComponent } from './admin/ModuleQuestionnaire/Answers/list-a
 
 import { EditQuestionnaireComponent } from './admin/ModuleQuestionnaire/Questionnaire/edit-questionnaire/edit-questionnaire.component';
 import { EditAnswersComponent } from './admin/ModuleQuestionnaire/Answers/edit-answers/edit-answers.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 import { HomeMQuestionnaireComponent } from './admin/ModuleQuestionnaire/home-m-questionnaire/home-m-questionnaire.component';
 import { MatOptionModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { PrintLayoutComponent } from './print-layout/print-layout.component';
@@ -88,6 +88,19 @@ import { GestionComplementComponent } from './client/gestion-complement/gestion-
 import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
 import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
+import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
+import { AddPreparationComponent } from './admin/admin-preparation/add-preparation/add-preparation.component';
+import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
+import { PreparationDetailsComponent } from './admin/admin-preparation/preparation-details/preparation-details.component';
+import { SupplementdetailsComponent } from './admin/ModulePrescription/supplementmanage/supplementdetails/supplementdetails.component';
+import { EditSupplementComponent } from './admin/ModulePrescription/supplementmanage/edit-supplement/edit-supplement.component';
+import { AddSupplementComponent } from './admin/ModulePrescription/supplementmanage/add-supplement/add-supplement.component';
+import { SupplementComponent } from './admin/ModulePrescription/supplementmanage/supplement/supplement.component';
+import { CosmeticProductManageComponent } from './admin/ModulePrescription/CosmeticProductManage/cosmetic-product-manage/cosmetic-product-manage.component';
+import { EditAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/edit-admin-cosmetic-product/edit-admin-cosmetic-product.component';
+import { DetailsAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/details-admin-cosmetic-product/details-admin-cosmetic-product.component';
+import { AddAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/add-admin-cosmetic-product/add-admin-cosmetic-product.component';
+import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symptom-details/symptom-details.component';
 
 
 
@@ -144,9 +157,27 @@ import { PreparationComponent } from './client/gestion/preparationManage/prepara
          HomeMQuestionnaireComponent,
          PrintLayoutComponent,
          InvoiceComponent,  
+        AdminPrepationManageComponent,
+       AddPreparationComponent,
+       PreparationeditComponent,
+       PreparationDetailsComponent,
+       SupplementdetailsComponent,
+       VerifaccountComponent,
+       EditSupplementComponent,
+       AddSupplementComponent,
+       SupplementComponent,
+       CosmeticProductManageComponent,
+       EditAdminCosmeticProductComponent,
+       DetailsAdminCosmeticProductComponent,
+       AddAdminCosmeticProductComponent,
+       SymptomDetailsComponent,
+       
+
+
+
   ],
   imports: [
-  
+
   MatListModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
@@ -169,7 +200,7 @@ import { PreparationComponent } from './client/gestion/preparationManage/prepara
     MatSelectModule,
     MatDividerModule,
     MatRadioModule,
-    NgMultiSelectDropDownModule,
+    
     MatOptionModule,
     BrowserModule,
     BrowserAnimationsModule,

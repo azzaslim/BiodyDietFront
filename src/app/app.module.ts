@@ -101,6 +101,12 @@ import { EditAdminCosmeticProductComponent } from './admin/ModulePrescription/Co
 import { DetailsAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/details-admin-cosmetic-product/details-admin-cosmetic-product.component';
 import { AddAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/add-admin-cosmetic-product/add-admin-cosmetic-product.component';
 import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symptom-details/symptom-details.component';
+import { AddUserPreparationComponent } from './client/gestion/preparationManage/add-user-preparation/add-user-preparation.component';
+import { EditUserPreparationComponent } from './client/gestion/preparationManage/edit-user-preparation/edit-user-preparation.component';
+import { AddUserComplementComponent } from './client/gestion/ComplementManage/add-user-complement/add-user-complement.component';
+import { EditComplementComponent } from './client/gestion/ComplementManage/edit-complement/edit-complement.component';
+import { AddCosmeticProductComponent } from './client/gestion/CosmeticProductManage/add-cosmetic-product/add-cosmetic-product.component';
+import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductManage/edit-cosmetic-product/edit-cosmetic-product.component';
 
 
 
@@ -171,8 +177,12 @@ import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symp
        DetailsAdminCosmeticProductComponent,
        AddAdminCosmeticProductComponent,
        SymptomDetailsComponent,
-       
-
+       EditUserPreparationComponent,
+       AddUserPreparationComponent,
+       AddUserComplementComponent,
+       EditComplementComponent,
+       EditCosmeticProductComponent,
+       AddCosmeticProductComponent
 
 
   ],

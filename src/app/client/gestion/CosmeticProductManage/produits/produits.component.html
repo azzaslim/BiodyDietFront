@@ -19,103 +19,86 @@
 
 <br>
 <div class="row">
-<div class="form1 col-md-3" >
-  <div class="titre1" > produits cosmetiques</div>
- <mat-card  class="example-container mat-elevation-z8" >
-  
- 
+  <div class="form1 col-md-3">
+    <div class="titre1"> Préparations Originales</div>
+    <mat-card class="example-container mat-elevation-z8">
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-   <ng-container matColumnDef="name">
+      <table class="mat-elevation-z8">
+        <div *ngFor="let row of products">
 
-     
+        <td (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"> {{row.name}} </td>
 
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-
-    </ng-container>
-
-  
-
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)" 
-      [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
-      (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr>
-
-  </table>
- 
- </mat-card>
-</div>
+          <!-- <tr  (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"
+            [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr> -->
+        </div>
 
 
-<div class="form11 col-md-3" >
-  <div class="titre1" > Portions</div>
-  <mat-card class="C3 example-container mat-elevation-z8" >
-  <table cdk-table [dataSource]="dataSource1" class="mat-elevation-z8">
 
-    <ng-container cdkColumnDef="portion">
-      <td cdk-cell *cdkCellDef="let element" (click)="search('{{element.portion}}')" 
-      > {{element.portion}} </td>
+      </table>
 
-    </ng-container>
-
-     <ng-container matColumnDef="tenor">
-
-      <th mat-header-cell *matHeaderCellDef> Teneur </th>
-
-      <td mat-cell *matCellDef="let element"> {{element.tenor}} </td>
-
-    </ng-container> 
-    
-    <tr cdk-row *matRowDef="let row; columns: displayedColumns1;" ></tr>
-
-  </table>
-  </mat-card>
-</div>
+    </mat-card>
+  </div>
 
 
-<div class="form12  col-md-3" >
-  <div class="titre1" > Compositions par 100g</div>
- <mat-card class="C3 example-container mat-elevation-z8" >
-  
+  <div class="form11 col-md-3">
+    <div class="titre1"> Portions</div>
+    <mat-card class="C3 example-container mat-elevation-z8">
+      <table class="mat-elevation-z8">
+        <div *ngFor="let row of portions">
 
-   <table cdk-table [dataSource]="dataSource1" class="mat-elevation-z8">
+        <td (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"> {{row}} </td>
+        </div>
 
-      <ng-container cdkColumnDef="portion">
-        <td cdk-cell *matCellDef="let element" (click)="search('{{element.portion}}')" 
-        > {{element.portion}} </td>
-  
-      </ng-container>
 
-      <!-- <ng-container matColumnDef="tenor">
-  
-        <th mat-header-cell *matHeaderCellDef> Teneur </th>
-  
-        <td mat-cell *matCellDef="let element"> {{element.tenor}} </td>
-  
-      </ng-container> -->
+
+      </table>
+    </mat-card>
+  </div>
+
+
+  <div class="form12  col-md-3">
+    <div class="titre1"> Compositions par 100g</div>
+    <mat-card class="C3 example-container mat-elevation-z8">
+
+
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th>Tenor Unity</th>
+           
+            </tr>
+            </thead>
       
-      <tr cdk-row *matRowDef="let row; columns: displayedColumns1;" ></tr>
-  
-    </table>
-  
- </mat-card>
-</div> 
+            <tbody>
+              <tr  *ngFor="let row of nutrients">
+               
+                <td >{{row.tenor}} </td>
+                <td>  </td>
+                <td>{{row.unity}} </td>
+      </tr>
+      </tbody>
+       
+      </table>  <tr  *ngFor="let row of nutrients">
+               
+        <td >{{row.tenor}} </td>
+        <td>  </td>
+        <td>{{row.unity}} </td>
+</tr>
 
-<div class="form13 col-md-3 " >
-  <div class="titre1" > Symtomes</div>
-  <mat-card class="C3 example-container mat-elevation-z8"   >
-  
- <table cdk-table [dataSource]="dataSource2" class="mat-elevation-z8">
+    </mat-card>
+  </div>
 
-  <ng-container cdkColumnDef="symptom_name">
-    <td cdk-cell *cdkCellDef="let element" (click)="search('{{element.symptom_name}}')" 
-    >  <mat-checkbox >{{element.symptom_name}} </mat-checkbox></td>
-
-  </ng-container>
-  <tr cdk-row *matRowDef="let row; columns: displayedColumns2;" ></tr>
-
-</table>
-</mat-card>
-</div>
+  <div class="form13 col-md-3 ">
+    <div class="titre1"> Symtomes</div>
+    <mat-card class="C3 example-container mat-elevation-z8">
+      <table  class="mat-elevation-z8">
+        <tr  *ngFor="let row of allsymptoms"  >
+          <td> <mat-checkbox [checked]="checkedBox(row.symptom_name)" [disabled]="true" (change)="checkedBox(row.symptom_name)">{{row.symptom_name}}</mat-checkbox> </td>
+        </tr> 
+      </table>
+    </mat-card>
+  </div>
 </div>
 <div class="divboutton " > 
 <button class="button"  (click)="ConfirmUptadeVisibility()" > Masquer</button> 

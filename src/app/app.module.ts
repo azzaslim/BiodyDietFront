@@ -25,7 +25,7 @@ import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkTableModule} from '@angular/cdk/table';
-
+import { MatTableExporterModule } from 'mat-table-exporter';
 import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './client/home/home.component';
@@ -193,7 +193,6 @@ import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductMa
     RouterModule.forRoot([]),
     MatFormFieldModule,
     MatInputModule,
-  MatButtonModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatIconModule,
@@ -218,7 +217,7 @@ import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductMa
     MatToolbarModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-  
+    MatTableExporterModule,
    
 
 

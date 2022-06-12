@@ -1,12 +1,15 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
-.titre
+.title
 {
-    text-align: right;
-    color:#0a0a0a;
-    font-weight:900;
-    font-family: ' sans-serif' ;
-    margin-top: 3vw;
-    margin-right: 3vw;
+  text-align: right;
+  color:#0a0a0a;
+  font-weight:900;
+  font-family: ' sans-serif' ;
+  margin-top: 1vw;
+ text-align: center;
+ color: #23b4b8;
+  font-size: 1.5vw;
+  margin-bottom: 40px;
 }
 table{
     margin-top:0.5vw;
@@ -29,6 +32,34 @@ table td{
     
 }
 
+table{
+   
+  margin-top:5px;
+  table-layout: fixed;
+  margin:auto;
+ width:90% !important;
+ position: sticky;
+
+}
+a{
+  text-decoration: none;
+  color:#707272;
+}
+table td{
+  border: 0.1vw solid #9c9e9e;
+  height:0.3vh;
+ 
+ 
+  
+}
+table th{
+  border: 0.1vw solid #9c9e9e;
+  color:#FFF;
+  background-color:  #56afaf;
+  height:0.3vh;
+ 
+  
+}
 
 input  {
   float: left;
@@ -101,4 +132,35 @@ background: none;}
   background-color: #fff;
   opacity: 0.4;
   z-index: 1000;
+}
+.mat-flat-button{
+  background-color: #23b4b8;
+}
+table{
+   
+  margin-top:5px;
+  table-layout: fixed;
+  margin:auto;
+ width:90% !important;
+ position: sticky;
+
+}
+a{
+  text-decoration: none;
+  color:#707272;
+}
+table td{
+  border: 0.1vw solid #9c9e9e;
+  height:0.3vh;
+ 
+ 
+  
+}
+table th{
+  border: 0.1vw solid #9c9e9e;
+  color:#FFF;
+  background-color:  #56afaf;
+  height:0.3vh;
+ 
+  
 }

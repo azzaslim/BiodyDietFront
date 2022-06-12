@@ -21,19 +21,20 @@
     <h1 class="titre" style="font-size: 2vw;">Gestion des préparations hyperprotéinées</h1>
 
     <br>
+    <ng-container *ngIf="loading$ | async">
+      <div class="spinner_overlay"></div>
+  
+      <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+    </ng-container>
     <div class="row">
       <div class="form1 col-md-3">
         <div class="titre1"> Préparations Originales</div>
         <mat-card class="example-container mat-elevation-z8">
-
+         
           <table class="mat-elevation-z8">
             <div *ngFor="let row of products">
 
             <td (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"> {{row.name}} </td>
-
-              <!-- <tr  (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"
-                [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
-                (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr> -->
             </div>
 
 

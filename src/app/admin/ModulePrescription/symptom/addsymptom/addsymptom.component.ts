@@ -69,7 +69,7 @@ export class AddsymptomComponent implements OnInit {
     failNotification() {
       Swal.fire({
         icon: 'info',
-        title: 'nutriment existe déjà !',
+        title: 'symptom existe déjà !',
         text: "veuillez remplir votre questionnaire !!",
         showConfirmButton: false,
         timer: 2500

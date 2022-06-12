@@ -57,9 +57,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true  "></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
 </table>
-<button mat-raised-button   class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
-<button mat-raised-button  (click)="exporter.exportTable('xls')">export to xls</button>
-</div>
 
+</div>
+<button mat-flat-button color="primary"  class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
+<button mat-flat-button color="primary"  (click)="exporter.exportTable('xls')">export to xls</button>
 
 <app-footer></app-footer>

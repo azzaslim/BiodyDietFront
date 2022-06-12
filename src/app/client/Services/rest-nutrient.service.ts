@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ADD_NUTRIENT_URL, DELETE_Nutrient_URL, GETALL_NUTRIENTS_URL, GET_ONE_NUTRIENT_URL, UPDATE_NUTRIENT_URL } from 'src/common/url';
+import { ADD_NUTRIENT_URL, DELETE_Nutrient_URL, GETALLADMIN_NUTRIENTS_URL, GETALL_NUTRIENTS_URL, GET_ONE_NUTRIENT_URL, UPDATE_NUTRIENT_URL } from 'src/common/url';
 
 
 export interface Nutrient{
@@ -34,6 +34,15 @@ export class RestNutrientService {
       'Authorization', `Bearer ${this.getToken()} `,
     )
     return await this.http.get<Nutrient[]>(GETALL_NUTRIENTS_URL,{headers}); 
+   }
+
+   async getAdminNutrients(): Promise<Observable<Nutrient[]>> {
+   
+    console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.getToken()} `,
+    )
+    return await this.http.get<Nutrient[]>(GETALLADMIN_NUTRIENTS_URL,{headers}); 
    }
    
    //addNutrient

@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { Product, RestProductService } from '../../../Services/rest-product.service';
 import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
 import { RestUserService } from '../../../Services/RestUser.service';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'app-complements',
@@ -40,9 +41,11 @@ export class ComplementsComponent implements OnInit {
   symptoms:any = [];
   products: any;
   nutrients:any = [];
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService) { }
+  loading$ = this.loader.loading$;
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
   async ngOnInit() {
+    this.loader.show();
     (await this.RestProductService.getcomplements()).subscribe((x) => {
       if (x.length == 0) {
         alert("no complement exist");
@@ -75,8 +78,10 @@ export class ComplementsComponent implements OnInit {
         localStorage.setItem("nbsymptoms", x.length.toString());
       this.dataSource2 = new MatTableDataSource(x);
       this.dataSource2.sort = this.sort;
+      this.loader.hide()
     },
       err => {
+        this.loader.hide()
         this.authService.logout(),
           console.log(err),
           this.failNotification();
@@ -120,7 +125,11 @@ export class ComplementsComponent implements OnInit {
 
   ConfirmUptadeVisibility() {
 
-    Swal.fire({
+    console.log("productttttt",(JSON.parse(localStorage.getItem('product')!)['creator_user']['id']))
+    console.log((JSON.parse(localStorage.getItem('currentUser')!)['id']))
+
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+   { Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
       showDenyButton: true,
@@ -130,10 +139,21 @@ export class ComplementsComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.UpdateVisisbilityProduct();
-        Swal.fire('ce preparation a été masquée', '', 'success')
+        Swal.fire('cette preparation a été masquée', '', 'success')
       }
     })
   }
+  else {
+    Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: 'vous n\'avez le droit de masquer ce complement',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  }
+
 
   async preparationToManage(product: Product) {
     // console.log('symptom to manage', JSON.stringify(symptom.id));

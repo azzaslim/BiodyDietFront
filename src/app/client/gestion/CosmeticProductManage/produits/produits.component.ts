@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { Product, RestProductService } from '../../../Services/rest-product.service';
 import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
 import { RestUserService } from '../../../Services/RestUser.service';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'app-produits',
@@ -40,10 +41,12 @@ export class ProduitsComponent implements OnInit {
   symptoms:any = [];
   products: any;
   nutrients:any = [];
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService) { }
+  loading$ = this.loader.loading$;
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
   async ngOnInit() {
-    (await this.RestProductService.getProducts()).subscribe((x) => {
+    this.loader.show();
+    (await this.RestProductService.getCosmeticProducts()).subscribe((x) => {
       if (x.length == 0) {
         alert("no product exist");
         this.router.navigate(['/home'])
@@ -59,6 +62,7 @@ export class ProduitsComponent implements OnInit {
       this.dataSource.sort = this.sort;
     },
       err => {
+        this.loader.hide()
         this.authService.logout(),
           console.log(err),
           this.failNotification();
@@ -75,8 +79,10 @@ export class ProduitsComponent implements OnInit {
         localStorage.setItem("nbsymptoms", x.length.toString());
       this.dataSource2 = new MatTableDataSource(x);
       this.dataSource2.sort = this.sort;
+      this.loader.hide()
     },
       err => {
+       
         this.authService.logout(),
           console.log(err),
           this.failNotification();
@@ -120,7 +126,11 @@ export class ProduitsComponent implements OnInit {
 
   ConfirmUptadeVisibility() {
 
-    Swal.fire({
+    console.log("productttttt",(JSON.parse(localStorage.getItem('product')!)['creator_user']['id']))
+    console.log((JSON.parse(localStorage.getItem('currentUser')!)['id']))
+
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+   { Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
       showDenyButton: true,
@@ -130,10 +140,21 @@ export class ProduitsComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.UpdateVisisbilityProduct();
-        Swal.fire('ce preparation a été masquée', '', 'success')
+        Swal.fire('cette preparation a été masquée', '', 'success')
       }
     })
   }
+  else {
+    Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: 'vous n\'avez le droit de masquer ce produit',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  }
+
 
   async preparationToManage(product: Product) {
     // console.log('symptom to manage', JSON.stringify(symptom.id));

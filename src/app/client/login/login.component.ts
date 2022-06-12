@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
 
           this.failNotification()
         })
-   // this.loader.show();
+    this.loader.show();
 
   }
 

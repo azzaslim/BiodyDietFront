@@ -244,5 +244,40 @@ table{
 .href{
   color: #fff;
 }
+mat-progress-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+::ng-deep.mat-progress-spinner circle,.mat-spinner circle {stroke: #70caca !important;
+background: none;}
+
+.spinner_overlay {
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.4;
+  z-index: 1000;
+}
+.submit {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #70caca, #07dfdf);
+  border: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size:large;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;   
+  height: 30%;
+}
 
 

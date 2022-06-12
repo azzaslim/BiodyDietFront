@@ -16,8 +16,10 @@ import {
   UPDATE_PRODUCT_VISIBILITY_URL,
   ADD_SUPPLEMENT_URL,
   ADD_PREPARATION_URL,
+  GETCOSMETIC_PRODUCTS_URL,
+  GETADMINCOSMETIC_PRODUCTS_URL,
 } from 'src/app/common/url';
-import { GETALL_PREPARATION_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
+import { GETALLADMIN_COMPLEMENTS_URL, GETALL_ADMINPREPARATION_URL, GETALL_PREPARATION_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
 
 export interface Product {
   id: number;
@@ -53,6 +55,23 @@ export class RestProductService {
     );
     return  this.http.get<Product[]>(GETALL_PRODUCTS_URL, { headers });
   }
+  getADMINCosmeticProducts(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return  this.http.get<Product[]>(GETADMINCOSMETIC_PRODUCTS_URL, { headers });
+  }
+
+  
+  getCosmeticProducts(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return  this.http.get<Product[]>(GETCOSMETIC_PRODUCTS_URL, { headers });
+  }
+  
   getPreparations(): Observable<Product[]> {
     let headers = new HttpHeaders().set(
       'Authorization',
@@ -60,6 +79,15 @@ export class RestProductService {
     );
     return this.http.get<Product[]>(GETALL_PREPARATION_URL, { headers });
   }
+
+  getAdminPreparations(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return this.http.get<Product[]>(GETALL_ADMINPREPARATION_URL, { headers });
+  }
+
   getSuppliments(): Observable<Product[]> {
     let headers = new HttpHeaders().set(
       'Authorization',
@@ -68,9 +96,7 @@ export class RestProductService {
     return this.http.get<Product[]>(GETALL_SUPPLIMENTS_URL, { headers });
   }
 
-  get ProductExist(): boolean {
-    return localStorage.getItem('Product') ? true : false;
-  }
+ 
 
   async getcomplements(): Promise<Observable<Product[]>> {
     console.log(this.getToken());
@@ -80,6 +106,16 @@ export class RestProductService {
     );
     return await this.http.get<Product[]>(GETALL_COMPLEMENTS_URL, { headers });
   }
+  async getADMINcomplements(): Promise<Observable<Product[]>> {
+    console.log(this.getToken());
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return await this.http.get<Product[]>(GETALLADMIN_COMPLEMENTS_URL, { headers });
+  }
+
+ 
   //add Supplement
   async addSupplment(product: any) {
     let headers = new HttpHeaders().set(
@@ -138,7 +174,9 @@ export class RestProductService {
     });
   }
 
- 
+  get ProductExist(): boolean {
+    return localStorage.getItem('symptom_name') ? true : false;
+ }
 
   async UpdateProductVisibility() {
     let headers = new HttpHeaders().set(

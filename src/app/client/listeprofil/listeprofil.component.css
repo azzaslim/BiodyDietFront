@@ -71,7 +71,7 @@ input  {
   }
   .mat-elevation-z8 {
 box-shadow: none;
-height:600px;
+height:400px;
 
 }
 
@@ -98,4 +98,7 @@ background: none;}
 }
 .export{
 margin-left:75%;
+}
+.mat-flat-button{
+  background-color: #23b4b8;
 }

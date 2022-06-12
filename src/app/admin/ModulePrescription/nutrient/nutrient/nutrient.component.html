@@ -9,10 +9,11 @@
 </div>
 
 <div class="title" >Liste des Nutriments </div>
+
 <div class="example-container mat-elevation-z8">
 
 <div class="table-responsive">
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)=" announceSortChange($event)" class="table table-striped w-auto ">
+<table mat-table matTableExporter [dataSource]="dataSource" matSort (matSortChange)=" announceSortChange($event)" class="table table-striped w-auto " #exporter="matTableExporter" [hiddenColumns]="[4]">
     <!-- Position Column -->
     <ng-container matColumnDef="id">
         <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">
@@ -57,11 +58,20 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true  "></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns; "(click)="nutrientToManage(row)"></tr>
 </table>
+<ng-container *ngIf="loading$ | async">
+    <div class="spinner_overlay"></div>
+
+    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+  </ng-container>
 </div>
 </div>
+
 <div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
+    
     <a href="/admin/ModulePrescription/Prescript"><button mat-flat-button color="primary">
             <mat-icon>keyboard_return</mat-icon>&emsp; retour au menu 
         </button></a>
+        <button mat-flat-button color="primary"   class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
+<button mat-flat-button color="primary"(click)="exporter.exportTable('xls')">export to xls</button>
 </div>
 <app-footer></app-footer>

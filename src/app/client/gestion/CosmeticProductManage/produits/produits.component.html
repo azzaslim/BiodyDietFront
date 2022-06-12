@@ -16,7 +16,11 @@
    <br>
 </div>
 <h1 class="titre" style="font-size: 2vw;">Gestion des produits cosmetiques</h1>
+<ng-container *ngIf="loading$ | async">
+  <div class="spinner_overlay"></div>
 
+  <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+</ng-container>
 <br>
 <div class="row">
   <div class="form1 col-md-3">

@@ -22,6 +22,7 @@
         "@angular/router": "~12.2.0",
         "bootstrap": "^5.1.3",
         "jquery": "^3.6.0",
+        "mat-table-exporter": "^10.2.4",
         "mdb-angular-ui-kit": "^2.1.0",
         "ng-multiselect-dropdown": "^0.3.8",
         "ngx-print": "^1.2.1",

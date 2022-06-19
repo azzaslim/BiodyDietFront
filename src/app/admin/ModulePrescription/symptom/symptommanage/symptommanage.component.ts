@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import { AddsymptomComponent } from '../addsymptom/addsymptom.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RestUserService } from 'src/app/client/Services/RestUser.service';
+import { LoadingService } from 'src/app/loading.service';
 
 
 @Component({
@@ -23,12 +24,14 @@ import { RestUserService } from 'src/app/client/Services/RestUser.service';
 export class SymptommanageComponent implements OnInit {
   displayedColumns = ['id','symptom_name','action'];
   dataSource = new MatTableDataSource<Symptom>();
+  loading$ = this.loader.loading$;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestSymptomService, private authService: RestUserService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestSymptomService, private authService: RestUserService,private loader: LoadingService) { }
 
 
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
+      this.loader.show();
       (await this.user.getSymptoms()).subscribe((x) => {
         if (x.length==0)
         {
@@ -40,6 +43,8 @@ export class SymptommanageComponent implements OnInit {
       localStorage.setItem("nbsymptoms",x.length.toString())
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
+      this.loader.hide()
+
     },
       err => {
         this.authService.logout(),

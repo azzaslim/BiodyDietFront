@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { RestNutrientService, Nutrient  } from '../../../../client/Services/rest-nutrient.service';
 import { AddNutrientComponent } from '../add-nutrient/add-nutrient.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LoadingService } from 'src/app/loading.service';
 
 
 @Component({
@@ -20,10 +21,13 @@ export class NutrientComponent implements OnInit {
   displayedColumns = ['id','name','tenor','unity','action'];
   actions!: string ;
   dataSource = new MatTableDataSource<Nutrient>();
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private nutrient: RestNutrientService, private restnutrient: RestNutrientService,private dialog: MatDialog, private authservice: RestUserService) { }
+  loading$ = this.loader.loading$;
+
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private nutrient: RestNutrientService, private restnutrient: RestNutrientService,private dialog: MatDialog, private authservice: RestUserService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
       async ngOnInit() {
-      (await this.nutrient.getNutrients()).subscribe((x) => {
+        this.loader.show();
+      (await this.nutrient.getAdminNutrients()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no  exist");
@@ -33,6 +37,8 @@ export class NutrientComponent implements OnInit {
       localStorage.setItem("nbnutrients",x.length.toString())
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
+      this.loader.hide()
+
     },
       err => {
         this.authservice.logout(),

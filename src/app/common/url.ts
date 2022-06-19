@@ -38,6 +38,8 @@ export const ADD_SUPPLEMENT_URL= BASE_URL+'api/addSuppliment'
 export const ADD_PREPARATION_URL= BASE_URL+'api/addPreparation'
 export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETCOSMETIC_PRODUCTS_URL= BASE_URL+'api/getcosmeticproducts';
+export const GETADMINCOSMETIC_PRODUCTS_URL= BASE_URL+'api/getAdmincosmeticproducts';
+
 export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
 export const UPDATE_PRODUCT_VISIBILITY_URL= BASE_URL+'api/updatevisibility';
 export const ADD_QUESTIONNAIRE_URL= BASE_URL +'api/addquestionnaire ';
@@ -55,5 +57,7 @@ export const  ADD_USER_GROUP_URL = BASE_URL +'api/getgroup';
 
 export const  DELETE_GROUP_URL = BASE_URL +'api/deleteGroup';
 export const  UPDATE_GROUP_URL = BASE_URL +'api/getgroup'; 
+
+
 
 

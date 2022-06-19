@@ -16,7 +16,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 import { RestUserService, Nutrient } from '../../../Services/RestUser.service';
 
-
+import { LoadingService } from 'src/app/loading.service';
 
 
 
@@ -49,9 +49,11 @@ export class PreparationComponent implements OnInit {
   symptoms:any = [];
   products: any;
   nutrients:any = [];
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService) { }
+  loading$ = this.loader.loading$;
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
   async ngOnInit() {
+    this.loader.show();
     (await this.RestProductService.getPreparations()).subscribe((x) => {
       if (x.length == 0) {
         alert("no product exist");
@@ -84,7 +86,9 @@ export class PreparationComponent implements OnInit {
         localStorage.setItem("nbsymptoms", x.length.toString());
       this.dataSource2 = new MatTableDataSource(x);
       this.dataSource2.sort = this.sort;
+      this.loader.hide();
     },
+    
       err => {
         this.authService.logout(),
           console.log(err),
@@ -129,7 +133,11 @@ export class PreparationComponent implements OnInit {
 
   ConfirmUptadeVisibility() {
 
-    Swal.fire({
+    console.log("productttttt",(JSON.parse(localStorage.getItem('product')!)['creator_user']['id']))
+    console.log((JSON.parse(localStorage.getItem('currentUser')!)['id']))
+
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+   { Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
       showDenyButton: true,
@@ -139,9 +147,19 @@ export class PreparationComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.UpdateVisisbilityProduct();
-        Swal.fire('ce preparation a été masquée', '', 'success')
+        Swal.fire('cette preparation a été masquée', '', 'success')
       }
     })
+  }
+  else {
+    Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: 'vous n\'avez le droit de masquer cette preparation',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
   }
 
   async preparationToManage(product: Product) {

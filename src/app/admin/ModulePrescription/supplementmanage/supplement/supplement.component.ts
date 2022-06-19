@@ -10,6 +10,7 @@ import { RestProductService, Product } from 'src/app/client/Services/rest-produc
 import { Symptom, RestSymptomService } from 'src/app/client/Services/rest-symptom.service';
 import Swal from 'sweetalert2';
 import { AddsymptomComponent } from '../../symptom/addsymptom/addsymptom.component';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'app-supplement',
@@ -27,10 +28,13 @@ export class SupplementComponent implements OnInit {
   dataSource2=new MatTableDataSource<Symptom>();
   symptoms!:string;
    list=[];
+   loading$ = this.loader.loading$;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
+
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
+      this.loader.show();
       this.getOneProduct();
       (await this.RestProductService.getcomplements()).subscribe((x) => {
         if (x.length==0)
@@ -42,6 +46,7 @@ export class SupplementComponent implements OnInit {
         localStorage.setItem("nbsupplements",x.length.toString());
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
+      this.loader.hide()
     },
       err => {
         this.authService.logout(),

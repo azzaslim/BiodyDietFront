@@ -1,19 +1,23 @@
 <app-navmenu></app-navmenu>
 
 <div class="row d-flex ">
-    <div  class="col-md-3" style="display:flex">
+    <div  class="col-md-3" style="display:flex;">
     <input matInput (keyup)="applyFilter($event)" class="searchbar" type="text" placeholder="Search.."  #input>
     <a class="center chercher"> CHERCHER </a>
-    <button class="submit"> <a class="submit col-md-3" href="admin/cosmeticproduct/addcosmeticproduct">Ajouter</a></button>
+    <button class="submit col-md-3"> <a class="link"  href="admin/cosmeticproduct/addcosmeticproduct">Ajouter</a></button>
 
 </div>
 </div>
+<ng-container *ngIf="loading$ | async">
+    <div class="spinner_overlay"></div>
 
+    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+  </ng-container>
 <div class="title" >Liste des Produits cosmétiques </div>
 <div class="example-container mat-elevation-z8">
 
 
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)=" announceSortChange($event)" class="table table-striped table-hover ">
+<table mat-table matTableExporter [dataSource]="dataSource" matSort (matSortChange)=" announceSortChange($event)" class="table table-striped table-hover " #exporter="matTableExporter" [hiddenColumns]="[4]">
     <!-- Position Column -->
     <ng-container matColumnDef="id">
         <th style="width: 15%;" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">
@@ -74,6 +78,8 @@
     <a href="/admin/ModulePrescription/Prescript"><button mat-flat-button color="primary">
             <mat-icon>keyboard_return</mat-icon>&emsp; retour au menu 
         </button></a>
+        <button mat-flat-button color="primary"   class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
+<button mat-flat-button color="primary"(click)="exporter.exportTable('xls')">export to xls</button>
 </div>
 
 <app-footer></app-footer>

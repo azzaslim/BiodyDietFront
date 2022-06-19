@@ -6,10 +6,10 @@
         background-color:rgb(245, 243, 243) ;
         margin-top: 5vw;
     }
-    mat-icon{
+    /* mat-icon{
     font-size:60px;
     color :rgb(14, 88, 110);
-    }
+    } */
     mat-card-header {
 flex-direction: column;  }
 .row{
@@ -19,3 +19,8 @@ card-wrapper{
     height: 100%;
 
 }
+mat-icon{
+    font-size:60px;
+    color :#23b4b8;
+    margin-right: 2vw;
+    }

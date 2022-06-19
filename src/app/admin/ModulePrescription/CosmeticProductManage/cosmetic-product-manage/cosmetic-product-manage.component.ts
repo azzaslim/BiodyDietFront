@@ -10,6 +10,7 @@ import { RestProductService, Product } from 'src/app/client/Services/rest-produc
 import { Symptom, RestSymptomService } from 'src/app/client/Services/rest-symptom.service';
 import Swal from 'sweetalert2';
 import { AddsymptomComponent } from '../../symptom/addsymptom/addsymptom.component';
+import { LoadingService } from 'src/app/loading.service';
 
 
 @Component({
@@ -28,17 +29,16 @@ export class CosmeticProductManageComponent implements OnInit {
   dataSource2=new MatTableDataSource<Symptom>();
   symptoms!:string;
    list=[];
+   loading$ = this.loader.loading$;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
+
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
-<<<<<<< HEAD:src/app/client/gestion/preparation/preparation.component.ts
-      this.getOneNutrient();
-      (await this.user.getPreparations()).subscribe((x) => {
-=======
+      this.loader.show();
+
       this.getOneProduct();
-      (await this.RestProductService.getProducts()).subscribe((x) => {
->>>>>>> c0d747c904d87b0b2afb96bba4bc69a249c9b203:src/app/admin/ModulePrescription/CosmeticProductManage/cosmetic-product-manage/cosmetic-product-manage.component.ts
+      (await this.RestProductService.getADMINCosmeticProducts()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no product exist");
@@ -48,6 +48,8 @@ export class CosmeticProductManageComponent implements OnInit {
         localStorage.setItem("nbsupplements",x.length.toString());
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
+      this.loader.hide()
+
     },
       err => {
         this.authService.logout(),

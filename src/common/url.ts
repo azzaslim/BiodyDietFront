@@ -28,6 +28,8 @@ export const ADD_QUESTIONNAIRE_URL= BASE_URL +'api/addQuestionnaire ';
 export const GET_QUESTIONNAIRE_URL= BASE_URL +'api/getQuestionnaire ';
 export const ADD_NUTRIENT_URL= BASE_URL +'api/addnutrient';
 export const GETALL_NUTRIENTS_URL= BASE_URL +'api/getnutrients';
+export const GETALLADMIN_NUTRIENTS_URL= BASE_URL +'api/getAdmincomplements';
+
 export const GET_ONE_NUTRIENT_URL= BASE_URL +'api/get/OneNutrient';
 export const UPDATE_NUTRIENT_URL= BASE_URL +'api/updatenutrient';
 export const DELETE_Symptom_URL= BASE_URL +'api/deleteSymptom';
@@ -37,9 +39,15 @@ export const UPDATE_PRODUCT_URL= BASE_URL+'/api/updateProduct';
 export const ADD_PRODUCT_URL= BASE_URL+'api/addproduct';
 export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETALL_PRODUCTS_URL= BASE_URL+'api/getProducts';
+<<<<<<< HEAD
 export const GETALL_PRODUCTSADMIN_URL= BASE_URL+'api/getProductsAdmin';
+=======
+>>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
 
 export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
+export const GETALLADMIN_COMPLEMENTS_URL= BASE_URL+'api/getAdmincomplements';
+
+
 export const GET_ONE_QUESTIONNAIRE_URL= BASE_URL +'api/get/OneQuestionnaire';
 export const DELETE_QUESTIONNAIRE_URL= BASE_URL +'api/delete/questionnaire';
 export const UPDATE_QUESTIONNAIRE_URL= BASE_URL +'api/updateQuestionnaire';
@@ -50,8 +58,10 @@ export const GET_ANSWERS_URL= BASE_URL +'api/getAnswers';
 export const DELETE_ANSWER_URL= BASE_URL +'api/delete/answer';
 export const GET_ONE_ANSWER_URL= BASE_URL +'api/get/OneAnswer';
 export const UPDATE_ANSWER_URL= BASE_URL +'api/updateAnswer';
-export const GETALL_PREPARATION_URL= BASE_URL +'api/getPreparations';
+export const GETALL_PREPARATION_URL= BASE_URL +'api/getpreparations';
+export const GETALL_ADMINPREPARATION_URL= BASE_URL +'api/getAdminpreparations';
 export const GETALL_SUPPLIMENTS_URL= BASE_URL +'api/getSuppliments';
+
 export const GET_ONE_PREPARATION_URL = BASE_URL +'api/get/OneProduct';
 export const GETALL_SYMPTOMS_URL = BASE_URL +'api/getsymptoms'
 export const GETANSWERS_BYQUEST_URL = BASE_URL +'api/getAnswersByQuest'

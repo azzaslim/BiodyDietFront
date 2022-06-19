@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { Product, RestProductService } from '../../../Services/rest-product.service';
 import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
 import { RestUserService } from '../../../Services/RestUser.service';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'app-complements',
@@ -24,22 +25,39 @@ export class ComplementsComponent implements OnInit {
   displayedColumns1 = ['portion'];
   dataSource1 = new MatTableDataSource<Product>();
   displayedColumns2 = ['symptom_name'];
-  dataSource2=new MatTableDataSource<Symptom>();
-  symptoms!:string;
-   list=[];
-
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
+  displayedColumns4 = ['nutrients'];
+  dataSource2 = new MatTableDataSource<Symptom>();
+  displayedColumns5 = ['tenor'];
+  dataSource4 = new MatTableDataSource<Product>();
+  
+  nutrient!: string;
+  data: Array<any> = [];
+  data1: Array<any> = [];
+  displayedColumns3 = ['nutrient.name', 'tenor'];
+  dataSource3 = new MatTableDataSource<Product>();
+  list = [];
+  portions: any = [];
+  allsymptoms: any = [];
+  symptoms:any = [];
+  products: any;
+  nutrients:any = [];
+  loading$ = this.loader.loading$;
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
-     async ngOnInit() {
-      this.getOneProduct();
-      (await this.RestProductService.getcomplements()).subscribe((x) => {
-        if (x.length==0)
-        {
-          alert("no product exist");
-          this.router.navigate(['/home'])
-        }
-        else
-      localStorage.setItem("nbproducts",x.length.toString())
+  async ngOnInit() {
+    this.loader.show();
+    (await this.RestProductService.getcomplements()).subscribe((x) => {
+      if (x.length == 0) {
+        alert("no complement exist");
+        this.router.navigate(['/home'])
+      }
+      else
+        localStorage.setItem("nbproducts", x.length.toString())
+        console.log("xxxxxxxxxxxxxx",x);
+        
+        this.products = x;
+        this.getOneProduct(this.products[0]);
+
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
     },
@@ -49,26 +67,28 @@ export class ComplementsComponent implements OnInit {
           this.failNotification();
 
       }
-      );
-      (await this.symptomservice.getSymptoms()).subscribe((x) => {
-        if (x.length==0)
-        {
-          alert("no Symptom exist");
-          this.router.navigate(['/home'])
-        }
-        else
-      localStorage.setItem("nbsymptoms",x.length.toString());
-      this.dataSource2= new MatTableDataSource(x);
+    );
+    (await this.symptomservice.getSymptoms()).subscribe((x) => {
+      if (x.length == 0) {
+        alert("no Symptom exist");
+        this.router.navigate(['/home'])
+      }
+      else
+      this.allsymptoms=x;
+        localStorage.setItem("nbsymptoms", x.length.toString());
+      this.dataSource2 = new MatTableDataSource(x);
       this.dataSource2.sort = this.sort;
+      this.loader.hide()
     },
       err => {
+        this.loader.hide()
         this.authService.logout(),
           console.log(err),
           this.failNotification();
 
       }
-      );
-      };
+    );
+  };
 
   announceSortChange(sortState: Sort) {
 
@@ -87,7 +107,7 @@ export class ComplementsComponent implements OnInit {
     Swal.fire('votre session a expiré', 'veuillez reconnecter s\' il vous plait  !!', 'error');
   }
   ConfirmationNotification() {
-    
+
     Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
@@ -97,20 +117,19 @@ export class ComplementsComponent implements OnInit {
       denyButtonText: `Annuler`,
     }).then((result) => {
       if (result.isConfirmed) {
-    this.deleteProduct();
-    Swal.fire('ce symptom a été supprimé', '', 'success');
-    } 
-    })
+        this.deleteProduct();
+        Swal.fire('ce produit a été supprimé', '', 'success')
       }
- 
-  async preparationToManage(product: Product) {
-     localStorage.setItem('product to manage', JSON.stringify(product.id));
-     localStorage.setItem('product', JSON.stringify(product));
-   }
-  
-   ConfirmUptadeVisibility() {
+    })
+  }
 
-    Swal.fire({
+  ConfirmUptadeVisibility() {
+
+    console.log("productttttt",(JSON.parse(localStorage.getItem('product')!)['creator_user']['id']))
+    console.log((JSON.parse(localStorage.getItem('currentUser')!)['id']))
+
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+   { Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
       showDenyButton: true,
@@ -120,99 +139,120 @@ export class ComplementsComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.UpdateVisisbilityProduct();
-        Swal.fire('ce complement a été masqué', '', 'success')
+        Swal.fire('cette preparation a été masquée', '', 'success')
       }
     })
   }
+  else {
+    Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: 'vous n\'avez le droit de masquer ce complement',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  }
+
+
+  async preparationToManage(product: Product) {
+    // console.log('symptom to manage', JSON.stringify(symptom.id));
+
+    localStorage.setItem('product to manage', JSON.stringify(product.id));
+    this.portions= [];
+    this.data= [];
+    this.nutrients=[];
+    this.symptoms=[];
+    localStorage.setItem('product', JSON.stringify(product));
+    localStorage.setItem('symptom', JSON.stringify(this.symptoms));
+
+    //console.log(localStorage.getItem('product'));
+  }
+
   confirmBox(){
     Swal.fire({
       title: 'votre session a expirée',
-      text: 'veuillez reconnecter s\' il vous plait  !!',
-      icon: 'warning',
+      text:'veuillez reconnecter s\' il vous plait  !!',
+      icon:'warning',
       showCancelButton: true,
       confirmButtonText: 'Ok!',
     }).then((result) => {
-     
-        this.authService.logout()
-      
+      this.authService.logout()
+
     })
   }
-  async openDialog(): Promise<void> {
-    
-    const dialogRef = this.dialog.open(AddsymptomComponent, {
-      width: '50%',
-      height: '55%',
-      data: {},
-    });
- 
-    
-  
-  }
-  async UpdateVisisbilityProduct(){
+
+
+
+
+  async UpdateVisisbilityProduct() {
     //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.UpdateProductVisibility())
-    .subscribe(
-      async response => {
-       console.log(response)
-       this.router.navigate(['/preparation'])
-       this.ngOnInit()
-      },
-      err => {
-        console.log(err)
-      })
-   
-  }
-  async deleteProduct(){
-    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
-    (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
-    .subscribe(
-      async response => {
-       console.log(response)
-       this.router.navigate(['/preparation'])
-       this.ngOnInit()
-      },
-      err => {
-        console.log(err)
-      })
-   
-  }
-  search(id :string){
-    console.log(id);
-     }
-     async getOneProduct(){
-     ( (await (this.RestProductService.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
-      this.dataSource1 = new MatTableDataSource(x);
-      this.dataSource1.sort = this.sort;
-  
-    },
-      err => {
-        this.authService.logout(),
-          console.log(err),
-          this.failNotification();
-
-      }
-      
-      )
-      )
-      //this.symptoms =JSON.parse(localStorage.getItem('product')!);
-     /* this.list.forEach(element => {
-        console.log(element);
-      }); */
-      //this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom'][0]['symptom_name'];
-    //console.log(this.symptoms);
-
-    }
-    async UpdateProductVisibility(){
-      (await this.RestProductService.UpdateProductVisibility())
       .subscribe(
         async response => {
-         console.log(response)
-         this.router.navigate(['/preparation'])
-         this.ngOnInit()
+          console.log(response)
+          this.router.navigate(['/preparation'])
+          this.ngOnInit()
         },
         err => {
           console.log(err)
         })
+
+  }
+
+
+  async deleteProduct() {
+    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
+    (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
+      .subscribe(
+        async response => {
+          console.log(response)
+          this.router.navigate(['/preparation'])
+          this.ngOnInit()
+        },
+        err => {
+          console.log(err)
+        })
+
+  }
+  search(id: string) {
+    console.log(id);
+  }
+
+  getOneProduct(row: any) {
+    console.log("pppppppppppppppppppppppppppppppppp", row)
+    this.portions.push(row.portion)
+
+    console.log("======>",row.product_nutrients )
+
+     console.log("potionnnnn", this.portions)
+     //console.log("nutrient",row.product_nutrients[0].nutrient);
+     for (var i = 0; i < row.product_nutrients.length; i++) {
+               console.log("nutrient",row.product_nutrients[i].nutrient);
+               this.nutrients.push(row.product_nutrients[i].nutrient);
+              }
+              console.log("tettett",this.nutrients)
+              for (var i = 0; i < row.symptom.length; i++) {
+                console.log("symptom",row.symptom[i].symptom_name);
+                this.symptoms.push(row.symptom[i].symptom_name);
+              }
+    
+  }
+  checkedBox(symptom:any)
+  {
+    var x=false;
+    console.log(this.symptoms);
+    for (var i = 0; i < this.symptoms.length; i++) {
+     
+     console.log( "symptommmmm",this.symptoms);
+      if(this.symptoms[i]== symptom)
+      {
+      
+         x= true;
+         // this.allsymptoms[i].checked=true;
+      }
      
     }
+    return x;
+  }
 }

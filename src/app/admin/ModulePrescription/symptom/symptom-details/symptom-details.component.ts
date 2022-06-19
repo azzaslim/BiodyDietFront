@@ -27,6 +27,7 @@ export class SymptomDetailsComponent implements OnInit {
    (await this.RestSymptomService.getOneSymptom(JSON.parse(localStorage.getItem('symptom to manage')!))).subscribe(
      response => {
        console.log(response)    
+       console.log(JSON.parse(localStorage.getItem('symptomtoupdate')!)['symptom_name'])
            //.localStorage.setItem("symptomtoupdate",JSON.stringify(response))
            this.getInfoSymptom()
 

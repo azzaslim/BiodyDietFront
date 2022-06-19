@@ -47,9 +47,31 @@ import { GestionComplementComponent } from './client/gestion-complement/gestion-
 import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
 import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
+<<<<<<< HEAD
 import { PaiementComponent } from './paiement/paiement.component';
 import { MentionLegalComponent } from './mention-legal/mention-legal.component';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
+=======
+import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
+import { AddPreparationComponent } from './admin/admin-preparation/add-preparation/add-preparation.component';
+import { PreparationDetailsComponent } from './admin/admin-preparation/preparation-details/preparation-details.component';
+import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
+import { SupplementdetailsComponent } from './admin/ModulePrescription/supplementmanage/supplementdetails/supplementdetails.component';
+import { EditSupplementComponent } from './admin/ModulePrescription/supplementmanage/edit-supplement/edit-supplement.component';
+import { AddSupplementComponent } from './admin/ModulePrescription/supplementmanage/add-supplement/add-supplement.component';
+import { SupplementComponent } from './admin/ModulePrescription/supplementmanage/supplement/supplement.component';
+import { CosmeticProductManageComponent } from './admin/ModulePrescription/CosmeticProductManage/cosmetic-product-manage/cosmetic-product-manage.component';
+import { AddAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/add-admin-cosmetic-product/add-admin-cosmetic-product.component';
+import { DetailsAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/details-admin-cosmetic-product/details-admin-cosmetic-product.component';
+import { EditAdminCosmeticProductComponent } from './admin/ModulePrescription/CosmeticProductManage/edit-admin-cosmetic-product/edit-admin-cosmetic-product.component';
+import { SymptomDetailsComponent } from './admin/ModulePrescription/symptom/symptom-details/symptom-details.component';
+import { EditUserPreparationComponent } from './client/gestion/preparationManage/edit-user-preparation/edit-user-preparation.component';
+import { AddUserPreparationComponent } from './client/gestion/preparationManage/add-user-preparation/add-user-preparation.component';
+import { EditComplementComponent } from './client/gestion/ComplementManage/edit-complement/edit-complement.component';
+import { AddUserComplementComponent } from './client/gestion/ComplementManage/add-user-complement/add-user-complement.component';
+import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductManage/edit-cosmetic-product/edit-cosmetic-product.component';
+import { AddCosmeticProductComponent } from './client/gestion/CosmeticProductManage/add-cosmetic-product/add-cosmetic-product.component';
+>>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
 
 
 
@@ -85,24 +107,39 @@ const routes: Routes = [
  { path: 'admin/home', component: AHomeComponent , canActivate : [AuthGuardService,AdminGuard]  },
 
  { path: 'admin/users/listeusers', component: ListeUsersComponent , canActivate : [AuthGuardService,AdminGuard]  },
+ { path: 'admin/preparation/listpreparation', component: AdminPrepationManageComponent , canActivate : [AuthGuardService,AdminGuard]  },
+ { path:'admin/preparation/addpreparation',component: AddPreparationComponent, canActivate : [AuthGuardService,AdminGuard]  },
+ { path:'admin/preparation/consultpreparation',component: PreparationDetailsComponent, canActivate : [AuthGuardService,AdminGuard]  },
+ { path:'admin/preparation/etitpreparation',component: PreparationeditComponent, canActivate : [AuthGuardService,AdminGuard]  },
+ { path:'admin/supplement/consultsupplement',component: SupplementdetailsComponent, canActivate : [AuthGuardService,AdminGuard]  },
+ { path:'admin/supplement/addsupplement',component: AddSupplementComponent, canActivate : [AuthGuardService,AdminGuard]  },
+ { path:'admin/supplements',component: SupplementComponent, canActivate : [AuthGuardService,AdminGuard]  },
+ {path:'admin/CosmeticProduct',component: CosmeticProductManageComponent, canActivate : [AuthGuardService,AdminGuard]  },
+ {path:'admin/cosmeticproduct/addcosmeticproduct',component:AddAdminCosmeticProductComponent, canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/users/edituser', component: EditUserComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/users/consultuser', component: DetailUserComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/users/adduser', component: AddUserComponent , canActivate : [AuthGuardService,AdminGuard]  },
-
+ { path:'admin/supplement/etitsupplement', component: EditSupplementComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/addPatient', component: AddPatientComponent , canActivate : [AuthGuardService,AdminGuard]  },
-
+{path:'admin/cosmeticproduct/cosmeticproductdetails', component: DetailsAdminCosmeticProductComponent , canActivate : [AuthGuardService,AdminGuard]  },
+{path:'admin/cosmeticproduct/editcosmeticproduct', component: EditAdminCosmeticProductComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/ModulePrescription/Prescript', component:  PrescriptComponent, canActivate : [AuthGuardService,AdminGuard]  },
+{path:'admin/symptom/consultsymptom', component: SymptomDetailsComponent, canActivate : [AuthGuardService,AdminGuard]  },
+{path:'admin/nutrient/nutrientdetails', component:NutrientdetailsComponent, canActivate : [AuthGuardService,AdminGuard]  },
+{path:'gestion/complement/edit',component:EditComplementComponent, canActivate : [AuthGuardService]  },
 
+{path:'gestion/cosmeticproduct/edit',component:EditCosmeticProductComponent, canActivate : [AuthGuardService]  },
+{path:'gestion/cosmeticproduct/add',component:AddCosmeticProductComponent, canActivate : [AuthGuardService]  },
 
  { path: 'admin/ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService,AdminGuard]  },
-  
+  {path:'gestion/preparation/edit',component: EditUserPreparationComponent   , canActivate : [AuthGuardService]  },
   { path: 'admin/gestion', component: GestionComplementComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/produits', component: ProduitsComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/preparations', component: PreparationComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/complements', component: ComplementsComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService,AdminGuard]},
-
-
+  {path:'gestion/preparation/add', component: AddUserPreparationComponent , canActivate : [AuthGuardService]},
+  {path:'gestion/complement/add', component: AddUserComplementComponent , canActivate : [AuthGuardService]},
   { path: 'admin/questionnaire/Listequestionnaire', component: ListQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/questionnaire/addquestionnaire', component: AddQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/questionnaire/Detailquestionnaire', component: DetailQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },

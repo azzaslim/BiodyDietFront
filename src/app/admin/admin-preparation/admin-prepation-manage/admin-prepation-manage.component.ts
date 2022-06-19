@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 import { RestUserService } from 'src/app/client/Services/RestUser.service';
 import { RestSymptomService, Symptom } from 'src/app/client/Services/rest-symptom.service';
 import { RestProductService , Product} from 'src/app/client/Services/rest-product.service';
+import { LoadingService } from 'src/app/loading.service';
+
 @Component({
   selector: 'app-admin-prepation-manage',
   templateUrl: './admin-prepation-manage.component.html',
@@ -25,12 +27,14 @@ export class AdminPrepationManageComponent implements OnInit {
   dataSource2=new MatTableDataSource<Symptom>(); */
   symptoms!:string;
    list=[];
+   loading$ = this.loader.loading$;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestProductService, private authService: RestUserService,private symptomservice:RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
      async ngOnInit() {
+      this.loader.show();
       this.getOneProduct();
-      (await this.user.getpreparation()).subscribe((x) => {
+      (await this.user.getAdminPreparations()).subscribe((x) => {
         if (x.length==0)
         {
           alert("no product exist");
@@ -40,6 +44,8 @@ export class AdminPrepationManageComponent implements OnInit {
       localStorage.setItem("nbproducts",x.length.toString())
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
+      this.loader.hide()
+
     },
       err => {
         this.authService.logout(),

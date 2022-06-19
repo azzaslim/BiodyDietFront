@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+
+
 
 
 
@@ -17,7 +21,7 @@ export class AddsymptomComponent implements OnInit {
   id!:number;
   addData : FormGroup =new FormGroup({});
 
-  constructor(private authService:RestSymptomService ,private router:Router, private formBuilder : FormBuilder ) { 
+  constructor(public dialogRef: MatDialogRef<AddsymptomComponent>,private authService:RestSymptomService ,private router:Router, private formBuilder : FormBuilder ) { 
 
     this.addData=formBuilder.group({
       symptom_name:['',[Validators.required]],
@@ -44,6 +48,8 @@ export class AddsymptomComponent implements OnInit {
 
   .subscribe(
     response=> {
+      this.sucessNotification()
+      this.dialogRef.close();
       this.router.navigate(['/admin/symptom/symptomlist'])
     },
     err => {console.log(err),
@@ -63,7 +69,7 @@ export class AddsymptomComponent implements OnInit {
     failNotification() {
       Swal.fire({
         icon: 'info',
-        title: 'nutriment existe déjà !',
+        title: 'symptom existe déjà !',
         text: "veuillez remplir votre questionnaire !!",
         showConfirmButton: false,
         timer: 2500

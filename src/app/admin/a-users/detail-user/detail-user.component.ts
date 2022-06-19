@@ -60,7 +60,4 @@ export class DetailUserComponent implements OnInit {
     this.createdAt= this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)['createdAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
     this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)['modifiedAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
   }
-
-  
-
 }

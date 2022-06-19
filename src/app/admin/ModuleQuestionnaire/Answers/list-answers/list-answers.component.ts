@@ -111,8 +111,5 @@ this.loader.show();
 
  }
   checkValue(event: any) {
-  }
-
- 
-  
+  }  
 }

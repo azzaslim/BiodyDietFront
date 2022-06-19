@@ -146,5 +146,4 @@ console.log(this.SelectedProducts)
       timer: 1500
     })
   }
-
 }

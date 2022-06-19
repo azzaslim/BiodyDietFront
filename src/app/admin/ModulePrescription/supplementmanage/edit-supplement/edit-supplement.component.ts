@@ -61,6 +61,8 @@ export class EditSupplementComponent implements OnInit {
             });
           }),
       (await this.symptomservice.getSymptoms()).subscribe((x) => {
+        localStorage.removeItem('symptomsList');
+          localStorage.removeItem('nutrientsList');
         let list2= [];
         for (var i = 0; i < x.length; i++) {
             list2.push(x[i]['symptom_name']);
@@ -76,12 +78,8 @@ export class EditSupplementComponent implements OnInit {
       }),
       (await (this.restProductservice.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe(
         response => {
-        //console.log(response[0]);
-        
-          //console.log(response);
 
         let test1=(response[0]['product_nutrients']);
-        //console.log(response[0]['product_nutrients'][0]['nutrient']['name'], "dhhdhd");
         let test=(response[0]['symptom']);
         for (var i=0;i<test.length;i++)
         {
@@ -139,16 +137,11 @@ export class EditSupplementComponent implements OnInit {
       )
   }
 
-  /* changeQuestionnaire(e: any) {
-    this.Activity?.setValue(e.target.value, {
-      onlySelf: true,
-    });
-  } */
+ 
   get Activity() {
     return this.CurrentProduct.get('option');
   }
   successNotification() {
     Swal.fire( 'votre informations ont été changés avec succés !!', 'success');
   }
-
 }

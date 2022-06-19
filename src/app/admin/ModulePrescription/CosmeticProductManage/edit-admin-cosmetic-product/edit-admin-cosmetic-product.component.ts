@@ -49,8 +49,8 @@ export class EditAdminCosmeticProductComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     (await this.restProductservice.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!))).subscribe(
       response => {
+      
        
-        //console.log(response)    
             localStorage.setItem("producttoupdate",JSON.stringify(response))
             this.CurrentProduct = this._formBuilder.group({
               name: [JSON.parse(localStorage.getItem('producttoupdate')!)[0]['name']],
@@ -77,12 +77,10 @@ export class EditAdminCosmeticProductComponent implements OnInit {
       }),
       (await (this.restProductservice.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe(
         response => {
-        //console.log(response[0]);
-        
-          //console.log(response);
+          localStorage.removeItem('symptomsList');
+          localStorage.removeItem('nutrientsList');
 
         let test1=(response[0]['product_nutrients']);
-        //console.log(response[0]['product_nutrients'][0]['nutrient']['name'], "dhhdhd");
         let test=(response[0]['symptom']);
         for (var i=0;i<test.length;i++)
         {
@@ -95,7 +93,6 @@ export class EditAdminCosmeticProductComponent implements OnInit {
           this.NutrientsGetted.push(test1[i]['nutrient']['name'])
           localStorage.setItem('nutrientsList',JSON.stringify(this.NutrientsGetted))
         }
-          //console.log(this.NutrientsGetted);
       }),
 
       this.CurrentProduct= this._formBuilder.group({
@@ -140,17 +137,11 @@ export class EditAdminCosmeticProductComponent implements OnInit {
       )
   }
 
-  /* changeQuestionnaire(e: any) {
-    this.Activity?.setValue(e.target.value, {
-      onlySelf: true,
-    });
-  } */
+ 
   get Activity() {
     return this.CurrentProduct.get('option');
   }
   successNotification() {
     Swal.fire( 'votre informations ont été changés avec succés !!', 'success');
   }
-
-
 }

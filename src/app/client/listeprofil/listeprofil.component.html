@@ -4,7 +4,9 @@
 <div style="display:flex">
     <input matInput (keyup)="applyFilter($event)" class="searchbar" type="text" placeholder="Search.."  #input>
     <a class="center chercher"> CHERCHER </a>
+    <input id="fileInput" type="file" (change)="fileProgress($event)" (change)="onSubmit();" > 
 </div>
+
 
 <ng-container *ngIf="loading$ | async">
     <div class="spinner_overlay"></div>
@@ -59,7 +61,13 @@
 </table>
 
 </div>
-<button mat-flat-button color="primary"  class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
-<button mat-flat-button color="primary"  (click)="exporter.exportTable('xls')">export to xls</button>
 
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
+ <button mat-flat-button color="primary"  class="export1"  (click)="exporter.exportTable('csv')">Exporter En  CSV</button>
+<button mat-flat-button color="primary"  class="export2"  (click)="exporter.exportTable('xls')">Exporter En Excel</button>
+<label  for="fileInput" >
+    <a  mat-flat-button color="primary" (change)="onSubmit();"> importer </a>
+</label>
+</div>
 <app-footer></app-footer>

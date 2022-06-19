@@ -71,5 +71,4 @@ alert("entrez un valide code postale") */
   failNotification(){
     Swal.fire('cet email est déjà utilisé ','veuillez verifier votre information','error')
   }
-
 }

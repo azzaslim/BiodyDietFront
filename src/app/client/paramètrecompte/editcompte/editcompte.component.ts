@@ -14,5 +14,4 @@ export class EditcompteComponent implements OnInit {
     localStorage.removeItem('profil');
  this.endDate= this.datePipe.transform(JSON.parse(localStorage.getItem('currentUser')!).endDate.date,'dd/MM/yyyy')!
   }
-
 }

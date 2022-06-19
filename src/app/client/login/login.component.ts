@@ -106,9 +106,6 @@ alerterreur(){
     showConfirmButton: false,
     timer: 2000
   })}
-
-
-
 }
 
 

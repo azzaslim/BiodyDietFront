@@ -21,10 +21,6 @@ export class AdminPrepationManageComponent implements OnInit {
   displayedColumns = ['id','name','portion','composition','action'];
   dataSource = new MatTableDataSource<Product>();
   selection = new SelectionModel<Product>(false, []);
-  /* displayedColumns1 = ['portion'];
-  dataSource1 = new MatTableDataSource<Product>();
-  displayedColumns2 = ['symptom_name'];
-  dataSource2=new MatTableDataSource<Symptom>(); */
   symptoms!:string;
    list=[];
    loading$ = this.loader.loading$;
@@ -41,7 +37,7 @@ export class AdminPrepationManageComponent implements OnInit {
           this.router.navigate(['/home'])
         }
         else
-      localStorage.setItem("nbproducts",x.length.toString())
+      localStorage.setItem("nbadminpreparation",x.length.toString())
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
       this.loader.hide()
@@ -115,9 +111,6 @@ export class AdminPrepationManageComponent implements OnInit {
       height: '55%',
       data: {},
     });
- 
-    
-  
   }
   async deleteProduct(){
     //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
@@ -151,12 +144,7 @@ export class AdminPrepationManageComponent implements OnInit {
       
       )
       )
-      //this.symptoms =JSON.parse(localStorage.getItem('product')!);
-     /* this.list.forEach(element => {
-        console.log(element);
-      }); */
       this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom']['symptom_name'];
-    //console.log(this.symptoms);
 
     }
     async UpdateProductVisibility(){
@@ -170,8 +158,5 @@ export class AdminPrepationManageComponent implements OnInit {
         err => {
           console.log(err)
         })
-     
     }
-  
-
 }

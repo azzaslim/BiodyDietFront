@@ -43,6 +43,4 @@ export class PreparationDetailsComponent implements OnInit {
    this.createdAt= this.datePipe.transform(JSON.parse(localStorage.getItem('producttoupdate')!)['created_at'], 'dd/MM/yyyy')!
    this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('producttoupdate')!)['modifiedAt'], 'dd/MM/yyyy')!
  }
-
-
 }

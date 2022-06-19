@@ -32,12 +32,7 @@
 
         <td (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"> {{row.name}} </td>
 
-          <!-- <tr  (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"
-            [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
-            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr> -->
         </div>
-
-
 
       </table>
 
@@ -53,9 +48,6 @@
 
         <td (click)="selection.toggle(row); preparationToManage(row); getOneProduct(row)"> {{row}} </td>
         </div>
-
-
-
       </table>
     </mat-card>
   </div>
@@ -111,7 +103,6 @@
   <button class="button" (click)="ConfirmationNotification()" > Supprimer</button>
 </div>
 </div>
-
     <app-footer></app-footer>
     </body>
     

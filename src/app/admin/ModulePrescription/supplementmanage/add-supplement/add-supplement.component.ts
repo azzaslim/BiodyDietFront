@@ -101,5 +101,4 @@ export class AddSupplementComponent implements OnInit {
           timer: 1500
         })
       }
-
 }

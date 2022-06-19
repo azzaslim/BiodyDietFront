@@ -104,7 +104,4 @@ export class AddUserComplementComponent implements OnInit {
           timer: 1500
         })
       }
-
-
-
 }

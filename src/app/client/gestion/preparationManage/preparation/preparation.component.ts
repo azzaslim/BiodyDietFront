@@ -60,9 +60,8 @@ export class PreparationComponent implements OnInit {
         this.router.navigate(['/home'])
       }
       else
-        localStorage.setItem("nbproducts", x.length.toString())
-        console.log("xxxxxxxxxxxxxx",x);
-        
+      localStorage.setItem('product', JSON.stringify(x[0]));
+
         this.products = x;
         this.getOneProduct(this.products[0]);
 
@@ -163,7 +162,6 @@ export class PreparationComponent implements OnInit {
   }
 
   async preparationToManage(product: Product) {
-    // console.log('symptom to manage', JSON.stringify(symptom.id));
 
     localStorage.setItem('product to manage', JSON.stringify(product.id));
     this.portions= [];
@@ -262,5 +260,4 @@ export class PreparationComponent implements OnInit {
     }
     return x;
   }
-
 }

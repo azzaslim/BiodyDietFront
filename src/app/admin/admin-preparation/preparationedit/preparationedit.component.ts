@@ -77,12 +77,10 @@ export class PreparationeditComponent implements OnInit {
       }),
       (await (this.restProductservice.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe(
         response => {
-        //console.log(response[0]);
         
-          //console.log(response);
-
+          localStorage.removeItem('symptomsList');
+          localStorage.removeItem('nutrientsList');
         let test1=(response[0]['product_nutrients']);
-        //console.log(response[0]['product_nutrients'][0]['nutrient']['name'], "dhhdhd");
         let test=(response[0]['symptom']);
         for (var i=0;i<test.length;i++)
         {
@@ -95,7 +93,6 @@ export class PreparationeditComponent implements OnInit {
           this.NutrientsGetted.push(test1[i]['nutrient']['name'])
           localStorage.setItem('nutrientsList',JSON.stringify(this.NutrientsGetted))
         }
-          //console.log(this.NutrientsGetted);
       }),
 
       this.CurrentProduct= this._formBuilder.group({
@@ -108,6 +105,9 @@ export class PreparationeditComponent implements OnInit {
       });
         }
   async updateProduct(){
+    
+
+   
     this.CurrentProduct.controls.symptomsList.value.forEach((element: any) => this.SelectedSymptoms.push({ 'symptom_name': element}));
     this.CurrentProduct.controls.NutrientsList.value.forEach((element: any) => this.SelectedNutrients.push({ 'name': element}));
     console.log(this.SelectedSymptoms)
@@ -140,16 +140,11 @@ export class PreparationeditComponent implements OnInit {
       )
   }
 
-  /* changeQuestionnaire(e: any) {
-    this.Activity?.setValue(e.target.value, {
-      onlySelf: true,
-    });
-  } */
+
   get Activity() {
     return this.CurrentProduct.get('option');
   }
   successNotification() {
     Swal.fire( 'votre informations ont été changés avec succés !!', 'success');
   }
-
 }

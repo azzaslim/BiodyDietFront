@@ -627,6 +627,5 @@ export class InfoPersonneComponent implements OnInit {
     this.onChangeVille(ob);
     this.onChangeEntreprise(ob);
     this.IsSelected = ob.checked;
-
   }
 }

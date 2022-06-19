@@ -697,5 +697,4 @@ export class PrescriptionComponent implements OnInit {
         err => { console.log(err) },
       )
   }
-
 }

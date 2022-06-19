@@ -43,7 +43,7 @@ export class SupplementComponent implements OnInit {
           this.router.navigate(['/home'])
         }
         else
-        localStorage.setItem("nbsupplements",x.length.toString());
+        localStorage.setItem("nbadminsupplements",x.length.toString());
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
       this.loader.hide()
@@ -55,24 +55,7 @@ export class SupplementComponent implements OnInit {
 
       }
       );
-      (await this.symptomservice.getSymptoms()).subscribe((x) => {
-        if (x.length==0)
-        {
-          alert("no Symptom exist");
-          this.router.navigate(['/home'])
-        }
-        else
-     
-      this.dataSource2= new MatTableDataSource(x);
-      this.dataSource2.sort = this.sort;
-    },
-      err => {
-        this.authService.logout(),
-          console.log(err),
-          this.failNotification();
-
-      }
-      );
+      
       };
 
   announceSortChange(sortState: Sort) {
@@ -103,7 +86,7 @@ export class SupplementComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
     this.deleteProduct();
-    Swal.fire('ce symptom a été supprimé', '', 'success');
+    Swal.fire('ce supplement a été supprimé', '', 'success');
     } 
     })
       }
@@ -127,18 +110,13 @@ export class SupplementComponent implements OnInit {
     })
   }
   async openDialog(): Promise<void> {
-    
     const dialogRef = this.dialog.open(AddsymptomComponent, {
       width: '50%',
       height: '55%',
       data: {},
     });
- 
-    
-  
   }
   async deleteProduct(){
-    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
     .subscribe(
       async response => {
@@ -158,26 +136,16 @@ export class SupplementComponent implements OnInit {
      ( (await (this.RestProductService.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe((x) => {
       this.dataSource1 = new MatTableDataSource(x);
       this.dataSource1.sort = this.sort;
-  
     },
       err => {
         this.authService.logout(),
           console.log(err),
           this.failNotification();
 
-      }
-      
-      )
-      )
-      //this.symptoms =JSON.parse(localStorage.getItem('product')!);
-     /* this.list.forEach(element => {
-        console.log(element);
-      }); */
-      this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom'][0]['symptom_name'];
-    //console.log(this.symptoms);
-
+      } ) )
+  //  this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom'][0]['symptom_name'];
     }
-    async UpdateProductVisibility(){
+   /*  async UpdateProductVisibility(){
       (await this.RestProductService.UpdateProductVisibility())
       .subscribe(
         async response => {
@@ -189,6 +157,6 @@ export class SupplementComponent implements OnInit {
           console.log(err)
         })
      
-    }
+    } */
 
 }

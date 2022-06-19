@@ -103,6 +103,4 @@ export class AddUserPreparationComponent implements OnInit {
           timer: 1500
         })
       }
-
-
 }

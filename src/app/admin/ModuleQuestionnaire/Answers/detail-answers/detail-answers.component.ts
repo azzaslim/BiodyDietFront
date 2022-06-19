@@ -31,21 +31,24 @@ export class DetailAnswersComponent implements OnInit {
  async ngOnInit() {
   (await this.RestResponseService.getAnswer(localStorage.getItem('answer to manage'))).subscribe(
     response => {
+      localStorage.setItem("answertoupdate",JSON.stringify(response))
+
       this.getInfoQuestionnaire()
 
     })
  }
  async getInfoQuestionnaire(){
   
-   this.id= JSON.parse(localStorage.getItem('answertoupdate')!)['id'],
-   this.title= JSON.parse(localStorage.getItem('answertoupdate')!)['name'],
-   this.isPublished= JSON.parse(localStorage.getItem('answertoupdate')!)['isPublished'],
-   this.ordering= JSON.parse(localStorage.getItem('answertoupdate')!)['ordering'],
-   this.createdAt= (this.datePipe.transform(JSON.parse(localStorage.getItem('answertoupdate')!)['createdAt'], 'dd/MM/yyyy')!)
-   //this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('questionnairetoupdate')!)['modifiedAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
-   this.creatorUser= JSON.parse(localStorage.getItem('answertoupdate')!)['creatorUser']['email'],
-   this.modifierUser= JSON.parse(localStorage.getItem('answertoupdate')!)['modifierUser']
- this.questionnaire=JSON.parse(localStorage.getItem('answertoupdate')!)['questionnaire']['title']
+   this.id= JSON.parse(localStorage.getItem('answertoupdate')!)[0]['id'],
+   this.title= JSON.parse(localStorage.getItem('answertoupdate')!)[0]['name'],
+   this.isPublished= JSON.parse(localStorage.getItem('answertoupdate')!)[0]['is_published'],
+   this.ordering= JSON.parse(localStorage.getItem('answertoupdate')!)[0]['ordering'],
+   this.createdAt= (this.datePipe.transform(JSON.parse(localStorage.getItem('answertoupdate')!)[0]['created_at'], 'dd/MM/yyyy')!)
+ this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('answertoupdate')!)[0]['modified_at'], 'dd/MM/yyyy')!
+   this.creatorUser= JSON.parse(localStorage.getItem('answertoupdate')!)[0]['creator_user']['email']
+   if( JSON.parse(localStorage.getItem('answertoupdate')!)[0]['modifier_user'] !== null)
+{   this.modifierUser= JSON.parse(localStorage.getItem('answertoupdate')!)[0]['modifier_user']['email']
+} this.questionnaire=JSON.parse(localStorage.getItem('answertoupdate')!)[0]['questionnaire']['title']
   
  }
 }

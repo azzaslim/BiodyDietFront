@@ -52,7 +52,7 @@
             Date de naissance
         </th>
         <tr>
-        <td mat-cell *matCellDef="let element "> <a [routerLink]="[ '/info',element.id] "> {{element.birth_date | date : "dd-MM-yyyy"    }} </a> </td>
+        <td mat-cell *matCellDef="let element "> <a [routerLink]="[ '/info',element.id] "> {{element.birth_date    }} </a> </td>
     </tr>
     </ng-container>
 
@@ -61,6 +61,7 @@
 </table>
 
 </div>
+<<<<<<< HEAD
 
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
@@ -71,3 +72,15 @@
 </label>
 </div>
 <app-footer></app-footer>
+=======
+<<<<<<< HEAD
+
+<!-- {{element.birth_date.split("T")[0]| date : "dd-MM-yyyy"    }} 
+ --><app-footer></app-footer>
+=======
+<button mat-flat-button color="primary"  class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
+<button mat-flat-button color="primary"  (click)="exporter.exportTable('xls')">export to xls</button>
+
+<app-footer></app-footer>
+>>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
+>>>>>>> f4cac93910ad1cc9141a3c49ba7cb027670c3a8b

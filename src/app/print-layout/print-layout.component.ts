@@ -90,10 +90,10 @@ export class PrintLayoutComponent implements OnInit {
     let age2 = new Date(localStorage.getItem('Birthdate')!);
     if (age) {
       let timeDiff = Date.now() - age.getTime();
-      this.pAge = Math.floor(timeDiff / (1000 * 3600 * 24) / 365) + 'ans';
+      this.pAge = Math.floor(timeDiff / (1000 * 3600 * 24) / 365) + ' ans';
     } else {
       let timeDiff = Date.now() - age2.getTime();
-      this.pAge = Math.floor(timeDiff / (1000 * 3600 * 24) / 365) + 'ans';
+      this.pAge = Math.floor(timeDiff / (1000 * 3600 * 24) / 365) + ' ans';
     }
     this.prodImpression = JSON.parse(localStorage.getItem('prodImpression')!);
     if (this.prodImpression.length != 0) {

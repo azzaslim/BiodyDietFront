@@ -46,6 +46,12 @@ export class ListeprofilComponent implements OnInit {
     localStorage.removeItem('nomCheck');
     localStorage.removeItem('prescriptionCheck');
     localStorage.removeItem('logoCheck');
+    localStorage.removeItem('BirthDate');
+    localStorage.removeItem('Birthdate');
+    localStorage.removeItem('prodImpression');
+
+
+
 this.loader.show();
 localStorage.setItem("currentUser",(JSON.stringify(await this.RestUserService.getProfile())));
 this.path=JSON.parse(localStorage.getItem('currentUser')!).logo;

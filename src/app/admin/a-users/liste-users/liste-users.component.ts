@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class ListeUsersComponent implements OnInit {
   id!: number;
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'typeUser', 'action', 'modulePresc'];
+  displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email', 'type_user', 'action', 'subscription_status'];
   actions!: string;
   souscriptionForm!: FormGroup;
   checked!: boolean;
@@ -117,7 +117,7 @@ this.loader.show();
        // localStorage.setItem('user to manage', JSON.stringify(id));
 
        
-        if ((response[0]['modulePresc'] === true)) 
+        if ((response[0]['subscription_status'] === true)) 
           { let data=false;
             (await this.RestUserService.updateUser(JSON.stringify({ souscription: data })))
             .subscribe(
@@ -142,7 +142,7 @@ this.loader.show();
   })}
 
   async updateUser() {
-    let data = this.dataSource.data[JSON.parse(localStorage.getItem('user to manage')!)].modulePresc;
+    let data = this.dataSource.data[JSON.parse(localStorage.getItem('user to manage')!)].subscription_status;
     //let data = this.souscriptionForm.controls.souscription.value;
     // console.log(typeof(JSON.parse(localStorage.getItem('user to manage')!))),
     //console.log(data);

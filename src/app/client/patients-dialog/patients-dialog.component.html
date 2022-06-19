@@ -33,7 +33,7 @@
     
         <ng-container cdkColumnDef="birth_date">
           
-            <td cdk-cell *cdkCellDef="let element ">  {{element.birth_date | date : "dd/MM/yyyy"  }} </td>
+            <td cdk-cell *cdkCellDef="let element ">  {{element.birth_date.split("T")[0] | date : "dd/MM/yyyy"  }} </td>
            
         </ng-container>
     

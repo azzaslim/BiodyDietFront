@@ -88,6 +88,9 @@ import { GestionComplementComponent } from './client/gestion-complement/gestion-
 import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
 import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
+import { PaiementComponent } from './paiement/paiement.component';
+import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
+import { MentionLegalComponent } from './mention-legal/mention-legal.component';
 import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
 import { AddPreparationComponent } from './admin/admin-preparation/add-preparation/add-preparation.component';
 import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
@@ -162,6 +165,10 @@ import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductMa
          EditAnswersComponent,
          HomeMQuestionnaireComponent,
          PrintLayoutComponent,
+         InvoiceComponent,
+         PaiementComponent,
+         ConditionUtilisationComponent,
+         MentionLegalComponent,  
          InvoiceComponent,  
         AdminPrepationManageComponent,
        AddPreparationComponent,

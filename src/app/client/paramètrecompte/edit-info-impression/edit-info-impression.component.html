@@ -27,11 +27,13 @@
         <div *ngIf="fileUploadProgress">
             Upload progress: {{ fileUploadProgress }}
         </div>
-        <div class="image-preview mb-3" *ngIf="previewUrl">
-            <img [src]="previewUrl" height="30%" width="30%" />
+        <div class="image-preview ">
+            <mat-card class="card">
+            <img  *ngIf="previewUrl" [src]=" previewUrl" onerror="this.src='assets/white.jpg'" height="30%" width="100%" />
+        </mat-card>
         </div>
 
-        <div class="mb-3" *ngIf="uploadedFilePath">
+        <div *ngIf="uploadedFilePath">
             {{uploadedFilePath}}
         </div>
     </div>
@@ -79,6 +81,10 @@
                     <mat-label>Ville</mat-label>
                     <input matInput placeholder="Martin " formControlName="country">
                 </mat-form-field>
+            </div>
+
+            <div class="btn btn-danger align-content-center offset-3  ">
+                <button mat-button [disabled]=!logoExist  (click)=" confirmDelete(); ">Supprimer Logo</button>
             </div>
         </form>
         <div class=" boutton   ">

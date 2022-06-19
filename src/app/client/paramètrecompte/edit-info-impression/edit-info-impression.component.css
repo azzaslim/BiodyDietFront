@@ -88,8 +88,8 @@
   
   .flex-child-element {
     flex: 1;
-    margin: 10px;
-    margin-left: 10%;
+    margin-right: 60px;
+    margin-left: 5%;
 
     height: 10vw;
     width:10vw;
@@ -115,4 +115,12 @@
 
   #icon:hover{
     color: #096868 !important;
+}
+.card{
+  border: solid;
+  height: 100%;
+ width: 40%;
+}
+mat-card{
+  padding: 0;
 }

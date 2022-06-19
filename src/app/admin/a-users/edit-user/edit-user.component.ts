@@ -44,17 +44,17 @@ CurrentUser !: FormGroup;
         console.log(response)    
             localStorage.setItem("usertoupdate",JSON.stringify(response))
             this.CurrentUser = this._formBuilder.group({
-              firstName: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['firstName']],
-              lastName: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['lastName']],
+              firstName: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['first_name']],
+              lastName: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['last_name']],
               occupation: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['occupation']], 
         
-              codePostale:[JSON.parse(localStorage.getItem('usertoupdate')!)[0]['codePostale']],
+              codePostale:[JSON.parse(localStorage.getItem('usertoupdate')!)[0]['code_postale']],
               adresse: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['adresse']],
               entreprise: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['entreprise']],
               country: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['country']],
-              birthDate: [this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['birthDate'], 'dd/MM/yyyy')!],
-              type: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['typeUser']], 
-              endDate: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['endDate']], 
+              birthDate: [this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['birth_date'], 'dd/MM/yyyy')!],
+              type: [JSON.parse(localStorage.getItem('usertoupdate')!)[0]['type_user']], 
+              endDate: [(JSON.parse(localStorage.getItem('usertoupdate')!)[0].end_date.split("T")[0] )!], 
         
             });
 

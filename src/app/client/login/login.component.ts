@@ -23,15 +23,17 @@ export class LoginComponent implements OnInit {
   dateSent!: any
   Days: any;
   jours!: string
+  email!: string
   endDate!: Date;
-  constructor(private RestUserService: RestUserService, private RestPatientService: RestPatientService, private router: Router, private formBuilder: FormBuilder, private RestQuestionnaireService: RestQuestionnaireService, private RestResponseService: RestResponseService, public loader: LoadingService) {
+  constructor(private authService : RestUserService,private RestUserService: RestUserService, private RestPatientService: RestPatientService, private router: Router, private formBuilder: FormBuilder, private RestQuestionnaireService: RestQuestionnaireService, private RestResponseService: RestResponseService, public loader: LoadingService) {
   }
   ngOnInit() {
+  
 
   }
   signIn() {
     let data = JSON.stringify(this.userData.value);
-
+localStorage.setItem('email',this.userData.value.username)
     this.RestUserService.login(data)
 
       .subscribe(
@@ -79,8 +81,9 @@ export class LoginComponent implements OnInit {
             if (this.Days > 0)
               {this.router.navigate(['/home'])}
               else 
+            {  this.email=localStorage.getItem('email')!
               this.alerterreur()
-              this.loader.hide()
+              this.loader.hide()}
           }
         },
 
@@ -99,13 +102,44 @@ export class LoginComponent implements OnInit {
   }
 alerterreur(){
   Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: 'votre abonnement est expiré',
-    text:'veuillez le renouveller !!',
-    showConfirmButton: false,
-    timer: 2000
-  })}
+    title: 'votre abonnement est expiré ',
+    icon: 'warning',
+    text: 'voulez voue le renouveler !',
+    showCancelButton: true,
+    confirmButtonText: 'Payer',
+    denyButtonText: `Non Merci `,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      this.pay()
+
+console.log(this.email)
+
+
+
+
+
+    } else if (result.isDenied) {
+      this.router.navigate(['/'])
+    }
+  })
+  }
+  async pay(){
+    console.log(this.email)
+    this.loader.show()
+   await this.authService.payment(this.email).subscribe(
+    Response => {
+      console.log(Response)
+         window.location.href = Response
+this.loader.hide()
+    },
+    err=>
+    {
+      console.log(err)
+    });
+}
+
+
 }
 
 

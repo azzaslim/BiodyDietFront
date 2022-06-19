@@ -33,6 +33,9 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('nomCheck');
     localStorage.removeItem('prescriptionCheck');
     localStorage.removeItem('logoCheck');
+    localStorage.removeItem('prodImpression');
+    localStorage.removeItem('newPatient');
+
 
     
   }

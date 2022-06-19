@@ -26,6 +26,7 @@ fileUploadProgress!: string ;
 uploadedFilePath!: string;
  reader = new FileReader();      
 path!:any;
+logoExist!:string
   constructor(private RestUserService: RestUserService,private _formBuilder: FormBuilder,private router: Router,private http: HttpClient,private sanitizer: DomSanitizer) { 
     this.CurrentUser = this._formBuilder.group({
       firstName: [JSON.parse(localStorage.getItem('currentUser')!).firstName],
@@ -42,9 +43,10 @@ path!:any;
 
   async ngOnInit() {
        localStorage.setItem("currentUser",(JSON.stringify(await this.RestUserService.getProfile())));
+       this.logoExist=JSON.parse(localStorage.getItem('currentUser')!).logo
+
       this.path=JSON.parse(localStorage.getItem('currentUser')!).logo;
 
-      
           this.previewUrl ="assets/"+this.path;
           console.log( this.previewUrl) 
           localStorage.removeItem('profil');
@@ -113,4 +115,31 @@ preview() {
        
   }) 
 }
+ async deleteLogo(){
+   (await this.RestUserService.deleteLogo()).subscribe( async Response=>
+{    console.log(Response)
+  window.location.reload()
+  localStorage.setItem("currentUser", (JSON.stringify(await this.RestUserService.getProfile())));
+
+}    
+   )}
+   confirmDelete(){
+    Swal.fire({
+      title: 'est-ce que vous éte sur ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'oui, supprimer!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteLogo(),
+        Swal.fire(
+          'supprimé!',
+          'votre logo est supprimé.',
+          'success'
+        )
+      }
+    })
+   }
 }

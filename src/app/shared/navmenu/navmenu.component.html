@@ -3,14 +3,13 @@
     <div class="box"><img src="./assets/logo.png"></div> 
 </div>
 
-<div class="navbar     justify-content-center ">
-  <li> <a href={{homePath}}><mat-icon class="icon" style="color:white" color="white" aria-label="Example home icon">home</mat-icon></a></li>
+<div class="navbar  justify-content-center ">
+  <li> <a href={{homePath}}><mat-icon class="icon" style="color:white; font-size: 20px;"  aria-label="Example home icon">house</mat-icon></a></li>
    <li ><a href=listeprofil  *ngIf="isAdmin"> Liste des profils</a></li>
    <li> <a href="parametre">Paramètres</a></li>
-   <li class="deconnexion"><button (click)="disconnect()" >Deconnexion</button></li>
+   <li class="deconnexion"><button (click)="disconnect()" >Déconnexion</button></li>
 </div>
 
 <div *ngIf="soon" class="abonnement justify-content-center ">
- <span>votre abonnement expire dans {{Days}} {{jours}}</span>
+ <a class="Payment" href="/editCompte" >votre abonnement expire dans {{Days}} {{jours}}</a>
  </div>
- 

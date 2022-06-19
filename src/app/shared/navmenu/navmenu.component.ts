@@ -18,8 +18,13 @@ export class NavmenuComponent implements OnInit {
   isAdmin = true;
   jours!:string
   endDate!: Date;
+  email!:string
+
+
   constructor(private _formBuilder: FormBuilder, private router: Router, private RestUserService: RestUserService, private loader: LoadingService) { }
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    localStorage.setItem('currentUser',JSON.stringify(await this.RestUserService.getProfile()))
+
     this.role = JSON.parse(localStorage.getItem('currentUser')!).role;
 
 if (this.role == 'ROLE_USER')
@@ -52,12 +57,16 @@ if (this.role == 'ROLE_USER')
   disconnect() {
     console.log('logout');
     this.RestUserService.logout();
+    localStorage.clear()
     this.router.navigate(['/'])
   }
-  calculateDiff(dateSent: string | number | Date) {
+  async calculateDiff(dateSent: string | number | Date) {
     let currentDate = new Date();
     dateSent = new Date(JSON.parse(localStorage.getItem('currentUser')!).endDate);
     console.log(Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate())) / (1000 * 60 * 60 * 24)))
     return Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate())) / (1000 * 60 * 60 * 24));
   }
+
+ 
+
 }

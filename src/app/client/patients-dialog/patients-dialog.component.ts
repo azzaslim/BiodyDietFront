@@ -42,7 +42,9 @@ export class PatientsDialogComponent implements OnInit {
 if (x.length==0)
 {
   this.onNoClick()
-  alert('no patient exist')
+this.failNotification();
+  this.loader.hide()
+
 }
     },
       err => {
@@ -60,18 +62,18 @@ if (x.length==0)
   }
   async editProfil(profil: Profil) {
     localStorage.setItem('profil', JSON.stringify(profil.id));
-    this.loader.show()
+    //this.loader.show()
 this.routerhome()
 this.loader.hide()
     this.onNoClick();
 
   }
   routerhome(){
-    let route = 'ajout';
-    localStorage.removeItem('')
-        window.location.reload()
+    let route = '/info/'+JSON.parse(localStorage.getItem('profil')!);
+    console.log(route)
+   // localStorage.removeItem('')
 
-    this.router.navigate([route]);
+    this.router.navigate(['/info/'+JSON.parse(localStorage.getItem('profil')!)]);
 
   }
   announceSortChange(sortState: Sort) {

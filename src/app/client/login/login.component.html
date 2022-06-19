@@ -1,11 +1,11 @@
 
-
 <ng-container *ngIf="loading$ | async">
     <div class="spinner_overlay"></div>
 
     <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
   </ng-container>
-<div class="login col-5 offset-3 center">
+<!-- <div class="title"> Biody Diet</div>
+<div class="login col-lg-12 center">
     <p class="titre row ">
         Connexion</p>
     <form [formGroup]="userData" (ngSubmit)="signIn()">
@@ -28,4 +28,73 @@
         <p class="mdp"> <a href="verification"> Mot de Passe oublié?</a>
         </p>
 
-</div>
+</div> -->
+
+<section class="h-100 gradient-form" style="background-color: #eee;">
+
+    <div class="container py-5 h-100">
+
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        
+        <div class="col-xl-8">
+
+          <div class="card rounded-3 text-black">
+            <div class="t1">Connectez-vous sur BIODY DIET</div>
+
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="card-body p-md-5 mx-md-4">
+
+                  <div class=" titre text-center">
+
+                     <img src="./assets/logo.png"
+                      style="width: 85px;" alt="logo"> 
+                    <h4 class="mt-1 mb-5 pb-1" style="font-size: x-large; color: #123640;">BIODY DIET</h4>
+                  </div>
+  
+                  <form [formGroup]="userData" (ngSubmit)="signIn()">
+  
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example11">Username</label>
+
+                      <input type="email" id="form2Example11" formControlName="username" class="form-control"
+                        placeholder=" email address" />
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example22">Password</label>
+
+                      <input type="password" id="form2Example22" formControlName="password" class="form-control" />
+                    </div>
+  
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button class="boutton btn btn-primary btn-block fa-lg  mb-3" type="submit">Log
+                        in</button> &nbsp;  &nbsp;  &nbsp; 
+                      <a class="text-muted" href="verification">Mot de passe oublié?</a>
+                    </div>
+  
+                   
+  
+                  </form>
+  
+                </div>
+              </div>
+             
+              <div class="col-lg-6 d-flex align-items-center ">
+                
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                    <div class=" justify-content-center pb-4" style="float: right; margin-right: 20px;">
+                        <a type="button" href="register" class="btn btn-outline-danger">essai gratuit</a>
+                      </div>
+                    <img  src="./assets/pic3.png"          style="width: 350px; height: 450px;" alt="logo">>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+

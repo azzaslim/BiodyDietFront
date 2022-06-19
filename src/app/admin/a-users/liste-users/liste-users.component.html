@@ -18,36 +18,36 @@
         </ng-container>
 
         Name Column
-        <ng-container matColumnDef="firstName">
+        <ng-container matColumnDef="first_name">
             <th style="width: 13%;" mat-header-cell *matHeaderCellDef mat-sort-header
-                sortActionDescription="Sort by firstName">
+                sortActionDescription="Sort by first_name">
                 Nom
             </th>
-            <td mat-cell *matCellDef="let element">{{element.firstName}} </td>
+            <td mat-cell *matCellDef="let element">{{element.first_name}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="lastName">
+        <ng-container matColumnDef="last_name">
             <th style="width: 13%;" mat-header-cell *matHeaderCellDef mat-sort-header
-                sortActionDescription="Sort by lastName">
+                sortActionDescription="Sort by last_name">
                 Prénom
             </th>
             <tr>
-                <td mat-cell *matCellDef="let element ">{{element.lastName}} </td>
+                <td mat-cell *matCellDef="let element ">{{element.last_name}} </td>
             </tr>
         </ng-container>
 
 
-        <ng-container matColumnDef="typeUser">
+        <ng-container matColumnDef="type_user">
             <th mat-header-cell style="width: 15%;" *matHeaderCellDef mat-sort-header
-                sortActionDescription="Sort by date_of_birth ">
+                sortActionDescription="Sort by type_user ">
                 type </th>
-            <td mat-cell *matCellDef="let element "> {{element.typeUser}} </td>
+            <td mat-cell *matCellDef="let element "> {{element.type_user}} </td>
 
         </ng-container>
         <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date_of_birth ">
+            <th mat-header-cell  *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email ">
                 Email </th>
-            <td mat-cell *matCellDef="let element "> {{element.email}} </td>
+            <td style="width: 20%;" mat-cell *matCellDef="let element "> {{element.email}}  &nbsp; &nbsp;</td>
 
         </ng-container>
         <!-- Action Column-->
@@ -77,11 +77,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true  "></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="userToManage(row) "></tr>
 
-        <ng-container matColumnDef="modulePresc">
+        <ng-container matColumnDef="subscription_status">
             <th mat-header-cell *matHeaderCellDef> Module </th>
             <td mat-cell *matCellDef="let element">
 
-                <mat-checkbox [(ngModel)]="element.modulePresc" (change)="checkValue(element.id)"></mat-checkbox>
+                <mat-checkbox [(ngModel)]="element.subscription_status" (change)="checkValue(element.id)"></mat-checkbox>
 
             </td>
         </ng-container>

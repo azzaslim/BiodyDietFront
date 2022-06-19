@@ -10,7 +10,7 @@ export interface Answer {
   title: string;
   name:string;
   order: number;
-  isPublished: boolean;
+  is_published: boolean;
   indication:boolean;
 }
 @Injectable({

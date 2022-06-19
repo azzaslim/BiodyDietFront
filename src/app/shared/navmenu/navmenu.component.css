@@ -14,7 +14,8 @@
     margin-left: 3vw;
     margin-right: 3vw;
     background-color: #123640;
-    height:1.5vw;
+    padding-top: 0.1vw;
+padding-bottom: 0.1vw;
     
   
   }
@@ -56,11 +57,16 @@ margin-left: 3vw;
      flex-wrap: nowrap;
      list-style-type : none;
      margin-left: 3vw;
-     padding-top: 0.5vw;
-     padding-bottom: 0.5vw;
+     padding-top: 0.3vw;
+     padding-bottom: 0.3vw;
      margin-right: 3vw;
      display: flex;
      align-items: center !important;
      font-weight: 900;
-     
+   
    }
+  .Payment{
+    color:white;
+    text-decoration: none !important;
+    
+  }

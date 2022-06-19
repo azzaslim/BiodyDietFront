@@ -66,6 +66,9 @@ import { EditComplementComponent } from './client/gestion/ComplementManage/edit-
 import { AddUserComplementComponent } from './client/gestion/ComplementManage/add-user-complement/add-user-complement.component';
 import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductManage/edit-cosmetic-product/edit-cosmetic-product.component';
 import { AddCosmeticProductComponent } from './client/gestion/CosmeticProductManage/add-cosmetic-product/add-cosmetic-product.component';
+import { PaiementComponent } from './paiement/paiement.component';
+import { MentionLegalComponent } from './mention-legal/mention-legal.component';
+import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
 
 
 
@@ -91,12 +94,15 @@ const routes: Routes = [
   { path:  'admin/nutrient/editnutrient', component: EditNutrientComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent},
+  { path: 'paiement', component: PaiementComponent   },
+
   { path: 'verification', component:VerifaccountComponent  },
   { path: 'reset/:token', component:ChangePasswordComponent   },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
  //********************************************************************************************* */
  { path: 'admin/home', component: AHomeComponent , canActivate : [AuthGuardService,AdminGuard]  },
+
  { path: 'admin/users/listeusers', component: ListeUsersComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/preparation/listpreparation', component: AdminPrepationManageComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path:'admin/preparation/addpreparation',component: AddPreparationComponent, canActivate : [AuthGuardService,AdminGuard]  },
@@ -135,12 +141,17 @@ const routes: Routes = [
   { path: 'admin/questionnaire/addquestionnaire', component: AddQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/questionnaire/Detailquestionnaire', component: DetailQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/questionnaire/Editquestionnaire', component: EditQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
+  { path: 'paiement', component: PaiementComponent },
 
   { path: 'admin/answers/Listeanswers', component: ListAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/answers/addanswers', component: AddAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/answers/Detailanswer', component: DetailAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/answers/Editanswer', component: EditAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/ModuleQuestionnaire', component: HomeMQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
+  { path: 'legal-notice', component: MentionLegalComponent  },
+  { path: 'terms-and-conditions', component: ConditionUtilisationComponent  },
+
+
   { path: 'print',
     outlet: 'print',
     component: PrintLayoutComponent,

@@ -9,6 +9,17 @@
     <br>
 </div>
 <div class="titre" style="font-size: 2vw;">Paramètre du compte</div>
+<div class=" payer justify-content-center pb-4" style="float: center; margin-right: 10%; float: right;">
+    <a type="button" (click)="pay()" class="btn btn-danger">payer en avance</a>
+  </div>
 <p class="date"> Module actif jusqu'au {{endDate}}</p>
+<ng-container *ngIf="loading$ | async">
+    <div class="spinner_overlay"></div>
+
+    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
+  </ng-container>
+
+
 <a class="editer" href="editImpression"> Editer  mes informations d'impression</a>
+
 <app-footer></app-footer>

@@ -13,7 +13,7 @@ export class HomeMQuestionnaireComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.nbresponse=localStorage.getItem('nbResponse')!
+    this.nbresponse=localStorage.getItem('nbAnswer')!
     this.nbQuestionnaire = localStorage.getItem('nbQuestionnaire')!
 
   }

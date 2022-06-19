@@ -17,7 +17,7 @@ import {
   ADD_SUPPLEMENT_URL,
   ADD_PREPARATION_URL,
 } from 'src/app/common/url';
-import { GETALL_PREPARATION_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
+import { GETALL_PREPARATION_URL, GETALL_PRODUCTSADMIN_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
 
 export interface Product {
   id: number;
@@ -52,6 +52,13 @@ export class RestProductService {
       `Bearer ${this.getToken()} `
     );
     return  this.http.get<Product[]>(GETALL_PRODUCTS_URL, { headers });
+  }
+  getProductsAdmin(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return  this.http.get<Product[]>(GETALL_PRODUCTSADMIN_URL, { headers });
   }
   getPreparations(): Observable<Product[]> {
     let headers = new HttpHeaders().set(

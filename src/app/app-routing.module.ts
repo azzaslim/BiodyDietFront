@@ -47,6 +47,9 @@ import { GestionComplementComponent } from './client/gestion-complement/gestion-
 import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
 import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
+import { PaiementComponent } from './paiement/paiement.component';
+import { MentionLegalComponent } from './mention-legal/mention-legal.component';
+import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
 
 
 
@@ -72,12 +75,15 @@ const routes: Routes = [
   { path:  'admin/nutrient/editnutrient', component: EditNutrientComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: '', component: LoginComponent   },
   { path: 'register', component:RegisterComponent},
+  { path: 'paiement', component: PaiementComponent   },
+
   { path: 'verification', component:VerifaccountComponent  },
   { path: 'reset/:token', component:ChangePasswordComponent   },
   { path: 'ajoutpreparation', component: AjouterPreparationComponent , canActivate : [AuthGuardService]},
   { path: 'ajout', component: PrescriptionComponent   , canActivate : [AuthGuardService]  },
  //********************************************************************************************* */
  { path: 'admin/home', component: AHomeComponent , canActivate : [AuthGuardService,AdminGuard]  },
+
  { path: 'admin/users/listeusers', component: ListeUsersComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/users/edituser', component: EditUserComponent , canActivate : [AuthGuardService,AdminGuard]  },
  { path: 'admin/users/consultuser', component: DetailUserComponent , canActivate : [AuthGuardService,AdminGuard]  },
@@ -101,12 +107,17 @@ const routes: Routes = [
   { path: 'admin/questionnaire/addquestionnaire', component: AddQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/questionnaire/Detailquestionnaire', component: DetailQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/questionnaire/Editquestionnaire', component: EditQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
+  { path: 'paiement', component: PaiementComponent },
 
   { path: 'admin/answers/Listeanswers', component: ListAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/answers/addanswers', component: AddAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/answers/Detailanswer', component: DetailAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/answers/Editanswer', component: EditAnswersComponent , canActivate : [AuthGuardService,AdminGuard] },
   { path: 'admin/ModuleQuestionnaire', component: HomeMQuestionnaireComponent , canActivate : [AuthGuardService,AdminGuard] },
+  { path: 'legal-notice', component: MentionLegalComponent  },
+  { path: 'terms-and-conditions', component: ConditionUtilisationComponent  },
+
+
   { path: 'print',
     outlet: 'print',
     component: PrintLayoutComponent,

@@ -38,9 +38,9 @@ export class EditQuestionnaireComponent implements OnInit {
         response => {
           console.log(response)    
               this.UpdateQuest = this._formBuilder.group({
-                title: [JSON.parse(localStorage.getItem('questionnairetoupdate')!)['title']],
-                order: [JSON.parse(localStorage.getItem('questionnairetoupdate')!)['ordering']],
-                ispublished: [JSON.parse(localStorage.getItem('questionnairetoupdate')!)['isPublished']], 
+                title: [JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['title']],
+                order: [JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['ordering']],
+                ispublished: [JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['is_published']], 
           
                 
           

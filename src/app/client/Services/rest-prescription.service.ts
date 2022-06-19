@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ export interface Answer {
   QuestId: string;
   name: string;
   title:string;
-  isPublished:boolean;
+  is_published:boolean;
 }
 export interface questionnaire {
   id: number;
@@ -37,13 +37,17 @@ export class RestPrescriptionService {
     )
     return await this.http.get<Answer[]>(GET_ANSWERS_URL,{headers}); 
    }
-   async getAnswersByQuest(id:any): Promise<Observable<Answer[]>> {
+   async getAnswersByQuest(id:any) {
    
     //  console.log(this.getToken());
       let headers = new HttpHeaders().set(
         'Authorization', `Bearer ${this.getToken()} `,
       )
-      return await this.http.post<Answer[]>(GETANSWERS_BYQUEST_URL,JSON.stringify({id: id}),{headers}); 
+      const params = new HttpParams().set(
+        'Id',
+       id)
+      
+      return await this.http.get(GETANSWERS_BYQUEST_URL+ "/" + params,{headers}); 
      }
 
      async AddPrescription(Presc :any)

@@ -37,6 +37,8 @@ export const UPDATE_PRODUCT_URL= BASE_URL+'/api/updateProduct';
 export const ADD_PRODUCT_URL= BASE_URL+'api/addproduct';
 export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETALL_PRODUCTS_URL= BASE_URL+'api/getProducts';
+export const GETALL_PRODUCTSADMIN_URL= BASE_URL+'api/getProductsAdmin';
+
 export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
 export const GET_ONE_QUESTIONNAIRE_URL= BASE_URL +'api/get/OneQuestionnaire';
 export const DELETE_QUESTIONNAIRE_URL= BASE_URL +'api/delete/questionnaire';
@@ -56,3 +58,10 @@ export const GETANSWERS_BYQUEST_URL = BASE_URL +'api/getAnswersByQuest'
 
 export const ADD_PRESCRIPTION_URL= BASE_URL +'api/addPrescription';
 export const GET_PRESCRIPTION_URL= BASE_URL +'api/getPrescription';
+export const PAYMENT_URL= BASE_URL+'Checkout';
+export const RENOUVELLEACCOUNT_URL= BASE_URL+'renouvelle';
+export const RENOUVELLEACCOUNTADVANCE_URL= BASE_URL+'renouvelleAvance';
+export const DELETELOGO_URL = BASE_URL +'api/delete/logo';
+
+
+export const GETONEPATIENTEXISTANT_URL = BASE_URL +'api/get/OnePatientsExistant'

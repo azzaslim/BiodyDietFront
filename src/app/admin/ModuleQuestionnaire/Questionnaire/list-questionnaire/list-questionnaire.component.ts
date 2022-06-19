@@ -107,7 +107,7 @@ console.log((x[0].is_published ))
   async QuestionnaireToManage(questionnaire: Questionnaire) {
    
         localStorage.setItem('Questionnaire to manage', JSON.stringify(questionnaire.id))
-        localStorage.setItem('questionnairetoupdate', JSON.stringify(questionnaire))
+       // localStorage.setItem('questionnairetoupdate', JSON.stringify(questionnaire))
  }
   checkValue(event: any) {
   }

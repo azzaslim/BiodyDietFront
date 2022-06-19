@@ -8,79 +8,87 @@
         </h1>
         <h1 class="stepper-header-title" *ngIf="stepper.selectedIndex === 1">{{'Questionnaire' }}
         </h1>
-        <h1 class="stepper-header-title" *ngIf="stepper.selectedIndex === 2">{{'Prescriptions compléments alimentaires' }}
+        <h1 class="stepper-header-title" *ngIf="stepper.selectedIndex === 2">{{'Prescriptions compléments alimentaires'
+            }}
         </h1>
         <h1 class="stepper-header-title" *ngIf="stepper.selectedIndex === 3">{{'Menu d\'impression' }} </h1>
     </div>
     <a href="/home" class="bt-quitter"> Quitter</a>
-   
-    <mat-stepper class="" [linear]="true" #stepper>
 
+
+    <mat-stepper #stepper [linear]="true">
 
 
         <mat-step [stepControl]="patientForm" label="Information personnelle">
-
             <mat-card class=" col-md-8 ">
                 <mat-card-content>
                     <form [formGroup]="patientForm" (ngSubmit)="AddPatient()">
-
                         <div class=" row center ">
-
                             <mat-form-field appearance="outline" class=" col-md-3 ">
                                 <mat-label>Nom</mat-label>
-                                <input matInput placeholder="Laura " type="text" formControlName="firstName" pattern="[A-Za-z]+" required>
+                                <input matInput placeholder="Laura " type="text"   formControlName="firstName"
+                                    pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
                                 <div *ngIf="f['firstName'].touched && f['firstName'].invalid">
-                                    <div *ngIf="f['firstName'].errors && f['firstName'].errors['']"> le nom est obligatoire </div>
-                                    <div *ngIf="f['firstName'].errors && f['firstName'].errors['pattern']">ce champ doit avoir des caractères</div>
+                                    <div *ngIf="f['firstName'].errors && f['firstName'].errors['']"> le nom est
+                                        obligatoire </div>
+                                    <div *ngIf="f['firstName'].errors && f['firstName'].errors['pattern']">ce champ doit
+                                        avoir des caractères</div>
                                 </div>
                             </mat-form-field>
 
                             <mat-form-field appearance="outline" class="col-md-3 ">
                                 <mat-label>Prénom</mat-label>
-                                <input matInput placeholder="Martin " type="text" formControlName="lastName" pattern="[A-Za-z]+" required>
+                                <input matInput placeholder="Martin " type="text" formControlName="lastName"
+                                    pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
                                 <div *ngIf="f['lastName'].touched && f['lastName'].invalid">
-                                    <div *ngIf="f['lastName'].errors && f['lastName'].errors['']"> le prénom est obligatoire </div>
-                                    <div *ngIf="f['lastName'].errors && f['lastName'].errors['pattern']">ce champ doit avoir des caractères</div>
+                                    <div *ngIf="f['lastName'].errors && f['lastName'].errors['']"> le prénom est
+                                        obligatoire </div>
+                                    <div *ngIf="f['lastName'].errors && f['lastName'].errors['pattern']">ce champ doit
+                                        avoir des caractères</div>
                                 </div>
                             </mat-form-field>
                             <mat-form-field appearance="outline" class=" col-md-3 ">
                                 <mat-label>Date de Naissance</mat-label>
-                                <input matInput type="date"  date="yyyy/MM/dd" formControlName="birth_date" required  >
+                                <input matInput type="date" formControlName="birth_date" required>
                                 <div *ngIf="f['birth_date'].touched && f['birth_date'].invalid">
-                                    <div *ngIf="f['birth_date'].errors && f['birth_date'].errors['']"> la date de naissance est obligatoire </div>
-                                    <div *ngIf="f['birth_date'].errors && f['birth_date'].errors['pattern']">entrez une date de naissance  valide dd-mm-aaaa</div>
+                                    <div *ngIf="f['birth_date'].errors && f['birth_date'].errors['']"> la date de
+                                        naissance est obligatoire </div>
                                 </div>
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="col-md-3 ">
                                 <mat-label>Niveau d'activité</mat-label>
-                                <mat-select 
-                                (change)="changeActivity($event)" formControlName="Activity" placeholder="choisir un niveau d'activité">
-                                
-                                <mat-option *ngFor="let act of Activities" [value]="act">
-                                    {{ act }}
-                                </mat-option>
-                            </mat-select>
+                                <mat-select (change)="changeActivity($event)" formControlName="Activity"
+                                    placeholder="choisir un niveau d'activité">
+
+                                    <mat-option *ngFor="let act of Activities" [value]="act">
+                                        {{ act }}
+                                    </mat-option>
+                                </mat-select>
                             </mat-form-field>
-                           
+
                         </div>
 
 
                         <div class="row d-flex justify-content-center ">
-                           
+
 
                             <mat-form-field appearance="outline" class=" col-md-3 ">
                                 <mat-label>Poids</mat-label>
-                                <input matInput placeholder="80 " type="number" min="14" max="250" formControlName="weight" required>
+                                <input matInput placeholder="80 "   (keypress)="numberOnly($event)" type="text" min="14" max="250"
+                                    formControlName="weight" required>
                                 <div *ngIf="f['weight'].touched && f['weight'].invalid">
-                                    <div *ngIf="f['weight'].errors && f['weight'].errors['']"> le poids est obligatoire </div>
+                                    <div *ngIf="f['weight'].errors && f['weight'].errors['']"> le poids est obligatoire
+                                    </div>
                                 </div>
                             </mat-form-field>
 
                             <mat-form-field appearance="outline" class="col-md-3 ">
                                 <mat-label>Taille</mat-label>
-                                <input matInput placeholder="176 " type="number" min="100 " max="220" formControlName="height"required >
+                                <input matInput placeholder="176 " (keypress)="numberOnly($event)"  type="text" min="100" max="220"
+                                    formControlName="height" required>
                                 <div *ngIf="f['height'].touched && f['height'].invalid">
-                                    <div *ngIf="f['height'].errors && f['height'].errors['']"> la taille est obligatoire </div>
+                                    <div *ngIf="f['height'].errors && f['height'].errors['']"> la taille est obligatoire
+                                    </div>
                                 </div>
                             </mat-form-field>
                             <div class="radio-section space-around" class=" col-md-3 mt-2 ">
@@ -93,12 +101,12 @@
                                     <span>Femme</span>
                                 </label>
                             </div>
-                           
+
                         </div>
                         <div class="row d-flex justify-content-center ">
 
-                     
-                    </div>
+
+                        </div>
                         <div class=" boutton d-flex justify-content-center ">
                             <button mat-button [disabled]="!patientForm.valid" matStepperNext>SUIVANT</button>
                         </div>
@@ -107,86 +115,82 @@
             </mat-card>
             <ng-container *ngIf="loading$ | async">
                 <div class="spinner_overlay"></div>
-            
-                <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
-              </ng-container>
+
+                <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>
+            </ng-container>
             <div class="btRecherche d-flex  justify-items-center">
-            <button  mat-button (click)="openDialog()">Rechercher un profil BiodyManager</button>
-        </div>
-<br><br> 
+                <button mat-button (click)="openDialog()">Rechercher un profil BiodyManager</button>
+            </div>
+            <br><br>
         </mat-step>
 
-        
-        <mat-step  label="Questionnaire">
-            
+        <mat-step label="Questionnaire">
+
             <mat-accordion class="panel ">
                 <ng-container *ngIf="loading$ | async">
                     <div class="spinner_overlay"></div>
-                    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
-                  </ng-container>
-                    <mat-expansion-panel class="bgcolor" *ngFor="let quest of elements;" >
-                        <mat-expansion-panel-header style="border-bottom-left-radius: 0em !important; border-bottom-right-radius: 0em !important ; ">
-                            <mat-panel-title>
-                                {{quest.id}}
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <div class="row">
-                            <mat-checkbox *ngFor="let c of quest.answers; let i=index" #checkBox [value]="c" (change)="showOptions($event)">
-                                {{c.name}}
-                            </mat-checkbox>
-                        </div>
-                    </mat-expansion-panel>
-
-                </mat-accordion>
-                
-            <div class=" boutton ">
-                <button  mat-button matStepperNext>SUIVANT</button>
+                    <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>
+                </ng-container>
+                <mat-expansion-panel class="bgcolor" *ngFor="let quest of elements;">
+                    <mat-expansion-panel-header
+                        style="border-bottom-left-radius: 0em !important; border-bottom-right-radius: 0em !important ; ">
+                        <mat-panel-title>
+                            {{quest.id}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row">
+                        <mat-checkbox *ngFor="let c of quest.answers; let i=index" #checkBox [value]="c"
+                            (change)="showOptions($event)">
+                            {{c.name}}
+                        </mat-checkbox>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <div class="boutton">
+                <button mat-button matStepperNext>SUIVANT</button>
             </div>
-            <br><br><br><br>
+            <br><br><br>
 
-          
         </mat-step>
 
+
+
+
+
+
         <mat-step label="Prescriptions compléments alimentaires">
-           
-
-           
             <mat-accordion class="panel ">
-
                 <mat-expansion-panel (opened)="panelOpenState3=true ; " (closed)="panelOpenState3=false ">
-                    <mat-expansion-panel-header [style.background-color]="panelOpenState3 ? '#818181 !important'  : '' " style="border-bottom-left-radius: 0em !important ; border-bottom-right-radius: 0em !important ; size:5vw !important ">
+                    <mat-expansion-panel-header [style.background-color]="panelOpenState3 ? '#818181 !important'  : '' "
+                        style="border-bottom-left-radius: 0em !important ; border-bottom-right-radius: 0em !important ; size:5vw !important ">
                         <mat-panel-title [style.color]="panelOpenState3 ? 'white !important' : '#a49c9b !important' ">
                             Compléments alimentaires
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-
                     <div class="row">
-                        <mat-checkbox *ngFor="let c of Complements; let i=index " #checkBox [value]="c"  [(ngModel)]="Complements[i].checked" (change)="showOptionsProducts($event)">
+                        <mat-checkbox *ngFor="let c of Complements; let i=index " #checkBox [value]="c"
+                            [(ngModel)]="Complements[i].checked" (change)="showOptionsProducts($event)">
                             {{c.value}}
                         </mat-checkbox>
                     </div>
-
                 </mat-expansion-panel>
-
             </mat-accordion>
             <mat-accordion class="panel ">
-                
                 <mat-expansion-panel (opened)="panelOpenState2=true ; " (closed)="panelOpenState2=false ">
-                    <mat-expansion-panel-header [style.background-color]="panelOpenState2 ? '#818181 !important' : '' " style="border-bottom-left-radius: 0em !important; border-bottom-right-radius: 0em !important ; ">
+                    <mat-expansion-panel-header [style.background-color]="panelOpenState2 ? '#818181 !important' : '' "
+                        style="border-bottom-left-radius: 0em !important; border-bottom-right-radius: 0em !important ; ">
                         <mat-panel-title [style.color]="panelOpenState2 ? 'white !important' : 'darkgray !important' ">
                             Préparations hyperprotéinées
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-
                     <div class="row">
-                        <mat-checkbox *ngFor="let c of Preparations; let i=index " #checkBox [value]="c"  [(ngModel)]="Preparations[i].checked" (change)="showOptionsProducts($event)">
+                        <mat-checkbox *ngFor="let c of Preparations; let i=index " #checkBox [value]="c"
+                            [(ngModel)]="Preparations[i].checked" (change)="showOptionsProducts($event)">
                             {{c.value}}
                         </mat-checkbox>
                     </div>
                 </mat-expansion-panel>
-
             </mat-accordion>
-
             <div class=" boutton d-flex justify-content-center ">
                 <button (click)='SavePrescription()' mat-button matStepperNext> ENREGISTRER</button>
             </div>
@@ -201,33 +205,40 @@
             <mat-accordion class="panel ">
 
                 <mat-expansion-panel (opened)="panelOpenState4=true ; " (closed)="panelOpenState4=false ">
-                    <mat-expansion-panel-header [style.background-color]="panelOpenState4 ? '#818181 !important' : '' " style="border-bottom-left-radius: 0em !important; border-bottom-right-radius: 0em  !important;   ">
+                    <mat-expansion-panel-header [style.background-color]="panelOpenState4 ? '#818181 !important' : '' "
+                        style="border-bottom-left-radius: 0em !important; border-bottom-right-radius: 0em  !important;   ">
                         <mat-panel-title [style.color]="panelOpenState4 ? 'white !important' : '#a49c9b !important' ">
-                            <mat-checkbox  value="Select All" (change)="onChangeAll($event)" (click)="$event.stopPropagation()" 
-                            (keydown)="$event.stopPropagation()"> Entete </mat-checkbox><br>
+                            <mat-checkbox value="Select All"  (change)="onChangeAll($event);" [(ngModel)] ="IsSelected"
+                                (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" >  Entete
+                            </mat-checkbox><br>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <mat-checkbox  [checked]="IsSelected"(change)="onChangeLogo($event)" > logo</mat-checkbox><br>
-                    <mat-checkbox  [checked]="IsSelected"(change)="onChangeNom($event)"  > Nom et Prénom</mat-checkbox><br>
-                    <mat-checkbox  [checked]="IsSelected"(change)="onChangeEntreprise($event);"> Entreprise</mat-checkbox><br>
-                    <mat-checkbox [checked]="IsSelected"(change)="onChangeVille($event) ;" > Adresse , Code Postale et Ville </mat-checkbox>
+                    <mat-checkbox [checked]="IsSelected" (change)="onChangeLogo($event);"> logo</mat-checkbox><br>
+                    <mat-checkbox [checked]="IsSelected" (change)="onChangeNom($event)"> Nom et Prénom</mat-checkbox>
+                    <br>
+                    <mat-checkbox [checked]="IsSelected" (change)="onChangeEntreprise($event);"> Entreprise
+                    </mat-checkbox><br>
+                    <mat-checkbox [checked]="IsSelected" (change)="onChangeVille($event); "> Adresse , Code Postale et
+                        Ville </mat-checkbox>
 
                 </mat-expansion-panel>
 
             </mat-accordion>
 
-            <mat-expansion-panel class="no-body" [disabled]="true" (opened)="panelOpenState0=true ; " (closed)="panelOpenState0=false ">
-                <mat-expansion-panel-header class="no-body" >
+            <mat-expansion-panel class="no-body" [disabled]="true" (opened)="panelOpenState0=true ; "
+                (closed)="panelOpenState0=false ">
+                <mat-expansion-panel-header class="no-body">
                     <mat-panel-title style="color: #a49c9b !important;">
-                        <mat-checkbox (change)="onChangePrescription($event)" > Prescriptions compléments alimentaire</mat-checkbox>
+                        <mat-checkbox (change)="onChangePrescription($event)"> Prescriptions compléments alimentaire
+                        </mat-checkbox>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
 
 
             </mat-expansion-panel>
-           
+
 
             <div class=" boutton ">
 
@@ -235,13 +246,13 @@
             </div>
             <ng-container *ngIf="loading$ | async">
                 <div class="spinner_overlay"></div>
-            
-                <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>  
-              </ng-container>
+
+                <mat-progress-spinner [color]="'#70caca'" [mode]="'indeterminate'"></mat-progress-spinner>
+            </ng-container>
         </mat-step>
 
 
     </mat-stepper>
-    
+
 </div>
 <app-footer></app-footer>

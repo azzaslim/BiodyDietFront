@@ -1,56 +1,56 @@
-<div class="main ">
+<!-- <div class="main ">
     <p class="titre" text-align="center">Sign up</p>
 
     <form [formGroup]="registerData" (ngSubmit)="register()">
 
         <mat-form-field appearance="outline" class="un">
             <mat-label>Nom</mat-label>
-            <input matInput type="text" class="form-control" formControlName="firstName">
+            <input matInput type="text"  class="form-control" formControlName="firstName"  pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="pass">
             <mat-label>Prénom</mat-label>
-            <input matInput type="text" class="form-control" formControlName="lastName">
+            <input matInput type="text" class="form-control" formControlName="lastName"   pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Date de Naissance</mat-label>
-            <input matInput type="text" class="form-control" formControlName="birthDate">
+            <input matInput type="date" class="form-control" formControlName="birth_date" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Occupation</mat-label>
-            <input matInput type="text" class="form-control" formControlName="occupation">
+            <input matInput type="text" class="form-control" formControlName="occupation" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Entreprise</mat-label>
-            <input matInput type="text" class="form-control" formControlName="entreprise">
+            <input matInput type="text" class="form-control" formControlName="entreprise" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Ville</mat-label>
-            <input matInput type="text" class="form-control" formControlName="country">
+            <input matInput type="text" class="form-control" formControlName="country" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Adresse</mat-label>
-            <input matInput type="text" class="form-control" formControlName="adresse">
+            <input matInput type="text" class="form-control" formControlName="adresse" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Code Postale</mat-label>
-            <input matInput type="text" class="form-control" formControlName="codePostale">
+            <input matInput type="text" class="form-control" formControlName="codePostale" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Email</mat-label>
-            <input matInput type="email" class="form-control" formControlName="email">
+            <input matInput type="email" class="form-control" formControlName="email" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>Mot de Passe</mat-label>
-            <input matInput type="password" class="form-control" name="password" formControlName="password">
+            <input matInput type="password" class="form-control" name="password" formControlName="password" required>
             <div *ngIf="f['password'].touched && f['password'].invalid">
                 <div *ngIf="f['password'].errors && f['password'].errors['required']"> password is required </div>
             </div>
@@ -58,7 +58,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="un ">
             <mat-label>confirmation mot de passe</mat-label>
-            <input matInput type="password" class="form-control" name="confirm_pass" formControlName="confirm_pass">
+            <input matInput type="password" class="form-control" name="confirm_pass" formControlName="confirm_pass" required>
             <div *ngIf="f['confirm_pass'].touched && f['confirm_pass'].invalid">
                 <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['required']"> confirm password is required </div>
                 <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['ConfirmedValidator']"> password dont' match</div>
@@ -70,4 +70,116 @@
     </form>
     <p>vous avez un compte déjà?
         <a href=" "> Se connecter </a>
-</div>
+</div> -->
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100 pt-0">
+        <br>
+
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <div class=" titre text-center">
+                            <div class="t1">Créer un compte sur BIODY DIET</div>
+
+                            <img src="./assets/logo.png" style="width: 85px;" alt="logo">
+                            <h4 class="  pb-1" style="font-size: x-large; color: #123640;">BIODY DIET</h4>
+                        </div>
+                        <form [formGroup]="registerData" (ngSubmit)="register()">
+
+                            <div class="row">
+
+                                <mat-form-field class="col-md-6   mt-2" appearance="outline">
+
+                                    <mat-label>Nom</mat-label>
+                                    <input matInput type="text" class="form-control" formControlName="firstName"
+                                        pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="col-md-6  mt-2" appearance="outline">
+
+                                    <mat-label>Prénom</mat-label>
+                                    <input matInput type="text" class="form-control" formControlName="lastName"
+                                        pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <mat-form-field class="col-md-6  mt-2" appearance="outline">
+
+                                    <mat-label>Date de naissance</mat-label>
+                                    <input matInput type="date" class="form-control" formControlName="birth_date"  required>
+                                </mat-form-field>
+                                <mat-form-field class="col-md-6 mb-4  mt-2" appearance="outline">
+
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="email" class="form-control" formControlName="email" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <mat-form-field class="col-md-6   mt-2" appearance="outline">
+
+                                    <mat-label>Occupation</mat-label>
+                                    <input matInput type="text" class="form-control" formControlName="occupation"
+                                        required>
+                                </mat-form-field>
+                                <mat-form-field class="col-md-6   mt-2" appearance="outline">
+
+                                    <mat-label>Entreprise</mat-label>
+                                    <input matInput type="text" class="form-control" formControlName="entreprise"
+                                        required>
+                                </mat-form-field>
+                                <mat-form-field class="col-md-6  mt-2" appearance="outline">
+
+                                    <mat-label>Adresse</mat-label>
+                                    <input matInput type="text" class="form-control" formControlName="adresse" required>
+                                </mat-form-field>
+                                <mat-form-field class="col-md-6  mt-2" appearance="outline">
+
+                                    <mat-label>Ville</mat-label>
+                                    <input matInput type="text" class="form-control" formControlName="country" required>
+                                </mat-form-field>
+
+                                <mat-form-field class="col-md-6   mt-2" appearance="outline">
+                                    <mat-label>Mot de passe</mat-label>
+                                    <input matInput type="password" class="form-control" formControlName="password"
+                                        required>
+                                    <div *ngIf="f['password'].touched && f['password'].invalid">
+                                        <div *ngIf="f['password'].errors && f['password'].errors['required']"> password
+                                            is required </div>
+                                    </div>
+                                </mat-form-field>
+                                <mat-form-field class="col-md-6 mb-4  mt-2" appearance="outline">
+
+                                    <mat-label>Confirmation mot de passe</mat-label>
+                                    <input matInput type="password" class="form-control" formControlName="confirm_pass"
+                                        required>
+                                    <div *ngIf="f['confirm_pass'].touched && f['confirm_pass'].invalid">
+                                        <div *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['required']">
+                                            confirm password is required </div>
+                                        <div
+                                            *ngIf="f['confirm_pass'].errors && f['confirm_pass'].errors['ConfirmedValidator']">
+                                            password dont' match</div>
+                                    </div>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="mt-2 pt-2">
+
+                                <button class="btn btn-lg" type="submit"
+                                    [disabled]="!registerData.valid">S'inscrire</button>
+                            </div>
+                            <p style="float: right;">vous avez un compte déjà?
+                                <a href=" "> Se connecter </a>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+          
+        </div>
+        
+    </div>
+</section>

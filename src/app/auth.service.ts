@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import {ADD_PREPARATION_URL, GETPROFILE_URL,  LOGIN_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
+import {ADD_PREPARATION_URL, GETPROFILE_URL,  LOGIN_URL, PAYMENT_URL, REGISTER_URL, VERIF_URL } from 'src/common/url';
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -105,10 +105,11 @@ export class RestUserService implements OnInit {
   }
   logout() {
     sessionStorage.setItem('isLoggedIn', 'false');
-    sessionStorage.clear();
+    localStorage.clear();
     console.clear()
     this.loader.hide()
 
   }
+  
 
 }

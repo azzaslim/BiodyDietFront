@@ -64,7 +64,7 @@ export class AddAnswersComponent implements OnInit {
         this.Questionnaires.push(x[i]['title'])
     }),
 
-      (await this.RestProductService.getProducts()).subscribe((x) => {
+      (await this.RestProductService.getProductsAdmin()).subscribe((x) => {
         console.log(x)
         let tmp = [];
         let tmp2 = [];

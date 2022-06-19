@@ -30,24 +30,24 @@ export class DetailQuestionnaireComponent implements OnInit {
  @ViewChild(MatSort) sort!: MatSort;
 
  async ngOnInit() {
-  (await this.RestQuestionnaireService.getQuestionnaire(localStorage.getItem('questionnaire to manage'))).subscribe(
+  (await this.RestQuestionnaireService.getQuestionnaire(localStorage.getItem('Questionnaire to manage'))).subscribe(
     response => {
       console.log(response)    
-    //  localStorage.setItem("questionnairetoupdate",JSON.stringify(response))
+    localStorage.setItem("questionnairetoupdate",JSON.stringify(response))
       this.getInfoQuestionnaire()
 
     })
  }
  async getInfoQuestionnaire(){
   
-   this.id= JSON.parse(localStorage.getItem('questionnairetoupdate')!)['id'],
-   this.title= JSON.parse(localStorage.getItem('questionnairetoupdate')!)['title'],
-   this.isPublished= JSON.parse(localStorage.getItem('questionnairetoupdate')!)['isPublished'],
-   this.ordering= JSON.parse(localStorage.getItem('questionnairetoupdate')!)['ordering'],
-   this.createdAt= (this.datePipe.transform(JSON.parse(localStorage.getItem('questionnairetoupdate')!)['createdAt'], 'dd/MM/yyyy')!)
-   //this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('questionnairetoupdate')!)['modifiedAt']['timestamp']* 1000.05, 'dd/MM/yyyy')!
-   this.creatorUser= JSON.parse(localStorage.getItem('questionnairetoupdate')!)['creatorUser']['email'],
-   this.modifierUser= JSON.parse(localStorage.getItem('questionnairetoupdate')!)['modifierUser']
+   this.id= JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['id'],
+   this.title= JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['title'],
+   this.isPublished= JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['is_published'],
+   this.ordering= JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['ordering'],
+   this.createdAt= (this.datePipe.transform(JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['created_at'], 'dd/MM/yyyy')!)
+  this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['modified_at'], 'dd/MM/yyyy')!
+   this.creatorUser= JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['creator_user']['email'],
+   this.modifierUser= JSON.parse(localStorage.getItem('questionnairetoupdate')!)[0]['modifier_user']['email']
  
   
  }

@@ -27,7 +27,7 @@ AddUserForm !: FormGroup;
     this.AddUserForm = this._formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
       lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
-      birthDate: ['', [Validators.required, Validators.pattern('^(((0[1-9]|[12][0-9]|30)[-/]?(0[13-9]|1[012])|31[-/]?(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[-/]?02)[-/](?:19|20)[0-9]{2}|29[-/]?02[-/](?:19|20)[0-9]{2})$')]],
+      birthDate: ['',],
       occupation: [, Validators.required],
       codePostale: [, Validators.required],
       adresse: [, Validators.required],
@@ -54,9 +54,7 @@ AddUser() {
 
   let data = this.AddUserForm.value
 const prasedDate = Date.parse(this.AddUserForm.get('birthDate')!.value)
-if (isNaN(prasedDate) || this.AddUserForm.get('birthDate')!.value.length < 10) {
-alert("date de naissance doit etre sous la forme dd-mm-aaaa ou dd/mm/aaaa")
-}
+
 /* if ((typeof (this.registerData.get('firstName')!.value) && 
 (this.registerData.get('lastName')!.value)&& 
 (this.registerData.get('country')!.value) &&
@@ -68,7 +66,6 @@ alert("veuillez entrer des informations corrects")
 }
 if ((typeof (this.registerData.get('codePostale')!.value) === null) )
 alert("entrez un valide code postale") */
-else {
   this.RestUserService.AddUser(data)
     .subscribe(
       response => {
@@ -79,7 +76,7 @@ else {
       err => {console.log(err),
       this.failNotification()}
     )
-}
+
 }
 failNotification(){
   Swal.fire('cet email est déjà utilisé ','veuillez verifier votre information','error')

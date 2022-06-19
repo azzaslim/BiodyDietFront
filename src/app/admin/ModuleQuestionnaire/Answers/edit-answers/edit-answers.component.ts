@@ -63,7 +63,7 @@ export class EditAnswersComponent implements OnInit {
         this.Questionnaires.push(x[i]['title'])
     }),
 
-      (await this.RestProductService.getProducts()).subscribe((x) => {
+      (await this.RestProductService.getProductsAdmin()).subscribe((x) => {
         let tmp = [];
         let tmp2 = [];
 
@@ -91,7 +91,7 @@ export class EditAnswersComponent implements OnInit {
        console.log(response)
       //  console.log(response[0]['questionnaire']['title'])
         
-        this.productsGetted = response[0]['answersProducts']
+        this.productsGetted = response[0].answers_products
         console.log(this.productsGetted)
         this.UpdateQuest = this._formBuilder.group({
 
@@ -125,7 +125,7 @@ export class EditAnswersComponent implements OnInit {
            this.UpdateQuest = this._formBuilder.group({
             title: [JSON.parse(localStorage.getItem('answertoupdate')!)['name']],
             order: [JSON.parse(localStorage.getItem('answertoupdate')!)['ordering']],
-            ispublished: [JSON.parse(localStorage.getItem('answertoupdate')!)['isPublished']],
+            ispublished: [JSON.parse(localStorage.getItem('answertoupdate')!)['is_published']],
             Questionnaire: [response[0]['questionnaire']['title']],
             C_preparation: [JSON.parse(localStorage.getItem('C_preparation')!)],
         I_preparation: [JSON.parse(localStorage.getItem('I_preparation')!)],

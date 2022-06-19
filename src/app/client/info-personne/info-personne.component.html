@@ -9,7 +9,7 @@
 
 
         <mat-step [stepControl]="firstFormGroup" label="Dernière Analyse" [editable]="true">
-            <div class="titre" style="font-size: 2vw;">Analyse BiodyManager du </div>
+            <div class="titre" style="font-size: 2vw;">Analyse BiodyManager du {{DernierePresc}}</div>
 
 
             <table class="table table-striped tbody table-hover ">
@@ -23,38 +23,38 @@
                 <tbody>
                     <tr>
                         <td>IMC </td>
-                        <td>555 77 854</td>
-                        <td>555 77 854aaaa</td>
+                        <td>20.81</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Masse grasse à hydratation constante </td>
-                        <td>555 77 854</td>
-                        <td>555 77 854aaaa</td>
+                        <td>18.13%</td>
+                        <td>-1.83Kg</td>
                     </tr>
                     <tr>
                         <td>Masse musculaire squelettique </td>
-                        <td>555 77 854</td>
-                        <td>555 77 854aaaa</td>
+                        <td>23.00 Kg</td>
+                        <td>4.29 Kg</td>
                     </tr>
                     <tr>
                         <td>Index SMI</td>
-                        <td>555 77 854</td>
-                        <td>555 77 854aaaa</td>
+                        <td>9.57 kg/m²</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Taux d'hydratation hors graisse </td>
-                        <td>555 77 854</td>
-                        <td>555 77 854aaaa</td>
+                        <td>81.69 %	</td>
+                        <td>3.83 L</td>
                     </tr>
                     <tr>
                         <td>Eau extracellulaire</td>
-                        <td>555 77 854</td>
-                        <td>555 77 854aaaa</td>
+                        <td>39.82 %	</td>
+                        <td>2.18 %</td>
                     </tr>
                     <tr>
                         <td>Contenu minéral osseux</td>
-                        <td>555 77 854</td>
-                        <td>555 77 854aaaa</td>
+                        <td>2.14 kg	</td>
+                        <td>0.32 kg</td>
                     </tr>
                 </tbody>
 
@@ -99,13 +99,14 @@
 
             <mat-accordion class="panel ">
 
-                <mat-expansion-panel (opened)="panelOpenState4=true ; " (closed)="panelOpenState4=false " disabled>
+                <mat-expansion-panel (opened)="panelOpenState4=true ; " (closed)="panelOpenState4=false " >
                     <mat-expansion-panel-header [style.background-color]="panelOpenState4 ? '#818181 !important' : '' " style="border-bottom-left-radius: 0em !important; border-bottom-right-radius: 0em  !important;   ">
                         <mat-panel-title [style.color]="panelOpenState4 ? 'white !important' : '#a49c9b !important' ">
                              
                            Prescription compléments alimentaires le: &nbsp; &nbsp;<strong> {{DernierePresc}}</strong><br>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <h4 *ngFor="let prod of ProdImpression;"> {{prod.prod}}</h4>
 
                     
                    
@@ -160,7 +161,7 @@
             </mat-accordion>
 
             <div class=" boutton d-flex justify-content-center ">
-                <button (click)='SavePrescription()' mat-button matStepperNext> ENREGISTRER</button>
+                <button (click)='SavePrescription()' [disabled]="click" mat-button matStepperNext> ENREGISTRER</button>
             </div>
             <br><br><br><br>
         </mat-step>

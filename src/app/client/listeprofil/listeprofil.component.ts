@@ -38,6 +38,12 @@ export class ListeprofilComponent implements OnInit {
     localStorage.removeItem('nomCheck');
     localStorage.removeItem('prescriptionCheck');
     localStorage.removeItem('logoCheck');
+    localStorage.removeItem('BirthDate');
+    localStorage.removeItem('Birthdate');
+    localStorage.removeItem('prodImpression');
+
+
+
 this.loader.show();
 
     (await this.user.getPatients()).subscribe((x) => {

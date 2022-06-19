@@ -47,11 +47,6 @@ import { GestionComplementComponent } from './client/gestion-complement/gestion-
 import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
 import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
-<<<<<<< HEAD
-import { PaiementComponent } from './paiement/paiement.component';
-import { MentionLegalComponent } from './mention-legal/mention-legal.component';
-import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
-=======
 import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
 import { AddPreparationComponent } from './admin/admin-preparation/add-preparation/add-preparation.component';
 import { PreparationDetailsComponent } from './admin/admin-preparation/preparation-details/preparation-details.component';
@@ -71,7 +66,9 @@ import { EditComplementComponent } from './client/gestion/ComplementManage/edit-
 import { AddUserComplementComponent } from './client/gestion/ComplementManage/add-user-complement/add-user-complement.component';
 import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductManage/edit-cosmetic-product/edit-cosmetic-product.component';
 import { AddCosmeticProductComponent } from './client/gestion/CosmeticProductManage/add-cosmetic-product/add-cosmetic-product.component';
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
+import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
+import { MentionLegalComponent } from './mention-legal/mention-legal.component';
+import { PaiementComponent } from './paiement/paiement.component';
 
 
 

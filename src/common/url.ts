@@ -39,10 +39,7 @@ export const UPDATE_PRODUCT_URL= BASE_URL+'/api/updateProduct';
 export const ADD_PRODUCT_URL= BASE_URL+'api/addproduct';
 export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETALL_PRODUCTS_URL= BASE_URL+'api/getProducts';
-<<<<<<< HEAD
 export const GETALL_PRODUCTSADMIN_URL= BASE_URL+'api/getProductsAdmin';
-=======
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
 
 export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
 export const GETALLADMIN_COMPLEMENTS_URL= BASE_URL+'api/getAdmincomplements';

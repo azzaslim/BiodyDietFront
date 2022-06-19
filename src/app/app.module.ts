@@ -25,7 +25,6 @@ import {MatStepContent, MatStepLabel, MatStepperModule} from '@angular/material/
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {CdkTableModule} from '@angular/cdk/table';
-import { MatTableExporterModule } from 'mat-table-exporter';
 import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './client/home/home.component';
@@ -88,11 +87,6 @@ import { GestionComplementComponent } from './client/gestion-complement/gestion-
 import { ComplementsComponent } from './client/gestion/ComplementManage/complements/complements.component';
 import { ProduitsComponent } from './client/gestion/CosmeticProductManage/produits/produits.component';
 import { PreparationComponent } from './client/gestion/preparationManage/preparation/preparation.component';
-<<<<<<< HEAD
-import { PaiementComponent } from './paiement/paiement.component';
-import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
-import { MentionLegalComponent } from './mention-legal/mention-legal.component';
-=======
 import { AdminPrepationManageComponent } from './admin/admin-preparation/admin-prepation-manage/admin-prepation-manage.component';
 import { AddPreparationComponent } from './admin/admin-preparation/add-preparation/add-preparation.component';
 import { PreparationeditComponent } from './admin/admin-preparation/preparationedit/preparationedit.component';
@@ -112,7 +106,7 @@ import { AddUserComplementComponent } from './client/gestion/ComplementManage/ad
 import { EditComplementComponent } from './client/gestion/ComplementManage/edit-complement/edit-complement.component';
 import { AddCosmeticProductComponent } from './client/gestion/CosmeticProductManage/add-cosmetic-product/add-cosmetic-product.component';
 import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductManage/edit-cosmetic-product/edit-cosmetic-product.component';
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 
 
@@ -168,12 +162,6 @@ import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductMa
          EditAnswersComponent,
          HomeMQuestionnaireComponent,
          PrintLayoutComponent,
-<<<<<<< HEAD
-         InvoiceComponent,
-         PaiementComponent,
-         ConditionUtilisationComponent,
-         MentionLegalComponent,  
-=======
          InvoiceComponent,  
         AdminPrepationManageComponent,
        AddPreparationComponent,
@@ -197,7 +185,6 @@ import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductMa
        AddCosmeticProductComponent
 
 
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
   ],
   imports: [
 

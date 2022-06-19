@@ -27,7 +27,7 @@
                             <mat-form-field appearance="outline" class=" col-md-3 ">
                                 <mat-label>Nom</mat-label>
                                 <input matInput placeholder="Laura " type="text"   formControlName="firstName"
-                                    pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
+                                    pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" >
                                 <div *ngIf="f['firstName'].touched && f['firstName'].invalid">
                                     <div *ngIf="f['firstName'].errors && f['firstName'].errors['']"> le nom est
                                         obligatoire </div>
@@ -39,7 +39,7 @@
                             <mat-form-field appearance="outline" class="col-md-3 ">
                                 <mat-label>Prénom</mat-label>
                                 <input matInput placeholder="Martin " type="text" formControlName="lastName"
-                                    pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" required>
+                                    pattern="^[a-z|A-Z]+(?: [a-z|A-Z]+)*$" >
                                 <div *ngIf="f['lastName'].touched && f['lastName'].invalid">
                                     <div *ngIf="f['lastName'].errors && f['lastName'].errors['']"> le prénom est
                                         obligatoire </div>
@@ -49,7 +49,7 @@
                             </mat-form-field>
                             <mat-form-field appearance="outline" class=" col-md-3 ">
                                 <mat-label>Date de Naissance</mat-label>
-                                <input matInput type="date" formControlName="birth_date" required>
+                                <input matInput type="date" formControlName="birth_date" >
                                 <div *ngIf="f['birth_date'].touched && f['birth_date'].invalid">
                                     <div *ngIf="f['birth_date'].errors && f['birth_date'].errors['']"> la date de
                                         naissance est obligatoire </div>
@@ -75,7 +75,7 @@
                             <mat-form-field appearance="outline" class=" col-md-3 ">
                                 <mat-label>Poids</mat-label>
                                 <input matInput placeholder="80 "   (keypress)="numberOnly($event)" type="text" min="14" max="250"
-                                    formControlName="weight" required>
+                                    formControlName="weight" >
                                 <div *ngIf="f['weight'].touched && f['weight'].invalid">
                                     <div *ngIf="f['weight'].errors && f['weight'].errors['']"> le poids est obligatoire
                                     </div>
@@ -85,7 +85,7 @@
                             <mat-form-field appearance="outline" class="col-md-3 ">
                                 <mat-label>Taille</mat-label>
                                 <input matInput placeholder="176 " (keypress)="numberOnly($event)"  type="text" min="100" max="220"
-                                    formControlName="height" required>
+                                    formControlName="height" >
                                 <div *ngIf="f['height'].touched && f['height'].invalid">
                                     <div *ngIf="f['height'].errors && f['height'].errors['']"> la taille est obligatoire
                                     </div>

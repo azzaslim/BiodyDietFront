@@ -19,11 +19,7 @@ import {
   GETCOSMETIC_PRODUCTS_URL,
   GETADMINCOSMETIC_PRODUCTS_URL,
 } from 'src/app/common/url';
-<<<<<<< HEAD
-import { GETALL_PREPARATION_URL, GETALL_PRODUCTSADMIN_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
-=======
-import { GETALLADMIN_COMPLEMENTS_URL, GETALL_ADMINPREPARATION_URL, GETALL_PREPARATION_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
+import { GETALLADMIN_COMPLEMENTS_URL, GETALL_ADMINPREPARATION_URL, GETALL_PREPARATION_URL, GETALL_PRODUCTSADMIN_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
 
 export interface Product {
   id: number;
@@ -59,19 +55,11 @@ export class RestProductService {
     );
     return  this.http.get<Product[]>(GETALL_PRODUCTS_URL, { headers });
   }
-<<<<<<< HEAD
-  getProductsAdmin(): Observable<Product[]> {
-=======
   getADMINCosmeticProducts(): Observable<Product[]> {
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
     let headers = new HttpHeaders().set(
       'Authorization',
       `Bearer ${this.getToken()} `
     );
-<<<<<<< HEAD
-    return  this.http.get<Product[]>(GETALL_PRODUCTSADMIN_URL, { headers });
-  }
-=======
     return  this.http.get<Product[]>(GETADMINCOSMETIC_PRODUCTS_URL, { headers });
   }
 
@@ -83,8 +71,13 @@ export class RestProductService {
     );
     return  this.http.get<Product[]>(GETCOSMETIC_PRODUCTS_URL, { headers });
   }
-  
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
+  getProductsAdmin(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return  this.http.get<Product[]>(GETALL_PRODUCTSADMIN_URL, { headers });
+  }
   getPreparations(): Observable<Product[]> {
     let headers = new HttpHeaders().set(
       'Authorization',

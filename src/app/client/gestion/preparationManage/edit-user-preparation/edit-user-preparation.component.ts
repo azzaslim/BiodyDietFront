@@ -41,9 +41,9 @@ export class EditUserPreparationComponent implements OnInit {
       portion: [''],
       comment: [''], 
       composition: [''], 
-      Symptoms:[this.Symotoml],
+      Symptoms:[this.Symotoml,Validators.required],
       Nutrients:[this.Nutrientl],
-      symptomsList: [''],
+      symptomsList: ['',Validators.required],
       NutrientsList:[''],
     });
 
@@ -106,6 +106,9 @@ export class EditUserPreparationComponent implements OnInit {
         NutrientsList: [JSON.parse(localStorage.getItem('nutrientsList')!)],
       });
         }
+        get f() {
+          return this.CurrentProduct.controls;
+        }
   async updateProduct(){
     this.CurrentProduct.controls.symptomsList.value.forEach((element: any) => this.SelectedSymptoms.push({ 'symptom_name': element}));
     this.CurrentProduct.controls.NutrientsList.value.forEach((element: any) => this.SelectedNutrients.push({ 'name': element}));
@@ -130,11 +133,7 @@ export class EditUserPreparationComponent implements OnInit {
       .subscribe(
            response => {
           console.log(response),
-<<<<<<< HEAD
-          this.successNotification(),
-=======
           this.successNotification()
->>>>>>> 1ff7d46c3935ba051973b1d47bfc343b83482d56
           this.router.navigate(['/preparations'])
   },
   err =>{

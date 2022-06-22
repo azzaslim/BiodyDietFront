@@ -67,13 +67,8 @@ console.log( this.previewUrl) ;
       {
         alert("no patient exist");
 
-         this.role = JSON.parse(localStorage.getItem('currentUser')!).role
-
-          if ((this.role == 'ROLE_ADMIN')||(this.role == 'ROLE_MANAGER')) {
-            this.router.navigate(['/admin/home'])
+        
           }
-          else
-            this.router.navigate(['/home'])      }
 
       else
       this.dataSource = new MatTableDataSource(x);

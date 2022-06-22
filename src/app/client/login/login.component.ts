@@ -78,7 +78,13 @@ localStorage.setItem('email',this.userData.value.username)
           this.Days = Math.round(Time / (1000 * 3600 * 24)); //Diference in Days
           console.log(this.Days)
         
-            if (this.Days > 0)
+              if (JSON.parse(localStorage.getItem('currentUser')!).subscription_status ==false)
+              {
+                this.alerterreur();
+                this.email=localStorage.getItem('email')!
+                this.loader.hide();
+              }
+              else if (JSON.parse(localStorage.getItem('currentUser')!).subscription_status !==false||(this.Days > 0))
               {this.router.navigate(['/home'])}
               else 
             {  this.email=localStorage.getItem('email')!

@@ -66,9 +66,9 @@ import { EditComplementComponent } from './client/gestion/ComplementManage/edit-
 import { AddUserComplementComponent } from './client/gestion/ComplementManage/add-user-complement/add-user-complement.component';
 import { EditCosmeticProductComponent } from './client/gestion/CosmeticProductManage/edit-cosmetic-product/edit-cosmetic-product.component';
 import { AddCosmeticProductComponent } from './client/gestion/CosmeticProductManage/add-cosmetic-product/add-cosmetic-product.component';
-import { PaiementComponent } from './paiement/paiement.component';
-import { MentionLegalComponent } from './mention-legal/mention-legal.component';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
+import { MentionLegalComponent } from './mention-legal/mention-legal.component';
+import { PaiementComponent } from './paiement/paiement.component';
 
 
 

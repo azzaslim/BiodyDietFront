@@ -29,7 +29,8 @@ export class ComplementsComponent implements OnInit {
   dataSource2 = new MatTableDataSource<Symptom>();
   displayedColumns5 = ['tenor'];
   dataSource4 = new MatTableDataSource<Product>();
-  
+  visibility!: string;
+
   nutrient!: string;
   data: Array<any> = [];
   data1: Array<any> = [];
@@ -124,6 +125,7 @@ export class ComplementsComponent implements OnInit {
       }
     })
   }
+  
 
   ConfirmUptadeVisibility() {
 
@@ -136,12 +138,20 @@ export class ComplementsComponent implements OnInit {
       icon: 'info',
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'Masquer',
+      confirmButtonText: 'Masquer/Demasquer',
       denyButtonText: `Annuler`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.UpdateVisisbilityProduct();
-        Swal.fire('cette preparation a été masquée', '', 'success')
+        if((JSON.parse(localStorage.getItem('product')!)['visibility'])==true)
+        { 
+          this.UpdateVisisbilityProduct();
+          Swal.fire('cette preparation a été masquée', '', 'success')
+        }
+        else{
+          this.UpdateVisisbilityProduct1();
+          Swal.fire('cette preparation a été démasquée', '', 'success')
+
+        }
       }
     })
   }
@@ -166,6 +176,8 @@ export class ComplementsComponent implements OnInit {
     this.symptoms=[];
     localStorage.setItem('product', JSON.stringify(product));
     localStorage.setItem('symptom', JSON.stringify(this.symptoms));
+    this.visibility=(JSON.parse(localStorage.getItem('product')!)['visibility']);
+    console.log(this.visibility);
   }
 
   confirmBox(){
@@ -187,6 +199,20 @@ export class ComplementsComponent implements OnInit {
   async UpdateVisisbilityProduct() {
     //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.UpdateProductVisibility())
+      .subscribe(
+        async response => {
+          console.log(response)
+          this.router.navigate(['/preparation'])
+          this.ngOnInit()
+        },
+        err => {
+          console.log(err)
+        })
+
+  }
+  async UpdateVisisbilityProduct1() {
+    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
+    (await this.RestProductService.UpdateProductVisibility1())
       .subscribe(
         async response => {
           console.log(response)
@@ -225,7 +251,6 @@ export class ComplementsComponent implements OnInit {
     console.log("======>",row.product_nutrients )
 
      console.log("potionnnnn", this.portions)
-     //console.log("nutrient",row.product_nutrients[0].nutrient);
      for (var i = 0; i < row.product_nutrients.length; i++) {
                console.log("nutrient",row.product_nutrients[i].nutrient);
                this.nutrients.push(row.product_nutrients[i].nutrient);
@@ -248,7 +273,6 @@ export class ComplementsComponent implements OnInit {
       {
       
          x= true;
-         // this.allsymptoms[i].checked=true;
       }
      
     }

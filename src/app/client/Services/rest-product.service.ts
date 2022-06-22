@@ -202,6 +202,23 @@ export class RestProductService {
     );
   }
 
+  async UpdateProductVisibility1() {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    const params = new HttpParams().set(
+      'Id',
+      JSON.parse(localStorage.getItem('product to manage')!)
+    );
+    //console.log(params)
+    return await this.http.put<any>(
+      UPDATE_PRODUCT_VISIBILITY_URL + '/' + params,
+      JSON.stringify({ visibility: true }),
+      { headers }
+    );
+  }
+
   async getProduct(id: any): Promise<Observable<any>> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

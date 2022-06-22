@@ -120,8 +120,8 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
 
   successNotification() {
     Swal.fire('vos informations ont été importées avec succés !!', 'Les symptomes dejà existants n \'ont pas été ajoutés', 'success')
-    this.router.navigate(['/admin/symptom/symptomlist']);
-    }
+    window.location.reload();
+  }
   
   confirmBox(){
     Swal.fire({

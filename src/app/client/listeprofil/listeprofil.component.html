@@ -61,6 +61,7 @@
 </table>
 
 </div>
+<<<<<<< HEAD
 
 
 
@@ -72,3 +73,27 @@
 </label>
 </div>
 <app-footer></app-footer>
+=======
+
+
+<div class="container">
+    <div class="row">
+    
+      <br>  <br> <br> <br> <br> <br> <br> <br> <br>
+      <div class=" col-4 col-md">
+        <button mat-flat-button color="primary"   class="export "  (click)="exporter.exportTable('csv')">Exporter en CSV</button>
+      </div>
+      <div class=" col-4 col-md">
+        <button mat-flat-button color="primary"(click)="exporter.exportTable('xls')">Exporter en excels</button>
+    </div>
+    <div class=" col-4 col-md">
+        <label  for="fileInput" >
+            <a mat-flat-button color="primary" class="import" > Importer </a>
+        </label>    </div>
+    </div>
+  </div>
+
+
+<app-footer></app-footer>
+
+>>>>>>> 1ff7d46c3935ba051973b1d47bfc343b83482d56

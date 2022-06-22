@@ -49,6 +49,8 @@ export class PreparationComponent implements OnInit {
   symptoms:any = [];
   products: any;
   nutrients:any = [];
+  visibility!: string;
+
   loading$ = this.loader.loading$;
   constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router, private dialog: MatDialog, private RestProductService: RestProductService, private authService: RestUserService, private symptomservice: RestSymptomService,private loader: LoadingService) { }
   @ViewChild(MatSort) sort!: MatSort;
@@ -130,6 +132,7 @@ export class PreparationComponent implements OnInit {
     })
   }
 
+  
   ConfirmUptadeVisibility() {
 
     console.log("productttttt",(JSON.parse(localStorage.getItem('product')!)['creator_user']['id']))
@@ -141,12 +144,20 @@ export class PreparationComponent implements OnInit {
       icon: 'info',
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'Masquer',
+      confirmButtonText: 'Masquer/Demasquer',
       denyButtonText: `Annuler`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.UpdateVisisbilityProduct();
-        Swal.fire('cette preparation a été masquée', '', 'success')
+        if((JSON.parse(localStorage.getItem('product')!)['visibility'])==true)
+        { 
+          this.UpdateVisisbilityProduct();
+          Swal.fire('cette preparation a été masquée', '', 'success')
+        }
+        else{
+          this.UpdateVisisbilityProduct1();
+          Swal.fire('cette preparation a été démasquée', '', 'success')
+
+        }
       }
     })
   }
@@ -154,7 +165,7 @@ export class PreparationComponent implements OnInit {
     Swal.fire({
       position: 'center',
       icon: 'info',
-      title: 'vous n\'avez le droit de masquer cette preparation',
+      title: 'vous n\'avez le droit de masquer ce complement',
       showConfirmButton: false,
       timer: 1500
     })
@@ -170,8 +181,8 @@ export class PreparationComponent implements OnInit {
     this.symptoms=[];
     localStorage.setItem('product', JSON.stringify(product));
     localStorage.setItem('symptom', JSON.stringify(this.symptoms));
+    this.visibility=(JSON.parse(localStorage.getItem('product')!)['visibility']);
 
-    //console.log(localStorage.getItem('product'));
   }
 
   confirmBox(){
@@ -188,7 +199,20 @@ export class PreparationComponent implements OnInit {
   }
 
 
+  async UpdateVisisbilityProduct1() {
+    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
+    (await this.RestProductService.UpdateProductVisibility1())
+      .subscribe(
+        async response => {
+          console.log(response)
+          this.router.navigate(['/preparation'])
+          this.ngOnInit()
+        },
+        err => {
+          console.log(err)
+        })
 
+  }
 
   async UpdateVisisbilityProduct() {
     //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),

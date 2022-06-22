@@ -130,7 +130,11 @@ export class EditUserPreparationComponent implements OnInit {
       .subscribe(
            response => {
           console.log(response),
+<<<<<<< HEAD
           this.successNotification(),
+=======
+          this.successNotification()
+>>>>>>> 1ff7d46c3935ba051973b1d47bfc343b83482d56
           this.router.navigate(['/preparations'])
   },
   err =>{

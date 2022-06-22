@@ -179,3 +179,6 @@ border-width:0.2vw;
     border-radius: 0vw 25vw 25vw 0vw ;
     
 }
+.row{
+  margin-left:130px;
+}

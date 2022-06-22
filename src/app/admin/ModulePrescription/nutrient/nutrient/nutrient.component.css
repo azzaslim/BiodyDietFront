@@ -12,7 +12,6 @@
   margin-bottom: 40px;
 }
 table{
-   
     margin-top:0.5vw;
     table-layout: fixed;
     margin:auto;
@@ -134,6 +133,8 @@ background: none;}
 }
 .mat-flat-button{
   background-color: #23b4b8;
+  height: 30px;
+  margin-top: 30px;
 }
 table{
    
@@ -177,6 +178,7 @@ table th{
   margin-top: 4%;   
   height: 30%;
 }
+
 .link{
   color:rgb(240, 248, 255);
 }
@@ -185,4 +187,14 @@ table th{
 text-decoration: none;}
 #fileInput{
   display: none;
+}
+.row{
+  margin-left:130px;
+  
+}
+.import{
+  width: 200px;
+}
+.import:hover{
+  color: #FFF;
 }

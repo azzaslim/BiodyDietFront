@@ -74,11 +74,20 @@
 
 </div>
 
-<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
-    <a href="/admin/ModulePrescription/Prescript"><button mat-flat-button color="primary">
+<div class="container">
+    <div class="row">
+      <div class=" col-4 col-md">
+        <a href="/admin/ModulePrescription/Prescript"><button mat-flat-button color="primary">
             <mat-icon>keyboard_return</mat-icon>&emsp; retour au menu 
         </button></a>
-        <button mat-flat-button color="primary"   class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
-<button mat-flat-button color="primary"(click)="exporter.exportTable('xls')">export to xls</button>
-</div>
+      </div>
+      <br>  <br> <br> <br> <br> <br> <br> <br> <br>
+      <div class=" col-4 col-md">
+        <button mat-flat-button color="primary"   class="export "  (click)="exporter.exportTable('csv')">Exporter en CSV</button>
+      </div>
+      <div class=" col-4 col-md">
+        <button mat-flat-button color="primary"(click)="exporter.exportTable('xls')">Exporter en excels</button>
+    </div>
+   
+  </div>
 <app-footer></app-footer>

@@ -123,6 +123,8 @@ background: none;}
 }
 .mat-flat-button{
   background-color: #23b4b8;
+  height: 30px;
+  margin-top: 30px;
 }
 table{
    
@@ -188,4 +190,13 @@ border-width:0.2vw;
 }
 #fileInput{
   display:none;
+}
+.row{
+  margin-left:130px;
+}
+.import:hover{
+  color: #FFF;
+}
+.import{
+  width: 200px;
 }

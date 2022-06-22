@@ -102,6 +102,4 @@ export class AddCosmeticProductComponent implements OnInit {
           timer: 1500
         })
       }
-
-
 }

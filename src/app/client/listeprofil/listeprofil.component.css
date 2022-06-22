@@ -41,7 +41,7 @@ input  {
     border: solid #56afaf;
   background-color: #FFF;
   margin-top:4vw;
-  margin-left:25vw;
+  margin-left:10vw;
   margin-bottom: 1vw;;
   border-radius: 25vw 0vw 0vw 25vw ;
   border-width:0.2vw;
@@ -56,7 +56,6 @@ input  {
       font-weight: bold;
       height:3vw;
       padding: 1vw;
-
       width:8%;
       font-size: 1vw;
       margin-top:4vw;
@@ -101,4 +100,19 @@ margin-left:75%;
 }
 .mat-flat-button{
   background-color: #23b4b8;
+
+}
+#fileInput{
+  height: 56px;
+  width: 300px;
+  margin-left: 600px;
+}
+a:hover{
+  color: #FFF;
+}
+.export1{
+margin-left: 90px;
+}
+#fileInput{
+  display: none;
 }

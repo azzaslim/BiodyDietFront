@@ -50,8 +50,14 @@ export class EditUserPreparationComponent implements OnInit {
 }
   async ngOnInit(): Promise<void> {
     (await this.restProductservice.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!))).subscribe(
-      response => {
-       
+      async response => {
+        (await this.symptomservice.getSymptoms()).subscribe((x) => {
+          let list2= [];
+          for (var i = 0; i < x.length; i++) {
+              list2.push(x[i]['symptom_name']);
+              this.dropdownListSymptom = list2;
+            }
+        });
         //console.log(response)    
             localStorage.setItem("producttoupdate",JSON.stringify(response))
             this.CurrentProduct = this._formBuilder.group({
@@ -62,29 +68,21 @@ export class EditUserPreparationComponent implements OnInit {
               symptomsList: [JSON.parse(localStorage.getItem('symptomsList')!)],
              NutrientsList: [JSON.parse(localStorage.getItem('nutrientsList')!)],
             });
-          }),
-      (await this.symptomservice.getSymptoms()).subscribe((x) => {
-        let list2= [];
-        for (var i = 0; i < x.length; i++) {
-            list2.push(x[i]['symptom_name']);
-            this.dropdownListSymptom = list2;
-          }
-      }),
+          });
+     
       (await this.RestNutrientService.getNutrients()).subscribe((x) => {
         let list2= [];
         for (var i = 0; i < x.length; i++) {
             list2.push(x[i]['name']);
             this.dropdownListNutrient = list2;
           }
-      }),
+      });
       (await (this.restProductservice.getOneProduct(JSON.parse(localStorage.getItem('product to manage')!)))).subscribe(
         response => {
-        //console.log(response[0]);
-        
-          //console.log(response);
+          localStorage.removeItem('symptomsList');
+          localStorage.removeItem('nutrientsList');
 
         let test1=(response[0]['product_nutrients']);
-        //console.log(response[0]['product_nutrients'][0]['nutrient']['name'], "dhhdhd");
         let test=(response[0]['symptom']);
         for (var i=0;i<test.length;i++)
         {
@@ -97,7 +95,6 @@ export class EditUserPreparationComponent implements OnInit {
           this.NutrientsGetted.push(test1[i]['nutrient']['name'])
           localStorage.setItem('nutrientsList',JSON.stringify(this.NutrientsGetted))
         }
-          //console.log(this.NutrientsGetted);
       }),
 
       this.CurrentProduct= this._formBuilder.group({
@@ -129,30 +126,25 @@ export class EditUserPreparationComponent implements OnInit {
 
   console.log(info);
     let data = this.CurrentProduct.value;
-    //console.log(data),
     (await this.restProductservice.updateProduct(info.value))
       .subscribe(
-        (      response: any) => {
+           response => {
           console.log(response),
           this.successNotification(),
-          this.router.navigate(['/admin/preparation/listpreparation'])
+          this.router.navigate(['/preparations'])
   },
+  err =>{
+    console.log(err)
+  }
   
   
       )
   }
 
-  /* changeQuestionnaire(e: any) {
-    this.Activity?.setValue(e.target.value, {
-      onlySelf: true,
-    });
-  } */
   get Activity() {
     return this.CurrentProduct.get('option');
   }
   successNotification() {
     Swal.fire( 'votre informations ont été changés avec succés !!', 'success');
   }
-
-
 }

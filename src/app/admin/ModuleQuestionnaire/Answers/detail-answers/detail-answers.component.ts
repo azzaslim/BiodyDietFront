@@ -51,7 +51,4 @@ export class DetailAnswersComponent implements OnInit {
 } this.questionnaire=JSON.parse(localStorage.getItem('answertoupdate')!)[0]['questionnaire']['title']
   
  }
-
- 
-
 }

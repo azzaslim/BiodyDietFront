@@ -28,7 +28,7 @@ export const ADD_QUESTIONNAIRE_URL= BASE_URL +'api/addQuestionnaire ';
 export const GET_QUESTIONNAIRE_URL= BASE_URL +'api/getQuestionnaire ';
 export const ADD_NUTRIENT_URL= BASE_URL +'api/addnutrient';
 export const GETALL_NUTRIENTS_URL= BASE_URL +'api/getnutrients';
-export const GETALLADMIN_NUTRIENTS_URL= BASE_URL +'api/getAdmincomplements';
+export const GETALLADMIN_NUTRIENTS_URL= BASE_URL +'api/getnutrients';
 
 export const GET_ONE_NUTRIENT_URL= BASE_URL +'api/get/OneNutrient';
 export const UPDATE_NUTRIENT_URL= BASE_URL +'api/updatenutrient';
@@ -39,7 +39,9 @@ export const UPDATE_PRODUCT_URL= BASE_URL+'/api/updateProduct';
 export const ADD_PRODUCT_URL= BASE_URL+'api/addproduct';
 export const GETALL_preparations_URL= BASE_URL+'api/getpreparations';
 export const GETALL_PRODUCTS_URL= BASE_URL+'api/getProducts';
+
 export const GETALL_PRODUCTSADMIN_URL= BASE_URL+'api/getProductsAdmin';
+
 
 export const GETALL_COMPLEMENTS_URL= BASE_URL+'api/getcomplements';
 export const GETALLADMIN_COMPLEMENTS_URL= BASE_URL+'api/getAdmincomplements';

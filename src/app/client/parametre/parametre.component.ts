@@ -30,8 +30,4 @@ export class ParametreComponent implements OnInit {
     this.RestUserService.logout();  
     this.router.navigate(['/'])
   } 
-    
-
- 
-
 }

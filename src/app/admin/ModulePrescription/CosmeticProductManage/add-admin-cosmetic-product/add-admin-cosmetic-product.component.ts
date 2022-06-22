@@ -102,6 +102,4 @@ export class AddAdminCosmeticProductComponent implements OnInit {
           timer: 1500
         })
       }
-
-
 }

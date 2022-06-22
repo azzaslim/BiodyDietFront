@@ -14,6 +14,7 @@ import { AddsymptomComponent } from '../addsymptom/addsymptom.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RestUserService } from 'src/app/client/Services/RestUser.service';
 import { LoadingService } from 'src/app/loading.service';
+import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -25,8 +26,16 @@ export class SymptommanageComponent implements OnInit {
   displayedColumns = ['id','symptom_name','action'];
   dataSource = new MatTableDataSource<Symptom>();
   loading$ = this.loader.loading$;
+  fileData!: File ;
+  previewUrl!:any ;
+  ImageUrl!:any ;
+  
+  fileUploadProgress!: string ;
+  uploadedFilePath!: string;
+   reader = new FileReader();      
+  path!:any;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestSymptomService, private authService: RestUserService,private loader: LoadingService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router,private dialog: MatDialog, private user: RestSymptomService, private authService: RestUserService,private loader: LoadingService,private http: HttpClient,private RestUserService: RestUserService) { }
 
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -109,7 +118,10 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
   }
     
 
-  
+  successNotification() {
+    Swal.fire('vos informations ont été importées avec succés !!', 'Les symptomes dejà existants n \'ont pas été ajoutés', 'success')
+    this.router.navigate(['/admin/symptom/symptomlist']);
+    }
   
   confirmBox(){
     Swal.fire({
@@ -135,4 +147,48 @@ Swal.fire('ce symptom a été supprimé', '', 'success')
     
   
   }
+  preview() {
+    // Show preview 
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      console.log(mimeType)
+      return;
+    }
+    this.reader.readAsDataURL(this.fileData); 
+    console.log(this.fileData)
+    this.reader.onload = (_event) => { 
+      this.previewUrl = this.reader.result; 
+      localStorage.setItem('previewUrl',this.previewUrl)
+    }
+   }
+   async onSubmit() {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.RestUserService.getToken(),
+   
+    });
+   const formData = new FormData();
+   formData.append('myfile', this.fileData);
+   
+   this.fileUploadProgress = '0%';
+   await this.http.post('http://localhost:8000/api/importSymptom',formData,{reportProgress: true,headers, observe: 'events'})
+   .subscribe(events => {
+    if(events.type === HttpEventType.UploadProgress) {
+      this.fileUploadProgress = Math.round(  100) + '%';
+      console.log(this.fileUploadProgress);
+      console.log(this.previewUrl);
+      this.router.navigate(['/admin/symptom/symptomlist']);
+      this.successNotification() ;
+     
+   
+    } else if(events.type === HttpEventType.Response) {
+      this.fileUploadProgress = '';
+    }
+       
+   }) 
+   }
+
+   fileProgress(fileInput: any) {
+    this.fileData = fileInput.target.files[0];
+    this.preview();
+}
 }

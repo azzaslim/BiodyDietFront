@@ -41,6 +41,4 @@ export class NutrientdetailsComponent implements OnInit {
    this.createdAt= this.datePipe.transform(JSON.parse(localStorage.getItem('nutrienttoupdate')!)['created_at'], 'dd/MM/yyyy')!
    this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('nutrienttoupdate')!)['modifiedAt'], 'dd/MM/yyyy')!
  }
-
-
 }

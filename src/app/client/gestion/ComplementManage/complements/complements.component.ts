@@ -50,10 +50,12 @@ export class ComplementsComponent implements OnInit {
       if (x.length == 0) {
         alert("no complement exist");
         this.router.navigate(['/home'])
+    
       }
       else
-        localStorage.setItem("nbproducts", x.length.toString())
-        console.log("xxxxxxxxxxxxxx",x);
+      
+      localStorage.setItem('product', JSON.stringify(x[0]));
+
         
         this.products = x;
         this.getOneProduct(this.products[0]);
@@ -156,7 +158,6 @@ export class ComplementsComponent implements OnInit {
 
 
   async preparationToManage(product: Product) {
-    // console.log('symptom to manage', JSON.stringify(symptom.id));
 
     localStorage.setItem('product to manage', JSON.stringify(product.id));
     this.portions= [];
@@ -165,8 +166,6 @@ export class ComplementsComponent implements OnInit {
     this.symptoms=[];
     localStorage.setItem('product', JSON.stringify(product));
     localStorage.setItem('symptom', JSON.stringify(this.symptoms));
-
-    //console.log(localStorage.getItem('product'));
   }
 
   confirmBox(){

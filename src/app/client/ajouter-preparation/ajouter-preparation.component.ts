@@ -115,7 +115,4 @@ successNotification() {
     timer: 1500
   })
 }
-
-
-
 }

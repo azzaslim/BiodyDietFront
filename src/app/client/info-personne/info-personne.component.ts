@@ -174,9 +174,7 @@ click=true;
                                 { 
                                   s.push(ans.answers_products[i])
                                 }
-                              m = { reponse: ans.name, question: ans.questionnaire.title, product: s
-                                
-                              };
+                              m = { reponse: ans.name, question: ans.questionnaire.title, product: s};
                               
                             });
                           }
@@ -391,6 +389,7 @@ click=true;
                 });
                 this.Complements.forEach((comp) => {
                   if (this.cIndic.includes(comp) == false) {
+                    console.log(pe)
                     if (pe.id === comp.id) {
                       comp.checked = true;
                     }
@@ -430,10 +429,18 @@ click=true;
               }
             });
           });
+
+          /**************************** */
+let s=[]
+          for (var i=0;i< this.Compts[0].name.answers_products.length;i++)
+          { 
+            s.push(this.Compts[0].name.answers_products[i])
+          }
+          /**************** */
           m = {
             reponse: this.Compts[0].name.name,
             question: this.Compts[0].name.questionnaire.title,
-            product: this.products,
+            product: s,
           };
         });
       }
@@ -564,10 +571,11 @@ click=true;
        this.cIndic = []
         this.mfinal.forEach((element) => {
           element.product.forEach((ep: { indication: boolean; name: any;product:any }) => {
-            console.log(ep);
+           console.log('test',ep.product.id);
 
-            if ( (this.ProductsEnabled.includes(ep.name) == false) &&(ep.indication == true )) {
+            if ( (this.ProductsEnabled.includes(ep.product.id) == false) &&(ep.indication == true )) {
 {           this.ProductsEnabled.push(ep.product.id);
+  /////////////////////////////////ep.name
 
 }            }
 

@@ -52,8 +52,8 @@ export class ProduitsComponent implements OnInit {
         this.router.navigate(['/home'])
       }
       else
-        localStorage.setItem("nbproducts", x.length.toString())
-        console.log("xxxxxxxxxxxxxx",x);
+      localStorage.setItem('product', JSON.stringify(x[0]));
+
         
         this.products = x;
         this.getOneProduct(this.products[0]);

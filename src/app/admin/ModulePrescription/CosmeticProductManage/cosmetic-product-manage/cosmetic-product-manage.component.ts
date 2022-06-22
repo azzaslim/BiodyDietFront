@@ -45,7 +45,7 @@ export class CosmeticProductManageComponent implements OnInit {
           this.router.navigate(['/home'])
         }
         else
-        localStorage.setItem("nbsupplements",x.length.toString());
+        localStorage.setItem("nbcosmeticproduct",x.length.toString());
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
       this.loader.hide()
@@ -58,24 +58,7 @@ export class CosmeticProductManageComponent implements OnInit {
 
       }
       );
-      (await this.symptomservice.getSymptoms()).subscribe((x) => {
-        if (x.length==0)
-        {
-          alert("no Symptom exist");
-          this.router.navigate(['/home'])
-        }
-        else
-     
-      this.dataSource2= new MatTableDataSource(x);
-      this.dataSource2.sort = this.sort;
-    },
-      err => {
-        this.authService.logout(),
-          console.log(err),
-          this.failNotification();
-
-      }
-      );
+   
       };
 
   announceSortChange(sortState: Sort) {
@@ -171,15 +154,9 @@ export class CosmeticProductManageComponent implements OnInit {
       
       )
       )
-      //this.symptoms =JSON.parse(localStorage.getItem('product')!);
-     /* this.list.forEach(element => {
-        console.log(element);
-      }); */
-      //this.symptoms =JSON.parse(localStorage.getItem('product')!)['symptom'][0]['symptom_name'];
-    //console.log(this.symptoms);
 
     }
-    async UpdateProductVisibility(){
+/*     async UpdateProductVisibility(){
       (await this.RestProductService.UpdateProductVisibility())
       .subscribe(
         async response => {
@@ -191,5 +168,5 @@ export class CosmeticProductManageComponent implements OnInit {
           console.log(err)
         })
      
-    }
+    } */
 }

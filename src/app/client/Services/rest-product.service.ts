@@ -19,7 +19,8 @@ import {
   GETCOSMETIC_PRODUCTS_URL,
   GETADMINCOSMETIC_PRODUCTS_URL,
 } from 'src/app/common/url';
-import { GETALLADMIN_COMPLEMENTS_URL, GETALL_ADMINPREPARATION_URL, GETALL_PREPARATION_URL, GETALL_PRODUCTSADMIN_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
+
+import { GETALLADMIN_COMPLEMENTS_URL, GETALL_ADMINPREPARATION_URL,GETALL_PRODUCTSADMIN_URL, GETALL_PREPARATION_URL, GETALL_SUPPLIMENTS_URL } from 'src/common/url';
 
 export interface Product {
   id: number;
@@ -54,22 +55,6 @@ export class RestProductService {
       `Bearer ${this.getToken()} `
     );
     return  this.http.get<Product[]>(GETALL_PRODUCTS_URL, { headers });
-  }
-  getADMINCosmeticProducts(): Observable<Product[]> {
-    let headers = new HttpHeaders().set(
-      'Authorization',
-      `Bearer ${this.getToken()} `
-    );
-    return  this.http.get<Product[]>(GETADMINCOSMETIC_PRODUCTS_URL, { headers });
-  }
-
-  
-  getCosmeticProducts(): Observable<Product[]> {
-    let headers = new HttpHeaders().set(
-      'Authorization',
-      `Bearer ${this.getToken()} `
-    );
-    return  this.http.get<Product[]>(GETCOSMETIC_PRODUCTS_URL, { headers });
   }
   getProductsAdmin(): Observable<Product[]> {
     let headers = new HttpHeaders().set(
@@ -152,6 +137,22 @@ export class RestProductService {
     console.log(this.getToken());
 
     return await this.http.post<any>(ADD_PRODUCT_URL, product, { headers });
+  }
+  getADMINCosmeticProducts(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return  this.http.get<Product[]>(GETADMINCOSMETIC_PRODUCTS_URL, { headers });
+  }
+
+  
+  getCosmeticProducts(): Observable<Product[]> {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()} `
+    );
+    return  this.http.get<Product[]>(GETCOSMETIC_PRODUCTS_URL, { headers });
   }
   async getOneProduct(id: number): Promise<Observable<any>> {
     let headers = new HttpHeaders({

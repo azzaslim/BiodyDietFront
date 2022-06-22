@@ -63,7 +63,4 @@ export class DetailUserComponent implements OnInit {
     this.endDate=this.datePipe.transform(JSON.parse(localStorage.getItem('usertoupdate')!)[0]['end_date'], 'dd/MM/yyyy')!
 
   }
-
-  
-
 }

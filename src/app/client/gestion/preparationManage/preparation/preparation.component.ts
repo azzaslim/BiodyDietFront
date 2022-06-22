@@ -165,7 +165,7 @@ export class PreparationComponent implements OnInit {
     Swal.fire({
       position: 'center',
       icon: 'info',
-      title: 'vous n\'avez le droit de masquer ce complement',
+      title: 'vous n\'avez le droit de masquer cette preparation',
       showConfirmButton: false,
       timer: 1500
     })
@@ -200,7 +200,6 @@ export class PreparationComponent implements OnInit {
 
 
   async UpdateVisisbilityProduct1() {
-    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.UpdateProductVisibility1())
       .subscribe(
         async response => {

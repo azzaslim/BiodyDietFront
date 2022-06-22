@@ -53,6 +53,10 @@ export class AddNutrientComponent implements OnInit {
             this.sucessNotification();
             this.router.navigate(['/admin/nutrient/nutrientlist'])
             this.dialogRef.close();
+            window.location.reload()
+
+
+
           },
 
          

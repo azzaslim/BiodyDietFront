@@ -36,7 +36,7 @@ export class SymptomDetailsComponent implements OnInit {
  async getInfoSymptom(){
    this.symptom_name= JSON.parse(localStorage.getItem('symptomtoupdate')!)['symptom_name'],
    this.createdAt= this.datePipe.transform(JSON.parse(localStorage.getItem('symptomtoupdate')!)['created_at'], 'dd/MM/yyyy')!
-   this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('symptomtoupdate')!)['modifiedAt'], 'dd/MM/yyyy')!
+   this.modifiedAt=this.datePipe.transform(JSON.parse(localStorage.getItem('symptomtoupdate')!)['modified_at'], 'dd/MM/yyyy')!
  }
 
 

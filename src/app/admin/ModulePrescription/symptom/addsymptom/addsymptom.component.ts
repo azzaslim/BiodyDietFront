@@ -50,7 +50,12 @@ export class AddsymptomComponent implements OnInit {
     response=> {
       this.sucessNotification()
       this.dialogRef.close();
+
       this.router.navigate(['/admin/symptom/symptomlist'])
+      window.location.reload()
+
+
+
     },
     err => {console.log(err),
       this.failNotification()}

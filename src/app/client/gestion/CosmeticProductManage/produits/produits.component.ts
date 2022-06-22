@@ -144,11 +144,11 @@ export class ProduitsComponent implements OnInit {
         if((JSON.parse(localStorage.getItem('product')!)['visibility'])==true)
         { 
           this.UpdateVisisbilityProduct();
-          Swal.fire('cette preparation a été masquée', '', 'success')
+          Swal.fire('ce produit a été masquée', '', 'success')
         }
         else{
           this.UpdateVisisbilityProduct1();
-          Swal.fire('cette preparation a été démasquée', '', 'success')
+          Swal.fire('cette produit a été démasquée', '', 'success')
 
         }
       }
@@ -158,7 +158,7 @@ export class ProduitsComponent implements OnInit {
     Swal.fire({
       position: 'center',
       icon: 'info',
-      title: 'vous n\'avez le droit de masquer ce complement',
+      title: 'vous n\'avez le droit de masquer ce produit',
       showConfirmButton: false,
       timer: 1500
     })

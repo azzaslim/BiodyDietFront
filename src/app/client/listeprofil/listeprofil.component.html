@@ -61,26 +61,25 @@
 </table>
 
 </div>
-<<<<<<< HEAD
 
 
-<div class="d-grid gap-2 d-md-flex justify-content-md-around mt-4">
- <button mat-flat-button color="primary"  class="export1"  (click)="exporter.exportTable('csv')">Exporter En  CSV</button>
-<button mat-flat-button color="primary"  class="export2"  (click)="exporter.exportTable('xls')">Exporter En Excel</button>
-<label  for="fileInput" >
-    <a  mat-flat-button color="primary" (change)="onSubmit();"> importer </a>
-</label>
-</div>
+<div class="container">
+    <div class="row">
+    
+      <br>  <br> <br> <br> <br> <br> <br> <br> <br>
+      <div class=" col-4 col-md">
+        <button mat-flat-button color="primary"   class="export "  (click)="exporter.exportTable('csv')">Exporter en CSV</button>
+      </div>
+      <div class=" col-4 col-md">
+        <button mat-flat-button color="primary"(click)="exporter.exportTable('xls')">Exporter en excels</button>
+    </div>
+    <div class=" col-4 col-md">
+        <label  for="fileInput" >
+            <a mat-flat-button color="primary" class="import" > Importer </a>
+        </label>    </div>
+    </div>
+  </div>
+
+
 <app-footer></app-footer>
-=======
-<<<<<<< HEAD
 
-<!-- {{element.birth_date.split("T")[0]| date : "dd-MM-yyyy"    }} 
- --><app-footer></app-footer>
-=======
-<button mat-flat-button color="primary"  class="export"  (click)="exporter.exportTable('csv')">export to CSV</button>
-<button mat-flat-button color="primary"  (click)="exporter.exportTable('xls')">export to xls</button>
-
-<app-footer></app-footer>
->>>>>>> 189055a7dcb753e9cea89ca60bd0963634e11e2c
->>>>>>> f4cac93910ad1cc9141a3c49ba7cb027670c3a8b

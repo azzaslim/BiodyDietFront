@@ -132,7 +132,7 @@ export class EditComplementComponent implements OnInit {
         (      response: any) => {
           console.log(response),
           this.successNotification(),
-          this.router.navigate(['/admin/preparation/listpreparation'])
+          this.router.navigate(['/complements'])
   },
   
   

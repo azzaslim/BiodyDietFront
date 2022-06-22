@@ -179,3 +179,7 @@ table th{
 .link:hover
 { color: rgb(240, 248, 255);
 text-decoration: none;}
+.row{
+  margin-left:130px;
+  margin-top: 12px;
+}

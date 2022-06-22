@@ -121,7 +121,9 @@ this.loader.hide()
   }
   
 successNotification() {
-  Swal.fire('vos informations ont été importées avec succés !!', 'Les patients dejà existants n \'ont pas été ajoutés', 'success')
+  Swal.fire('vos informations ont été importées avec succés !!', 'Les patients dejà existants n \'ont pas été ajoutés', 'success');
+  window.location.reload();
+
 }
 
 preview() {

@@ -103,7 +103,8 @@ export class PreparationeditComponent implements OnInit {
         symptomsList: [JSON.parse(localStorage.getItem('symptomsList')!)],
         NutrientsList: [JSON.parse(localStorage.getItem('nutrientsList')!)],
       });
-        }
+
+    }
   async updateProduct(){
     
 

@@ -166,6 +166,6 @@ Swal.fire('ce nutriment a été supprimé !', '', 'success')
        successNotification() {
         Swal.fire('vos informations ont été importées avec succés !!', 'Les nutriments dejà existants n\'ont pas été ajoutés', 'success')
 
-        this.router.navigate(['/admin/nutrient/nutrientlist']);
+        window.location.reload();
         }
 }

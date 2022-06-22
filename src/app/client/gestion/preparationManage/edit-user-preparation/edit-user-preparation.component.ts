@@ -130,8 +130,8 @@ export class EditUserPreparationComponent implements OnInit {
       .subscribe(
         (      response: any) => {
           console.log(response),
-          this.successNotification(),
-          this.router.navigate(['/admin/preparation/listpreparation'])
+          this.successNotification()
+          this.router.navigate(['/preparations'])
   },
   
   

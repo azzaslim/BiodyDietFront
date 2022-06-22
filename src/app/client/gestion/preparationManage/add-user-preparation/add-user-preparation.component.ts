@@ -39,11 +39,8 @@ export class AddUserPreparationComponent implements OnInit {
       portion: ['',[Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
       comment: ['',[Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]], 
       composition: ['',[Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]], 
-      quantite: ['',[Validators.required, Validators.pattern('^(((0[1-9]|[12][0-9]|30)[-/]?(0[13-9]|1[012])|31[-/]?(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[-/]?02)[-/](?:19|20)[0-9]{2}|29[-/]?02[-/](?:19|20)[0-9]{2})$')]], 
       symptoms: [this.ListSymptom],
       Nutrients:[this.listnutrient],
-      /* symptomsList:[this.ListSymptom],
-      NutrientsList:[this.listnutrient] */
     });
 
 }
@@ -70,10 +67,7 @@ export class AddUserPreparationComponent implements OnInit {
       async Add_Product() {
     this.ListSymptom.forEach(element =>this.SelectedSymptoms.push({'symptom_name': element}) );
     this.listnutrient.forEach(element =>this.SelectedNutrients.push({'name': element}) );
-    
-   
-   // console.log(this.SelectedSymptoms)
-    this.AddNewProduct.controls.symptoms.patchValue(this.SelectedSymptoms);
+       this.AddNewProduct.controls.symptoms.patchValue(this.SelectedSymptoms);
         this.AddNewProduct.controls.Nutrients.patchValue(this.SelectedNutrients);
         let data = this.AddNewProduct.value;
         console.log(data);

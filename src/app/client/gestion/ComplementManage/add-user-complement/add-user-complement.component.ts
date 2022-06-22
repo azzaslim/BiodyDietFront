@@ -40,7 +40,6 @@ export class AddUserComplementComponent implements OnInit {
       portion: ['',[Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]],
       comment: ['',[Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]], 
       composition: ['',[Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]], 
-      quantite: ['',[Validators.required, Validators.pattern('^(((0[1-9]|[12][0-9]|30)[-/]?(0[13-9]|1[012])|31[-/]?(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[-/]?02)[-/](?:19|20)[0-9]{2}|29[-/]?02[-/](?:19|20)[0-9]{2})$')]], 
       symptoms: [this.ListSymptom],
       Nutrients:[this.listnutrient],
       /* symptomsList:[this.ListSymptom],
@@ -78,11 +77,11 @@ export class AddUserComplementComponent implements OnInit {
         this.AddNewProduct.controls.Nutrients.patchValue(this.SelectedNutrients);
         let data = this.AddNewProduct.value;
         console.log(data);
-        (await this.RestProductService.addPreparation(data)).subscribe(
+        (await this.RestProductService.addSupplment(data)).subscribe(
           response => {
            
             this.successNotification();
-            this.router.navigate(['/complemets'])
+            this.router.navigate(['/complemets']);
           },
           err => {
             console.log(err),

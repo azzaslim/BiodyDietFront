@@ -66,7 +66,6 @@ export class PreparationComponent implements OnInit {
 
         this.products = x;
         this.getOneProduct(this.products[0]);
-
       this.dataSource = new MatTableDataSource(x);
       this.dataSource.sort = this.sort;
     },
@@ -116,7 +115,8 @@ export class PreparationComponent implements OnInit {
     Swal.fire('votre session a expiré', 'veuillez reconnecter s\' il vous plait  !!', 'error');
   }
   ConfirmationNotification() {
-
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+    {  
     Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
@@ -127,9 +127,20 @@ export class PreparationComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.deleteProduct();
-        Swal.fire('ce produit a été supprimé', '', 'success')
+        Swal.fire('ce preparation a été supprimé', '', 'success')
       }
-    })
+    })}
+    
+      else {
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'vous n\'avez le droit de supprimer cette preparation',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      
+    }
   }
 
   
@@ -182,7 +193,6 @@ export class PreparationComponent implements OnInit {
     localStorage.setItem('product', JSON.stringify(product));
     localStorage.setItem('symptom', JSON.stringify(this.symptoms));
     this.visibility=(JSON.parse(localStorage.getItem('product')!)['visibility']);
-
   }
 
   confirmBox(){
@@ -214,7 +224,6 @@ export class PreparationComponent implements OnInit {
   }
 
   async UpdateVisisbilityProduct() {
-    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.UpdateProductVisibility())
       .subscribe(
         async response => {
@@ -230,7 +239,6 @@ export class PreparationComponent implements OnInit {
 
 
   async deleteProduct() {
-    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
       .subscribe(
         async response => {
@@ -277,10 +285,25 @@ export class PreparationComponent implements OnInit {
       {
       
          x= true;
-         // this.allsymptoms[i].checked=true;
       }
      
     }
     return x;
+  }
+  update(){
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+    {
+      this.router.navigate(['/gestion/preparation/edit']);
+    }
+    else {
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'vous n\'avez le droit de modifier cette preparation',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    
   }
 }

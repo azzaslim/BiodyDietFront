@@ -111,7 +111,8 @@ export class ComplementsComponent implements OnInit {
   }
   ConfirmationNotification() {
 
-    Swal.fire({
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+   {Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
       showDenyButton: true,
@@ -123,7 +124,16 @@ export class ComplementsComponent implements OnInit {
         this.deleteProduct();
         Swal.fire('ce produit a été supprimé', '', 'success')
       }
-    })
+    })}
+    else {
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'vous n\'avez le droit de supprimer ce complement',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
   }
   
 
@@ -277,5 +287,21 @@ export class ComplementsComponent implements OnInit {
      
     }
     return x;
+  }
+  update(){
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+    {
+      this.router.navigate(['/gestion/complement/edit']);
+    }
+    else {
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'vous n\'avez le droit de modifier ce complement',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    
   }
 }

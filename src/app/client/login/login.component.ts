@@ -117,7 +117,9 @@ alerterreur(){
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
+      localStorage.removeItem('currentUser');
       this.pay()
+      
 
 console.log(this.email)
 

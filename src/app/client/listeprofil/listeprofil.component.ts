@@ -148,8 +148,8 @@ await this.http.post('http://localhost:8000/api/importpatient',formData,{reportP
 .subscribe(events => {
  if(events.type === HttpEventType.UploadProgress) {
    this.fileUploadProgress = Math.round(  100) + '%';
-   this.successNotification();
-   this.router.navigate(['/listeprofil']);
+ this.successNotification();
+ this.router.navigate(['/listeprofil']);
    console.log(this.fileUploadProgress);
    console.log(this.previewUrl);
     

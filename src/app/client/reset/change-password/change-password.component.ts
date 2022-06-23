@@ -48,6 +48,7 @@ export class ChangePasswordComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.failNotification();
         }
       )
     localStorage.clear();
@@ -55,5 +56,9 @@ export class ChangePasswordComponent implements OnInit {
   }
   successNotification() {
     Swal.fire( 'votre mot de passe a été changé avec succés !!', 'success');
+  }
+  failNotification(){
+    Swal.fire( 'Un erreur s\'est produit ! veuillez reesayer!', 'error');
+
   }
 }

@@ -110,7 +110,8 @@ export class ProduitsComponent implements OnInit {
     Swal.fire('votre session a expiré', 'veuillez reconnecter s\' il vous plait  !!', 'error');
   }
   ConfirmationNotification() {
-
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+    {
     Swal.fire({
       title: 'Etes-vous sur ?',
       icon: 'info',
@@ -123,7 +124,16 @@ export class ProduitsComponent implements OnInit {
         this.deleteProduct();
         Swal.fire('ce produit a été supprimé', '', 'success')
       }
-    })
+    })}
+    else {
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'vous n\'avez le droit de supprimer ce produit',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
   }
 
   ConfirmUptadeVisibility() {
@@ -194,7 +204,6 @@ export class ProduitsComponent implements OnInit {
 
 
 async UpdateVisisbilityProduct1() {
-    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.UpdateProductVisibility1())
       .subscribe(
         async response => {
@@ -208,7 +217,6 @@ async UpdateVisisbilityProduct1() {
 
   }
   async UpdateVisisbilityProduct() {
-    //console.log(typeof(JSON.parse(localStorage.getItem('symptom to manage')!))),
     (await this.RestProductService.UpdateProductVisibility())
       .subscribe(
         async response => {
@@ -224,7 +232,8 @@ async UpdateVisisbilityProduct1() {
 
 
   async deleteProduct() {
-    (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+    { (await this.RestProductService.deleteProduct(JSON.parse(localStorage.getItem('product to manage')!)))
       .subscribe(
         async response => {
           console.log(response)
@@ -234,7 +243,16 @@ async UpdateVisisbilityProduct1() {
         err => {
           console.log(err)
         })
-
+      }
+      else{
+         Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: 'vous n\'avez le droit de masquer ce produit',
+      showConfirmButton: false,
+      timer: 1500
+    })
+      }
   }
   search(id: string) {
     console.log(id);
@@ -247,7 +265,6 @@ async UpdateVisisbilityProduct1() {
     console.log("======>",row.product_nutrients )
 
      console.log("potionnnnn", this.portions)
-     //console.log("nutrient",row.product_nutrients[0].nutrient);
      for (var i = 0; i < row.product_nutrients.length; i++) {
                console.log("nutrient",row.product_nutrients[i].nutrient);
                this.nutrients.push(row.product_nutrients[i].nutrient);
@@ -275,5 +292,21 @@ async UpdateVisisbilityProduct1() {
      
     }
     return x;
+  }
+  update(){
+    if((JSON.parse(localStorage.getItem('product')!)['creator_user']['id'])==(JSON.parse(localStorage.getItem('currentUser')!)['id']))
+    {
+      this.router.navigate(['/gestion/complement/edit']);
+    }
+    else {
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'vous n\'avez le droit de modifier ce complement',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    
   }
 }

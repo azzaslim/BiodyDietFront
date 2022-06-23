@@ -119,6 +119,7 @@ alerterreur(){
     if (result.isConfirmed) {
       localStorage.removeItem('currentUser')
       this.pay()
+      
 
 console.log(this.email)
 

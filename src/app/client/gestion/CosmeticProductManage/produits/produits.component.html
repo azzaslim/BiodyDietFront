@@ -98,7 +98,7 @@
 </div>
 <div class="divboutton " > 
 <button class="button"  (click)="ConfirmUptadeVisibility()" > <mat-icon *ngIf="visibility">visibility</mat-icon><mat-icon *ngIf="!visibility">visibility_off</mat-icon></button> 
-<button class="button"> <a href="gestion/cosmeticproduct/edit" class="href">Modifier</a> </button>
+<button class="button" (click)="update()">Modifier</button>
   <button class="button"><a  href="gestion/cosmeticproduct/add" class="href" > Ajouter</a></button> 
   <button class="button" (click)="ConfirmationNotification()" > Supprimer</button>
 </div>
